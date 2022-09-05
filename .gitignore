@@ -2,3 +2,6 @@
 
 # compile
 .out
+
+# settings
+.vscode
