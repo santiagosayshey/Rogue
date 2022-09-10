@@ -1,17 +1,19 @@
-#include "Window.h"
+#include "Main.h"
 
-Window::Window() 
+Main::Main():
+winWidth(800), winHeight(600), difficulty(0), title("Default")
 {
     window = new sf::RenderWindow(sf::VideoMode(800,600), "Default");  
 }
 
-Window::Window(int width, int height, std::string title)
+Main::Main(int w, int h, int d, std::string t):
+winWidth(w), winHeight(h), difficulty(d), title(t)
 {
-    window = new sf::RenderWindow(sf::VideoMode(width,height), title);   
+    window = new sf::RenderWindow(sf::VideoMode(w,h), t);   
 }
 
 
-void Window::gameLoop()
+void Main::run()
 {
     // run the program as long as the window is open
     while (window->isOpen())
@@ -24,11 +26,15 @@ void Window::gameLoop()
             if (event.type == sf::Event::Closed)
                 window->close();
         }
+        window->clear();
+        window->display();
     }
 }
 
 
-Window::~Window()
+Main::~Main()
 {
     delete window;
+        // delete player
+        // delete enemy
 }
