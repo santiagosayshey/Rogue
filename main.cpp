@@ -1,10 +1,10 @@
-#include "Headers/Window.h"
+#include "Classes/Main.h"
 #include <string>
 
 int main() 
 {
-    Window window(1920,1080,"Test #1");
-    window.gameLoop();
+    Main game;
+    game.run();
 
     return 0;
 }
