@@ -1,15 +1,14 @@
-#include "Main.h"
+#include "Game.h"
 
-Main::Main(int w, int h, std::string t):
+Game::Game(int w, int h, std::string t):
 winWidth(w), winHeight(h), title(t)
 {
     window = new sf::RenderWindow(sf::VideoMode(w,h), t);   
 }
 
 
-void Main::run()
+void Game::run()
 {
-    window->setFramerateLimit(60);
 
     // run the program as long as the window is open
     while (window->isOpen())
@@ -23,19 +22,15 @@ void Main::run()
                 window->close();
         }
 
-        dt = clock.restart().asSeconds();
-
         window->clear();
         window->display();
 
-        std::cout << "dt: " << dt << std::endl; 
     }
 }
 
 
-Main::~Main()
+Game::~Game()
 {
     delete window;
-        // delete player
-        // delete enemy
+
 }
