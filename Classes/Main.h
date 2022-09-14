@@ -4,17 +4,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <iostream>
 
 class Main
 {
 public:
 
-    // default constructor, initialises window size, highscores
-    // ?difficulty?
-    Main();
-
     // custom constructor, passes parameters for all data members
-    Main(int w, int h, int d, std::string t);
+    Main(int w, int h, std::string t);
 
     // deconstructor
     ~Main();
@@ -27,13 +24,12 @@ private:
     // data members
     int winWidth;
     int winHeight;
-    int difficulty;
     std::string title;
 
     // data classes
     sf::RenderWindow* window;
-        // Character* player;
-        // Character* enemy;
+    sf::Clock clock;
+    float dt;
 
 };
 

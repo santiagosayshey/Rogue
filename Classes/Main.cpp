@@ -1,13 +1,7 @@
 #include "Main.h"
 
-Main::Main():
-winWidth(800), winHeight(600), difficulty(0), title("Default")
-{
-    window = new sf::RenderWindow(sf::VideoMode(800,600), "Default");  
-}
-
-Main::Main(int w, int h, int d, std::string t):
-winWidth(w), winHeight(h), difficulty(d), title(t)
+Main::Main(int w, int h, std::string t):
+winWidth(w), winHeight(h), title(t)
 {
     window = new sf::RenderWindow(sf::VideoMode(w,h), t);   
 }
@@ -15,6 +9,8 @@ winWidth(w), winHeight(h), difficulty(d), title(t)
 
 void Main::run()
 {
+    window->setFramerateLimit(60);
+
     // run the program as long as the window is open
     while (window->isOpen())
     {
@@ -26,8 +22,13 @@ void Main::run()
             if (event.type == sf::Event::Closed)
                 window->close();
         }
+
+        dt = clock.restart().asSeconds();
+
         window->clear();
         window->display();
+
+        std::cout << "dt: " << dt << std::endl; 
     }
 }
 
