@@ -19,14 +19,7 @@ public:
 private:
 
     // data members
-    int winWidth;
-    int winHeight;
-    std::string title;
-
-    // data classes
     sf::RenderWindow* window;
-    sf::Clock clock;
-    float dt;
 
 };
 

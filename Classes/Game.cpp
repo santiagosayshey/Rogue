@@ -1,7 +1,6 @@
 #include "Game.h"
 
-Game::Game(int w, int h, std::string t):
-winWidth(w), winHeight(h), title(t)
+Game::Game(int w, int h, std::string t)
 {
     window = new sf::RenderWindow(sf::VideoMode(w,h), t);   
 }
