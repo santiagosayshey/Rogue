@@ -4,7 +4,8 @@ Game::Game() {}
 
 Game::Game(int width, int height)
 {
-    this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Title");
+    this->window = new sf::RenderWindow(sf::VideoMode(width,height),"The Last of Us");
+    this->currentState = new Gameplay();
 }
 
 Game::~Game()

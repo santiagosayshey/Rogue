@@ -1,11 +1,10 @@
 #include "Game.h"
-#include "Gameplay.h"
+
 
 int main()
 {
     
-    Game game(480,480);
-    Gameplay g(game);
+    Game game(761,606);
     game.run();
     
 

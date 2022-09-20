@@ -1,25 +1,22 @@
-#ifndef GAMEPLAY_H
-#define GAMEPLAY_H
+#ifndef MENUSTATE_H
+#define MENUSTATE_H
 
 #pragma once
-
-#include "SFML/Graphics.hpp"
 #include "Game.h"
 
-class Gameplay : public GameState
+class MenuState : public GameState
 {
 public:
-    Gameplay();
-    ~Gameplay();
+    MenuState();
+    ~MenuState();
 
     void update(sf::RenderWindow* window);
     void render(sf::RenderWindow* window);
 
-
 private:
     sf::Event event;
-    sf::Clock clock;
-    float dt;
+    sf::Texture t_splash;
+    sf::Sprite s_splash;
 
 };
 

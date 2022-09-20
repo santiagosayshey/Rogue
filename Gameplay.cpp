@@ -1,8 +1,7 @@
 #include "Gameplay.h"
 
-Gameplay::Gameplay(Game game)
+Gameplay::Gameplay()
 {
-    this->game = game;
 }
 
 Gameplay::~Gameplay()
