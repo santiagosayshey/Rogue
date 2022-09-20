@@ -6,12 +6,11 @@
 #include "SFML/Graphics.hpp"
 #include "GameState.h"
 
-
 class Game
 {
 public:
     Game();
-    Game(int width, int height, GameState* initial);
+    Game(int width, int height);
     ~Game();
 
     void run();

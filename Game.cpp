@@ -2,11 +2,9 @@
 
 Game::Game() {}
 
-Game::Game(int width, int height, GameState* initial)
+Game::Game(int width, int height)
 {
     this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Title");
-    this->currentState = initial;
-
 }
 
 Game::~Game()
