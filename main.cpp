@@ -1,10 +1,12 @@
-#include "Classes/Main.h"
-#include <string>
+#include "Game.h"
+#include "Gameplay.h"
 
-int main() 
+int main()
 {
-    Main game(1920,1080,"Test");
+    
+    Game game(480,480,);
     game.run();
+    
 
     return 0;
 }
