@@ -3,8 +3,7 @@
 
 #pragma once
 
-#include "SFML/Graphics.hpp"
-#include "Game.h"
+#include "GameState.h"
 
 class Gameplay : public GameState
 {

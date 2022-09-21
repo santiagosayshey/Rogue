@@ -5,7 +5,6 @@
 
 #include "SFML/Graphics.hpp"
 #include "GameState.h"
-#include "Gameplay.h"
 #include "MenuState.h"
 
 class Game

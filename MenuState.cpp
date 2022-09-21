@@ -1,4 +1,6 @@
 #include "MenuState.h"
+#include "Game.h"
+#include "Gameplay.h"
 
 MenuState::MenuState()
 {
@@ -14,7 +16,7 @@ MenuState::~MenuState()
 void MenuState::update(sf::RenderWindow* window)
 
 {
-        // events
+        // events  
         while (window->pollEvent(event))
         {
             // "close requested" event: we close the window

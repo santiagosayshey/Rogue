@@ -2,7 +2,7 @@
 #define MENUSTATE_H
 
 #pragma once
-#include "Game.h"
+#include "GameState.h"
 
 class MenuState : public GameState
 {

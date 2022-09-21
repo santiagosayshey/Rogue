@@ -1,4 +1,6 @@
 #include "Gameplay.h"
+#include "Game.h"
+#include "MenuState.h"
 
 Gameplay::Gameplay()
 {
