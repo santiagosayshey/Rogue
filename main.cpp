@@ -1,10 +1,12 @@
-#include "Classes/Main.h"
-#include <string>
+#include "include/Game.h"
 
-int main() 
+
+int main()
 {
-    Main game(1920,1080,"Test");
-    game.run();
+    
+    Game* game = new Game(761,606);
+    game->run();
+    
 
     return 0;
 }
