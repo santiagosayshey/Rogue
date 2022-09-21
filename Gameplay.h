@@ -8,7 +8,7 @@
 class Gameplay : public GameState
 {
 public:
-    Gameplay();
+    Gameplay(Game* game);
     ~Gameplay();
 
     void update(sf::RenderWindow* window);

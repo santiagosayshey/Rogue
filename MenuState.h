@@ -7,7 +7,7 @@
 class MenuState : public GameState
 {
 public:
-    MenuState();
+    MenuState(Game* game);
     ~MenuState();
 
     void update(sf::RenderWindow* window);

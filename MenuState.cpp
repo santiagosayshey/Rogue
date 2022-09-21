@@ -2,7 +2,8 @@
 #include "Game.h"
 #include "Gameplay.h"
 
-MenuState::MenuState()
+MenuState::MenuState(Game* game):
+GameState(game)
 {
     t_splash.loadFromFile("splash.jpg");
     s_splash.setTexture(t_splash);
@@ -24,6 +25,7 @@ void MenuState::update(sf::RenderWindow* window)
                 window->close();
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+                game->setState(new Gameplay(game));
             }
             
         }

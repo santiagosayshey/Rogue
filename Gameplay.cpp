@@ -2,8 +2,10 @@
 #include "Game.h"
 #include "MenuState.h"
 
-Gameplay::Gameplay()
+Gameplay::Gameplay(Game* game):
+GameState(game)
 {
+    
 }
 
 Gameplay::~Gameplay()

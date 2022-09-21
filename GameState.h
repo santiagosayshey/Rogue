@@ -5,14 +5,17 @@
 
 #include "SFML/Graphics.hpp"
 
+class Game;
 class GameState
 {
 public:
+    GameState(Game* game);
     virtual void update(sf::RenderWindow* window) = 0;
     virtual void render(sf::RenderWindow* window) = 0;
 
 
-private:
+protected:
+    Game* game;
 
 };
 
