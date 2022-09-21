@@ -1,7 +1,5 @@
 #include "Game.h"
 
-Game::Game() {}
-
 Game::Game(int width, int height)
 {
     this->window = new sf::RenderWindow(sf::VideoMode(width,height),"The Last of Us");
@@ -23,7 +21,7 @@ void Game::run()
 
 }
 
-void Game::setState(GameState* newState)
+void Game::setState(State* newState)
 {
     currentState = newState;
 }

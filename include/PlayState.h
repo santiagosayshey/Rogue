@@ -1,15 +1,15 @@
-#ifndef GAMEPLAY_H
-#define GAMEPLAY_H
+#ifndef PlayState_H
+#define PlayState_H
 
 #pragma once
 
-#include "GameState.h"
+#include "State.h"
 
-class Gameplay : public GameState
+class PlayState : public State
 {
 public:
-    Gameplay(Game* game);
-    ~Gameplay();
+    PlayState(Game* game);
+    ~PlayState();
 
     void update(sf::RenderWindow* window);
     void render(sf::RenderWindow* window);

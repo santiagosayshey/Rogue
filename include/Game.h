@@ -4,23 +4,22 @@
 #pragma once
 
 #include "SFML/Graphics.hpp"
-#include "GameState.h"
+#include "State.h"
 #include "MenuState.h"
 
 class Game
 {
 public:
-    Game();
     Game(int width, int height);
     ~Game();
 
     void run();
-    void setState(GameState* newState);
+    void setState(State* newState);
 
 
 private:
     sf::RenderWindow* window;
-    GameState* currentState;
+    State* currentState;
 
 };
 

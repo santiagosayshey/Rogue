@@ -1,19 +1,19 @@
-#include "Gameplay.h"
+#include "PlayState.h"
 #include "Game.h"
 #include "MenuState.h"
 
-Gameplay::Gameplay(Game* game):
-GameState(game)
+PlayState::PlayState(Game* game):
+State(game)
 {
 
 }
 
-Gameplay::~Gameplay()
+PlayState::~PlayState()
 {
 
 }
 
-void Gameplay::update(sf::RenderWindow* window)
+void PlayState::update(sf::RenderWindow* window)
 {
         // framerate
         dt = clock.restart().asSeconds();
@@ -34,7 +34,7 @@ void Gameplay::update(sf::RenderWindow* window)
         // mouse
 }
 
-void Gameplay::render(sf::RenderWindow* window)
+void PlayState::render(sf::RenderWindow* window)
 {
     window->clear();
     // draw
