@@ -4,8 +4,8 @@
 int main()
 {
     
-    Game game(761,606);
-    game.run();
+    Game* game = new Game(761,606);
+    game->run();
     
 
     return 0;
