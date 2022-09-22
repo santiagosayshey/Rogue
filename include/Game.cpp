@@ -26,3 +26,4 @@ void Game::setState(State* newState)
     currentState = newState;
 }
 
+ 
