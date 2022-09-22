@@ -7,7 +7,7 @@ State(game)
     t_splash.loadFromFile("assets/background/splash.png");
     s_splash.setTexture(t_splash);
 
-    play = new TextBox(50, sf::Color::Black, "Play", 124, 377);
+    play = new PlayButton(50, sf::Color::Black, "Play", 124, 377);
 }
 
 MenuState::~MenuState()
@@ -16,7 +16,7 @@ MenuState::~MenuState()
 void MenuState::update(sf::RenderWindow* window)
 
 {
-    play->update(window, game, play);
+    play->update(window, game);
     // events  
     while (window->pollEvent(event))
     {

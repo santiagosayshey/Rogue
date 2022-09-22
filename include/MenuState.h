@@ -3,7 +3,7 @@
 
 #pragma once
 #include "State.h"
-#include "TextBox.h"
+#include "PlayButton.h"
 
 class MenuState : public State
 {
@@ -19,7 +19,7 @@ private:
     sf::Texture t_splash;
     sf::Sprite s_splash;
     
-    TextBox* play;
+    PlayButton* play;
 
 
 };
