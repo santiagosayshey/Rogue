@@ -27,8 +27,10 @@ void MenuState::update(sf::RenderWindow* window)
     while (window->pollEvent(event))
     {
         // "close requested" event: we close the window
-        if (event.type == sf::Event::Closed) {
-            window->close();
+        switch (event.type) {
+            case sf::Event::Closed:
+                window->close();
+                break;
         }
         
     }
