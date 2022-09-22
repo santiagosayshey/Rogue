@@ -36,8 +36,17 @@ void Button::update(sf::RenderWindow* window, Game* game)
     else {
         text.setFillColor(sf::Color::Blue);
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-            switch (state)
-                case 1: game->setState(new PlayState(game));
+            switch (state) {
+                case 1: 
+                    game->setState(new PlayState(game));
+                    break;
+/*                 case 2:
+                    game->setState(new OptionsState(game));
+                    break; */
+                case 3: 
+                    window->close();
+                    break;
+            }
     }
 }
 

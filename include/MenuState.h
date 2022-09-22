@@ -20,6 +20,8 @@ private:
     sf::Sprite s_splash;
     
     Button* play;
+    Button* options;
+    Button* quit;
 
 
 };

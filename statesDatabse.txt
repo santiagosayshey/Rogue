@@ -1,3 +1,4 @@
 menu 0
 play 1
-over 2
+options 2
+over 3
