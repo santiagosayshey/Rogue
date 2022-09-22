@@ -1,13 +1,13 @@
-#include "TextBox.h"
+#include "Button.h"
 #include "Game.h"
 
-TextBox::TextBox()
+Button::Button()
 { }
 
-TextBox::~TextBox()
+Button::~Button()
 { }
 
-bool TextBox::checkCollision(sf::RenderWindow* window)
+bool Button::checkCollision(sf::RenderWindow* window)
 {
     sf::Vector2f mouse = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
     sf::FloatRect bounds = text.getGlobalBounds();
@@ -16,10 +16,10 @@ bool TextBox::checkCollision(sf::RenderWindow* window)
 }
 
 
-void TextBox::update(sf::RenderWindow* window, Game* game)
+void Button::update(sf::RenderWindow* window, Game* game)
 { }
 
-void TextBox::draw(sf::RenderWindow* window)
+void Button::draw(sf::RenderWindow* window)
 {
     window->draw(text);
 }

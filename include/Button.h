@@ -1,18 +1,14 @@
-#ifndef TEXTBOX_H
-#define TEXTBOX_H
+#ifndef Button_H
+#define Button_H
 
 #pragma once
+#include "Entity.h"
 
-#include "SFML/Graphics.hpp"
-#include <string>
-
-class Game;
-
-class TextBox
+class Button : public Entity
 {
 public:
-    TextBox();
-    ~TextBox();
+    Button();
+    ~Button();
 
     bool checkCollision(sf::RenderWindow* window);
 

@@ -3,9 +3,10 @@
 
 #pragma once
 
-#include "TextBox.h"
+#include "Button.h"
+#include <string>
 
-class PlayButton : public TextBox
+class PlayButton : public Button
 {
 public:
     PlayButton(int s, sf::Color c, std::string string, int x, int y);
