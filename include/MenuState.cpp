@@ -46,9 +46,6 @@ void MenuState::update(sf::RenderWindow* window)
             if (event.type == sf::Event::Closed) {
                 window->close();
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-                game->setState(new PlayState(game));
-            }
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2f mouse = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
