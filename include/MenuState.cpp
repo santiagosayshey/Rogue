@@ -7,7 +7,7 @@ State(game)
     t_splash.loadFromFile("assets/background/splash.png");
     s_splash.setTexture(t_splash);
 
-    play = new PlayButton(50, sf::Color::Black, "Play", 124, 377);
+    play = new Button("assets/font/upheavtt.ttf", 50, sf::Color::Black, sf::Text::Bold, "Play", 124, 377, 1);
 }
 
 MenuState::~MenuState()

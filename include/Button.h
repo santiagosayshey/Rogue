@@ -7,7 +7,7 @@
 class Button : public Entity
 {
 public:
-    Button();
+    Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y, int state);
     ~Button();
 
     bool checkCollision(sf::RenderWindow* window);
@@ -22,6 +22,7 @@ protected:
     
     sf::Text text;
     sf::Font font;
+    int state;
 };
 
 #endif
