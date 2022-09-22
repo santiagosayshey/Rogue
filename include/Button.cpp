@@ -9,7 +9,7 @@ Button::Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::st
     text.setFont(font);
     text.setCharacterSize(s);
     text.setFillColor(c);
-    text.setStyle(sf::Text::Bold);
+    text.setStyle(style);
     text.setString(type);
     text.setPosition(x,y);
     // how to pass an abstract type as a parameter??
