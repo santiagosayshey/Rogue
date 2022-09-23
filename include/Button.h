@@ -11,12 +11,11 @@ public:
     ~Button();
 
     bool checkCollision(sf::RenderWindow* window);
-
     void update(sf::RenderWindow* window, Game* game);
     void draw(sf::RenderWindow* window);
 
 
-protected:
+private:
     sf::Vector2f mouse;
     sf::FloatRect bounds;
     

@@ -4,7 +4,7 @@
 int main()
 {
     
-    Game* game = new Game(960,960);
+    Game* game = new Game(1920,1080);
     game->run();
     
 

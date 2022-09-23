@@ -5,7 +5,7 @@
 PlayState::PlayState(Game* game):
 State(game)
 {
-
+    wizard = new Wizard("assets/entity/human/MAGE.png",100,100);
 }
 
 PlayState::~PlayState()
@@ -17,6 +17,7 @@ void PlayState::update(sf::RenderWindow* window)
 {
         // framerate
         dt = clock.restart().asSeconds();
+        wizard->update(window, game);
         
         // events
         while (window->pollEvent(event))
@@ -37,6 +38,6 @@ void PlayState::update(sf::RenderWindow* window)
 void PlayState::render(sf::RenderWindow* window)
 {
     window->clear();
-    // draw
+    wizard->draw(window);
     window->display();
 }

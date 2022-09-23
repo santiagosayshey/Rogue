@@ -7,13 +7,13 @@ State(game)
     t_splash.loadFromFile("assets/background/splash.png");
     s_splash.setTexture(t_splash);
 
-    play    = new Button("assets/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "PLAY", 100, 300, 1);
-    options = new Button("assets/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "OPTIONS", 100, 400, 2);
-    quit    = new Button("assets/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "QUIT", 100, 500, 3);
+    play    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "PLAY", 100, 300, 1);
+    options = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "OPTIONS", 100, 400, 2);
+    quit    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "QUIT", 100, 500, 3);
 }
 
 MenuState::~MenuState()
-{}
+{ }
 
 void MenuState::update(sf::RenderWindow* window)
 
