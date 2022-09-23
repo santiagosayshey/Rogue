@@ -4,6 +4,7 @@
 #pragma once
 
 #include "State.h"
+#include "Wizard.h"
 
 class PlayState : public State
 {
@@ -19,6 +20,8 @@ private:
     sf::Event event;
     sf::Clock clock;
     float dt;
+
+    Wizard* wizard;
 
 };
 

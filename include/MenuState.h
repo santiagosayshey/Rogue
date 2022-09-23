@@ -3,6 +3,7 @@
 
 #pragma once
 #include "State.h"
+#include "Button.h"
 
 class MenuState : public State
 {
@@ -17,6 +18,11 @@ private:
     sf::Event event;
     sf::Texture t_splash;
     sf::Sprite s_splash;
+    
+    Button* play;
+    Button* options;
+    Button* quit;
+
 
 };
 
