@@ -3,6 +3,7 @@
 
 #pragma once
 #include "Human.h"
+#include "Button.h"
 
 class Wizard : public Human
 {
@@ -15,12 +16,24 @@ public:
 
     void setPos(int x, int y);
 
-    void animation(int row);
+    void animation(int numFrames, int row);
+
+    void draw(sf::RenderWindow* window);
 
 private:
     int currentFrame = 0;
+    int numFrames = 7;
     int row = 0;
+
     sf::Event event;
+    sf::SoundBuffer buffer;
+    sf::Sound click;
+
+    Button* melee;
+    Button* range;
+    Button* die;
+    Button* idle;
+    Button* walk;
 
 };
 

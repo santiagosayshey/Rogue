@@ -6,6 +6,7 @@
 #include "State.h"
 #include "Wizard.h"
 
+
 class PlayState : public State
 {
 public:
@@ -22,6 +23,7 @@ private:
     float dt;
 
     Wizard* wizard;
+
 
 };
 
