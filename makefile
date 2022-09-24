@@ -1,3 +1,3 @@
-main: main.cpp include/Game.cpp include/PlayState.cpp include/MenuState.cpp include/State.cpp
-	g++ main.cpp include/Game.cpp include/PlayState.cpp include/MenuState.cpp include/State.cpp -lsfml-graphics -lsfml-window -lsfml-system -o main.out
-	./main.out
+main: main.cpp  include/Entity/Human.cpp include/Entity/Button.cpp include/Instance/Game.cpp include/State/PlayState.cpp include/State/MenuState.cpp include/State/State.cpp
+	g++ main.cpp include/Entity/Human.cpp include/Entity/Button.cpp include/Instance/Game.cpp include/State/PlayState.cpp include/State/MenuState.cpp include/State/State.cpp -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -o main.exe
+	./main.exe

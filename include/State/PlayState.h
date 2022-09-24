@@ -4,6 +4,8 @@
 #pragma once
 
 #include "State.h"
+#include "../Entity/Button.h"
+#include "../Entity/Human.h"
 
 class PlayState : public State
 {
@@ -17,8 +19,16 @@ public:
 
 private:
     sf::Event event;
-    sf::Clock clock;
-    float dt;
+
+    Human* wizard;
+    Human* paladin;
+    Human* necrom;
+
+    Button* melee;
+    Button* range;
+    Button* die;
+    Button* idle;
+    Button* walk;
 
 };
 

@@ -5,6 +5,7 @@
 
 #include "SFML/Graphics.hpp"
 
+// delcare game class as to not have circular dependancy
 class Game;
 class State
 {
