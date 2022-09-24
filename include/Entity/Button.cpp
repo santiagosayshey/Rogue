@@ -1,17 +1,17 @@
 #include "Button.h"
-#include "Game.h"
-#include "PlayState.h"
+#include "../Instance/Game.h"
+#include "../State/PlayState.h"
 
 Button::Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y, int state)
 { 
     // seg faults if fonts and texts are pointers????
     font.loadFromFile(f);
     text.setFont(font);
+    text.setPosition(x,y);
     text.setCharacterSize(s);
     text.setFillColor(c);
     text.setStyle(style);
     text.setString(type);
-    text.setPosition(x,y);
     // how to pass an abstract type as a parameter??
     this->state = state;
 }

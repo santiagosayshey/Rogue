@@ -1,5 +1,5 @@
 #include "MenuState.h"
-#include "Game.h"
+#include "../Instance/Game.h"
 
 MenuState::MenuState(Game* game):
 State(game)

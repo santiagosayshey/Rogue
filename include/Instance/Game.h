@@ -4,8 +4,8 @@
 #pragma once
 
 #include "SFML/Graphics.hpp"
-#include "State.h"
-#include "MenuState.h"
+#include "../State/State.h"
+#include "../State/MenuState.h"
 
 class Game
 {
