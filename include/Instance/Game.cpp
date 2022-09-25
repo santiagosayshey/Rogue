@@ -4,7 +4,7 @@ Game::Game(int width, int height)
 {
     this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Test");
     this->currentState = new MenuState(this);
-    this->window->setFramerateLimit(10);
+    this->window->setFramerateLimit(20);
 }
 
 Game::~Game()
