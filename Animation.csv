@@ -1,0 +1,22 @@
+ID,Animation,Frames,Row,Entity
+1,Idle,7,0,Paladin
+2,Run,7,1,Paladin
+3,Jump,7,2,Paladin
+4,Attack 1,7,3,Paladin
+5,Attack 2,7,4,Paladin
+6,Attack 3,6,5,Paladin
+7,Die,9,6,Paladin
+8,Idle,7,0,Wizard
+9,Wave,7,1,Wizard
+10,Walk,6,2,Wizard
+11,Attack 1,7,3,Wizard
+12,Attack 2,10,4,Wizard
+13,Jump,4,6,Wizard
+14,Attack 3,3,7,Wizard
+15,Die,7,8,Wizard
+16,Idle,7,0,Necromancer
+17,Jump,7,2,Necromancer
+18,Attack 1,6,3,Necromancer
+19,Attack 2,5,4,Necromancer
+20,Attack 3,7,5,Necromancer
+21,Die,7,6,Necromancer

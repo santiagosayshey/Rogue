@@ -64,9 +64,9 @@ void PlayState::update(sf::RenderWindow* window)
           necrom->updateSprite(8,6); }
 
         if (idle->checkCollision(window))
-        { wizard->updateSprite(7,0);
-          paladin->updateSprite(7,0);
-          necrom->updateSprite(7,0); }
+        { wizard->updateSprite(10,4);
+          paladin->updateSprite(9,6);
+          necrom->updateSprite(9,6); }
 
         if (walk->checkCollision(window))
         { wizard->updateSprite(6,2);
@@ -80,7 +80,7 @@ void PlayState::update(sf::RenderWindow* window)
 
 void PlayState::render(sf::RenderWindow* window)
 {
-    window   ->clear(sf::Color::White);
+    window   ->clear(sf::Color::Yellow);
 
     wizard   ->draw(window);
     paladin  ->draw(window);

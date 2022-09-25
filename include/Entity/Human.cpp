@@ -48,10 +48,20 @@ void Human::animation(bool repeat)
 {
     if (clock.getElapsedTime().asSeconds() > 0.1f)
     {
-        sprite->setTextureRect(sf::IntRect(64*currentFrame, 64*row, 64, 64));
+        
         if (currentFrame != numFrames)
         {
-            currentFrame++;
+            if (currentFrame > 7)
+            {
+                sprite->setTextureRect(sf::IntRect(64*currentFrame, 64*row + 64, 64, 64));
+                currentFrame++;
+            }
+            else
+            {
+                sprite->setTextureRect(sf::IntRect(64*currentFrame, 64*row, 64, 64));
+                currentFrame++;
+            }   
+
         }
         else
         {

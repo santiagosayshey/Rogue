@@ -1,0 +1,14 @@
+// import csv file 
+sqlite> .mode csv
+sqlite> .separator ","
+sqlite> .import /home/samchau/Uni/OOProject/Animation.csv Animations
+sqlite> .save test.db
+
+// run query 
+SELECT 
+   Frames, 
+   Row
+FROM 
+   Animations
+WHERE
+    Animation = "Attack 1";
