@@ -1,3 +1,3 @@
 main: main.cpp  include/Entity/Human.cpp include/Entity/Button.cpp include/Instance/Game.cpp include/State/PlayState.cpp include/State/MenuState.cpp include/State/State.cpp
-	g++ main.cpp include/Entity/Human.cpp include/Entity/Button.cpp include/Instance/Game.cpp include/State/PlayState.cpp include/State/MenuState.cpp include/State/State.cpp -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -o main.exe -l sqlite3
+	g++ main.cpp include/Entity/Human.cpp include/Entity/Button.cpp include/Instance/Game.cpp include/State/PlayState.cpp include/State/MenuState.cpp include/State/State.cpp -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -o main.exe
 	./main.exe

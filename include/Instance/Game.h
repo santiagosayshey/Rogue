@@ -20,11 +20,6 @@ public:
 private:
     sf::RenderWindow* window;
     State* currentState;
-
-    sf::Vector2i* p_idle;
-    sf::Vector2i* p_attack1;
-    sf::Vector2i* p_die;
-
 };
 
 #endif
