@@ -10,7 +10,7 @@
 class PlayState : public State
 {
 public:
-    PlayState(Game* game);
+    PlayState(Game* game, Player* player);
     ~PlayState();
 
     void update(sf::RenderWindow* window);
@@ -23,6 +23,7 @@ private:
     Human* wizard;
     Human* paladin;
     Human* necrom;
+    Human* golem;
 
     Button* melee;
     Button* range;

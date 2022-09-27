@@ -1,16 +1,20 @@
 #include "Human.h"
 
-Human::Human(std::string texture, int x, int y)
+Human::Human(std::string texture, int x, int y, int size)
+
 {
+    this->size = size;
     this->texture = new sf::Texture;
     this->texture->loadFromFile(texture);
     this->texture->setRepeated(true);
 
     sprite = new sf::Sprite;
     sprite->setTexture(*(this->texture));
-    sprite->setTextureRect(sf::IntRect(0,0,64,64));
-    sprite->setPosition(x,y);
+    sprite->setTextureRect(sf::IntRect(0,0,size,size));
     sprite->setScale(10,10);
+    sprite->setOrigin(size/2,size/2);
+    sprite->setPosition(x,y);
+    
 
 
     currentFrame = 0;
@@ -29,7 +33,7 @@ void Human::update(sf::RenderWindow* window, Game* game)
     
 }
 
-void Human::updateSprite(int numFrames, int row)
+void Human::updateAnimation(int numFrames, int row)
 { 
     currentFrame = 0;
     this->numFrames = numFrames;
@@ -44,14 +48,33 @@ bool Human::checkCollision(sf::RenderWindow* window)
     return bounds.contains(mouse);
 }
 
+bool Human::isClicked(sf::RenderWindow* window)
+{
+    if (checkCollision(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        return true;
+    }
+    return false;
+}
+
 void Human::animation(bool repeat)
 {
     if (clock.getElapsedTime().asSeconds() > 0.1f)
     {
-        sprite->setTextureRect(sf::IntRect(64*currentFrame, 64*row, 64, 64));
+        
         if (currentFrame != numFrames)
         {
-            currentFrame++;
+            if (currentFrame > 8)
+            {
+                sprite->setTextureRect(sf::IntRect(size*currentFrame, size*row + size, size, size));
+                currentFrame++;
+            }
+            else
+            {
+                sprite->setTextureRect(sf::IntRect(size*currentFrame, size*row, size, size));
+                currentFrame++;
+            }   
+
         }
         else
         {
@@ -60,7 +83,7 @@ void Human::animation(bool repeat)
                 currentFrame = 0;
             else
                 // if not repeated, set to current animation first frame
-                sprite->setTextureRect(sf::IntRect(0, 64*row, 64, 64));
+                sprite->setTextureRect(sf::IntRect(0, size*row, size, size));
         }
         clock.restart();
     }

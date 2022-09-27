@@ -8,7 +8,7 @@
 class MenuState : public State
 {
 public:
-    MenuState(Game* game);
+    MenuState(Game* game, Player* player);
     ~MenuState();
 
     void update(sf::RenderWindow* window);
@@ -16,11 +16,8 @@ public:
 
 private:
     sf::Event event;
-    sf::Texture t_splash;
-    sf::Sprite s_splash;
     
     Button* play;
-    Button* options;
     Button* quit;
 
 

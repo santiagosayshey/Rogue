@@ -2,8 +2,8 @@
 #include "../Instance/Game.h"
 #include "MenuState.h"
 
-PlayState::PlayState(Game* game):
-State(game)
+PlayState::PlayState(Game* game, Player* player):
+State(game,player)
 {
 }
 
@@ -27,6 +27,5 @@ void PlayState::update(sf::RenderWindow* window)
 void PlayState::render(sf::RenderWindow* window)
 {
     window   ->clear(sf::Color::White);
-
     window   ->display();
 }

@@ -6,6 +6,7 @@
 #include "SFML/Graphics.hpp"
 #include "../State/State.h"
 #include "../State/MenuState.h"
+#include "Player.h"
 
 class Game
 {
@@ -21,6 +22,7 @@ private:
     sf::RenderWindow* window;
     State* currentState;
 
+    Player* player;
 };
 
 #endif

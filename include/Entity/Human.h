@@ -7,15 +7,16 @@
 class Human : public Entity
 {
 public:
-    Human(std::string texture, int x, int y);
+    Human(std::string texture, int x, int y, int size);
     ~Human();
 
     
     void update(sf::RenderWindow* window, Game* game);
-    void updateSprite(int numFrames, int row);
+    void updateAnimation(int numFrames, int row);
 
     void setPos(int x, int y);
     bool checkCollision(sf::RenderWindow* window);
+    bool isClicked(sf::RenderWindow* window);
 
     void animation(bool repeat);
     void draw(sf::RenderWindow* window);
@@ -32,6 +33,8 @@ protected:
     int numFrames;
     int currentFrame;
     int row;
+
+    int size;
 
 };
 
