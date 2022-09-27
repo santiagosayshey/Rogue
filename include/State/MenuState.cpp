@@ -1,15 +1,16 @@
 #include "MenuState.h"
 #include "../Instance/Game.h"
+#include "PickState.h"
 
-MenuState::MenuState(Game* game):
-State(game)
+MenuState::MenuState(Game* game, Player* player):
+State(game, player)
 {
     t_splash.loadFromFile("assets/background/splash.png");
     s_splash.setTexture(t_splash);
 
-    play    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "PLAY", 100, 300, 1);
-    options = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "OPTIONS", 100, 400, 2);
-    quit    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "QUIT", 100, 500, 20);
+    play    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "PLAY", 100, 300);
+    options = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "OPTIONS", 100, 400);
+    quit    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "QUIT", 100, 500);
 }
 
 MenuState::~MenuState()
@@ -22,6 +23,10 @@ void MenuState::update(sf::RenderWindow* window)
     play   ->update(window, game);
     options->update(window, game);
     quit   ->update(window, game);
+
+    if (play->isClicked(window)) {
+        game->setState(new PickState(game, player));
+    }
 
     // events  
     while (window->pollEvent(event))

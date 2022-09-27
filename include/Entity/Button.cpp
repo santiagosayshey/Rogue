@@ -1,9 +1,6 @@
 #include "Button.h"
-#include "../Instance/Game.h"
-#include "../State/PlayState.h"
-#include "../State/PickState.h"
 
-Button::Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y, int state)
+Button::Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y)
 { 
     // seg faults if fonts and texts are pointers????
     font.loadFromFile(f);
@@ -13,8 +10,6 @@ Button::Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::st
     text.setFillColor(c);
     text.setStyle(style);
     text.setString(type);
-    // how to pass an abstract type as a parameter??
-    this->state = state;
 }
 
 Button::~Button()
@@ -45,18 +40,6 @@ void Button::update(sf::RenderWindow* window, Game* game)
     }
     else {
         text.setFillColor(sf::Color::Blue);
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-            switch (state) {
-                case 1: 
-                    game->setState(new PickState(game));
-                    break;
-                case 2:
-                    game->setState(new PlayState(game));
-                    break;
-                case 20: 
-                    window->close();
-                    break;
-            }
     }
 }
 

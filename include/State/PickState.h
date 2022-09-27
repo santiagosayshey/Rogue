@@ -11,7 +11,7 @@
 class PickState : public State
 {
 public:
-    PickState(Game* game);
+    PickState(Game* game, Player* player);
     ~PickState();
 
     void update(sf::RenderWindow* window);

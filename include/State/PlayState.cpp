@@ -2,19 +2,19 @@
 #include "../Instance/Game.h"
 #include "MenuState.h"
 
-PlayState::PlayState(Game* game):
-State(game)
+PlayState::PlayState(Game* game, Player* player):
+State(game,player)
 {
     wizard   = new Human("assets/entity/human/MAGE.png",150,50,64);
     paladin  = new Human("assets/entity/human/PALADIN.png",650,50,64);
     necrom   = new Human("assets/entity/human/NECROMANCER.png",1150,50,64);
     golem    = new Human("assets/entity/human/GOLEM.png",700,10,64);
 
-    melee    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "MELEE", 320, 800, 2);
-    range    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "RANGE", 640, 800, 2);
-    die      = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "DIE", 960, 800, 2);
-    idle     = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "IDLE", 1280, 800, 2);
-    walk     = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "WALK", 1500, 800, 2);
+    melee    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "MELEE", 320, 800);
+    range    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "RANGE", 640, 800);
+    die      = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "DIE", 960, 800);
+    idle     = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "IDLE", 1280, 800);
+    walk     = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "WALK", 1500, 800);
 }
 
 PlayState::~PlayState()
@@ -32,7 +32,7 @@ void PlayState::update(sf::RenderWindow* window)
         if (event.type == sf::Event::Closed)
             window->close();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            game->setState(new MenuState(game));
+            game->setState(new MenuState(game,player));
         }
     }
 

@@ -1,14 +1,16 @@
 #include "PickState.h"
 #include "../Instance/Game.h"
+#include "../Instance/Player.h"
 #include "PlayState.h"
 
-PickState::PickState(Game* game):
-State(game)
+
+PickState::PickState(Game* game, Player* player):
+State(game, player)
 {
-    wizardButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nWizard", 100, 300, 7);
-    paladinButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nPaladin", 100, 500, 8);
-    samuraiButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nSamurai", 100, 700, 9);
-    embark           = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Embark!", 1600, 500, 4);
+    wizardButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nWizard", 100, 300);
+    paladinButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nPaladin", 100, 500);
+    samuraiButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nSamurai", 100, 700);
+    embark           = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Embark!", 1600, 500);
 
     wizard = new Human("assets/entity/human/MAGE.png",850,400,64);
     paladin  = new Human("assets/entity/human/PALADIN.png",850,400,64);
@@ -48,7 +50,7 @@ void PickState::update(sf::RenderWindow* window)
         if (event.type == sf::Event::Closed)
             window->close();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            game->setState(new PlayState(game));
+            game->setState(new PlayState(game,player));
         }
     }
 
@@ -70,12 +72,11 @@ void PickState::update(sf::RenderWindow* window)
     samuraiButton  ->update(window, game);
     embark         ->update(window, game);
 
-    
-
-
     wizard->animation(true);
     paladin->animation(true);
     samurai->animation(true);
+
+    player->chooseRole(currentSel);
 }
 
 void PickState::render(sf::RenderWindow* window)
