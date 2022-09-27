@@ -24,16 +24,15 @@ private:
     Button* wizardButton;
     Button* paladinButton;
     Button* samuraiButton;
+    Button* embark;
 
     Human* wizard;
-    
     Human* paladin;
-    sf::Text palDes;
-    sf::Text palStat;
-    
-
-
     Human* samurai;
+
+    sf::Text paladinStats;
+    sf::Text wizardStats;
+    sf::Text samuraiStats;
 
     int currentSel;
     bool idle;

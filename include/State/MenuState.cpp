@@ -9,7 +9,7 @@ State(game)
 
     play    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "PLAY", 100, 300, 1);
     options = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "OPTIONS", 100, 400, 2);
-    quit    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "QUIT", 100, 500, 3);
+    quit    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "QUIT", 100, 500, 20);
 }
 
 MenuState::~MenuState()
