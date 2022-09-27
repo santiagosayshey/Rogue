@@ -1,6 +1,7 @@
 #include "Button.h"
 #include "../Instance/Game.h"
 #include "../State/PlayState.h"
+#include "../State/PickState.h"
 
 Button::Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y, int state)
 { 
@@ -27,6 +28,15 @@ bool Button::checkCollision(sf::RenderWindow* window)
     return bounds.contains(mouse);
 }
 
+bool Button::isClicked(sf::RenderWindow* window)
+{
+    if (checkCollision(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        return true;
+    }
+    return false;
+}
+
 
 void Button::update(sf::RenderWindow* window, Game* game)
 { 
@@ -38,12 +48,12 @@ void Button::update(sf::RenderWindow* window, Game* game)
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             switch (state) {
                 case 1: 
+                    game->setState(new PickState(game));
+                    break;
+                case 2:
                     game->setState(new PlayState(game));
                     break;
-/*                 case 2:
-                    game->setState(new OptionsState(game));
-                    break; */
-                case 3: 
+                case 20: 
                     window->close();
                     break;
             }

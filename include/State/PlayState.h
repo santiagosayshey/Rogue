@@ -23,6 +23,7 @@ private:
     Human* wizard;
     Human* paladin;
     Human* necrom;
+    Human* golem;
 
     Button* melee;
     Button* range;
