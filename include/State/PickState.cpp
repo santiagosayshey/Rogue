@@ -1,7 +1,7 @@
 #include "PickState.h"
 #include "../Instance/Game.h"
 #include "../Instance/Player.h"
-#include "PlayState.h"
+#include "MapState.h"
 
 
 PickState::PickState(Game* game, Player* player):
@@ -77,23 +77,13 @@ void PickState::update(sf::RenderWindow* window)
                 }
                 if (embark->checkCollision(window))
                 {
-                    game->setState(new PlayState(game, player));
+                    game->setState(new MapState(game, player));
                     std::cout << "Click" << std::endl;
                     break;
                 }
             }
-            case sf::Event::KeyReleased: {
-                if (event.key.code == sf::Keyboard::Space)
-                {
-                    game->setState(new PlayState(game,player));
-                    break;
-                } 
-                
-            }
         }
     }
-
-
 
     wizardButton   ->update(window, game);
     paladinButton  ->update(window, game);
