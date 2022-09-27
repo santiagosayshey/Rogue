@@ -34,7 +34,7 @@ private:
     sf::Text wizardStats;
     sf::Text samuraiStats;
 
-    int currentSel;
+    int currentSel=1;
     bool idle;
 
 };

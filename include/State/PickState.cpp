@@ -57,13 +57,16 @@ void PickState::update(sf::RenderWindow* window)
     if (wizardButton->isClicked(window))
     {
         currentSel = 1;
+        player->chooseRole(currentSel);
     }
     if (paladinButton->isClicked(window))
     {
+        player->chooseRole(currentSel);
         currentSel = 2;
     }
     if (samuraiButton->isClicked(window))
     {
+        player->chooseRole(currentSel);
         currentSel = 3;
     }
 
@@ -75,8 +78,6 @@ void PickState::update(sf::RenderWindow* window)
     wizard->animation(true);
     paladin->animation(true);
     samurai->animation(true);
-
-    player->chooseRole(currentSel);
 }
 
 void PickState::render(sf::RenderWindow* window)

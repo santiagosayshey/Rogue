@@ -35,6 +35,14 @@ void Player::chooseRole(int role)
             updateEvasion(30);
             break;
     }
+    std::cout <<
+    health << std::endl <<
+    armour << std::endl <<
+    attack << std::endl <<
+    exp << std::endl <<
+    lvl << std::endl <<
+    accuracy << std::endl <<
+    evasion << std::endl;
 }
 
 void Player::updateHealth(int health)

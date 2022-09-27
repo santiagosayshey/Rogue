@@ -1,4 +1,5 @@
 #include "Button.h"
+#include <iostream>
 
 Button::Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y)
 { 
@@ -25,9 +26,14 @@ bool Button::checkCollision(sf::RenderWindow* window)
 
 bool Button::isClicked(sf::RenderWindow* window)
 {
-    if (checkCollision(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
-        return true;
+        if(checkCollision(window))
+        {
+            std::cout << "CLICK" << std::endl;
+            return true;
+        }
     }
     return false;
 }

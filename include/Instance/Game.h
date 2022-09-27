@@ -23,7 +23,6 @@ private:
     State* currentState;
 
     Player* player;
-    sf::Sprite null;
 };
 
 #endif

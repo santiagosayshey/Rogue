@@ -4,6 +4,7 @@
 #pragma once
 
 #include "../Entity/Human.h"
+#include <iostream>
 
 class Player
 {
