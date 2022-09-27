@@ -63,20 +63,6 @@ void PickState::update(sf::RenderWindow* window)
     paladinButton   ->update(window, game);
     samuraiButton     ->update(window, game);
 
-    if (wizard->isClicked(window))
-    {
-        wizard->updateAnimation(4,6);
-    }
-
-        if (wizard->isClicked(window))
-    {
-        wizard->updateAnimation(4,6);
-    }
-
-        if (wizard->isClicked(window))
-    {
-        wizard->updateAnimation(4,6);
-    }
 
     wizard->animation(true);
     paladin->animation(true);
