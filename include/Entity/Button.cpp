@@ -21,23 +21,9 @@ bool Button::checkCollision(sf::RenderWindow* window)
     sf::Vector2f mouse = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
     sf::FloatRect bounds = text.getGlobalBounds();
 
+    
     return bounds.contains(mouse);
 }
-
-bool Button::isClicked(sf::RenderWindow* window)
-{
-    
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-    {
-        if(checkCollision(window))
-        {
-            std::cout << "CLICK" << std::endl;
-            return true;
-        }
-    }
-    return false;
-}
-
 
 void Button::update(sf::RenderWindow* window, Game* game)
 { 

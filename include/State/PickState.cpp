@@ -47,28 +47,53 @@ void PickState::update(sf::RenderWindow* window)
     while (window->pollEvent(event))
     {
         // "close requested" event: we close the window
-        if (event.type == sf::Event::Closed)
-            window->close();
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            game->setState(new PlayState(game,player));
+        switch (event.type) {
+            case sf::Event::Closed: {
+                window->close();
+                break;
+            }
+            case sf::Event::MouseButtonReleased: {
+                if (wizardButton->checkCollision(window))
+                {
+                    currentSel = 1;
+                    player->chooseRole(currentSel);
+                    std::cout << "Click" << std::endl;
+                    break;
+                }
+                if (paladinButton->checkCollision(window))
+                {
+                    currentSel = 2;
+                    player->chooseRole(currentSel);
+                    
+                    std::cout << "Click" << std::endl;
+                    break;
+                }
+                if (samuraiButton->checkCollision(window))
+                {
+                    currentSel = 3;
+                    player->chooseRole(currentSel);
+                    std::cout << "Click" << std::endl;
+                    break;
+                }
+                if (embark->checkCollision(window))
+                {
+                    game->setState(new PlayState(game, player));
+                    std::cout << "Click" << std::endl;
+                    break;
+                }
+            }
+            case sf::Event::KeyReleased: {
+                if (event.key.code == sf::Keyboard::Space)
+                {
+                    game->setState(new PlayState(game,player));
+                    break;
+                } 
+                
+            }
         }
     }
 
-    if (wizardButton->isClicked(window))
-    {
-        currentSel = 1;
-        player->chooseRole(currentSel);
-    }
-    if (paladinButton->isClicked(window))
-    {
-        player->chooseRole(currentSel);
-        currentSel = 2;
-    }
-    if (samuraiButton->isClicked(window))
-    {
-        player->chooseRole(currentSel);
-        currentSel = 3;
-    }
+
 
     wizardButton   ->update(window, game);
     paladinButton  ->update(window, game);

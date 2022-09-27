@@ -16,11 +16,8 @@ public:
 
 private:
     sf::Event event;
-    sf::Texture t_splash;
-    sf::Sprite s_splash;
     
     Button* play;
-    Button* options;
     Button* quit;
 
 
