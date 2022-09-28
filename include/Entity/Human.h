@@ -16,7 +16,6 @@ public:
 
     void setPos(int x, int y);
     bool checkCollision(sf::RenderWindow* window);
-    bool isClicked(sf::RenderWindow* window);
 
     void animation(bool repeat);
     void draw(sf::RenderWindow* window);

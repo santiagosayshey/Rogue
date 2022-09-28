@@ -18,7 +18,6 @@ public:
 private:
     sf::Vector2f mouse;
     sf::FloatRect bounds;
-    sf::Event event;
     
     sf::Text text;
     sf::Font font;
