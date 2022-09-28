@@ -35,7 +35,6 @@ private:
     sf::Text samuraiStats;
 
     int currentSel=1;
-    bool idle;
 
 };
 
