@@ -32,6 +32,11 @@ void Entity::setChararacter(Character* sprite)
     this->sprite = sprite;
 }
 
+void Entity::updateRole(int role)
+{
+    this->role = role;
+}
+
 void Entity::updateHealth(int health)
 {
     this->health = health;

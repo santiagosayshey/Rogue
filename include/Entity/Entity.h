@@ -14,6 +14,7 @@ public:
      
     void setChararacter(Character* sprite);
 
+    void updateRole(int role);
     void updateHealth(int health);
     void updateArmour(int armour);
     void updateAttack(int attack);
@@ -29,8 +30,13 @@ public:
     bool canAttack=false;
     bool isDamaged=false;
 
+    void update(sf::RenderWindow* window);
+    void draw(sf::RenderWindow* window);
+
 protected:
     Character* sprite;
+
+    int role;
 
     int health;
     int armour;
