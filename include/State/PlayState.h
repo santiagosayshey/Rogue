@@ -5,7 +5,7 @@
 
 #include "State.h"
 #include "../Drawable/Button.h"
-#include "../Drawable/Human.h"
+#include "../Drawable/Character.h"
 
 class PlayState : public State
 {
@@ -20,10 +20,10 @@ public:
 private:
     sf::Event event;
 
-    Human* wizard;
-    Human* paladin;
-    Human* necrom;
-    Human* golem;
+    Character* wizard;
+    Character* paladin;
+    Character* necrom;
+    Character* golem;
 
     Button* melee;
     Button* range;

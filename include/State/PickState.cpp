@@ -7,14 +7,14 @@
 PickState::PickState(Game* game, Player* player):
 State(game, player)
 {
-    wizardButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nWizard", 100, 300);
+    wizardButton     = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nWizard", 100, 300);
     paladinButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nPaladin", 100, 500);
     samuraiButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nSamurai", 100, 700);
     embark           = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Embark!", 1600, 500);
 
-    wizard = new Human("assets/entity/human/MAGE.png",850,400,64);
-    paladin  = new Human("assets/entity/human/PALADIN.png",850,400,64);
-    samurai = new Human("assets/entity/human/SAMURAI.png",950,500,48);
+    wizard = new Character("assets/entity/Character/MAGE.png",850,400,64);
+    paladin  = new Character("assets/entity/Character/PALADIN.png",850,400,64);
+    samurai = new Character("assets/entity/Character/SAMURAI.png",950,500,48);
 
     font.loadFromFile("assets/entity/font/menu.ttf");
     paladinStats.setFont(font);

@@ -1,4 +1,6 @@
 #include "MapState.h"
+#include "../Instance/Game.h"
+#include "PlayState.h"
 
 MapState::MapState(Game* game, Player* player):
 State(game, player)
@@ -21,6 +23,9 @@ void MapState::update(sf::RenderWindow* window)
             case sf::Event::Closed: {
                 window->close();
                 break;
+            case sf::Event::KeyReleased:
+                if (sf::Keyboard::Space)
+                    game->setState(new PlayState(game, player));
             }
         }
     }

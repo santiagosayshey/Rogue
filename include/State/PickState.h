@@ -5,7 +5,7 @@
 
 #include "State.h"
 #include "../Drawable/Button.h"
-#include "../Drawable/Human.h"
+#include "../Drawable/Character.h"
 #include <fstream>
 
 class PickState : public State
@@ -26,9 +26,9 @@ private:
     Button* samuraiButton;
     Button* embark;
 
-    Human* wizard;
-    Human* paladin;
-    Human* samurai;
+    Character* wizard;
+    Character* paladin;
+    Character* samurai;
 
     sf::Text paladinStats;
     sf::Text wizardStats;

@@ -1,5 +1,5 @@
-#ifndef ENTITY_H
-#define ENTITY_H
+#ifndef DRAWABLE_H
+#define DRAWABLE_H
 
 #pragma once
 #include "SFML/Graphics.hpp"

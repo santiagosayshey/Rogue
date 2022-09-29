@@ -1,6 +1,6 @@
-#include "Human.h"
+#include "Character.h"
 
-Human::Human(std::string texture, int x, int y, int size)
+Character::Character(std::string texture, int x, int y, int size)
 
 {
     this->size = size;
@@ -22,25 +22,25 @@ Human::Human(std::string texture, int x, int y, int size)
     row = 0;
 }
 
-Human::~Human()
+Character::~Character()
 {
     delete texture;
     delete sprite;
 }
 
-void Human::update(sf::RenderWindow* window, Game* game)
+void Character::update(sf::RenderWindow* window, Game* game)
 {
     
 }
 
-void Human::updateAnimation(int numFrames, int row)
+void Character::updateAnimation(int numFrames, int row)
 { 
     currentFrame = 0;
     this->numFrames = numFrames;
     this->row = row;
 }
 
-bool Human::checkCollision(sf::RenderWindow* window)
+bool Character::checkCollision(sf::RenderWindow* window)
 {
     sf::Vector2f mouse = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
     sf::FloatRect bounds = sprite->getGlobalBounds();
@@ -48,7 +48,7 @@ bool Human::checkCollision(sf::RenderWindow* window)
     return bounds.contains(mouse);
 }
 
-void Human::animation(bool repeat)
+void Character::animation(bool repeat)
 {
     if (clock.getElapsedTime().asSeconds() > 0.1f)
     {
@@ -80,12 +80,12 @@ void Human::animation(bool repeat)
     }
 }
 
-void Human::draw(sf::RenderWindow* window)
+void Character::draw(sf::RenderWindow* window)
 {
     window->draw(*sprite);
 }
 
-void Human::setPos(int x, int y)
+void Character::setPos(int x, int y)
 {
     sprite->setPosition(x,y);
 }

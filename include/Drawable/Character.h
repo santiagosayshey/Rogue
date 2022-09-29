@@ -1,14 +1,14 @@
-#ifndef HUMAN_H
-#define HUMAN_H
+#ifndef CHARACTER_H
+#define CHARACTER_H
 
 #pragma once
 #include "Drawable.h"
 
-class Human : public Drawable
+class Character : public Drawable
 {
 public:
-    Human(std::string texture, int x, int y, int size);
-    ~Human();
+    Character(std::string texture, int x, int y, int size);
+    ~Character();
 
     
     void update(sf::RenderWindow* window, Game* game);
