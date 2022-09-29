@@ -7,7 +7,7 @@
 
 class Game;
 
-class Entity
+class Drawable
 {
 public:
     virtual bool checkCollision(sf::RenderWindow* window) = 0;

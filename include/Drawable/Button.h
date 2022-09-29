@@ -2,9 +2,9 @@
 #define Button_H
 
 #pragma once
-#include "Entity.h"
+#include "Drawable.h"
 
-class Button : public Entity
+class Button : public Drawable
 {
 public:
     Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y);

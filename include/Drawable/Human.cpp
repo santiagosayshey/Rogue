@@ -48,15 +48,6 @@ bool Human::checkCollision(sf::RenderWindow* window)
     return bounds.contains(mouse);
 }
 
-bool Human::isClicked(sf::RenderWindow* window)
-{
-    if (checkCollision(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
-    {
-        return true;
-    }
-    return false;
-}
-
 void Human::animation(bool repeat)
 {
     if (clock.getElapsedTime().asSeconds() > 0.1f)

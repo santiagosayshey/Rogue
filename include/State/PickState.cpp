@@ -1,6 +1,6 @@
 #include "PickState.h"
 #include "../Instance/Game.h"
-#include "../Instance/Player.h"
+#include "../Entity/Player.h"
 #include "MapState.h"
 
 

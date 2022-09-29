@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "../Entity/Human.h"
+#include "../Drawable/Human.h"
 #include <iostream>
 
 class Player

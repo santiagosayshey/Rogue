@@ -4,8 +4,8 @@
 #pragma once
 
 #include "State.h"
-#include "../Entity/Button.h"
-#include "../Entity/Human.h"
+#include "../Drawable/Button.h"
+#include "../Drawable/Human.h"
 #include <fstream>
 
 class PickState : public State

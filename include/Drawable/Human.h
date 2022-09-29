@@ -2,9 +2,9 @@
 #define HUMAN_H
 
 #pragma once
-#include "../Entity/Entity.h"
+#include "Drawable.h"
 
-class Human : public Entity
+class Human : public Drawable
 {
 public:
     Human(std::string texture, int x, int y, int size);
