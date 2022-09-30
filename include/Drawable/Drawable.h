@@ -11,7 +11,7 @@ class Drawable
 {
 public:
     virtual bool checkCollision(sf::RenderWindow* window) = 0;
-    virtual void update(sf::RenderWindow* window, Game* game) = 0;
+    virtual void update(sf::RenderWindow* window) = 0;
     virtual void draw(sf::RenderWindow* window) = 0;
 
 private:

@@ -17,20 +17,26 @@ public:
     void updateRole(int role);
     void updateHealth(int health);
     void updateArmour(int armour);
-    void updateAttack(int attack);
+    void updateDamage(int damage);
     void updateAccuracy(int accuracy);
     void updateEvasion(int evasion);
 
+    int getRole();
+
+    Character* getSprite();
+
     int getHealth();
     int getArmour();
-    int getAttack();
+    int getDamage();
     int getAccuracy();
     int getEvasion();
 
-    bool canAttack=false;
+    bool canDamage=false;
     bool isDamaged=false;
 
-    void update(sf::RenderWindow* window);
+    void attack(Entity* entity);
+
+    bool update(sf::RenderWindow* window);
     void draw(sf::RenderWindow* window);
 
 protected:
@@ -40,12 +46,14 @@ protected:
 
     int health;
     int armour;
-    int attack;
+    int damage;
     int accuracy;
     int evasion;
     int strength;
     int weakness;
     int neutral;
+
+    bool dead;
 
 };
 

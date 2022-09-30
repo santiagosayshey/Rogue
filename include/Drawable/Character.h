@@ -11,14 +11,16 @@ public:
     ~Character();
 
     
-    void update(sf::RenderWindow* window, Game* game);
+    void update(sf::RenderWindow* window);
     void updateAnimation(int numFrames, int row);
 
     void setPos(int x, int y);
+    void flip();
     bool checkCollision(sf::RenderWindow* window);
 
-    void animation(bool repeat);
+    bool animation(bool repeat);
     void draw(sf::RenderWindow* window);
+
 
 protected:
     sf::Texture* texture;

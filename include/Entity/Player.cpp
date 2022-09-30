@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <iostream>
 
 Player::Player()
 {
@@ -31,19 +32,4 @@ int Player::getExp()
 int Player::getLvl()
 {
     return this->lvl;
-}
-
-void Player::attack(Enemy* enemy)
-{
-    switch(role) {
-        case 1:
-            sprite->updateAnimation(7,0);
-        case 2:
-            sprite->updateAnimation(7,0);
-        case 3:
-            sprite->updateAnimation(7,0);
-    }
-
-    
-    
 }

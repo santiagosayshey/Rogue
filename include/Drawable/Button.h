@@ -11,7 +11,7 @@ public:
     ~Button();
 
     bool checkCollision(sf::RenderWindow* window);
-    void update(sf::RenderWindow* window, Game* game);
+    void update(sf::RenderWindow* window);
     void draw(sf::RenderWindow* window);
 
 

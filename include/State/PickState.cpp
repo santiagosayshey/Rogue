@@ -1,7 +1,7 @@
 #include "PickState.h"
 #include "../Instance/Game.h"
 #include "../Entity/Player.h"
-#include "MapState.h"
+#include "PlayState.h"
 
 
 PickState::PickState(Game* game, Player* player):
@@ -35,6 +35,10 @@ State(game, player)
     samuraiStats.setString("Statistics:\nHealth:                75\nArmour:               20%\nAttack:                5\nAccuracy:            80%\nEvasion:              30%\nStrength:             Bleed\nWeakness:            Blunt\nNeutral:              Magic\n");
     samuraiStats.setPosition(1050,400);
 
+    currentSel = 1;
+    player->chooseRole(currentSel);
+    player->setChararacter(wizard);
+
 }  
 
 PickState::~PickState()
@@ -57,6 +61,7 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     currentSel = 1;
                     player->chooseRole(currentSel);
+                    player->setChararacter(wizard);
                     std::cout << "Click" << std::endl;
                     break;
                 }
@@ -64,6 +69,7 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     currentSel = 2;
                     player->chooseRole(currentSel);
+                    player->setChararacter(paladin);
                     
                     std::cout << "Click" << std::endl;
                     break;
@@ -72,12 +78,13 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     currentSel = 3;
                     player->chooseRole(currentSel);
+                    player->setChararacter(samurai);
                     std::cout << "Click" << std::endl;
                     break;
                 }
                 if (embark->checkCollision(window))
                 {
-                    game->setState(new MapState(game, player));
+                    game->setState(new PlayState(game, player));
                     std::cout << "Click" << std::endl;
                     break;
                 }
@@ -85,10 +92,10 @@ void PickState::update(sf::RenderWindow* window)
         }
     }
 
-    wizardButton   ->update(window, game);
-    paladinButton  ->update(window, game);
-    samuraiButton  ->update(window, game);
-    embark         ->update(window, game);
+    wizardButton   ->update(window);
+    paladinButton  ->update(window);
+    samuraiButton  ->update(window);
+    embark         ->update(window);
 
     wizard->animation(true);
     paladin->animation(true);

@@ -1,0 +1,41 @@
+Date : 2022-09-30 05:47:14
+Directory : /home/samchau/Uni/OOProject/include
+Total : 12 files,  585 codes, 0 comments, 140 blanks, all 725 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| cpp      |         11 |        572 |          0 |        140 |        712 |
+| Database |          1 |         13 |          0 |          0 |         13 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                       | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                          |         12 |        585 |          0 |        140 |        725 |
+| Drawable                                                   |          2 |        119 |          0 |         29 |        148 |
+| Entity                                                     |          3 |        147 |          0 |         36 |        183 |
+| Instance                                                   |          2 |         37 |          0 |         12 |         49 |
+| State                                                      |          5 |        282 |          0 |         63 |        345 |
++------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                   | language | code       | comment    | blank      | total      |
++------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /home/samchau/Uni/OOProject/include/Drawable/Button.cpp    | cpp      |         34 |          0 |         12 |         46 |
+| /home/samchau/Uni/OOProject/include/Drawable/Character.cpp | cpp      |         85 |          0 |         17 |        102 |
+| /home/samchau/Uni/OOProject/include/Entity/Enemy.cpp       | cpp      |          7 |          0 |          4 |         11 |
+| /home/samchau/Uni/OOProject/include/Entity/Entity.cpp      | cpp      |        113 |          0 |         24 |        137 |
+| /home/samchau/Uni/OOProject/include/Entity/Player.cpp      | cpp      |         27 |          0 |          8 |         35 |
+| /home/samchau/Uni/OOProject/include/Instance/Game.cpp      | cpp      |         24 |          0 |         12 |         36 |
+| /home/samchau/Uni/OOProject/include/Instance/animations.db | Database |         13 |          0 |          0 |         13 |
+| /home/samchau/Uni/OOProject/include/State/MapState.cpp     | cpp      |         34 |          0 |          7 |         41 |
+| /home/samchau/Uni/OOProject/include/State/MenuState.cpp    | cpp      |         47 |          0 |         14 |         61 |
+| /home/samchau/Uni/OOProject/include/State/PickState.cpp    | cpp      |        112 |          0 |         20 |        132 |
+| /home/samchau/Uni/OOProject/include/State/PlayState.cpp    | cpp      |         83 |          0 |         21 |        104 |
+| /home/samchau/Uni/OOProject/include/State/State.cpp        | cpp      |          6 |          0 |          1 |          7 |
+| Total                                                      |          |        585 |          0 |        140 |        725 |
++------------------------------------------------------------+----------+------------+------------+------------+------------+

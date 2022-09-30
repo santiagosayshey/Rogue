@@ -25,7 +25,7 @@ bool Button::checkCollision(sf::RenderWindow* window)
     return bounds.contains(mouse);
 }
 
-void Button::update(sf::RenderWindow* window, Game* game)
+void Button::update(sf::RenderWindow* window)
 { 
     if (!checkCollision(window))  {
         text.setFillColor(sf::Color::Black);

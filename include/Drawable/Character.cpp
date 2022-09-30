@@ -1,4 +1,5 @@
 #include "Character.h"
+#include <iostream>
 
 Character::Character(std::string texture, int x, int y, int size)
 
@@ -10,12 +11,10 @@ Character::Character(std::string texture, int x, int y, int size)
 
     sprite = new sf::Sprite;
     sprite->setTexture(*(this->texture));
-    sprite->setTextureRect(sf::IntRect(0,0,size,size));
-    sprite->setScale(10,10);
-    sprite->setOrigin(size/2,size/2);
-    sprite->setPosition(x,y);
-    
-
+    sprite->setTextureRect(sf::IntRect(0, 0, size, size));
+    sprite->setScale(10, 10);
+    sprite->setOrigin(size / 2, size / 2);
+    sprite->setPosition(x, y);
 
     currentFrame = 0;
     numFrames = 7;
@@ -28,19 +27,18 @@ Character::~Character()
     delete sprite;
 }
 
-void Character::update(sf::RenderWindow* window, Game* game)
+void Character::update(sf::RenderWindow *window)
 {
-    
 }
 
 void Character::updateAnimation(int numFrames, int row)
-{ 
+{
     currentFrame = 0;
     this->numFrames = numFrames;
     this->row = row;
 }
 
-bool Character::checkCollision(sf::RenderWindow* window)
+bool Character::checkCollision(sf::RenderWindow *window)
 {
     sf::Vector2f mouse = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
     sf::FloatRect bounds = sprite->getGlobalBounds();
@@ -48,45 +46,55 @@ bool Character::checkCollision(sf::RenderWindow* window)
     return bounds.contains(mouse);
 }
 
-void Character::animation(bool repeat)
+bool Character::animation(bool repeat)
 {
     if (clock.getElapsedTime().asSeconds() > 0.1f)
+    
     {
-        
+        clock.restart();
+
         if (currentFrame != numFrames)
         {
             if (currentFrame > 8)
             {
-                sprite->setTextureRect(sf::IntRect(size*currentFrame, size*row + size, size, size));
+                sprite->setTextureRect(sf::IntRect(size * currentFrame, size * row + size, size, size));
                 currentFrame++;
             }
             else
             {
-                sprite->setTextureRect(sf::IntRect(size*currentFrame, size*row, size, size));
+                sprite->setTextureRect(sf::IntRect(size * currentFrame, size * row, size, size));
                 currentFrame++;
-            }   
-
+            }
         }
+        // reformat this
         else
         {
             if (repeat == true)
+            {
                 // set current frame to 0 IF the animation needs to be repeated
-                currentFrame = 0;
+                currentFrame=0;
+            }
             else
-                // if not repeated, set to current animation first frame
-                sprite->setTextureRect(sf::IntRect(0, size*row, size, size));
+                // if not repeated, play idle animation
+                updateAnimation(7, 0);
+                return true;
         }
-        clock.restart();
+        
     }
+    return false;
 }
 
-void Character::draw(sf::RenderWindow* window)
+void Character::draw(sf::RenderWindow *window)
 {
     window->draw(*sprite);
 }
 
 void Character::setPos(int x, int y)
 {
-    sprite->setPosition(x,y);
+    sprite->setPosition(x, y);
 }
 
+void Character::flip()
+{
+    sprite->scale(-1.f, 1.f);
+}

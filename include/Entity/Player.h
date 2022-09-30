@@ -20,8 +20,6 @@ public:
     int getExp();
     int getLvl();
 
-    void attack(Enemy* enemy);
-
 private:
     int exp=0;
     int lvl=1;

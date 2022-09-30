@@ -1,26 +1,29 @@
 #include "Entity.h"
 
+#include <iostream>
+
 void Entity::chooseRole(int role)
 {
+    this->role = role;
     switch (role) {
         case 1:
             updateHealth(50);
             updateArmour(0);
-            updateAttack(30);
+            updateDamage(30);
             updateAccuracy(90);
             updateEvasion(50);
             break;
         case 2:
             updateHealth(75);
             updateArmour(40);
-            updateAttack(20);
+            updateDamage(20);
             updateAccuracy(60);
             updateEvasion(5);
             break;
         case 3:
             updateHealth(75);
             updateArmour(20);
-            updateAttack(5);
+            updateDamage(5);
             updateAccuracy(80);
             updateEvasion(30);
             break;
@@ -47,9 +50,9 @@ void Entity::updateArmour(int armour)
     this->armour = armour;
 }
 
-void Entity::updateAttack(int attack)
+void Entity::updateDamage(int damage)
 {
-    this->attack = attack;
+    this->damage = damage;
 }
 
 void Entity::updateAccuracy(int accuracy)
@@ -60,6 +63,16 @@ void Entity::updateAccuracy(int accuracy)
 void Entity::updateEvasion(int evasion)
 {
     this->evasion = evasion;
+}
+
+int Entity::getRole()
+{
+    return this->role;
+}
+
+Character* Entity::getSprite()
+{
+    return this->sprite;
 }
 
 
@@ -73,9 +86,9 @@ int Entity::getArmour()
     return this->armour;    
 }
 
-int Entity::getAttack()
+int Entity::getDamage()
 {
-    return this->attack;
+    return this->damage;
 }
 
 int Entity::getAccuracy()
@@ -86,4 +99,35 @@ int Entity::getAccuracy()
 int Entity::getEvasion()
 {
     return this->evasion;
+}
+
+bool Entity::update(sf::RenderWindow* window)
+{
+    return sprite->animation(false);
+}   
+
+void Entity::draw(sf::RenderWindow* window)
+{
+    sprite->draw(window);
+}
+
+void Entity::attack(Entity* entity)
+{
+    switch (role) {
+        case 1:
+            sprite->updateAnimation(7,3);
+            break;
+        case 2:           
+            sprite->updateAnimation(7,3);
+            break;
+        case 3:
+            sprite->updateAnimation(7,3);
+            break;
+        case 4:
+            sprite->updateAnimation(8,2);
+            break;
+    }
+    
+    entity->updateHealth(entity->getHealth() - getDamage());
+
 }

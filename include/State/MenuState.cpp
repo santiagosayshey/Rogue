@@ -16,8 +16,8 @@ void MenuState::update(sf::RenderWindow* window)
 
 {
     // include some sort of event manager that iterates through an array of objects?
-    play   ->update(window, game);
-    quit   ->update(window, game);
+    play   ->update(window);
+    quit   ->update(window);
 
 
 

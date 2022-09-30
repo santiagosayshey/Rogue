@@ -4,6 +4,7 @@
 #pragma once
 
 #include "State.h"
+#include "../Entity/Enemy.h"
 #include "../Drawable/Button.h"
 #include "../Drawable/Character.h"
 
@@ -19,18 +20,16 @@ public:
 
 private:
     sf::Event event;
+    sf::Clock clock;
 
-    Character* wizard;
-    Character* paladin;
-    Character* necrom;
-    Character* golem;
+    Enemy* enemy;
+    Button* attack;
+    Button* attackP;
 
-    Button* melee;
-    Button* range;
-    Button* die;
-    Button* idle;
-    Button* walk;
+    bool playerDead = false;
+    bool enemyDead = false;
 
+    Character* sEnemy;
 };
 
 #endif
