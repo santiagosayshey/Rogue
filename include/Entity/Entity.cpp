@@ -30,7 +30,7 @@ void Entity::chooseRole(int role)
     }
 }
 
-void Entity::setChararacter(Character* sprite)
+void Entity::setChararacter(Sprite* sprite)
 {
     this->sprite = sprite;
 }
@@ -70,7 +70,7 @@ int Entity::getRole()
     return this->role;
 }
 
-Character* Entity::getSprite()
+Sprite* Entity::getSprite()
 {
     return this->sprite;
 }
@@ -103,6 +103,7 @@ int Entity::getEvasion()
 
 bool Entity::update(sf::RenderWindow* window)
 {
+
     return sprite->animation(false);
 }   
 
@@ -127,7 +128,9 @@ void Entity::attack(Entity* entity)
             sprite->updateAnimation(8,2);
             break;
     }
-    
+
+    std::cout << entity->getHealth() << std::endl;
     entity->updateHealth(entity->getHealth() - getDamage());
+    std::cout << entity->getHealth() << std::endl;
 
 }

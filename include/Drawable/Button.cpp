@@ -25,14 +25,20 @@ bool Button::checkCollision(sf::RenderWindow* window)
     return bounds.contains(mouse);
 }
 
-void Button::update(sf::RenderWindow* window)
+void Button::update(sf::RenderWindow* window) // this needs to go in event manager
 { 
-    if (!checkCollision(window))  {
+/*     if (!checkCollision(window))  {
         text.setFillColor(sf::Color::Black);
     }
     else {
         text.setFillColor(sf::Color::Blue);
-    }
+    } */
+}
+
+void Button::updateText(std::string s)
+{
+   
+    text.setString(s + " / 75");
 }
 
 void Button::draw(sf::RenderWindow* window)

@@ -11,14 +11,20 @@ State(game,player)
     attack = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack", 100, 300);
     attackP = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack\nPlayer", 100, 500);
 
+    wiz = new Sprite("assets/UI/necromancer.png",100,100,26,5);
+    wizhealth = new Sprite("assets/UI/stats.png",220,100,26,5);
+
+    health = new Button("assets/entity/font/menu.ttf", 25, sf::Color(255, 172, 28), sf::Text::Bold, "75/75", 170, 50);
+    healthShadow = new Button("assets/entity/font/menu.ttf", 25, sf::Color::Black, sf::Text::Bold, "75/75", 173, 53);
+
     enemy = new Enemy;
 
-    sEnemy = new Character("assets/entity/Character/GOLEM.png",1400,400,64);
+    sEnemy = new Sprite("assets/entity/Character/GOLEM.png",1400,400,64,10);
     sEnemy->flip();
 
     enemy->setChararacter(sEnemy);
     enemy->updateRole(4);
-    enemy->updateDamage(30);
+    enemy->updateDamage(5);
     enemy->updateHealth(100);
 }
 
@@ -30,6 +36,8 @@ PlayState::~PlayState()
 void PlayState::update(sf::RenderWindow* window)
 {
 
+    wiz->update(window);
+    wizhealth->update(window);
 
     while (window->pollEvent(event))
     {
@@ -49,9 +57,9 @@ void PlayState::update(sf::RenderWindow* window)
                     break;
                 }
             }
-            case sf::Event::KeyReleased: {
+            case sf::Event::KeyReleased: { 
                 if (sf::Keyboard::Space)
-                    game->setState(new PickState(game, player));
+                    //game->setState(new PickState(game, player));
                     break;
             }
         }
@@ -61,6 +69,7 @@ void PlayState::update(sf::RenderWindow* window)
     attack->update(window);
     attackP->update(window);
 
+    // always update the frames and animate but only play death animations if previous attack animation is finished
     if (player->update(window) && enemy->getHealth() < 1 && enemyDead == false) {
         switch (enemy->getRole()) {
             case 4:
@@ -83,11 +92,20 @@ void PlayState::update(sf::RenderWindow* window)
         }
         playerDead = true;
     }
+
+    healthShadow->updateText(std::to_string(player->getHealth()));
+    healthShadow->update(window);
+
+    health->updateText(std::to_string(player->getHealth()));
+    health->update(window);
 }
 
 void PlayState::render(sf::RenderWindow* window)
 {
     window   ->clear(sf::Color::White);
+
+    wiz->draw(window);
+    wizhealth->draw(window);
 
     attack->draw(window);
     attackP->draw(window);
@@ -95,5 +113,7 @@ void PlayState::render(sf::RenderWindow* window)
     enemy->draw(window);
     player->draw(window);
 
+    healthShadow->draw(window);
+    health->draw(window);
     window   ->display();
 }

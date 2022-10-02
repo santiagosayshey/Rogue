@@ -1,7 +1,7 @@
-#include "Character.h"
+#include "Sprite.h"
 #include <iostream>
 
-Character::Character(std::string texture, int x, int y, int size)
+Sprite::Sprite(std::string texture, int x, int y, int size, int scale)
 
 {
     this->size = size;
@@ -12,7 +12,7 @@ Character::Character(std::string texture, int x, int y, int size)
     sprite = new sf::Sprite;
     sprite->setTexture(*(this->texture));
     sprite->setTextureRect(sf::IntRect(0, 0, size, size));
-    sprite->setScale(10, 10);
+    sprite->setScale(scale, scale);
     sprite->setOrigin(size / 2, size / 2);
     sprite->setPosition(x, y);
 
@@ -21,24 +21,24 @@ Character::Character(std::string texture, int x, int y, int size)
     row = 0;
 }
 
-Character::~Character()
+Sprite::~Sprite()
 {
     delete texture;
     delete sprite;
 }
 
-void Character::update(sf::RenderWindow *window)
+void Sprite::update(sf::RenderWindow *window)
 {
 }
 
-void Character::updateAnimation(int numFrames, int row)
+void Sprite::updateAnimation(int numFrames, int row)
 {
     currentFrame = 0;
     this->numFrames = numFrames;
     this->row = row;
 }
 
-bool Character::checkCollision(sf::RenderWindow *window)
+bool Sprite::checkCollision(sf::RenderWindow *window)
 {
     sf::Vector2f mouse = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
     sf::FloatRect bounds = sprite->getGlobalBounds();
@@ -46,7 +46,7 @@ bool Character::checkCollision(sf::RenderWindow *window)
     return bounds.contains(mouse);
 }
 
-bool Character::animation(bool repeat)
+bool Sprite::animation(bool repeat)
 {
     if (clock.getElapsedTime().asSeconds() > 0.1f)
     
@@ -84,17 +84,17 @@ bool Character::animation(bool repeat)
     return false;
 }
 
-void Character::draw(sf::RenderWindow *window)
+void Sprite::draw(sf::RenderWindow *window)
 {
     window->draw(*sprite);
 }
 
-void Character::setPos(int x, int y)
+void Sprite::setPos(int x, int y)
 {
     sprite->setPosition(x, y);
 }
 
-void Character::flip()
+void Sprite::flip()
 {
     sprite->scale(-1.f, 1.f);
 }

@@ -12,6 +12,7 @@ public:
 
     bool checkCollision(sf::RenderWindow* window);
     void update(sf::RenderWindow* window);
+    void updateText(std::string s);
     void draw(sf::RenderWindow* window);
 
 

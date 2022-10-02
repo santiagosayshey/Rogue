@@ -1,14 +1,14 @@
-#ifndef CHARACTER_H
-#define CHARACTER_H
+#ifndef SPRITE_H
+#define SPRITE_H
 
 #pragma once
 #include "Drawable.h"
 
-class Character : public Drawable
+class Sprite : public Drawable
 {
 public:
-    Character(std::string texture, int x, int y, int size);
-    ~Character();
+    Sprite(std::string texture, int x, int y, int size, int scale);
+    ~Sprite();
 
     
     void update(sf::RenderWindow* window);

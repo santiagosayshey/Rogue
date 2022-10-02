@@ -6,7 +6,7 @@
 #include "State.h"
 #include "../Entity/Enemy.h"
 #include "../Drawable/Button.h"
-#include "../Drawable/Character.h"
+#include "../Drawable/Sprite.h"
 
 class PlayState : public State
 {
@@ -26,10 +26,17 @@ private:
     Button* attack;
     Button* attackP;
 
+    Sprite* wiz;
+    Sprite* wizhealth;
+
+    Button* health;
+    Button* healthShadow;
+    Button* armour;
+
     bool playerDead = false;
     bool enemyDead = false;
 
-    Character* sEnemy;
+    Sprite* sEnemy;
 };
 
 #endif

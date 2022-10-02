@@ -5,14 +5,14 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Audio.hpp"
 
-#include "../Drawable/Character.h"
+#include "../Drawable/Sprite.h"
 
 class Entity
 {
 public:
     void chooseRole(int role);
      
-    void setChararacter(Character* sprite);
+    void setChararacter(Sprite* sprite);
 
     void updateRole(int role);
     void updateHealth(int health);
@@ -23,7 +23,7 @@ public:
 
     int getRole();
 
-    Character* getSprite();
+    Sprite* getSprite();
 
     int getHealth();
     int getArmour();
@@ -31,16 +31,13 @@ public:
     int getAccuracy();
     int getEvasion();
 
-    bool canDamage=false;
-    bool isDamaged=false;
-
     void attack(Entity* entity);
 
     bool update(sf::RenderWindow* window);
     void draw(sf::RenderWindow* window);
 
 protected:
-    Character* sprite;
+    Sprite* sprite;
 
     int role;
 
