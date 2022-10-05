@@ -7,9 +7,6 @@ Game::Game(int width, int height)
     player = new Player;
     this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Test");
     this->currentState = new PickState(this, player);
-    this->window->setFramerateLimit(60);
-
-    
 }
 
 Game::~Game()
