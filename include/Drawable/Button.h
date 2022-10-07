@@ -14,6 +14,9 @@ public:
     void update(sf::RenderWindow* window);
     void updateText(std::string s);
     void draw(sf::RenderWindow* window);
+    int getX();
+    int getY();
+    void setPos(int x, int y);
 
 
 private:
@@ -22,6 +25,10 @@ private:
     
     sf::Text text;
     sf::Font font;
+
+    int x;
+    int y;
+
 };
 
 #endif

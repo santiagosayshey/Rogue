@@ -1,19 +1,23 @@
 #include "Sprite.h"
 #include <iostream>
 
-Sprite::Sprite(std::string texture, int x, int y, int size, float scale)
+Sprite::Sprite(std::string texture, int x, int y, int width, int height, float scale)
 
 {
-    this->size = size;
+    this->x = x;
+    this->y = y;
+
+    this->width = width;
+    this->height = height;
     this->texture = new sf::Texture;
     this->texture->loadFromFile(texture);
     this->texture->setRepeated(true);
 
     sprite = new sf::Sprite;
     sprite->setTexture(*(this->texture));
-    sprite->setTextureRect(sf::IntRect(0, 0, size, size));
+    sprite->setTextureRect(sf::IntRect(0, 0, width, height));
     sprite->setScale(scale, scale);
-    sprite->setOrigin(size / 2, size / 2);
+    //sprite->setOrigin(width / 2, height / 2);
     sprite->setPosition(x, y);
 
     currentFrame = 0;
@@ -55,14 +59,20 @@ bool Sprite::animation(bool repeat)
 
         if (currentFrame != numFrames)
         {
-            if (currentFrame > 8)
+            if (currentFrame < 8)
             {
-                sprite->setTextureRect(sf::IntRect(size * currentFrame, size * row + size, size, size));
+                sprite->setTextureRect(sf::IntRect(width * currentFrame, height * row, width, height));
+                currentFrame++;
+
+            }
+            else if (currentFrame < 16)
+            {
+                sprite->setTextureRect(sf::IntRect(width * currentFrame, height * row + height, width, height));
                 currentFrame++;
             }
-            else
+            else if (currentFrame < 24)
             {
-                sprite->setTextureRect(sf::IntRect(size * currentFrame, size * row, size, size));
+                sprite->setTextureRect(sf::IntRect(width * currentFrame, height * row + 2*height, width, height));
                 currentFrame++;
             }
         }
@@ -89,9 +99,25 @@ void Sprite::draw(sf::RenderWindow *window)
     window->draw(*sprite);
 }
 
+int Sprite::getX()
+{
+    return x;
+}
+
+int Sprite::getY()
+{
+    return y;
+}
+
+
 void Sprite::setPos(int x, int y)
 {
     sprite->setPosition(x, y);
+}
+
+void Sprite::move(int d)
+{
+    sprite->setPosition(sprite->getPosition().x+d,sprite->getPosition().y);
 }
 
 void Sprite::flip()

@@ -5,8 +5,7 @@
 MapState::MapState(Game* game, Player* player):
 State(game, player)
 {
-    bgTex.loadFromFile("assets/level/map.png");
-    bgSpr.setTexture(bgTex);
+
 }
 
 MapState::~MapState()

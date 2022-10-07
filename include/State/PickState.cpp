@@ -12,9 +12,9 @@ State(game, player)
     samuraiButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nSamurai", 100, 700);
     embark           = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Embark!", 1600, 500);
 
-    wizard = new Sprite("assets/entity/Character/MAGE.png",850,400,64,10);
-    paladin  = new Sprite("assets/entity/Character/PALADIN.png",850,400,64,10);
-    samurai = new Sprite("assets/entity/Character/SAMURAI.png",950,500,48,10);
+    wizard = new Sprite("assets/entity/Character/MAGE.png",850,400,64,64,10);
+    paladin  = new Sprite("assets/entity/Character/PALADIN.png",850,400,64,64,10);
+    samurai = new Sprite("assets/entity/Character/SAMURAI.png",950,500,48,48,10);
 
     font.loadFromFile("assets/entity/font/menu.ttf");
     paladinStats.setFont(font);
@@ -88,6 +88,10 @@ void PickState::update(sf::RenderWindow* window)
                     std::cout << "Click" << std::endl;
                     break;
                 }
+            }
+            case sf::Event::KeyReleased: {
+                if (sf::Keyboard::Space)
+                    game->setState(new MenuState(game, player));
             }
         }
     }

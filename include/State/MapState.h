@@ -18,6 +18,8 @@ private:
     sf::Texture bgTex;
     sf::Sprite bgSpr;
 
+
+
     sf::Event event;
 
 };

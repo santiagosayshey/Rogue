@@ -7,7 +7,7 @@
 class Sprite : public Drawable
 {
 public:
-    Sprite(std::string texture, int x, int y, int size, float scale);
+    Sprite(std::string texture, int x, int y, int width, int height, float scale);
     ~Sprite();
 
     
@@ -15,11 +15,15 @@ public:
     void updateAnimation(int numFrames, int row);
 
     void setPos(int x, int y);
+    void move(int d);
     void flip();
     bool checkCollision(sf::RenderWindow* window);
 
     bool animation(bool repeat);
     void draw(sf::RenderWindow* window);
+
+    int getX();
+    int getY();
 
 
 protected:
@@ -35,7 +39,11 @@ protected:
     int currentFrame;
     int row;
 
-    int size;
+    int height;
+    int width;
+
+    int x;
+    int y;
 
 };
 
