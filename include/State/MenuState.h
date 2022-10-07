@@ -38,7 +38,6 @@ private:
 
     bool sound1=true;
     bool sound2=true;
-    bool sound3=true;
 
 
     Sprite* splash;

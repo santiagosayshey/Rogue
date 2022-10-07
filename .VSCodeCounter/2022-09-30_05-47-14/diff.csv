@@ -1,7 +1,0 @@
-"filename", "language", "cpp", "comment", "blank", "total"
-"/home/samchau/Uni/OOProject/include/Drawable/Character.cpp", "cpp", 7, 0, -2, 5
-"/home/samchau/Uni/OOProject/include/Entity/Entity.cpp", "cpp", 29, 0, 8, 37
-"/home/samchau/Uni/OOProject/include/Entity/Player.cpp", "cpp", -17, 0, -8, -25
-"/home/samchau/Uni/OOProject/include/State/PickState.cpp", "cpp", 3, 0, 1, 4
-"/home/samchau/Uni/OOProject/include/State/PlayState.cpp", "cpp", 38, 0, 9, 47
-"Total", "-", 60, 0, 8, 68
