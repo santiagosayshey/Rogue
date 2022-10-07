@@ -12,7 +12,7 @@ State(game,player)
     attackP = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack\nPlayer", 100, 500);
 
     wiz = new Sprite("assets/UI/necromancer.png",100,100,26,5);
-    wizhealth = new Sprite("assets/UI/stats.png",220,100,26,5);
+    wizhealth = new Sprite("assets/UI/heart.png",500,500,268,0.2);
 
     health = new Button("assets/entity/font/menu.ttf", 25, sf::Color(255, 172, 28), sf::Text::Bold, "75/75", 170, 50);
     healthShadow = new Button("assets/entity/font/menu.ttf", 25, sf::Color::Black, sf::Text::Bold, "75/75", 173, 53);
@@ -105,15 +105,17 @@ void PlayState::render(sf::RenderWindow* window)
     window   ->clear(sf::Color::White);
 
     wiz->draw(window);
-    wizhealth->draw(window);
+
 
     attack->draw(window);
     attackP->draw(window);
 
     enemy->draw(window);
     player->draw(window);
-
+    wizhealth->draw(window);
     healthShadow->draw(window);
     health->draw(window);
+
+    
     window   ->display();
 }

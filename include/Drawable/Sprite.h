@@ -7,7 +7,7 @@
 class Sprite : public Drawable
 {
 public:
-    Sprite(std::string texture, int x, int y, int size, int scale);
+    Sprite(std::string texture, int x, int y, int size, float scale);
     ~Sprite();
 
     

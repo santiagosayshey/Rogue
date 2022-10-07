@@ -1,7 +1,7 @@
 #include "Sprite.h"
 #include <iostream>
 
-Sprite::Sprite(std::string texture, int x, int y, int size, int scale)
+Sprite::Sprite(std::string texture, int x, int y, int size, float scale)
 
 {
     this->size = size;
