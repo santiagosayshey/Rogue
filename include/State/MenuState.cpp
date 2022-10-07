@@ -2,9 +2,12 @@
 #include "../Instance/Game.h"
 #include "PickState.h"
 #include "../Instance/Path.cpp"
+#include <iostream>
 
 typedef sf::Color c;
 typedef sf::Text t;
+
+
 
 MenuState::MenuState(Game* game, Player* player):
 State(game, player)
@@ -31,6 +34,8 @@ State(game, player)
 
     mus.play();
 
+    std::cout << "succesfully created drawables" << std::endl;
+
 }
 
 MenuState::~MenuState()
@@ -44,6 +49,9 @@ MenuState::~MenuState()
     delete quit;
     delete b_title;
     delete title;
+
+    std::cout << "succesfully deleted drawables" << std::endl;
+
 }
 
 void MenuState::update(sf::RenderWindow* window)
@@ -59,8 +67,11 @@ void MenuState::update(sf::RenderWindow* window)
     b_title  ->update(window);
     title    ->update(window);
 
+    //std::cout << "succesfully updated drawables" << std::endl;
+
     if (!s_play->checkCollision(window))
     {
+        //std::cout << "no collision success" << std::endl;
 
         s_play ->setPos(s_play->getX(), s_play->getY());
         b_play ->setPos(b_play->getX(), b_play->getY());
@@ -69,11 +80,14 @@ void MenuState::update(sf::RenderWindow* window)
     }
     else
     {
+        std::cout << "collision success" << std::endl;
         while (sound1)
         {
+            std::cout << "sound success" << std::endl;
             UI.play();
             sound1=false;
         }
+        std::cout << "button move success" << std::endl;
         s_play ->setPos(s_play->getX()+20, s_play->getY());
         b_play ->setPos(b_play->getX()+20, b_play->getY());
         play   ->setPos(play->getX()+20, play->getY());
@@ -82,7 +96,7 @@ void MenuState::update(sf::RenderWindow* window)
 
     if (!s_quit->checkCollision(window))
     {
-
+        //std::cout << "no collision success" << std::endl;
         s_quit ->setPos(s_quit->getX(), s_quit->getY());
         b_quit ->setPos(b_quit->getX(), b_quit->getY());
         quit   ->setPos(quit->getX(), quit->getY());
@@ -92,9 +106,11 @@ void MenuState::update(sf::RenderWindow* window)
     {
         while (sound2)
         {
+            std::cout << "sound success" << std::endl;
             UI.play();
             sound2=false;
         }
+        std::cout << "button move success" << std::endl;
         s_quit ->setPos(s_quit->getX()+20, s_quit->getY());
         b_quit ->setPos(b_quit->getX()+20, b_quit->getY());
         quit   ->setPos(quit->getX()+20, quit->getY());
@@ -112,13 +128,13 @@ void MenuState::update(sf::RenderWindow* window)
                 if (play->checkCollision(window)) {
                     UI.play();
                     mus.stop();
-                    std::cout << "Click" << std::endl;
+                    std::cout << "click successful" << std::endl;
                     game->setState(new PickState(game, player));
                     break;
                 }
                 if (quit->checkCollision(window)) {
                     UI.play();
-                    std::cout << "Click" << std::endl;
+                    std::cout << "click successful" << std::endl;
                     window->close();
                     break;
                 }
@@ -144,5 +160,7 @@ void MenuState::render(sf::RenderWindow* window)
     title      ->draw(window);
 
     window     ->display();
+
+    //std::cout << "draw successful" << std::endl;
 }
 
