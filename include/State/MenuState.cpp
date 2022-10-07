@@ -10,25 +10,25 @@ MenuState::MenuState(Game* game, Player* player):
 State(game, player)
 {
 
-    splash  = new Sprite(p.s_splash,0,0,1280,720,1.5);
+    splash    = new Sprite(p.s_splash,0,0,1280,720,1.5);
 
-    s_play = new Sprite(p.s_button,150,400,30,14,7);
-    s_quit = new Sprite(p.s_button,150,550,30,14,7);
-
+    s_play    = new Sprite(p.s_button,150,400,30,14,7);
     b_play    = new Button(p.f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
+    play      = new Button(p.f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
+
+    s_quit    = new Sprite(p.s_button,150,550,30,14,7);
     b_quit    = new Button(p.f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
+    quit      = new Button(p.f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
 
-    play    = new Button(p.f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
-    quit    = new Button(p.f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
+    b_title   = new Button(p.f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
+    title     = new Button(p.f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
 
-    b_title    = new Button(p.f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
-    title    = new Button(p.f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
-
-    sb.loadFromFile(p.e_hover);
-    UI.setBuffer(sb);
-
+    sb. loadFromFile(p.e_hover);
     sb2.loadFromFile(p.e_bMusic);
+
+    UI. setBuffer(sb);
     mus.setBuffer(sb2);
+
     mus.play();
 
 }
@@ -49,18 +49,15 @@ MenuState::~MenuState()
 void MenuState::update(sf::RenderWindow* window)
 
 {
-    
-    s_play->update(window);
-    s_quit->update(window);
-
-    b_play->update(window);
-    b_quit->update(window);
-
-    play->update(window);
-    quit->update(window);
-
-    b_title->update(window);
-    title->update(window);
+    splash   ->update(window);
+    s_play   ->update(window);
+    b_play   ->update(window);
+    play     ->update(window);
+    s_quit   ->update(window);
+    b_quit   ->update(window);
+    quit     ->update(window);
+    b_title  ->update(window);
+    title    ->update(window);
 
     if (!s_play->checkCollision(window))
     {
@@ -105,10 +102,8 @@ void MenuState::update(sf::RenderWindow* window)
     }
 
 
-    // events  
     while (window->pollEvent(event))
     {
-        // "close requested" event: we close the window
         switch (event.type) {
             case sf::Event::Closed:
                 window->close();
@@ -116,6 +111,7 @@ void MenuState::update(sf::RenderWindow* window)
             case sf::Event::MouseButtonReleased: {
                 if (play->checkCollision(window)) {
                     UI.play();
+                    mus.stop();
                     std::cout << "Click" << std::endl;
                     game->setState(new PickState(game, player));
                     break;
@@ -135,22 +131,18 @@ void MenuState::update(sf::RenderWindow* window)
 
 void MenuState::render(sf::RenderWindow* window)
 {
-    window->clear(c::Green);
+    window     ->clear(c::White);
 
-    splash->draw(window);
+    splash     ->draw(window);
+    s_play     ->draw(window);
+    b_play     ->draw(window);
+    play       ->draw(window);
+    s_quit     ->draw(window);
+    b_quit     ->draw(window);
+    quit       ->draw(window);
+    b_title    ->draw(window);
+    title      ->draw(window);
 
-    s_play->draw(window);
-    s_quit->draw(window);
-
-    b_play->draw(window);
-    b_quit->draw(window);
-
-    play   ->draw(window);
-    quit   ->draw(window);
-
-    b_title->draw(window);
-    title->draw(window);
-
-    window->display();
+    window     ->display();
 }
 
