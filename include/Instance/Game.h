@@ -5,7 +5,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "../State/State.h"
-#include "../State/PickState.h"
+#include "../State/MenuState.h"
 #include "../Entity/Player.h"
 
 class Game

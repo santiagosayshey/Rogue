@@ -1,7 +1,7 @@
 #include "PickState.h"
 #include "../Instance/Game.h"
 #include "../Entity/Player.h"
-#include "PlayState.h"
+#include "MapState.h"
 
 
 PickState::PickState(Game* game, Player* player):
@@ -84,7 +84,7 @@ void PickState::update(sf::RenderWindow* window)
                 }
                 if (embark->checkCollision(window))
                 {
-                    game->setState(new PlayState(game, player));
+                    game->setState(new MapState(game, player));
                     std::cout << "Click" << std::endl;
                     break;
                 }
