@@ -3,6 +3,8 @@
 
 Button::Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y)
 { 
+    this->x = x;
+    this->y = y;
     // seg faults if fonts and texts are pointers????
     font.loadFromFile(f);
     text.setFont(font);
@@ -46,6 +48,18 @@ void Button::draw(sf::RenderWindow* window)
     window->draw(text);
 }
 
+int Button::getX()
+{
+    return x;
+}
+
+int Button::getY()
+{
+    return y;
+}
 
 
-
+void Button::setPos(int x, int y)
+{
+    text.setPosition(x, y);
+}

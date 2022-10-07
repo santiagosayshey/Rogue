@@ -4,6 +4,9 @@
 Sprite::Sprite(std::string texture, int x, int y, int width, int height, float scale)
 
 {
+    this->x = x;
+    this->y = y;
+
     this->width = width;
     this->height = height;
     this->texture = new sf::Texture;
@@ -96,9 +99,25 @@ void Sprite::draw(sf::RenderWindow *window)
     window->draw(*sprite);
 }
 
+int Sprite::getX()
+{
+    return x;
+}
+
+int Sprite::getY()
+{
+    return y;
+}
+
+
 void Sprite::setPos(int x, int y)
 {
     sprite->setPosition(x, y);
+}
+
+void Sprite::move(int d)
+{
+    sprite->setPosition(sprite->getPosition().x+d,sprite->getPosition().y);
 }
 
 void Sprite::flip()

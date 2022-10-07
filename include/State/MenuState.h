@@ -27,6 +27,19 @@ private:
     Button* play;
     Button* quit;
 
+    Button* b_title;
+    Button* title;
+
+    sf::SoundBuffer sb;
+    sf::Sound UI;
+
+    sf::SoundBuffer sb2;
+    sf::Sound mus;
+
+    bool sound1=true;
+    bool sound2=true;
+    bool sound3=true;
+
 
     Sprite* splash;
 

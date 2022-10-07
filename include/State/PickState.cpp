@@ -89,6 +89,10 @@ void PickState::update(sf::RenderWindow* window)
                     break;
                 }
             }
+            case sf::Event::KeyReleased: {
+                if (sf::Keyboard::Space)
+                    game->setState(new MenuState(game, player));
+            }
         }
     }
 

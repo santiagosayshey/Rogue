@@ -15,11 +15,15 @@ public:
     void updateAnimation(int numFrames, int row);
 
     void setPos(int x, int y);
+    void move(int d);
     void flip();
     bool checkCollision(sf::RenderWindow* window);
 
     bool animation(bool repeat);
     void draw(sf::RenderWindow* window);
+
+    int getX();
+    int getY();
 
 
 protected:
@@ -37,6 +41,9 @@ protected:
 
     int height;
     int width;
+
+    int x;
+    int y;
 
 };
 
