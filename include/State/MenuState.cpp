@@ -5,12 +5,16 @@
 MenuState::MenuState(Game* game, Player* player):
 State(game, player)
 {
-    splash  = new Sprite("assets/background/splashscreen2.png",0,0,940,512,2);
-    play    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "PLAY", 100, 300);
-    quit    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "QUIT", 100, 400);
 
-    //splash->flip();
-    splash->updateAnimation(24,0);
+    s_play = new Sprite("assets/button/button.png",100,500,30,14,7);
+    s_quit = new Sprite("assets/button/button.png",100,650,30,14,7);
+
+    b_play    = new Button("assets/button/m.ttf", 50, sf::Color::Black, sf::Text::Bold, "PLAY", 135, 530);
+    b_quit    = new Button("assets/button/m.ttf", 50, sf::Color::Black, sf::Text::Bold, "QUIT", 120, 680);
+
+    play    = new Button("assets/button/m.ttf", 50, sf::Color::White, sf::Text::Bold, "PLAY", 140, 525);
+    quit    = new Button("assets/button/m.ttf", 50, sf::Color::White, sf::Text::Bold, "QUIT", 125, 675);
+
 }
 
 MenuState::~MenuState()
@@ -19,19 +23,14 @@ MenuState::~MenuState()
 void MenuState::update(sf::RenderWindow* window)
 
 {
+    s_play->update(window);
+    s_quit->update(window);
 
-    if (play->checkCollision(window))
-    {
-        play->updateText("Fuck");
-    }
-    else
-    {
-        play->updateText("Play");
-    }
-    // include some sort of event manager that iterates through an array of objects?
-    play   ->update(window);
-    quit   ->update(window);
-    splash->update(window);
+    b_play->update(window);
+    b_quit->update(window);
+
+    play->update(window);
+    quit->update(window);
 
 
 
@@ -59,7 +58,6 @@ void MenuState::update(sf::RenderWindow* window)
         
     }
 
-    splash->animation(true);
             
 }
 
@@ -68,7 +66,13 @@ void MenuState::render(sf::RenderWindow* window)
 {
     window->clear(sf::Color::White);
     //window->draw(s_splash);
-    splash->draw(window);
+    //splash->draw(window);
+    s_play->draw(window);
+    s_quit->draw(window);
+
+    b_play->draw(window);
+    b_quit->draw(window);
+
     play   ->draw(window);
     quit   ->draw(window);
 

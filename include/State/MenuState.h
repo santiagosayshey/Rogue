@@ -18,8 +18,15 @@ public:
 private:
     sf::Event event;
     
+    Sprite* s_play;
+    Sprite* s_quit;
+
+    Button* b_play;
+    Button* b_quit;
+
     Button* play;
     Button* quit;
+
 
     Sprite* splash;
 
