@@ -3,7 +3,8 @@
 
 #pragma once
 #include "State.h"
-#include "../Entity/Button.h"
+#include "../Drawable/Button.h"
+#include "../Drawable/Sprite.h"
 
 class MenuState : public State
 {
@@ -17,8 +18,29 @@ public:
 private:
     sf::Event event;
     
+    Sprite* s_play;
+    Sprite* s_quit;
+
+    Button* b_play;
+    Button* b_quit;
+
     Button* play;
     Button* quit;
+
+    Button* b_title;
+    Button* title;
+
+    sf::SoundBuffer sb;
+    sf::Sound UI;
+
+    sf::SoundBuffer sb2;
+    sf::Sound mus;
+
+    bool sound1=true;
+    bool sound2=true;
+
+
+    Sprite* splash;
 
 
 };

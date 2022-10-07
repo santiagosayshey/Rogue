@@ -5,16 +5,52 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Audio.hpp"
 
-class Game;
+#include "../Drawable/Sprite.h"
 
 class Entity
 {
 public:
-    virtual bool checkCollision(sf::RenderWindow* window) = 0;
-    virtual void update(sf::RenderWindow* window, Game* game) = 0;
-    virtual void draw(sf::RenderWindow* window) = 0;
+    void chooseRole(int role);
+     
+    void setChararacter(Sprite* sprite);
 
-private:
+    void updateRole(int role);
+    void updateHealth(int health);
+    void updateArmour(int armour);
+    void updateDamage(int damage);
+    void updateAccuracy(int accuracy);
+    void updateEvasion(int evasion);
+
+    int getRole();
+
+    Sprite* getSprite();
+
+    int getHealth();
+    int getArmour();
+    int getDamage();
+    int getAccuracy();
+    int getEvasion();
+
+    void attack(Entity* entity);
+
+    bool update(sf::RenderWindow* window);
+    void draw(sf::RenderWindow* window);
+
+protected:
+    Sprite* sprite;
+
+    int role;
+
+    int health;
+    int armour;
+    int damage;
+    int accuracy;
+    int evasion;
+    int strength;
+    int weakness;
+    int neutral;
+
+    bool dead;
 
 };
 

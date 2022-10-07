@@ -4,8 +4,9 @@
 #pragma once
 
 #include "State.h"
-#include "../Entity/Button.h"
-#include "../Entity/Human.h"
+#include "../Entity/Enemy.h"
+#include "../Drawable/Button.h"
+#include "../Drawable/Sprite.h"
 
 class PlayState : public State
 {
@@ -19,18 +20,23 @@ public:
 
 private:
     sf::Event event;
+    sf::Clock clock;
 
-    Human* wizard;
-    Human* paladin;
-    Human* necrom;
-    Human* golem;
+    Enemy* enemy;
+    Button* attack;
+    Button* attackP;
 
-    Button* melee;
-    Button* range;
-    Button* die;
-    Button* idle;
-    Button* walk;
+    Sprite* wiz;
+    Sprite* wizhealth;
 
+    Button* health;
+    Button* healthShadow;
+    Button* armour;
+
+    bool playerDead = false;
+    bool enemyDead = false;
+
+    Sprite* sEnemy;
 };
 
 #endif

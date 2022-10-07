@@ -1,2 +1,0 @@
-idle 0
-walk 1

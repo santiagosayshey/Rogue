@@ -1,20 +1,20 @@
 #include "PickState.h"
 #include "../Instance/Game.h"
-#include "../Instance/Player.h"
+#include "../Entity/Player.h"
 #include "MapState.h"
 
 
 PickState::PickState(Game* game, Player* player):
 State(game, player)
 {
-    wizardButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nWizard", 100, 300);
+    wizardButton     = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nWizard", 100, 300);
     paladinButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nPaladin", 100, 500);
     samuraiButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nSamurai", 100, 700);
     embark           = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Embark!", 1600, 500);
 
-    wizard = new Human("assets/entity/human/MAGE.png",850,400,64);
-    paladin  = new Human("assets/entity/human/PALADIN.png",850,400,64);
-    samurai = new Human("assets/entity/human/SAMURAI.png",950,500,48);
+    wizard = new Sprite("assets/entity/Character/MAGE.png",850,400,64,64,10);
+    paladin  = new Sprite("assets/entity/Character/PALADIN.png",850,400,64,64,10);
+    samurai = new Sprite("assets/entity/Character/SAMURAI.png",950,500,48,48,10);
 
     font.loadFromFile("assets/entity/font/menu.ttf");
     paladinStats.setFont(font);
@@ -34,6 +34,10 @@ State(game, player)
     samuraiStats.setFillColor(sf::Color::Black);
     samuraiStats.setString("Statistics:\nHealth:                75\nArmour:               20%\nAttack:                5\nAccuracy:            80%\nEvasion:              30%\nStrength:             Bleed\nWeakness:            Blunt\nNeutral:              Magic\n");
     samuraiStats.setPosition(1050,400);
+
+    currentSel = 1;
+    player->chooseRole(currentSel);
+    player->setChararacter(wizard);
 
 }  
 
@@ -57,6 +61,7 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     currentSel = 1;
                     player->chooseRole(currentSel);
+                    player->setChararacter(wizard);
                     std::cout << "Click" << std::endl;
                     break;
                 }
@@ -64,6 +69,7 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     currentSel = 2;
                     player->chooseRole(currentSel);
+                    player->setChararacter(paladin);
                     
                     std::cout << "Click" << std::endl;
                     break;
@@ -72,6 +78,7 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     currentSel = 3;
                     player->chooseRole(currentSel);
+                    player->setChararacter(samurai);
                     std::cout << "Click" << std::endl;
                     break;
                 }
@@ -82,13 +89,17 @@ void PickState::update(sf::RenderWindow* window)
                     break;
                 }
             }
+            case sf::Event::KeyReleased: {
+                if (sf::Keyboard::Space)
+                    game->setState(new MenuState(game, player));
+            }
         }
     }
 
-    wizardButton   ->update(window, game);
-    paladinButton  ->update(window, game);
-    samuraiButton  ->update(window, game);
-    embark         ->update(window, game);
+    wizardButton   ->update(window);
+    paladinButton  ->update(window);
+    samuraiButton  ->update(window);
+    embark         ->update(window);
 
     wizard->animation(true);
     paladin->animation(true);

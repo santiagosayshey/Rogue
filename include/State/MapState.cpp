@@ -1,10 +1,11 @@
 #include "MapState.h"
+#include "../Instance/Game.h"
+#include "PlayState.h"
 
 MapState::MapState(Game* game, Player* player):
 State(game, player)
 {
-    bgTex.loadFromFile("assets/level/map.png");
-    bgSpr.setTexture(bgTex);
+
 }
 
 MapState::~MapState()
@@ -21,6 +22,9 @@ void MapState::update(sf::RenderWindow* window)
             case sf::Event::Closed: {
                 window->close();
                 break;
+            case sf::Event::KeyReleased:
+                if (sf::Keyboard::Space)
+                    game->setState(new PlayState(game, player));
             }
         }
     }

@@ -4,8 +4,8 @@
 #pragma once
 
 #include "State.h"
-#include "../Entity/Button.h"
-#include "../Entity/Human.h"
+#include "../Drawable/Button.h"
+#include "../Drawable/Sprite.h"
 #include <fstream>
 
 class PickState : public State
@@ -26,16 +26,15 @@ private:
     Button* samuraiButton;
     Button* embark;
 
-    Human* wizard;
-    Human* paladin;
-    Human* samurai;
+    Sprite* wizard;
+    Sprite* paladin;
+    Sprite* samurai;
 
     sf::Text paladinStats;
     sf::Text wizardStats;
     sf::Text samuraiStats;
 
     int currentSel=1;
-    bool idle;
 
 };
 
