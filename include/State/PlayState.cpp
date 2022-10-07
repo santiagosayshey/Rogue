@@ -11,15 +11,15 @@ State(game,player)
     attack = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack", 100, 300);
     attackP = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack\nPlayer", 100, 500);
 
-    wiz = new Sprite("assets/UI/necromancer.png",100,100,26,5);
-    wizhealth = new Sprite("assets/UI/heart.png",500,500,268,0.2);
+    wiz = new Sprite("assets/UI/necromancer.png",100,100,26,36,5);
+    wizhealth = new Sprite("assets/UI/heart.png",500,500,268,268,0.2);
 
     health = new Button("assets/entity/font/menu.ttf", 25, sf::Color(255, 172, 28), sf::Text::Bold, "75/75", 170, 50);
     healthShadow = new Button("assets/entity/font/menu.ttf", 25, sf::Color::Black, sf::Text::Bold, "75/75", 173, 53);
 
     enemy = new Enemy;
 
-    sEnemy = new Sprite("assets/entity/Character/GOLEM.png",1400,400,64,10);
+    sEnemy = new Sprite("assets/entity/Character/GOLEM.png",1400,400,64,64,10);
     sEnemy->flip();
 
     enemy->setChararacter(sEnemy);

@@ -4,6 +4,7 @@
 #pragma once
 #include "State.h"
 #include "../Drawable/Button.h"
+#include "../Drawable/Sprite.h"
 
 class MenuState : public State
 {
@@ -19,6 +20,8 @@ private:
     
     Button* play;
     Button* quit;
+
+    Sprite* splash;
 
 
 };

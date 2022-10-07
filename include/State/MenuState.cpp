@@ -5,8 +5,12 @@
 MenuState::MenuState(Game* game, Player* player):
 State(game, player)
 {
+    splash  = new Sprite("assets/background/splashscreen2.png",0,0,940,512,2);
     play    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "PLAY", 100, 300);
     quit    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "QUIT", 100, 400);
+
+    //splash->flip();
+    splash->updateAnimation(24,0);
 }
 
 MenuState::~MenuState()
@@ -15,9 +19,19 @@ MenuState::~MenuState()
 void MenuState::update(sf::RenderWindow* window)
 
 {
+
+    if (play->checkCollision(window))
+    {
+        play->updateText("Fuck");
+    }
+    else
+    {
+        play->updateText("Play");
+    }
     // include some sort of event manager that iterates through an array of objects?
     play   ->update(window);
     quit   ->update(window);
+    splash->update(window);
 
 
 
@@ -44,6 +58,8 @@ void MenuState::update(sf::RenderWindow* window)
         }
         
     }
+
+    splash->animation(true);
             
 }
 
@@ -52,6 +68,7 @@ void MenuState::render(sf::RenderWindow* window)
 {
     window->clear(sf::Color::White);
     //window->draw(s_splash);
+    splash->draw(window);
     play   ->draw(window);
     quit   ->draw(window);
 
