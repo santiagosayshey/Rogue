@@ -1,14 +1,14 @@
-#ifndef Button_H
-#define Button_H
+#ifndef Text_H
+#define Text_H
 
 #pragma once
 #include "Drawable.h"
 
-class Button : public Drawable
+class Text : public Drawable
 {
 public:
-    Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y);
-    ~Button();
+    Text(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y);
+    ~Text();
 
     bool checkCollision(sf::RenderWindow* window);
     void update(sf::RenderWindow* window);

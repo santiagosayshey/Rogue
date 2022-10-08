@@ -8,14 +8,14 @@ PlayState::PlayState(Game* game, Player* player):
 State(game,player)
 {
     
-    attack = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack", 100, 300);
-    attackP = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack\nPlayer", 100, 500);
+    attack = new Text("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack", 100, 300);
+    attackP = new Text("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack\nPlayer", 100, 500);
 
     wiz = new Sprite("assets/UI/necromancer.png",100,100,26,36,5);
     wizhealth = new Sprite("assets/UI/heart.png",500,500,268,268,0.2);
 
-    health = new Button("assets/entity/font/menu.ttf", 25, sf::Color(255, 172, 28), sf::Text::Bold, "75/75", 170, 50);
-    healthShadow = new Button("assets/entity/font/menu.ttf", 25, sf::Color::Black, sf::Text::Bold, "75/75", 173, 53);
+    health = new Text("assets/entity/font/menu.ttf", 25, sf::Color(255, 172, 28), sf::Text::Bold, "75/75", 170, 50);
+    healthShadow = new Text("assets/entity/font/menu.ttf", 25, sf::Color::Black, sf::Text::Bold, "75/75", 173, 53);
 
     enemy = new Enemy;
 

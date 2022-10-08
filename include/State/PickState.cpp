@@ -7,10 +7,10 @@
 PickState::PickState(Game* game, Player* player):
 State(game, player)
 {
-    wizardButton     = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nWizard", 100, 300);
-    paladinButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nPaladin", 100, 500);
-    samuraiButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nSamurai", 100, 700);
-    embark           = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Embark!", 1600, 500);
+    wizardText     = new Text("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nWizard", 100, 300);
+    paladinText    = new Text("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nPaladin", 100, 500);
+    samuraiText    = new Text("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nSamurai", 100, 700);
+    embark           = new Text("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Embark!", 1600, 500);
 
     wizard = new Sprite("assets/entity/Character/MAGE.png",850,400,64,64,10);
     paladin  = new Sprite("assets/entity/Character/PALADIN.png",850,400,64,64,10);
@@ -57,7 +57,7 @@ void PickState::update(sf::RenderWindow* window)
                 break;
             }
             case sf::Event::MouseButtonReleased: {
-                if (wizardButton->checkCollision(window))
+                if (wizardText->checkCollision(window))
                 {
                     currentSel = 1;
                     player->chooseRole(currentSel);
@@ -65,7 +65,7 @@ void PickState::update(sf::RenderWindow* window)
                     std::cout << "Click" << std::endl;
                     break;
                 }
-                if (paladinButton->checkCollision(window))
+                if (paladinText->checkCollision(window))
                 {
                     currentSel = 2;
                     player->chooseRole(currentSel);
@@ -74,7 +74,7 @@ void PickState::update(sf::RenderWindow* window)
                     std::cout << "Click" << std::endl;
                     break;
                 }
-                if (samuraiButton->checkCollision(window))
+                if (samuraiText->checkCollision(window))
                 {
                     currentSel = 3;
                     player->chooseRole(currentSel);
@@ -96,9 +96,9 @@ void PickState::update(sf::RenderWindow* window)
         }
     }
 
-    wizardButton   ->update(window);
-    paladinButton  ->update(window);
-    samuraiButton  ->update(window);
+    wizardText   ->update(window);
+    paladinText  ->update(window);
+    samuraiText  ->update(window);
     embark         ->update(window);
 
     wizard->animation(true);
@@ -110,9 +110,9 @@ void PickState::render(sf::RenderWindow* window)
 {
     window   ->clear(sf::Color::White);
 
-    wizardButton  ->draw(window);
-    paladinButton ->draw(window);
-    samuraiButton ->draw(window);
+    wizardText  ->draw(window);
+    paladinText ->draw(window);
+    samuraiText ->draw(window);
     embark        ->draw(window);
 
     switch (currentSel) {

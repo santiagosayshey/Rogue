@@ -1,7 +1,7 @@
-#include "Button.h"
+#include "Text.h"
 #include <iostream>
 
-Button::Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y)
+Text::Text(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y)
 { 
     this->x = x;
     this->y = y;
@@ -15,10 +15,10 @@ Button::Button(std::string f, int s, sf::Color c, sf::Text::Style style, std::st
     text.setString(type);
 }
 
-Button::~Button()
+Text::~Text()
 { }
 
-bool Button::checkCollision(sf::RenderWindow* window)
+bool Text::checkCollision(sf::RenderWindow* window)
 {
     sf::Vector2f mouse = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
     sf::FloatRect bounds = text.getGlobalBounds();
@@ -27,7 +27,7 @@ bool Button::checkCollision(sf::RenderWindow* window)
     return bounds.contains(mouse);
 }
 
-void Button::update(sf::RenderWindow* window) // this needs to go in event manager
+void Text::update(sf::RenderWindow* window) // this needs to go in event manager
 { 
 /*     if (!checkCollision(window))  {
         text.setFillColor(sf::Color::Black);
@@ -37,29 +37,29 @@ void Button::update(sf::RenderWindow* window) // this needs to go in event manag
     } */
 }
 
-void Button::updateText(std::string s)
+void Text::updateText(std::string s)
 {
    
     text.setString(s + " / 75");
 }
 
-void Button::draw(sf::RenderWindow* window)
+void Text::draw(sf::RenderWindow* window)
 {
     window->draw(text);
 }
 
-int Button::getX()
+int Text::getX()
 {
     return x;
 }
 
-int Button::getY()
+int Text::getY()
 {
     return y;
 }
 
 
-void Button::setPos(int x, int y)
+void Text::setPos(int x, int y)
 {
     text.setPosition(x, y);
 }

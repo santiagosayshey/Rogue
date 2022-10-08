@@ -3,7 +3,7 @@
 
 #pragma once
 #include "State.h"
-#include "../Drawable/Button.h"
+#include "../Drawable/Text.h"
 #include "../Drawable/Sprite.h"
 
 class MenuState : public State
@@ -21,14 +21,14 @@ private:
     Sprite* s_play;
     Sprite* s_quit;
 
-    Button* b_play;
-    Button* b_quit;
+    Text* b_play;
+    Text* b_quit;
 
-    Button* play;
-    Button* quit;
+    Text* play;
+    Text* quit;
 
-    Button* b_title;
-    Button* title;
+    Text* b_title;
+    Text* title;
 
     sf::SoundBuffer sb;
     sf::Sound UI;

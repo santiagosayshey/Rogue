@@ -16,15 +16,15 @@ State(game, player)
     splash    = new Sprite(p.s_splash,0,0,1280,720,1.5);
 
     s_play    = new Sprite(p.s_button,150,400,30,14,7);
-    b_play    = new Button(p.f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
-    play      = new Button(p.f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
+    b_play    = new Text(p.f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
+    play      = new Text(p.f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
 
     s_quit    = new Sprite(p.s_button,150,550,30,14,7);
-    b_quit    = new Button(p.f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
-    quit      = new Button(p.f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
+    b_quit    = new Text(p.f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
+    quit      = new Text(p.f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
 
-    b_title   = new Button(p.f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
-    title     = new Button(p.f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
+    b_title   = new Text(p.f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
+    title     = new Text(p.f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
 
     sb. loadFromFile(p.e_hover);
     sb2.loadFromFile(p.e_bMusic);
@@ -32,7 +32,7 @@ State(game, player)
     UI. setBuffer(sb);
     mus.setBuffer(sb2);
 
-    mus.play();
+    //mus.play();
 
     std::cout << "succesfully created drawables" << std::endl;
 
@@ -87,7 +87,7 @@ void MenuState::update(sf::RenderWindow* window)
             UI.play();
             sound1=false;
         }
-        std::cout << "button move success" << std::endl;
+        std::cout << "Text move success" << std::endl;
         s_play ->setPos(s_play->getX()+20, s_play->getY());
         b_play ->setPos(b_play->getX()+20, b_play->getY());
         play   ->setPos(play->getX()+20, play->getY());
@@ -110,7 +110,7 @@ void MenuState::update(sf::RenderWindow* window)
             UI.play();
             sound2=false;
         }
-        std::cout << "button move success" << std::endl;
+        std::cout << "Text move success" << std::endl;
         s_quit ->setPos(s_quit->getX()+20, s_quit->getY());
         b_quit ->setPos(b_quit->getX()+20, b_quit->getY());
         quit   ->setPos(quit->getX()+20, quit->getY());

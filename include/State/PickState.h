@@ -4,7 +4,7 @@
 #pragma once
 
 #include "State.h"
-#include "../Drawable/Button.h"
+#include "../Drawable/Text.h"
 #include "../Drawable/Sprite.h"
 #include <fstream>
 
@@ -21,10 +21,10 @@ private:
     sf::Event event;
     sf::Font font;
 
-    Button* wizardButton;
-    Button* paladinButton;
-    Button* samuraiButton;
-    Button* embark;
+    Text* wizardText;
+    Text* paladinText;
+    Text* samuraiText;
+    Text* embark;
 
     Sprite* wizard;
     Sprite* paladin;
