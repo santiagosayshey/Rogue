@@ -24,16 +24,22 @@ State(g, player)
     b_nin      = new Text(g->p->f_main, 50, c::Black, t::Bold, "NINJA", 220, 680);
     t_nin      = new Text(g->p->f_main, 50, c::White, t::Bold, "NINJA", 225, 675);
 
-    s_emb      = new Sprite(g->p->s_buttonBig,1500,500,46,14,7);
-    b_emb      = new Text(g->p->f_main, 50, c::Black, t::Bold, "EMBARK", 1550, 530);
-    t_emb      = new Text(g->p->f_main, 50, c::White, t::Bold, "EMBARK", 1555, 525);
+    s_emb      = new Sprite(g->p->s_buttonBig,1500,650,46,14,7);
+    b_emb      = new Text(g->p->f_main, 50, c::Black, t::Bold, "EMBARK", 1550, 680);
+    t_emb      = new Text(g->p->f_main, 50, c::White, t::Bold, "EMBARK", 1555, 675);
 
-    sb. loadFromFile(g->p->e_hover);
-    UI. setBuffer(sb);
+    UI. setBuffer(g->hover);
 
-    spr_wiz     = new Sprite(g->p->s_mage,670,65,64,64,12);
+    spr_wiz     = new Sprite(g->p->s_mage,620,65,64,64,12);
     spr_pal     = new Sprite(g->p->s_paladin,620,65,64,64,12);
     spr_nin     = new Sprite(g->p->s_ninja,670,65,64,64,12);
+
+    spr_wiz_stats = new Sprite(g->p->s_mag_stat,1500,320,1063,1063,0.3);
+    spr_pal_stats = new Sprite(g->p->s_pal_stat,1500,320,1063,1063,0.3);
+    spr_nin_stats = new Sprite(g->p->s_nin_stat,1500,320,1063,1063,0.3);
+
+    b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Choose Your Character...", 350, 900);
+    prompt   = new Text(g->p->f_main, 100, c::White, t::Bold, "Choose Your Character...", 360, 890);
 
 
 }  
@@ -185,12 +191,15 @@ void PickState::render(sf::RenderWindow* window)
 
     switch (c) {
         case 1:
+            spr_wiz_stats->draw(window);
             spr_wiz->draw(window);
             break;
         case 2:
+            spr_pal_stats->draw(window);
             spr_pal->draw(window);
             break;
         case 3:
+            spr_nin_stats->draw(window);
             spr_nin->draw(window);
             break;
     } 
@@ -210,7 +219,9 @@ void PickState::render(sf::RenderWindow* window)
     s_emb->draw(window);
     b_emb->draw(window);
     t_emb->draw(window);
+
+    b_prompt->draw(window);
+    prompt->draw(window);    
     
-    
-   window   ->display();
+    window   ->display();
 }

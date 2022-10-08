@@ -25,13 +25,8 @@ State(g, player)
     b_title   = new Text(g->p->f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
     title     = new Text(g->p->f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
 
-    sb. loadFromFile(g->p->e_hover);
-    sb2.loadFromFile(g->p->e_bMusic);
-
-    UI. setBuffer(sb);
-    mus.setBuffer(sb2);
-
-    //mus.play();
+    
+    UI. setBuffer(g->hover);
 
     std::cout << "succesfully created drawables" << std::endl;
 

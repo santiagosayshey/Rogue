@@ -48,28 +48,14 @@ private:
     Sprite* spr_pal;
     Sprite* spr_nin;
 
-    int c;
+    Sprite* spr_wiz_stats;
+    Sprite* spr_pal_stats;
+    Sprite* spr_nin_stats;
 
+    Text* prompt;
+    Text* b_prompt;
 
-
-
-
-
-/* 
-    Text* wizardText;
-    Text* paladinText;
-    Text* samuraiText;
-    Text* embark;
-
-    Sprite* wizard;
-    Sprite* paladin;
-    Sprite* samurai;
-
-    sf::Text paladinStats;
-    sf::Text wizardStats;
-    sf::Text samuraiStats;
- */
-   // int currentSel=1;
+    int c=1;
 
 };
 

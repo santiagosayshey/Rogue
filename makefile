@@ -1,4 +1,4 @@
 main: main.cpp  include/Instance/Path.cpp include/Entity/Enemy.cpp include/Entity/Entity.cpp include/Entity/Player.cpp include/Drawable/Sprite.cpp include/Drawable/Text.cpp include/Instance/Game.cpp include/State/PlayState.cpp include/State/MenuState.cpp include/State/State.cpp include/State/PickState.cpp include/State/MapState.cpp
-	g++ main.cpp include/Instance/Path.cpp include/Entity/Enemy.cpp include/Entity/Entity.cpp include/Entity/Player.cpp include/Drawable/Sprite.cpp include/Drawable/Text.cpp include/Instance/Game.cpp include/State/PlayState.cpp include/State/MenuState.cpp include/State/State.cpp include/State/PickState.cpp include/State/MapState.cpp -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -o main.out
+	g++ main.cpp include/Instance/Path.cpp include/Entity/Enemy.cpp include/Entity/Entity.cpp include/Entity/Player.cpp include/Drawable/Sprite.cpp include/Drawable/Text.cpp include/Instance/Game.cpp include/State/PlayState.cpp include/State/MenuState.cpp include/State/State.cpp include/State/PickState.cpp include/State/MapState.cpp -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -o main.exe
 	clear
-	./main.out
+	./main.exe

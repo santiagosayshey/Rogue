@@ -19,11 +19,13 @@ public:
     void setState(State* newState);
 
     Path* p = new Path;
+    sf::SoundBuffer hover;
 
 
 private:
     sf::RenderWindow* window;
     State* currentState;
+
     
 
     Player* player;
