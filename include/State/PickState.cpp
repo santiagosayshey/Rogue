@@ -3,51 +3,135 @@
 #include "../Entity/Player.h"
 #include "MapState.h"
 
+typedef sf::Color c;
+typedef sf::Text t;
 
-PickState::PickState(Game* game, Player* player):
-State(game, player)
+PickState::PickState(Game* g, Player* player):
+State(g, player)
 {
-    wizardButton     = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nWizard", 100, 300);
-    paladinButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nPaladin", 100, 500);
-    samuraiButton    = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "The \nSamurai", 100, 700);
-    embark           = new Button("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Embark!", 1600, 500);
 
-    wizard = new Sprite("assets/entity/Character/MAGE.png",850,400,64,64,10);
-    paladin  = new Sprite("assets/entity/Character/PALADIN.png",850,400,64,64,10);
-    samurai = new Sprite("assets/entity/Character/SAMURAI.png",950,500,48,48,10);
+    splash = new Sprite(g->p->s_charSplash,0,0,1920,1080,1);
 
-    font.loadFromFile("assets/entity/font/menu.ttf");
-    paladinStats.setFont(font);
-    paladinStats.setCharacterSize(30);
-    paladinStats.setFillColor(sf::Color::Black);
-    paladinStats.setString("Statistics:\nHealth:                75\nArmour:               40%\nAttack:                20\nAccuracy:            60%\nEvasion:              5%\nStrength:             Blunt\nWeakness:            Magic\nNeutral:              Bleed\n");
-    paladinStats.setPosition(1050,400);
+    s_wiz      = new Sprite(g->p->s_buttonBig,150,350,46,14,7);
+    b_wiz      = new Text(g->p->f_main, 50, c::Black, t::Bold, "MAGE", 240, 380);
+    t_wiz      = new Text(g->p->f_main, 50, c::White, t::Bold, "MAGE", 245, 375);
 
-    wizardStats.setFont(font);
-    wizardStats.setCharacterSize(30);
-    wizardStats.setFillColor(sf::Color::Black);
-    wizardStats.setString("Statistics:\nHealth:                50\nArmour:               0%\nAttack:                30\nAccuracy:            90%\nEvasion:              50%\nStrength:             Magic\nWeakness:            Bleed\nNeutral:              Blunt\n");
-    wizardStats.setPosition(1050,400);
+    s_pal      = new Sprite(g->p->s_buttonBig,150,500,46,14,7);
+    b_pal      = new Text(g->p->f_main, 50, c::Black, t::Bold, "PALADIN", 185, 530);
+    t_pal      = new Text(g->p->f_main, 50, c::White, t::Bold, "PALADIN", 190, 525);
 
-    samuraiStats.setFont(font);
-    samuraiStats.setCharacterSize(30);
-    samuraiStats.setFillColor(sf::Color::Black);
-    samuraiStats.setString("Statistics:\nHealth:                75\nArmour:               20%\nAttack:                5\nAccuracy:            80%\nEvasion:              30%\nStrength:             Bleed\nWeakness:            Blunt\nNeutral:              Magic\n");
-    samuraiStats.setPosition(1050,400);
+    s_nin      = new Sprite(g->p->s_buttonBig,150,650,46,14,7);
+    b_nin      = new Text(g->p->f_main, 50, c::Black, t::Bold, "NINJA", 220, 680);
+    t_nin      = new Text(g->p->f_main, 50, c::White, t::Bold, "NINJA", 225, 675);
 
-    currentSel = 1;
-    player->chooseRole(currentSel);
-    player->setChararacter(wizard);
+    s_emb      = new Sprite(g->p->s_buttonBig,1500,650,46,14,7);
+    b_emb      = new Text(g->p->f_main, 50, c::Black, t::Bold, "EMBARK", 1550, 680);
+    t_emb      = new Text(g->p->f_main, 50, c::White, t::Bold, "EMBARK", 1555, 675);
+
+    UI. setBuffer(g->hover);
+
+    spr_wiz     = new Sprite(g->p->s_mage,620,65,64,64,12);
+    spr_pal     = new Sprite(g->p->s_paladin,620,65,64,64,12);
+    spr_nin     = new Sprite(g->p->s_ninja,670,65,64,64,12);
+
+    spr_wiz_stats = new Sprite(g->p->s_mag_stat,1500,320,1063,1063,0.3);
+    spr_pal_stats = new Sprite(g->p->s_pal_stat,1500,320,1063,1063,0.3);
+    spr_nin_stats = new Sprite(g->p->s_nin_stat,1500,320,1063,1063,0.3);
+
+    b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Choose Your Character...", 350, 900);
+    prompt   = new Text(g->p->f_main, 100, c::White, t::Bold, "Choose Your Character...", 360, 890);
+
 
 }  
 
-PickState::~PickState()
+PickState::~PickState() 
 {
 
 }
 
 void PickState::update(sf::RenderWindow* window)
 {
+    if (!s_wiz->checkCollision(window))
+    {
+        s_wiz ->setPos(s_wiz->getX(), s_wiz->getY());
+        b_wiz ->setPos(b_wiz->getX(), b_wiz->getY());
+        t_wiz   ->setPos(t_wiz->getX(), t_wiz->getY());
+        sound1=true;
+    }
+    else
+    {
+        while (sound1)
+        {
+            UI.play();
+            sound1=false;
+        }
+        s_wiz ->setPos(s_wiz->getX()+20, s_wiz->getY());
+        b_wiz ->setPos(b_wiz->getX()+20, b_wiz->getY());
+        t_wiz   ->setPos(t_wiz->getX()+20, t_wiz->getY());
+
+    }
+
+    if (!s_pal->checkCollision(window))
+    {
+        s_pal ->setPos(s_pal->getX(), s_pal->getY());
+        b_pal ->setPos(b_pal->getX(), b_pal->getY());
+        t_pal   ->setPos(t_pal->getX(), t_pal->getY());
+        sound2=true;
+    }
+    else
+    {
+        while (sound2)
+        {
+            UI.play();
+            sound2=false;
+        }
+        s_pal ->setPos(s_pal->getX()+20, s_pal->getY());
+        b_pal ->setPos(b_pal->getX()+20, b_pal->getY());
+        t_pal   ->setPos(t_pal->getX()+20, t_pal->getY());
+
+    }
+
+    if (!s_nin->checkCollision(window))
+    {
+        s_nin ->setPos(s_nin->getX(), s_nin->getY());
+        b_nin ->setPos(b_nin->getX(), b_nin->getY());
+        t_nin   ->setPos(t_nin->getX(), t_nin->getY());
+        sound3=true;
+    }
+    else
+    {
+        while (sound3)
+        {
+            UI.play();
+            sound3=false;
+        }
+        s_nin ->setPos(s_nin->getX()+20, s_nin->getY());
+        b_nin ->setPos(b_nin->getX()+20, b_nin->getY());
+        t_nin   ->setPos(t_nin->getX()+20, t_nin->getY());
+
+    }
+
+    if (!s_emb->checkCollision(window))
+    {
+        s_emb ->setPos(s_emb->getX(), s_emb->getY());
+        b_emb ->setPos(b_emb->getX(), b_emb->getY());
+        t_emb   ->setPos(t_emb->getX(), t_emb->getY());
+        sound4=true;
+    }
+    else
+    {
+        while (sound4)
+        {
+            UI.play();
+            sound4=false;
+        }
+        s_emb ->setPos(s_emb->getX()+20, s_emb->getY());
+        b_emb ->setPos(b_emb->getX()+20, b_emb->getY());
+        t_emb   ->setPos(t_emb->getX()+20, t_emb->getY());
+
+    }
+
+
     while (window->pollEvent(event))
     {
         // "close requested" event: we close the window
@@ -57,79 +141,87 @@ void PickState::update(sf::RenderWindow* window)
                 break;
             }
             case sf::Event::MouseButtonReleased: {
-                if (wizardButton->checkCollision(window))
+                if (s_wiz->checkCollision(window))
                 {
-                    currentSel = 1;
-                    player->chooseRole(currentSel);
-                    player->setChararacter(wizard);
-                    std::cout << "Click" << std::endl;
+                    c = 1;
+                    player->chooseRole(c);
+                    player->setChararacter(spr_wiz);
                     break;
                 }
-                if (paladinButton->checkCollision(window))
+                if (s_pal->checkCollision(window))
                 {
-                    currentSel = 2;
-                    player->chooseRole(currentSel);
-                    player->setChararacter(paladin);
-                    
-                    std::cout << "Click" << std::endl;
+                    c = 2;
+                    player->chooseRole(c);
+                    player->setChararacter(spr_pal);
                     break;
                 }
-                if (samuraiButton->checkCollision(window))
+                if (s_nin->checkCollision(window))
                 {
-                    currentSel = 3;
-                    player->chooseRole(currentSel);
-                    player->setChararacter(samurai);
-                    std::cout << "Click" << std::endl;
+                    c = 3;
+                    player->chooseRole(c);
+                    player->setChararacter(spr_nin);
                     break;
                 }
-                if (embark->checkCollision(window))
+                if (s_emb->checkCollision(window))
                 {
                     game->setState(new MapState(game, player));
-                    std::cout << "Click" << std::endl;
                     break;
                 }
+                break;
             }
             case sf::Event::KeyReleased: {
-                if (sf::Keyboard::Space)
+                if (sf::Keyboard::Space) {
                     game->setState(new MenuState(game, player));
-            }
+                    break;
+                }
+            } 
+            
         }
     }
-
-    wizardButton   ->update(window);
-    paladinButton  ->update(window);
-    samuraiButton  ->update(window);
-    embark         ->update(window);
-
-    wizard->animation(true);
-    paladin->animation(true);
-    samurai->animation(true);
+    spr_wiz->animation(true);
+    spr_pal->animation(true);
+    spr_nin->animation(true);
 }
 
 void PickState::render(sf::RenderWindow* window)
 {
     window   ->clear(sf::Color::White);
 
-    wizardButton  ->draw(window);
-    paladinButton ->draw(window);
-    samuraiButton ->draw(window);
-    embark        ->draw(window);
+    splash->draw(window);
 
-    switch (currentSel) {
+    switch (c) {
         case 1:
-            wizard->draw(window);
-            window->draw(wizardStats);
+            spr_wiz_stats->draw(window);
+            spr_wiz->draw(window);
             break;
         case 2:
-            paladin->draw(window);
-            window->draw(paladinStats);
+            spr_pal_stats->draw(window);
+            spr_pal->draw(window);
             break;
         case 3:
-            samurai->draw(window);
-            window->draw(samuraiStats);
+            spr_nin_stats->draw(window);
+            spr_nin->draw(window);
             break;
-    }
+    } 
+
+    s_wiz->draw(window);
+    b_wiz->draw(window);
+    t_wiz->draw(window);
+
+    s_pal->draw(window);
+    b_pal->draw(window);
+    t_pal->draw(window);
+
+    s_nin->draw(window);
+    b_nin->draw(window);
+    t_nin->draw(window);
+
+    s_emb->draw(window);
+    b_emb->draw(window);
+    t_emb->draw(window);
+
+    b_prompt->draw(window);
+    prompt->draw(window);    
     
     window   ->display();
 }
-

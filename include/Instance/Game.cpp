@@ -5,8 +5,10 @@
 Game::Game(int width, int height)
 {
     player = new Player;
-    this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Test");
+    this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Test",sf::Style::Close);
     this->currentState = new MenuState(this, player);
+
+    hover.loadFromFile(p->e_hover);
 }
 
 Game::~Game()

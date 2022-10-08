@@ -5,7 +5,7 @@
 
 #include "State.h"
 #include "../Entity/Enemy.h"
-#include "../Drawable/Button.h"
+#include "../Drawable/Text.h"
 #include "../Drawable/Sprite.h"
 
 class PlayState : public State
@@ -23,15 +23,15 @@ private:
     sf::Clock clock;
 
     Enemy* enemy;
-    Button* attack;
-    Button* attackP;
+    Text* attack;
+    Text* attackP;
 
     Sprite* wiz;
     Sprite* wizhealth;
 
-    Button* health;
-    Button* healthShadow;
-    Button* armour;
+    Text* health;
+    Text* healthShadow;
+    Text* armour;
 
     bool playerDead = false;
     bool enemyDead = false;

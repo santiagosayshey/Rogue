@@ -3,7 +3,6 @@
 
 int main()
 {
-    static Path p;
     Game* game = new Game(1920,1080);
     game->run();
     

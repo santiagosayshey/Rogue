@@ -1,35 +1,34 @@
 #include "MenuState.h"
 #include "../Instance/Game.h"
 #include "PickState.h"
-#include "../Instance/Path.cpp"
+#include <iostream>
 
 typedef sf::Color c;
 typedef sf::Text t;
 
-MenuState::MenuState(Game* game, Player* player):
-State(game, player)
+
+
+MenuState::MenuState(Game* g, Player* player):
+State(g, player)
 {
 
-    splash  = new Sprite(p.s_splash,0,0,1280,720,1.5);
+    splash    = new Sprite(g->p->s_splash,0,0,1280,720,1.5);
 
-    s_play = new Sprite(p.s_button,150,400,30,14,7);
-    s_quit = new Sprite(p.s_button,150,550,30,14,7);
+    s_play    = new Sprite(g->p->s_button,150,400,30,14,7);
+    b_play    = new Text(g->p->f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
+    play      = new Text(g->p->f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
 
-    b_play    = new Button(p.f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
-    b_quit    = new Button(p.f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
+    s_quit    = new Sprite(g->p->s_button,150,550,30,14,7);
+    b_quit    = new Text(g->p->f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
+    quit      = new Text(g->p->f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
 
-    play    = new Button(p.f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
-    quit    = new Button(p.f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
+    b_title   = new Text(g->p->f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
+    title     = new Text(g->p->f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
 
-    b_title    = new Button(p.f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
-    title    = new Button(p.f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
+    
+    UI. setBuffer(g->hover);
 
-    sb.loadFromFile(p.e_hover);
-    UI.setBuffer(sb);
-
-    sb2.loadFromFile(p.e_bMusic);
-    mus.setBuffer(sb2);
-    mus.play();
+    std::cout << "succesfully created drawables" << std::endl;
 
 }
 
@@ -44,26 +43,29 @@ MenuState::~MenuState()
     delete quit;
     delete b_title;
     delete title;
+
+    std::cout << "succesfully deleted drawables" << std::endl;
+
 }
 
 void MenuState::update(sf::RenderWindow* window)
 
 {
-    
-    s_play->update(window);
-    s_quit->update(window);
+    splash   ->update(window);
+    s_play   ->update(window);
+    b_play   ->update(window);
+    play     ->update(window);
+    s_quit   ->update(window);
+    b_quit   ->update(window);
+    quit     ->update(window);
+    b_title  ->update(window);
+    title    ->update(window);
 
-    b_play->update(window);
-    b_quit->update(window);
-
-    play->update(window);
-    quit->update(window);
-
-    b_title->update(window);
-    title->update(window);
+    //std::cout << "succesfully updated drawables" << std::endl;
 
     if (!s_play->checkCollision(window))
     {
+        //std::cout << "no collision success" << std::endl;
 
         s_play ->setPos(s_play->getX(), s_play->getY());
         b_play ->setPos(b_play->getX(), b_play->getY());
@@ -72,11 +74,14 @@ void MenuState::update(sf::RenderWindow* window)
     }
     else
     {
+        std::cout << "collision success" << std::endl;
         while (sound1)
         {
+            std::cout << "sound success" << std::endl;
             UI.play();
             sound1=false;
         }
+        std::cout << "Text move success" << std::endl;
         s_play ->setPos(s_play->getX()+20, s_play->getY());
         b_play ->setPos(b_play->getX()+20, b_play->getY());
         play   ->setPos(play->getX()+20, play->getY());
@@ -85,7 +90,7 @@ void MenuState::update(sf::RenderWindow* window)
 
     if (!s_quit->checkCollision(window))
     {
-
+        //std::cout << "no collision success" << std::endl;
         s_quit ->setPos(s_quit->getX(), s_quit->getY());
         b_quit ->setPos(b_quit->getX(), b_quit->getY());
         quit   ->setPos(quit->getX(), quit->getY());
@@ -95,9 +100,11 @@ void MenuState::update(sf::RenderWindow* window)
     {
         while (sound2)
         {
+            std::cout << "sound success" << std::endl;
             UI.play();
             sound2=false;
         }
+        std::cout << "Text move success" << std::endl;
         s_quit ->setPos(s_quit->getX()+20, s_quit->getY());
         b_quit ->setPos(b_quit->getX()+20, b_quit->getY());
         quit   ->setPos(quit->getX()+20, quit->getY());
@@ -105,10 +112,8 @@ void MenuState::update(sf::RenderWindow* window)
     }
 
 
-    // events  
     while (window->pollEvent(event))
     {
-        // "close requested" event: we close the window
         switch (event.type) {
             case sf::Event::Closed:
                 window->close();
@@ -116,13 +121,14 @@ void MenuState::update(sf::RenderWindow* window)
             case sf::Event::MouseButtonReleased: {
                 if (play->checkCollision(window)) {
                     UI.play();
-                    std::cout << "Click" << std::endl;
+                    mus.stop();
+                    std::cout << "click successful" << std::endl;
                     game->setState(new PickState(game, player));
                     break;
                 }
                 if (quit->checkCollision(window)) {
                     UI.play();
-                    std::cout << "Click" << std::endl;
+                    std::cout << "click successful" << std::endl;
                     window->close();
                     break;
                 }
@@ -135,22 +141,20 @@ void MenuState::update(sf::RenderWindow* window)
 
 void MenuState::render(sf::RenderWindow* window)
 {
-    window->clear(c::Green);
+    window     ->clear(c::White);
 
-    splash->draw(window);
+    splash     ->draw(window);
+    s_play     ->draw(window);
+    b_play     ->draw(window);
+    play       ->draw(window);
+    s_quit     ->draw(window);
+    b_quit     ->draw(window);
+    quit       ->draw(window);
+    b_title    ->draw(window);
+    title      ->draw(window);
 
-    s_play->draw(window);
-    s_quit->draw(window);
+    window     ->display();
 
-    b_play->draw(window);
-    b_quit->draw(window);
-
-    play   ->draw(window);
-    quit   ->draw(window);
-
-    b_title->draw(window);
-    title->draw(window);
-
-    window->display();
+    //std::cout << "draw successful" << std::endl;
 }
 
