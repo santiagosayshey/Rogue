@@ -7,6 +7,7 @@
 #include "../State/State.h"
 #include "../State/MenuState.h"
 #include "../Entity/Player.h"
+#include "Path.h"
 
 class Game
 {
@@ -17,10 +18,13 @@ public:
     void run();
     void setState(State* newState);
 
+    Path* p = new Path;
+
 
 private:
     sf::RenderWindow* window;
     State* currentState;
+    
 
     Player* player;
 };

@@ -1,7 +1,6 @@
 #include "MenuState.h"
 #include "../Instance/Game.h"
 #include "PickState.h"
-#include "../Instance/Path.cpp"
 #include <iostream>
 
 typedef sf::Color c;
@@ -9,25 +8,25 @@ typedef sf::Text t;
 
 
 
-MenuState::MenuState(Game* game, Player* player):
-State(game, player)
+MenuState::MenuState(Game* g, Player* player):
+State(g, player)
 {
 
-    splash    = new Sprite(p.s_splash,0,0,1280,720,1.5);
+    splash    = new Sprite(g->p->s_splash,0,0,1280,720,1.5);
 
-    s_play    = new Sprite(p.s_button,150,400,30,14,7);
-    b_play    = new Text(p.f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
-    play      = new Text(p.f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
+    s_play    = new Sprite(g->p->s_button,150,400,30,14,7);
+    b_play    = new Text(g->p->f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
+    play      = new Text(g->p->f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
 
-    s_quit    = new Sprite(p.s_button,150,550,30,14,7);
-    b_quit    = new Text(p.f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
-    quit      = new Text(p.f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
+    s_quit    = new Sprite(g->p->s_button,150,550,30,14,7);
+    b_quit    = new Text(g->p->f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
+    quit      = new Text(g->p->f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
 
-    b_title   = new Text(p.f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
-    title     = new Text(p.f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
+    b_title   = new Text(g->p->f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
+    title     = new Text(g->p->f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
 
-    sb. loadFromFile(p.e_hover);
-    sb2.loadFromFile(p.e_bMusic);
+    sb. loadFromFile(g->p->e_hover);
+    sb2.loadFromFile(g->p->e_bMusic);
 
     UI. setBuffer(sb);
     mus.setBuffer(sb2);
