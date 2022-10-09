@@ -2,30 +2,40 @@
 #include "../Instance/Game.h"
 #include "MenuState.h"
 #include "PickState.h"
+#include <string>
 
+typedef sf::Color c;
+typedef sf::Text t;
 
-PlayState::PlayState(Game* game, Player* player):
-State(game,player)
+PlayState::PlayState(Game* g, Player* player):
+State(g,player)
 {
+    UI. setBuffer(g->hover);
+
+    player->getSprite()->setPos(100,100);
+
+    //player_s_health = new Sprite();
+    player_b_health = new Text(g->p->f_main,50,c::Black, t::Bold, "Health: "+std::to_string(player->getHealth()), 200,200);
+    player_t_health = new Text(g->p->f_main,50,c::White, t::Bold, "Health: "+std::to_string(player->getHealth()), 205,195);
     
-    attack = new Text("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack", 100, 300);
-    attackP = new Text("assets/entity/font/menu.ttf", 50, sf::Color::Black, sf::Text::Bold, "Attack\nPlayer", 100, 500);
 
-    wiz = new Sprite("assets/UI/necromancer.png",100,100,26,36,5);
-    wizhealth = new Sprite("assets/UI/heart.png",500,500,268,268,0.2);
+    s_attack = new Sprite(g->p->s_button,150,500,30,14,7);
+    b_attack = new Text(g->p->f_main, 50, c::Black, t::Bold, "AttacK", 170, 530);
+    t_attack = new Text(g->p->f_main, 50, c::White, t::Bold, "AttacK", 175, 525);
 
-    health = new Text("assets/entity/font/menu.ttf", 25, sf::Color(255, 172, 28), sf::Text::Bold, "75/75", 170, 50);
-    healthShadow = new Text("assets/entity/font/menu.ttf", 25, sf::Color::Black, sf::Text::Bold, "75/75", 173, 53);
+    s_defend = new Sprite(g->p->s_button,150,700,30,14,7);
+    b_defend = new Text(g->p->f_main, 50, c::Black, t::Bold, "Defend", 170, 730);
+    t_defend = new Text(g->p->f_main, 50, c::White, t::Bold, "Defend", 175, 725);
 
-    enemy = new Enemy;
+    s_endTurn = new Sprite(g->p->s_buttonBig,150,700,46,14,7);
+    b_endTurn = new Text(g->p->f_main, 50, c::Black, t::Bold, "End Turn", 170, 730);
+    t_endTurn = new Text(g->p->f_main, 50, c::White, t::Bold, "Defend", 175, 725);
 
-    sEnemy = new Sprite("assets/entity/Character/GOLEM.png",1400,400,64,64,10);
-    sEnemy->flip();
+    b_prompt_player = new Text(g->p->f_main, 100, c::Black, t::Bold, "Player Turn!", 350, 900);
+    t_prompt_player = new Text(g->p->f_main, 100, c::White, t::Bold, "Player Turn!", 360, 890);
 
-    enemy->setChararacter(sEnemy);
-    enemy->updateRole(4);
-    enemy->updateDamage(5);
-    enemy->updateHealth(100);
+    b_prompt_enemy = new Text(g->p->f_main, 100, c::Black, t::Bold, "Enemy Turn!", 350, 900);
+    t_prompt_enemy = new Text(g->p->f_main, 100, c::White, t::Bold, "Enemy Turn!", 360, 890);
 }
 
 PlayState::~PlayState()
@@ -35,89 +45,156 @@ PlayState::~PlayState()
 
 void PlayState::update(sf::RenderWindow* window)
 {
-
-    wiz->update(window);
-    wizhealth->update(window);
-
-    while (window->pollEvent(event))
+    switch (currentTurn)
     {
-        // "close requested" event: we close the window
-        switch (event.type) {
-            case sf::Event::Closed: {
-                window->close();
-                break;
+        case true: {
+
+            if (!s_attack->checkCollision(window))
+            {
+                s_attack ->setPos(s_attack->getX(), s_attack->getY());
+                b_attack ->setPos(b_attack->getX(), b_attack->getY());
+                t_attack   ->setPos(t_attack->getX(), t_attack->getY());
+                sound1=true;
             }
-            case sf::Event::MouseButtonReleased: {
-                if (attack->checkCollision(window)) {
-                    player->attack(enemy);
-                    break;
+            else
+            {
+                while (sound1)
+                {
+                    UI.play();
+                    sound1=false;
                 }
-                if (attackP->checkCollision(window)) {
-                    enemy->attack(player);
-                    break;
+                s_attack ->setPos(s_attack->getX()+20, s_attack->getY());
+                b_attack ->setPos(b_attack->getX()+20, b_attack->getY());
+                t_attack   ->setPos(t_attack->getX()+20, t_attack->getY());
+
+            }
+
+            if (!s_defend->checkCollision(window))
+            {
+                s_defend ->setPos(s_defend->getX(), s_defend->getY());
+                b_defend ->setPos(b_defend->getX(), b_defend->getY());
+                t_defend   ->setPos(t_defend->getX(), t_defend->getY());
+                sound1=true;
+            }
+            else
+            {
+                while (sound2)
+                {
+                    UI.play();
+                    sound1=false;
+                }
+                s_defend ->setPos(s_defend->getX()+20, s_defend->getY());
+                b_defend ->setPos(b_defend->getX()+20, b_defend->getY());
+                t_defend   ->setPos(t_defend->getX()+20, t_defend->getY());
+
+            }
+
+
+
+            while (window->pollEvent(event))
+            {
+                // "close requested" event: we close the window
+                switch (event.type) {
+                    case sf::Event::Closed: {
+                        window->close();
+                        break;
+                    }
+                    case sf::Event::MouseButtonReleased: {
+                        break;
+                    }
+                    case sf::Event::KeyReleased: {
+                        if (s_attack->checkCollision(window)) 
+                        {
+                            choice = 0;
+                        }
+                    }
+                    default: {
+                        break;
+                    }
                 }
             }
-            case sf::Event::KeyReleased: { 
-                if (sf::Keyboard::Space)
-                    //game->setState(new PickState(game, player));
-                    break;
+
+            if (clock.getElapsedTime().asSeconds() > 1)
+            {
+                currentTurn = false;
+                clock.restart();
             }
-            default:
-                break;
+            break;
+            
         }
+
+
+
+        
+        case false:
+        
+            while (window->pollEvent(event))
+            {
+                // "close requested" event: we close the window
+                switch (event.type) {
+                    case sf::Event::Closed: {
+                        window->close();
+                        break;
+                    }
+                    case sf::Event::MouseButtonReleased: {
+                        break;
+                    }
+                    case sf::Event::KeyReleased: {
+                    }
+                    default: {
+                        break;
+                    }
+                }
+            }
+
+            
+            if (clock.getElapsedTime().asSeconds() > 1)
+            {
+                currentTurn = true;
+                clock.restart();
+            }
+            break;
+        default:
+            break;
     }
 
-    
-    attack->update(window);
-    attackP->update(window);
 
-    // always update the frames and animate but only play death animations if previous attack animation is finished
-    if (player->update(window) && enemy->getHealth() < 1 && enemyDead == false) {
-        switch (enemy->getRole()) {
-            case 4:
-                enemy->getSprite()->updateAnimation(13,4);
-                break;
-        }
-        enemyDead = true;
-    }
-    if (enemy->update(window) && player->getHealth() < 1 && playerDead == false) {
-        switch (player->getRole()) {
-            case 1:
-                player->getSprite()->updateAnimation(7,8);
-                break;
-            case 2:           
-                player->getSprite()->updateAnimation(9,6);
-                break;
-            case 3:
-                player->getSprite()->updateAnimation(5,8);
-                break;
-        }
-        playerDead = true;
-    }
 
-    healthShadow->updateText(std::to_string(player->getHealth()));
-    healthShadow->update(window);
 
-    health->updateText(std::to_string(player->getHealth()));
-    health->update(window);
+
+
+
+    player->getSprite()->animation(true);
 }
 
 void PlayState::render(sf::RenderWindow* window)
 {
-    window   ->clear(sf::Color::White);
+    window   ->clear(sf::Color::Green);
 
-    wiz->draw(window);
+    player->getSprite()->draw(window);
 
+    player_b_health->draw(window);
+    player_t_health->draw(window);
 
-    attack->draw(window);
-    attackP->draw(window);
+    s_attack->draw(window);
+    b_attack->draw(window);
+    t_attack->draw(window);
 
-    enemy->draw(window);
-    player->draw(window);
-    wizhealth->draw(window);
-    healthShadow->draw(window);
-    health->draw(window);
+    s_defend->draw(window);
+    b_defend->draw(window);
+    t_defend->draw(window);
 
-    
+    switch (currentTurn)
+    {
+        case true:
+            b_prompt_player->draw(window);
+            t_prompt_player->draw(window);
+            break;
+        case false:
+            b_prompt_enemy->draw(window);
+            t_prompt_enemy->draw(window);
+            break;
+    }
+
     window   ->display();
 }

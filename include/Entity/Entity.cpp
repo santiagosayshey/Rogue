@@ -2,43 +2,10 @@
 
 #include <iostream>
 
-void Entity::chooseRole(int role)
-{
-    this->role = role;
-    switch (role) {
-        case 1:
-            updateHealth(50);
-            updateArmour(0);
-            updateDamage(30);
-            updateAccuracy(90);
-            updateEvasion(50);
-            break;
-        case 2:
-            updateHealth(75);
-            updateArmour(40);
-            updateDamage(20);
-            updateAccuracy(60);
-            updateEvasion(5);
-            break;
-        case 3:
-            updateHealth(75);
-            updateArmour(20);
-            updateDamage(5);
-            updateAccuracy(80);
-            updateEvasion(30);
-            break;
-    }
-}
 
-void Entity::setChararacter(Sprite* sprite)
-{
-    this->sprite = sprite;
-}
 
-void Entity::updateRole(int role)
-{
-    this->role = role;
-}
+
+
 
 void Entity::updateHealth(int health)
 {
@@ -50,31 +17,16 @@ void Entity::updateArmour(int armour)
     this->armour = armour;
 }
 
-void Entity::updateDamage(int damage)
+void Entity::updatePower(int Power)
 {
-    this->damage = damage;
+    this->power = power;
 }
 
-void Entity::updateAccuracy(int accuracy)
-{
-    this->accuracy = accuracy;
-}
-
-void Entity::updateEvasion(int evasion)
-{
-    this->evasion = evasion;
-}
-
-int Entity::getRole()
-{
-    return this->role;
-}
 
 Sprite* Entity::getSprite()
 {
     return this->sprite;
 }
-
 
 int Entity::getHealth()
 {
@@ -86,20 +38,17 @@ int Entity::getArmour()
     return this->armour;    
 }
 
-int Entity::getDamage()
+int Entity::getPower()
 {
-    return this->damage;
+    return this->power;
 }
 
-int Entity::getAccuracy()
+void Entity::setCharacter(Sprite* sprite, int character)
 {
-    return this->accuracy;
+    this->sprite = sprite;
+    this->character = character;
 }
 
-int Entity::getEvasion()
-{
-    return this->evasion;
-}
 
 bool Entity::update(sf::RenderWindow* window)
 {
@@ -114,7 +63,7 @@ void Entity::draw(sf::RenderWindow* window)
 
 void Entity::attack(Entity* entity)
 {
-    switch (role) {
+    switch (character) {
         case 1:
             sprite->updateAnimation(7,3);
             break;
@@ -130,7 +79,7 @@ void Entity::attack(Entity* entity)
     }
 
     std::cout << entity->getHealth() << std::endl;
-    entity->updateHealth(entity->getHealth() - getDamage());
+    entity->updateHealth(entity->getHealth() - getPower());
     std::cout << entity->getHealth() << std::endl;
 
 }

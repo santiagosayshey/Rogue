@@ -143,23 +143,29 @@ void PickState::update(sf::RenderWindow* window)
             case sf::Event::MouseButtonReleased: {
                 if (s_wiz->checkCollision(window))
                 {
-                    c = 1;
-                    player->chooseRole(c);
-                    player->setChararacter(spr_wiz);
+                    choice = 1;
+                    player->setCharacter(spr_wiz,1);
+                    player->updateHealth(50);
+                    player->updateArmour(0);
+                    player->updatePower(30);
                     break;
                 }
                 if (s_pal->checkCollision(window))
                 {
-                    c = 2;
-                    player->chooseRole(c);
-                    player->setChararacter(spr_pal);
+                    choice = 2;
+                    player->setCharacter(spr_pal,2);
+                    player->updateHealth(100);
+                    player->updateArmour(50);
+                    player->updatePower(15);
                     break;
                 }
                 if (s_nin->checkCollision(window))
                 {
-                    c = 3;
-                    player->chooseRole(c);
-                    player->setChararacter(spr_nin);
+                    choice = 3;
+                    player->setCharacter(spr_nin,3);
+                    player->updateHealth(75);
+                    player->updateArmour(25);
+                    player->updatePower(20);
                     break;
                 }
                 if (s_emb->checkCollision(window))
@@ -191,7 +197,7 @@ void PickState::render(sf::RenderWindow* window)
 
     splash->draw(window);
 
-    switch (c) {
+    switch (choice) {
         case 1:
             spr_wiz_stats->draw(window);
             spr_wiz->draw(window);

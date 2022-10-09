@@ -4,6 +4,7 @@
 #pragma once
 
 #include "State.h"
+#include "../Drawable/Sprite.h"
 
 class MapState : public State
 {
@@ -15,13 +16,22 @@ public:
     void render(sf::RenderWindow* window);
 
 private:
-    sf::Texture bgTex;
-    sf::Sprite bgSpr;
+    Sprite* mapTemplate;
+
+    Sprite* lvl;
+    Sprite* lvlHover;
+    Sprite* enemy;
+    Sprite* enemyHover;
 
 
+    bool hover1;
+
+    bool sound1;
+
+    sf::SoundBuffer sb;
+    sf::Sound UI;
 
     sf::Event event;
-
 };
 
 #endif

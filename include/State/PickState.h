@@ -55,7 +55,7 @@ private:
     Text* prompt;
     Text* b_prompt;
 
-    int c=1;
+    int choice=1;
 
 };
 

@@ -10,26 +10,17 @@
 class Entity
 {
 public:
-    void chooseRole(int role);
-     
-    void setChararacter(Sprite* sprite);
-
-    void updateRole(int role);
     void updateHealth(int health);
     void updateArmour(int armour);
-    void updateDamage(int damage);
-    void updateAccuracy(int accuracy);
-    void updateEvasion(int evasion);
-
-    int getRole();
-
-    Sprite* getSprite();
+    void updatePower(int Power);
 
     int getHealth();
     int getArmour();
-    int getDamage();
-    int getAccuracy();
-    int getEvasion();
+    int getPower();
+
+    void setCharacter(Sprite* sprite, int character);
+
+    Sprite* getSprite();
 
     void attack(Entity* entity);
 
@@ -39,18 +30,13 @@ public:
 protected:
     Sprite* sprite;
 
-    int role;
-
     int health;
     int armour;
-    int damage;
-    int accuracy;
-    int evasion;
-    int strength;
-    int weakness;
-    int neutral;
+    int power;
 
-    bool dead;
+    int character;
+
+    
 
 };
 
