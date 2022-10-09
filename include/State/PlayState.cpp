@@ -62,6 +62,8 @@ void PlayState::update(sf::RenderWindow* window)
                     //game->setState(new PickState(game, player));
                     break;
             }
+            default:
+                break;
         }
     }
 

@@ -22,10 +22,13 @@ void MapState::update(sf::RenderWindow* window)
             case sf::Event::Closed: {
                 window->close();
                 break;
-            case sf::Event::KeyReleased:
+            }
+            case sf::Event::KeyReleased: {
                 if (sf::Keyboard::Space)
                     game->setState(new PlayState(game, player));
             }
+            default:
+                break;
         }
     }
 }

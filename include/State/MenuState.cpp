@@ -133,6 +133,8 @@ void MenuState::update(sf::RenderWindow* window)
                     break;
                 }
             }
+            default:
+                break;
         }
         
     }

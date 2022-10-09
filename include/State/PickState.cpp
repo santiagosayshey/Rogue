@@ -174,7 +174,9 @@ void PickState::update(sf::RenderWindow* window)
                     game->setState(new MenuState(game, player));
                     break;
                 }
-            } 
+            }
+            default:
+                break; 
             
         }
     }
@@ -201,6 +203,8 @@ void PickState::render(sf::RenderWindow* window)
         case 3:
             spr_nin_stats->draw(window);
             spr_nin->draw(window);
+            break;
+        default:
             break;
     } 
 
