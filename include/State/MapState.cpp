@@ -18,13 +18,10 @@ State(g, player)
     enemy = new Sprite(g->p->s_enemy,490,490,64,64,2);
     enemyHover = new Sprite(g->p->s_enemyHover,490,490,64,64,2);
 
-    UI. setBuffer(g->hover);
+    UI.setBuffer(g->hover);
 }
 
-MapState::~MapState()
-{
-
-}
+MapState::~MapState(){}
 
 void MapState::update(sf::RenderWindow* window)
 {

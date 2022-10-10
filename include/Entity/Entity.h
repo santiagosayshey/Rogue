@@ -6,6 +6,7 @@
 #include "SFML/Audio.hpp"
 
 #include "../Drawable/Sprite.h"
+#include "../Drawable/DynamicSprite.h"
 
 class Entity
 {
@@ -21,10 +22,10 @@ public:
     int getPower();
 
     // set player's character, with 'sprite' and 'character' integer as parameters
-    void setCharacter(Sprite* sprite, int character);
+    void setCharacter(DynamicSprite* sprite, int character);
 
     // return sprite 
-    Sprite* getSprite();
+    DynamicSprite* getSprite();
 
     // attacks opponent
     void attack(Entity* entity);
@@ -35,7 +36,7 @@ public:
 
 protected:
     // pointer to a sprite
-    Sprite* sprite;
+    DynamicSprite* sprite;
 
     // stats of character
     int health;

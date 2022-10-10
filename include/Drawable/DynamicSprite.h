@@ -8,11 +8,21 @@ class DynamicSprite : public Sprite
 {
 public:
     // constructor
-    DynamicSprite();
+    DynamicSprite(std::string texture, int x, int y, int width, int height, float scale);
     ~DynamicSprite();
 
-private:
+    // update the current animation values to be used in animation()
+    void updateAnimation(int numFrames, int row);
 
+    // update the current texture rectangle of the current sprite sheet based
+    // number of frames and current row defined by updateAnimation
+    bool animation(bool repeat);
+
+private:
+    // values used to define animation()
+    int numFrames;
+    int currentFrame;
+    int row;
 };
 
 #endif

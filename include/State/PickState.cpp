@@ -30,9 +30,9 @@ State(g, player)
 
     UI. setBuffer(g->hover);
 
-    spr_wiz     = new Sprite(g->p->s_mage,620,65,64,64,12);
-    spr_pal     = new Sprite(g->p->s_paladin,620,65,64,64,12);
-    spr_nin     = new Sprite(g->p->s_ninja,670,65,64,64,12);
+    spr_wiz     = new DynamicSprite(g->p->s_mage,620,65,64,64,12);
+    spr_pal     = new DynamicSprite(g->p->s_paladin,620,65,64,64,12);
+    spr_nin     = new DynamicSprite(g->p->s_ninja,670,65,64,64,12);
 
     spr_wiz_stats = new Sprite(g->p->s_mag_stat,1500,320,1063,1063,0.3);
     spr_pal_stats = new Sprite(g->p->s_pal_stat,1500,320,1063,1063,0.3);
