@@ -3,6 +3,7 @@
 #include "MenuState.h"
 #include "PickState.h"
 #include <string>
+#include <iostream>
 
 typedef sf::Color c;
 typedef sf::Text t;
@@ -27,9 +28,9 @@ State(g,player)
     b_defend = new Text(g->p->f_main, 50, c::Black, t::Bold, "Defend", 170, 730);
     t_defend = new Text(g->p->f_main, 50, c::White, t::Bold, "Defend", 175, 725);
 
-    s_endTurn = new Sprite(g->p->s_buttonBig,150,700,46,14,7);
+/*     s_endTurn = new Sprite(g->p->s_buttonBig,150,700,46,14,7);
     b_endTurn = new Text(g->p->f_main, 50, c::Black, t::Bold, "End Turn", 170, 730);
-    t_endTurn = new Text(g->p->f_main, 50, c::White, t::Bold, "Defend", 175, 725);
+    t_endTurn = new Text(g->p->f_main, 50, c::White, t::Bold, "Defend", 175, 725); */
 
     b_prompt_player = new Text(g->p->f_main, 100, c::Black, t::Bold, "Player Turn!", 350, 900);
     t_prompt_player = new Text(g->p->f_main, 100, c::White, t::Bold, "Player Turn!", 360, 890);
@@ -74,14 +75,14 @@ void PlayState::update(sf::RenderWindow* window)
                 s_defend ->setPos(s_defend->getX(), s_defend->getY());
                 b_defend ->setPos(b_defend->getX(), b_defend->getY());
                 t_defend   ->setPos(t_defend->getX(), t_defend->getY());
-                sound1=true;
+                sound2=true;
             }
             else
             {
                 while (sound2)
                 {
                     UI.play();
-                    sound1=false;
+                    sound2=false;
                 }
                 s_defend ->setPos(s_defend->getX()+20, s_defend->getY());
                 b_defend ->setPos(b_defend->getX()+20, b_defend->getY());
@@ -105,7 +106,14 @@ void PlayState::update(sf::RenderWindow* window)
                     case sf::Event::KeyReleased: {
                         if (s_attack->checkCollision(window)) 
                         {
+                            clock.restart();
+                            while (clock.getElapsedTime().asSeconds() < 3)
+                            {
+                                std::cout << count << std::endl;
+                                count++;
+                            }
                             choice = 0;
+                            currentTurn = false;
                         }
                     }
                     default: {
@@ -113,12 +121,11 @@ void PlayState::update(sf::RenderWindow* window)
                     }
                 }
             }
-
-            if (clock.getElapsedTime().asSeconds() > 1)
-            {
-                currentTurn = false;
-                clock.restart();
-            }
+                                        while (clock.getElapsedTime().asSeconds() < 3)
+                            {
+                                std::cout << count << std::endl;
+                                count++;
+                            }
             break;
             
         }
@@ -147,12 +154,13 @@ void PlayState::update(sf::RenderWindow* window)
                 }
             }
 
-            
-            if (clock.getElapsedTime().asSeconds() > 1)
+            clock.restart();
+            while (clock.getElapsedTime().asSeconds() < 3)
             {
-                currentTurn = true;
-                clock.restart();
+
             }
+            choice = 0;
+            currentTurn = false;
             break;
         default:
             break;

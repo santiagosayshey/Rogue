@@ -59,6 +59,7 @@ private:
 
     sf::SoundBuffer sb;
     sf::Sound UI;
+    int count = 1;
 
 };
 
