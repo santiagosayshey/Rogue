@@ -9,51 +9,51 @@
 
 void Entity::updateHealth(int health)
 {
-    this->health = health;
+    this->health = health; // update character health variable
 }
 
 void Entity::updateArmour(int armour)
 {
-    this->armour = armour;
+    this->armour = armour; // update character armour variable
 }
 
 void Entity::updatePower(int Power)
 {
-    this->power = power;
+    this->power = power; // update character power variable
 }
 
 
 Sprite* Entity::getSprite()
 {
-    return this->sprite;
+    return this->sprite; // return character sprite
 }
 
 int Entity::getHealth()
 {
-    return this->health;
+    return this->health; // return character health
 }
 
 int Entity::getArmour()
 {
-    return this->armour;    
+    return this->armour; // return character armour 
 }
 
 int Entity::getPower()
 {
-    return this->power;
+    return this->power; // return character power
 }
 
 void Entity::setCharacter(Sprite* sprite, int character)
 {
-    this->sprite = sprite;
-    this->character = character;
+    this->sprite = sprite; // set character sprite
+    this->character = character; // set character
 }
 
 
 bool Entity::update(sf::RenderWindow* window)
 {
 
-    return sprite->animation(false);
+    return sprite->animation(false); // disable animation repeat
 }   
 
 void Entity::draw(sf::RenderWindow* window)
@@ -78,8 +78,8 @@ void Entity::attack(Entity* entity)
             break;
     }
 
-    std::cout << entity->getHealth() << std::endl;
-    entity->updateHealth(entity->getHealth() - getPower());
-    std::cout << entity->getHealth() << std::endl;
+    std::cout << entity->getHealth() << std::endl; // output health value
+    entity->updateHealth(entity->getHealth() - getPower()); // update health value
+    std::cout << entity->getHealth() << std::endl; // output health 
 
 }

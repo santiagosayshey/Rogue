@@ -4,15 +4,15 @@
 
 Game::Game(int width, int height)
 {
-    player = new Player;
-    this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Test",sf::Style::Close);
-    this->currentState = new MenuState(this, player);
-    hover.loadFromFile(p->e_hover);
+    player = new Player; // initialise player
+    this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Test",sf::Style::Close); // declare and create a new render window
+    this->currentState = new MenuState(this, player); // set currentState to Menu
+    hover.loadFromFile(p->e_hover); // play sound
 }
 
 Game::~Game()
 {
-
+    
 }
 
 void Game::run()
@@ -28,7 +28,7 @@ void Game::run()
 
 void Game::setState(State* newState)
 {
-    currentState = newState;
+    currentState = newState; // Change state of 
 }
 
  

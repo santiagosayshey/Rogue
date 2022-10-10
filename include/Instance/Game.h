@@ -12,11 +12,11 @@
 class Game
 {
 public:
-    Game(int width, int height);
-    ~Game();
+    Game(int width, int height); 
+    ~Game(); 
 
-    void run();
-    void setState(State* newState);
+    void run(); 
+    void setState(State* newState);  
 
     Path* p = new Path;
     sf::SoundBuffer hover;
