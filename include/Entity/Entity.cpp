@@ -9,61 +9,72 @@
 
 void Entity::updateHealth(int health)
 {
-    this->health = health;
+    // update character health variable
+    this->health = health; 
 }
 
 void Entity::updateArmour(int armour)
 {
-    this->armour = armour;
+    // update character armour variable
+    this->armour = armour; 
 }
 
 void Entity::updatePower(int Power)
 {
-    this->power = power;
+    // update character power variable
+    this->power = power; 
 }
-
 
 Sprite* Entity::getSprite()
 {
-    return this->sprite;
+    // return character sprite
+    return this->sprite; 
 }
 
 int Entity::getHealth()
 {
-    return this->health;
+    // return character health
+    return this->health; 
 }
 
 int Entity::getArmour()
 {
-    return this->armour;    
+    // return character armour 
+    return this->armour; 
 }
 
 int Entity::getPower()
 {
-    return this->power;
+    // return character power
+    return this->power; 
 }
 
 void Entity::setCharacter(Sprite* sprite, int character)
 {
+    // set character sprite
     this->sprite = sprite;
-    this->character = character;
+
+    // set character
+    this->character = character; 
 }
 
 
 bool Entity::update(sf::RenderWindow* window)
 {
-
-    return sprite->animation(false);
+    // disable animation repeat, play idle animation
+    return sprite->animation(false); 
 }   
 
 void Entity::draw(sf::RenderWindow* window)
 {
+    // draw sprite in the render window
     sprite->draw(window);
 }
 
 void Entity::attack(Entity* entity)
 {
     switch (character) {
+        // chooses which animation within the sprite sheet to play
         case 1:
             sprite->updateAnimation(7,3);
             break;
@@ -78,8 +89,12 @@ void Entity::attack(Entity* entity)
             break;
     }
 
-    std::cout << entity->getHealth() << std::endl;
-    entity->updateHealth(entity->getHealth() - getPower());
-    std::cout << entity->getHealth() << std::endl;
+    // output health value
+    std::cout << entity->getHealth() << std::endl; 
 
+    // update health value
+    entity->updateHealth(entity->getHealth() - getPower()); 
+
+    // output final health value 
+    std::cout << entity->getHealth() << std::endl; 
 }

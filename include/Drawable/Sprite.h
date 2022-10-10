@@ -7,7 +7,6 @@
 class Sprite : public Drawable
 {
 public:
-
     // constuctor - init size, scale and position. Set chosen sf::sprite
     Sprite(std::string texture, int x, int y, int width, int height, float scale);
 

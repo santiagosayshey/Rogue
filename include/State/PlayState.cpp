@@ -28,7 +28,7 @@ State(g,player)
     b_defend = new Text(g->p->f_main, 50, c::Black, t::Bold, "Defend", 170, 730);
     t_defend = new Text(g->p->f_main, 50, c::White, t::Bold, "Defend", 175, 725);
 
-/*     s_endTurn = new Sprite(g->p->s_buttonBig,150,700,46,14,7);
+/*  s_endTurn = new Sprite(g->p->s_buttonBig,150,700,46,14,7);
     b_endTurn = new Text(g->p->f_main, 50, c::Black, t::Bold, "End Turn", 170, 730);
     t_endTurn = new Text(g->p->f_main, 50, c::White, t::Bold, "Defend", 175, 725); */
 

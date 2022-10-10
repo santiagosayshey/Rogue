@@ -5,11 +5,16 @@
 MapState::MapState(Game* g, Player* player):
 State(g, player)
 {
+    // set map template to mapSplash.png, with size scaled to 1920 x 1080
     mapTemplate = new Sprite(g->p->s_mapSplash,0,0,1920,1080,1);
 
+    // set levels on the map 
     lvl = new Sprite(g->p->s_lvlTemp,450,450,14,14,15);
+
+    // create a change in colour in the levels when collision occurs with mouse
     lvlHover = new Sprite(g->p->s_lvlHover,450,450,14,14,15);
 
+    // create enemies
     enemy = new Sprite(g->p->s_enemy,490,490,64,64,2);
     enemyHover = new Sprite(g->p->s_enemyHover,490,490,64,64,2);
 
