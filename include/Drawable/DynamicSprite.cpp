@@ -1,6 +1,8 @@
 #include "DynamicSprite.h"
 
-DynamicSprite::DynamicSprite(){
+DynamicSprite::DynamicSprite(std::string texture, int x, int y, int width, int height, float scale):
+Sprite(texture,x,y,width,height,scale)
+{
     // set the animation values to play the idle animation on init
     currentFrame = 0;
     numFrames = 7;

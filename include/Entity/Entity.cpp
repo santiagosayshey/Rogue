@@ -25,7 +25,7 @@ void Entity::updatePower(int Power)
     this->power = power; 
 }
 
-Sprite* Entity::getSprite()
+DynamicSprite* Entity::getSprite()
 {
     // return character sprite
     return this->sprite; 
@@ -49,7 +49,7 @@ int Entity::getPower()
     return this->power; 
 }
 
-void Entity::setCharacter(Sprite* sprite, int character)
+void Entity::setCharacter(DynamicSprite* sprite, int character)
 {
     // set character sprite
     this->sprite = sprite;

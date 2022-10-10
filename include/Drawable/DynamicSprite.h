@@ -8,7 +8,7 @@ class DynamicSprite : public Sprite
 {
 public:
     // constructor
-    DynamicSprite();
+    DynamicSprite(std::string texture, int x, int y, int width, int height, float scale);
     ~DynamicSprite();
 
     // update the current animation values to be used in animation()

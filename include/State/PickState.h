@@ -6,6 +6,7 @@
 #include "State.h"
 #include "../Drawable/Text.h"
 #include "../Drawable/Sprite.h"
+#include "../Drawable/DynamicSprite.h"
 
 class PickState : public State
 {
@@ -44,9 +45,9 @@ private:
     sf::SoundBuffer sb;
     sf::Sound UI;
 
-    Sprite* spr_wiz;
-    Sprite* spr_pal;
-    Sprite* spr_nin;
+    DynamicSprite* spr_wiz;
+    DynamicSprite* spr_pal;
+    DynamicSprite* spr_nin;
 
     Sprite* spr_wiz_stats;
     Sprite* spr_pal_stats;
