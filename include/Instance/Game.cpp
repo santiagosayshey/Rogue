@@ -21,10 +21,10 @@ Game::~Game(){}
 
 void Game::run()
 {
-    // the run function used to determine whether if game is running
+    // flow control for the game (game loop)
     while (window->isOpen())
     {
-        // while window is still open, continue to update and render window
+        // game loop iterates as long as the window is open
         this->currentState->update(window);
         this->currentState->render(window);
     }
