@@ -6,7 +6,10 @@
 class Enemy
 {
 public:
+    // default constructor
     Enemy();
+
+    // default destructor
     ~Enemy();
 
 private:

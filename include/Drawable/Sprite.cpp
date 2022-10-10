@@ -4,7 +4,6 @@
 Sprite::Sprite(std::string texture, int x, int y, int width, int height, float scale)
 
 {
-
     // set init values as parameters using this keyword. Needed for getx,y()
     this->x = x;
     this->y = y;

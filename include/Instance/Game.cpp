@@ -4,22 +4,27 @@
 
 Game::Game(int width, int height)
 {
-    player = new Player; // initialise player
-    this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Test",sf::Style::Close); // declare and create a new render window
-    this->currentState = new MenuState(this, player); // set currentState to Menu
-    hover.loadFromFile(p->e_hover); // play start-up sound effects
+    // initialise player
+    player = new Player; 
+
+    // declare a create a new render window
+    this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Test",sf::Style::Close);
+
+    // set currentState to MenuState; load menu page
+    this->currentState = new MenuState(this, player);
+
+    // access audio file 'e_hover'
+    hover.loadFromFile(p->e_hover);
 }
 
-Game::~Game()
-{
-    
-}
+Game::~Game(){}
 
 void Game::run()
 {
-
+    // the run function used to determine whether if game is running
     while (window->isOpen())
     {
+        // while window is still open, continue to update and render window
         this->currentState->update(window);
         this->currentState->render(window);
     }

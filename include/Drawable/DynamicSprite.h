@@ -7,6 +7,7 @@
 class DynamicSprite : public Sprite
 {
 public:
+    // constructor
     DynamicSprite();
     ~DynamicSprite();
 

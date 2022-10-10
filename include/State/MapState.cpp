@@ -5,6 +5,7 @@
 MapState::MapState(Game* g, Player* player):
 State(g, player)
 {
+    // set map template to mapSplash.png, with size scaled to 1920 x 1080
     mapTemplate = new Sprite(g->p->s_mapSplash,0,0,1920,1080,1);
 
     lvl = new Sprite(g->p->s_lvlTemp,450,450,14,14,15);
