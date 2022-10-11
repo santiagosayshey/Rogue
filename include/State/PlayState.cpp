@@ -202,29 +202,33 @@ void PlayState::update(sf::RenderWindow* window)
             
         case 1:
         {
-            b_prompt->updateText("Enemy Turn!");
-            t_prompt->updateText("Enemy Turn!");
-
-            enemyCount++;
-
-            if (enemyCount > 150)
+            if (!enemyDead)
             {
-                enemy->getSprite()->updateAnimation(8,3);
-                enemy->attack(player);
-                
-                player_b_health->updateText("Health: " + std::to_string(player->getHealth()));
-                player_t_health->updateText("Health: " + std::to_string(player->getHealth()));
+                b_prompt->updateText("Enemy Turn!");
+                t_prompt->updateText("Enemy Turn!");
 
-                enemyCount=0;
-                state = 0;
-            }            
+                enemyCount++;
+
+                if (enemyCount > 300)
+                {
+                    enemy->getSprite()->updateAnimation(8,3);
+                    enemy->attack(player);
+                    
+                    player_b_health->updateText("Health: " + std::to_string(player->getHealth()));
+                    player_t_health->updateText("Health: " + std::to_string(player->getHealth()));
+
+                    enemyCount=0;
+                    state = 0;
+                }            
+            }
+            else {state = 0;}
             break;
         }
     }
 
     if (player->getHealth() == 0 && playerDead == false)
     {
-        switch (enemy->returnChar())
+        switch (player->returnChar())
         {
             case 1:
                 player->getSprite()->updateAnimation(7,8);
@@ -233,7 +237,7 @@ void PlayState::update(sf::RenderWindow* window)
                 player->getSprite()->updateAnimation(9,6);
                 break;
             case 3:
-                player->getSprite()->updateAnimation(5,8);
+                player->getSprite()->updateAnimation(8,6);
                 break;
             
         }

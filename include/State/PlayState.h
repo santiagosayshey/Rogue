@@ -90,6 +90,8 @@ private:
         bool enemyDead = false;
 
         int enemyCount = 0;
+        int playerDeadCount = 0;
+        int enemyDeadCount = 0;
 
 
 
