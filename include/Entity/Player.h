@@ -6,7 +6,6 @@
 #include <iostream>
 
 #include "Entity.h"
-#include "Enemy.h"
 
 class Player : public Entity
 {

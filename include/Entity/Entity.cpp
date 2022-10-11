@@ -7,10 +7,11 @@
 
 
 
-void Entity::updateHealth(int health)
+int Entity::updateHealth(int health)
 {
     // update character health variable
-    this->health = health; 
+    this->health = health;
+    return getHealth(); 
 }
 
 void Entity::updateArmour(int armour)
@@ -19,7 +20,7 @@ void Entity::updateArmour(int armour)
     this->armour = armour; 
 }
 
-void Entity::updatePower(int Power)
+void Entity::updatePower(int power)
 {
     // update character power variable
     this->power = power; 
@@ -62,7 +63,7 @@ void Entity::setCharacter(DynamicSprite* sprite, int character)
 bool Entity::update(sf::RenderWindow* window)
 {
     // disable animation repeat, play idle animation
-    return sprite->animation(false); 
+    return sprite->animation(false,false); 
 }   
 
 void Entity::draw(sf::RenderWindow* window)
@@ -71,30 +72,20 @@ void Entity::draw(sf::RenderWindow* window)
     sprite->draw(window);
 }
 
+int Entity::returnChar()
+{
+    return character;
+}
+
 void Entity::attack(Entity* entity)
 {
-    switch (character) {
-        // chooses which animation within the sprite sheet to play
-        case 1:
-            sprite->updateAnimation(7,3);
-            break;
-        case 2:           
-            sprite->updateAnimation(7,3);
-            break;
-        case 3:
-            sprite->updateAnimation(7,3);
-            break;
-        case 4:
-            sprite->updateAnimation(8,2);
-            break;
-    }
-
-    // output health value
-    std::cout << entity->getHealth() << std::endl; 
-
     // update health value
-    entity->updateHealth(entity->getHealth() - getPower()); 
-
-    // output final health value 
-    std::cout << entity->getHealth() << std::endl; 
+    if ( entity->getHealth() - getPower() > 0 )
+    {
+        entity->updateHealth(entity->getHealth() - getPower()); 
+    }
+    else
+    {
+        entity->updateHealth(0);
+    }
 }

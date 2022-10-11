@@ -16,7 +16,10 @@ public:
 
     // update the current texture rectangle of the current sprite sheet based
     // number of frames and current row defined by updateAnimation
-    bool animation(bool repeat);
+    bool animation(bool repeat, bool death);
+
+    // return the sf sprite
+    sf::Sprite* getSFSprite();
 
 private:
     // values used to define animation()

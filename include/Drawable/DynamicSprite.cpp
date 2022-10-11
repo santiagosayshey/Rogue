@@ -18,10 +18,10 @@ void DynamicSprite::updateAnimation(int numFrames, int row)
     this->row = row;
 }
 
-bool DynamicSprite::animation(bool repeat)
+bool DynamicSprite::animation(bool repeat, bool death)
 {
     // check whether the current time since the last update is greater than 0.1 seconds
-    if (clock.getElapsedTime().asSeconds() > 0.1f)
+    if (clock.getElapsedTime().asSeconds() > 0.08f)
     
     {
         // if true, restart the clock and update the current frame of the texture rectangle
@@ -34,26 +34,24 @@ bool DynamicSprite::animation(bool repeat)
             /* while the current frame is less than 8, its currently within its first row of animation. 
             update the texture rectangle such that it moves to the right 1 'size' sprite. Keep
             repeating this until it has moved 8 times. */ 
-            if (currentFrame < 8)
-            {
-                sprite->setTextureRect(sf::IntRect(width * currentFrame, height * row, width, height));
-                currentFrame++;
 
-            }
-
-            // do the same thing as the previous if statement but increase the row value + 1 size sprite
-            else if (currentFrame < 16)
+            // increase the row height by 1 every 8 frames
+/*             if (currentFrame > 8)
             {
                 sprite->setTextureRect(sf::IntRect(width * currentFrame, height * row + height, width, height));
                 currentFrame++;
-            }
-
-            // do the same thing as the previous if statement but increase the row value + 1 size sprite
-            else if (currentFrame < 24)
+            } */
+            if (currentFrame > 8)
             {
-                sprite->setTextureRect(sf::IntRect(width * currentFrame, height * row + 2*height, width, height));
+                sprite->setTextureRect(sf::IntRect(64 *(currentFrame-9), 64 * row + 64, 64, 64));
                 currentFrame++;
             }
+            else
+            {
+                sprite->setTextureRect(sf::IntRect(64 * currentFrame, 64 * row, 64, 64));
+                currentFrame++;
+            }  
+            
         }
         /* if the current animation is finished, use the parameter 'repeat' to either repeat the current animation
         or set update the animation values such that the idle animation is played instead */
@@ -64,10 +62,13 @@ bool DynamicSprite::animation(bool repeat)
                 // set current frame to 0 IF the animation needs to be repeated
                 currentFrame=0;
             }
-            else
+            else if(death == false)
+            {
                 // if not repeated, play idle animation
                 updateAnimation(7, 0);
                 return true;
+            }
+            else {}
         }
         
     }

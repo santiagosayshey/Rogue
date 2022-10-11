@@ -4,7 +4,7 @@
 #pragma once
 
 #include "State.h"
-#include "../Entity/Enemy.h"
+#include "../Entity/Golem.h"
 #include "../Drawable/Text.h"
 #include "../Drawable/Sprite.h"
 
@@ -19,47 +19,80 @@ public:
 
 
 private:
-    sf::Event event;
-    sf::Clock clock;
+    // player
+        sf::Event event;
+        sf::Clock clock;
 
-    Sprite* s_attack;
-    Text* b_attack;
-    Text* t_attack;
+        Sprite* s_attack;
+        Text* b_attack;
+        Text* t_attack;
 
-    Sprite* s_defend;
-    Text* b_defend;
-    Text* t_defend;
+        Sprite* s_dodge;
+        Text* b_dodge;
+        Text* t_dodge;
 
-    Sprite* player_s_health;
-    Text* player_b_health;
-    Text* player_t_health;
+        Sprite* s_endTurn;
+        Text* b_endTurn;
+        Text* t_endTurn;
 
-    Sprite* player_s_armour;
-    Text* player_b_armour;
-    Text* player_t_armour;
+        Sprite* player_s_health;
+        Text* player_b_health;
+        Text* player_t_health;
 
-    Sprite* player_s_power;
-    Text* player_b_power;
-    Text* player_t_power;
+        Sprite* player_s_armour;
+        Text* player_b_armour;
+        Text* player_t_armour;
 
-    Text* b_prompt_player;
-    Text* t_prompt_player;
-    Text* b_prompt_enemy;
-    Text* t_prompt_enemy;
+        Sprite* player_s_power;
+        Text* player_b_power;
+        Text* player_t_power;
 
-    bool currentTurn=true;
+        Text* b_prompt;
+        Text* t_prompt;
 
-    int choice;
-    bool decision;
 
-    bool sound1 = true;
-    bool sound2 = true;
-    bool sound3 = true;
-    bool sound4 = true;
+        bool currentTurn=true;
 
-    sf::SoundBuffer sb;
-    sf::Sound UI;
-    int count = 1;
+        int choice;
+        bool decision;
+
+        bool sound1 = true;
+        bool sound2 = true;
+        bool sound3 = true;
+        bool sound4 = true;
+
+        sf::SoundBuffer sb;
+        sf::Sound UI;
+        int count = 1;
+
+        int state = 0;
+        bool playerChoice = true;
+
+        std::string currentChoice = "AttacK";
+
+        bool playerDead = false;
+
+    // enemy
+        Golem* enemy;
+
+        Sprite* enemy_s_health;
+        Text* enemy_b_health;
+        Text* enemy_t_health;
+
+        Sprite* enemy_s_armour;
+        Text* enemy_b_armour;
+        Text* enemy_t_armour;
+
+        Sprite* enemy_s_power;
+        Text* enemy_b_power;
+        Text* enemy_t_power;
+
+        bool enemyDead = false;
+
+        int enemyCount = 0;
+
+
+
 
 };
 

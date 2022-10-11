@@ -12,7 +12,7 @@ class Entity
 {
 public:
     // update individual stats of character
-    void updateHealth(int health);
+    int updateHealth(int health);
     void updateArmour(int armour);
     void updatePower(int Power);
 
@@ -27,12 +27,15 @@ public:
     // return sprite 
     DynamicSprite* getSprite();
 
-    // attacks opponent
+    // attacks another entity
     void attack(Entity* entity);
 
-    // update the render window
+    // update and draw the render window
     bool update(sf::RenderWindow* window);
     void draw(sf::RenderWindow* window);
+
+    // return the type of character chosen
+    int returnChar();
 
 protected:
     // pointer to a sprite

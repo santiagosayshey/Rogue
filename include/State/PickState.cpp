@@ -41,7 +41,11 @@ State(g, player)
     b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Choose Your Character...", 350, 900);
     prompt   = new Text(g->p->f_main, 100, c::White, t::Bold, "Choose Your Character...", 360, 890);
 
-
+    choice=1;
+    player->setCharacter(spr_wiz,1);
+    player->updateHealth(50);
+    player->updateArmour(0);
+    player->updatePower(30);
 }  
 
 PickState::~PickState() 
@@ -145,9 +149,10 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     choice = 1;
                     player->setCharacter(spr_wiz,1);
-                    player->updateHealth(50);
+                    player->updateHealth(1000);
                     player->updateArmour(0);
                     player->updatePower(30);
+                    std::cout << player->getPower() << std::endl;
                     break;
                 }
                 if (s_pal->checkCollision(window))
@@ -157,6 +162,7 @@ void PickState::update(sf::RenderWindow* window)
                     player->updateHealth(100);
                     player->updateArmour(50);
                     player->updatePower(15);
+                    std::cout << player->getPower() << std::endl;
                     break;
                 }
                 if (s_nin->checkCollision(window))
@@ -166,6 +172,7 @@ void PickState::update(sf::RenderWindow* window)
                     player->updateHealth(75);
                     player->updateArmour(25);
                     player->updatePower(20);
+                    std::cout << player->getPower() << std::endl;
                     break;
                 }
                 if (s_emb->checkCollision(window))
@@ -186,9 +193,9 @@ void PickState::update(sf::RenderWindow* window)
             
         }
     }
-    spr_wiz->animation(true);
-    spr_pal->animation(true);
-    spr_nin->animation(true);
+    spr_wiz->animation(true,false);
+    spr_pal->animation(true,false);
+    spr_nin->animation(true,false);
 }
 
 void PickState::render(sf::RenderWindow* window)
