@@ -7,13 +7,13 @@ Game::Game(int width, int height)
     // initialise player
     player = new Player; 
 
-    // declare a create a new render window
+    // create a new render window
     this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Test",sf::Style::Close);
 
-    // set currentState to MenuState; load menu page
+    // set currentState to MenuState
     this->currentState = new MenuState(this, player);
 
-    // access audio file 'e_hover'
+    // load audio file into sound buffer
     hover.loadFromFile(p->e_hover);
 }
 
@@ -21,10 +21,10 @@ Game::~Game(){}
 
 void Game::run()
 {
-    // flow control for the game (game loop)
+    // check whether the window is open or not
     while (window->isOpen())
     {
-        // game loop iterates as long as the window is open
+        // if open, let the current state update and render the current window
         this->currentState->update(window);
         this->currentState->render(window);
     }
@@ -33,7 +33,8 @@ void Game::run()
 
 void Game::setState(State* newState)
 {
-    currentState = newState; // Change game state 
+    // change game state 
+    currentState = newState; 
 }
 
  

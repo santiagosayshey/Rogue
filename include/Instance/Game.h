@@ -18,7 +18,7 @@ public:
     // default destructor
     ~Game(); 
 
-    // determines whether if game is still running
+    // starts the game by initialising the game loop
     void run();
 
     // sets current game state
