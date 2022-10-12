@@ -25,6 +25,9 @@ State(g,player)
         player_b_power = new Text(g->p->f_main,50,c::Black, t::Bold, "Power: "+std::to_string(player->getPower()), 200,300);
         player_t_power = new Text(g->p->f_main,50,c::White, t::Bold, "Power: "+std::to_string(player->getPower()), 205,295);
 
+        b_player_choice = new Text(g->p->f_main, 50, c::Black, t::Bold, "Player Choice: " + currentChoice, 600, 100);
+        t_player_choice = new Text(g->p->f_main, 50, c::White, t::Bold, "Player Choice: " + currentChoice, 605, 95);
+
             // buttons
             s_attack = new Sprite(g->p->s_button,150,500,30,14,7);
             b_attack = new Text(g->p->f_main, 50, c::Black, t::Bold, "AttacK", 170, 530);
@@ -38,8 +41,8 @@ State(g,player)
             b_endTurn = new Text(g->p->f_main, 50, c::Black, t::Bold, "End Turn", 1320, 930);
             t_endTurn = new Text(g->p->f_main, 50, c::White, t::Bold, "End Turn", 1325, 925);
 
-        b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Choice: " + currentChoice, 350, 900);
-        t_prompt = new Text(g->p->f_main, 100, c::White, t::Bold, "Choice: " + currentChoice, 360, 890);
+        b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Player Turn!", 350, 900);
+        t_prompt = new Text(g->p->f_main, 100, c::White, t::Bold, "Player Turn!", 360, 890);
 
     // enemy
         enemy = new Golem(g);
@@ -53,6 +56,7 @@ State(g,player)
 
         enemy_b_power = new Text(g->p->f_main,50,c::Black, t::Bold, "Power: "+std::to_string(enemy->getPower()), 1300,300);
         enemy_t_power = new Text(g->p->f_main,50,c::White, t::Bold, "Power: "+std::to_string(enemy->getPower()), 1305,295);
+
 }
 
 PlayState::~PlayState()
@@ -66,6 +70,8 @@ void PlayState::update(sf::RenderWindow* window)
     {
         case 0:
         {
+            b_prompt->updateText("Player Turn!");
+            t_prompt->updateText("Player Turn!");
             // button feedback
             if (!s_attack->checkCollision(window))
             {
@@ -169,6 +175,7 @@ void PlayState::update(sf::RenderWindow* window)
                             }
                             else if (currentChoice == "Dodge")
                             {
+                                enemy->updatePower(0);
                                 switch (player->returnChar())
                                 {
                                     case 1:
@@ -195,8 +202,8 @@ void PlayState::update(sf::RenderWindow* window)
                     }
                 }
             }
-            b_prompt->updateText("Choice: " + currentChoice);
-            t_prompt->updateText("Choice: " + currentChoice);
+            b_player_choice->updateText("Choice: " + currentChoice);
+            t_player_choice->updateText("Choice: " + currentChoice);
             break;
         }
             
@@ -213,6 +220,7 @@ void PlayState::update(sf::RenderWindow* window)
                 {
                     enemy->getSprite()->updateAnimation(8,3);
                     enemy->attack(player);
+                    enemy->updatePower(enemy->getOGPower());
                     
                     player_b_health->updateText("Health: " + std::to_string(player->getHealth()));
                     player_t_health->updateText("Health: " + std::to_string(player->getHealth()));
@@ -313,17 +321,15 @@ void PlayState::render(sf::RenderWindow* window)
     enemy_b_power->draw(window);
     enemy_t_power->draw(window);
 
-/*     switch (currentTurn)
+    switch (state)
     {
-        case true:
-            b_prompt_player->draw(window);
-            t_prompt_player->draw(window);
+        case 0:
+            b_player_choice->draw(window);
+            t_player_choice->draw(window);
             break;
-        case false:
-            b_prompt_enemy->draw(window);
-            t_prompt_enemy->draw(window);
+        case 1:
             break;
-    } */
+    }
 
     window   ->display();
 }

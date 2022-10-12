@@ -93,6 +93,11 @@ private:
         int playerDeadCount = 0;
         int enemyDeadCount = 0;
 
+        Text* b_player_choice;
+        Text* t_player_choice;
+        Text* b_enemy_choice;
+        Text* t_enemy_choice;
+
 
 
 

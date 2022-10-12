@@ -12,7 +12,10 @@ public:
     Golem(Game* g);
     ~Golem();
 
+    int getOGPower();
+
 private:
+    int originalPow=20;
 
 };
 
