@@ -44,8 +44,8 @@ State(g,player)
         b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Player Turn!", 350, 900);
         t_prompt = new Text(g->p->f_main, 100, c::White, t::Bold, "Player Turn!", 360, 890);
 
-        b_gameOver = new Text(g->p->f_main, 100, c::Black, t::Bold, "GAME OVER!", 350, 900);
-        t_gameOver = new Text(g->p->f_main, 100, c::Red, t::Bold, "GAME OVER!", 360, 890);
+        b_overPrompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "GAME OVER!", 350, 900);
+        t_overPrompt = new Text(g->p->f_main, 100, c::Red, t::Bold, "GAME OVER!", 360, 890);
     // enemy
         enemy = new Golem(g);
         enemy->getSprite()->flip();
@@ -237,7 +237,6 @@ void PlayState::update(sf::RenderWindow* window)
 
         case 2:
         {
-            std::cout << "state switched to 2" << std::endl;
             while (window->pollEvent(event))
             {
                 switch (event.type) 
@@ -247,6 +246,25 @@ void PlayState::update(sf::RenderWindow* window)
                         if (sf::Keyboard::Space)
                         {
                             game->setState(new MenuState(game, player));
+                            break;
+                        }
+                    }
+                }
+            }
+            break;
+        }
+
+        case 3:
+        {
+            while (window->pollEvent(event))
+            {
+                switch (event.type) 
+                {
+                    case sf::Event::KeyReleased:
+                    {
+                        if (sf::Keyboard::Space)
+                        {
+                            game->setState(game->map);
                             break;
                         }
                     }
@@ -297,6 +315,10 @@ void PlayState::update(sf::RenderWindow* window)
 
     if (enemyDead)
     {
+        state =3;
+        b_overPrompt->updateText("YOU WON!");
+        t_overPrompt->updateText("YOU WON!");
+        
         enemy ->getSprite()->animation(false,true);
     }
     else
@@ -354,9 +376,12 @@ void PlayState::render(sf::RenderWindow* window)
         case 1:
             break;
         case 2:
-            b_gameOver->draw(window);
-            t_gameOver->draw(window);
+            b_overPrompt->draw(window);
+            t_overPrompt->draw(window);
             break;
+        case 3:
+            b_overPrompt->draw(window);
+            t_overPrompt->draw(window);
     }
 
     window   ->display();

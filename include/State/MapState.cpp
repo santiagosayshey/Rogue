@@ -19,6 +19,8 @@ State(g, player)
     enemyHover = new Sprite(g->p->s_enemyHover,490,490,64,64,2);
 
     UI.setBuffer(g->hover);
+
+    g->map = this;
 }
 
 MapState::~MapState(){}

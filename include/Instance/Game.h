@@ -6,6 +6,7 @@
 #include "SFML/Graphics.hpp"
 #include "../State/State.h"
 #include "../State/MenuState.h"
+#include "../State/MapState.h"
 #include "../Entity/Player.h"
 #include "Path.h"
 
@@ -27,6 +28,9 @@ public:
     // creates a path to access audio and visual files
     Path* p = new Path;
 
+    // map pointer
+    MapState* map;
+
     // initiate hover, which will be used to access audio file "e_hover" 
     sf::SoundBuffer hover;
 
@@ -40,6 +44,8 @@ private:
 
     // create a pointer to player
     Player* player;
+
+
 };
 
 #endif
