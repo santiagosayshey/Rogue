@@ -44,6 +44,8 @@ State(g,player)
         b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Player Turn!", 350, 900);
         t_prompt = new Text(g->p->f_main, 100, c::White, t::Bold, "Player Turn!", 360, 890);
 
+        b_gameOver = new Text(g->p->f_main, 100, c::Black, t::Bold, "GAME OVER!", 350, 900);
+        t_gameOver = new Text(g->p->f_main, 100, c::Red, t::Bold, "GAME OVER!", 360, 890);
     // enemy
         enemy = new Golem(g);
         enemy->getSprite()->flip();
@@ -232,6 +234,26 @@ void PlayState::update(sf::RenderWindow* window)
             else {state = 0;}
             break;
         }
+
+        case 2:
+        {
+            std::cout << "state switched to 2" << std::endl;
+            while (window->pollEvent(event))
+            {
+                switch (event.type) 
+                {
+                    case sf::Event::KeyReleased:
+                    {
+                        if (sf::Keyboard::Space)
+                        {
+                            game->setState(new MenuState(game, player));
+                            break;
+                        }
+                    }
+                }
+            }
+            break;
+        }
     }
 
     if (player->getHealth() == 0 && playerDead == false)
@@ -264,6 +286,8 @@ void PlayState::update(sf::RenderWindow* window)
 
     if (playerDead)
     {
+        state =2;
+        
         player ->getSprite()->animation(false,true);
     }
     else
@@ -328,6 +352,10 @@ void PlayState::render(sf::RenderWindow* window)
             t_player_choice->draw(window);
             break;
         case 1:
+            break;
+        case 2:
+            b_gameOver->draw(window);
+            t_gameOver->draw(window);
             break;
     }
 
