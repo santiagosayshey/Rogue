@@ -99,8 +99,11 @@ private:
         Text* t_enemy_choice;
 
 
-        Text* b_overPrompt;
-        Text* t_overPrompt;
+        Text* b_gameOver;
+        Text* t_gameOver;
+
+        Text* b_gameWon;
+        Text* t_gameWon;
 
 };
 

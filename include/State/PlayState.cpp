@@ -44,8 +44,12 @@ State(g,player)
         b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Player Turn!", 350, 900);
         t_prompt = new Text(g->p->f_main, 100, c::White, t::Bold, "Player Turn!", 360, 890);
 
-        b_overPrompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "GAME OVER!", 350, 900);
-        t_overPrompt = new Text(g->p->f_main, 100, c::Red, t::Bold, "GAME OVER!", 360, 890);
+        b_gameOver = new Text(g->p->f_main, 100, c::Black, t::Bold, "GAME OVER!", 600, 500);
+        t_gameOver = new Text(g->p->f_main, 100, c::Red, t::Bold, "GAME OVER!", 610, 490);
+
+        b_gameWon = new Text(g->p->f_main, 100, c::Black, t::Bold, "YOU WON!", 600, 500);
+        t_gameWon = new Text(g->p->f_main, 100, c::Green, t::Bold, "YOU WON!", 610, 490);
+
     // enemy
         enemy = new Golem(g);
         enemy->getSprite()->flip();
@@ -304,9 +308,13 @@ void PlayState::update(sf::RenderWindow* window)
 
     if (playerDead)
     {
-        state =2;
-        
+        playerDeadCount++;
         player ->getSprite()->animation(false,true);
+        if (playerDeadCount > 500)
+        {
+            state =2;
+            playerDeadCount=0;
+        }
     }
     else
     {
@@ -315,11 +323,13 @@ void PlayState::update(sf::RenderWindow* window)
 
     if (enemyDead)
     {
-        state =3;
-        b_overPrompt->updateText("YOU WON!");
-        t_overPrompt->updateText("YOU WON!");
-        
+        enemyDeadCount++;
         enemy ->getSprite()->animation(false,true);
+        if (enemyDeadCount > 500)
+        {
+            state =3;
+            enemyDeadCount=0;
+        }
     }
     else
     {
@@ -329,43 +339,48 @@ void PlayState::update(sf::RenderWindow* window)
 
 void PlayState::render(sf::RenderWindow* window)
 {
-    window   ->clear(sf::Color::Green);
+    window   ->clear(sf::Color::Black);
 
-    player->getSprite()->draw(window);
-    enemy->getSprite()->draw(window);
+    if (state < 2)
+    {
+        player->getSprite()->draw(window);
+        enemy->getSprite()->draw(window);
 
-    player_b_health->draw(window);
-    player_t_health->draw(window);
+        player_b_health->draw(window);
+        player_t_health->draw(window);
 
-    player_b_armour->draw(window);
-    player_t_armour->draw(window);
+        player_b_armour->draw(window);
+        player_t_armour->draw(window);
 
-    player_b_power->draw(window);
-    player_t_power->draw(window);
+        player_b_power->draw(window);
+        player_t_power->draw(window);
 
-    s_attack->draw(window);
-    b_attack->draw(window);
-    t_attack->draw(window);
+        s_attack->draw(window);
+        b_attack->draw(window);
+        t_attack->draw(window);
 
-    s_dodge->draw(window);
-    b_dodge->draw(window);
-    t_dodge->draw(window);
+        s_dodge->draw(window);
+        b_dodge->draw(window);
+        t_dodge->draw(window);
 
-    s_endTurn->draw(window);
-    b_endTurn->draw(window);
-    t_endTurn->draw(window);
+        s_endTurn->draw(window);
+        b_endTurn->draw(window);
+        t_endTurn->draw(window);
 
-    b_prompt->draw(window);
-    t_prompt->draw(window);
+        b_prompt->draw(window);
+        t_prompt->draw(window);
 
-    enemy_b_health->draw(window);
-    enemy_t_health->draw(window);
+        enemy_b_health->draw(window);
+        enemy_t_health->draw(window);
 
-    enemy_b_armour->draw(window);
-    enemy_t_armour->draw(window);
+        enemy_b_armour->draw(window);
+        enemy_t_armour->draw(window);
 
-    enemy_b_power->draw(window);
-    enemy_t_power->draw(window);
+        enemy_b_power->draw(window);
+        enemy_t_power->draw(window);
+    }
+
+
 
     switch (state)
     {
@@ -376,12 +391,12 @@ void PlayState::render(sf::RenderWindow* window)
         case 1:
             break;
         case 2:
-            b_overPrompt->draw(window);
-            t_overPrompt->draw(window);
+            b_gameOver->draw(window);
+            t_gameOver->draw(window);
             break;
         case 3:
-            b_overPrompt->draw(window);
-            t_overPrompt->draw(window);
+            b_gameWon->draw(window);
+            t_gameWon->draw(window);
     }
 
     window   ->display();
