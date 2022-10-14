@@ -36,6 +36,7 @@ public:
         path s_golem              = "assets/entity/GOLEM.png";
         path s_viking             = "assets/entity/VIKING.png";
         path s_pilgrim            = "assets/entity/PILGRIM.png";
+        path s_brute              = "assets/entity/BRUTE.png";
 
         // character stats
         path s_mag_stat           = "assets/sprites/wizStats.png";

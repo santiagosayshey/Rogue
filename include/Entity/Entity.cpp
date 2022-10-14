@@ -7,20 +7,20 @@
 
 
 
-int Entity::updateHealth(int health)
+float Entity::updateHealth(float health)
 {
     // update character health variable
     this->health = health;
     return getHealth(); 
 }
 
-void Entity::updateArmour(int armour)
+void Entity::updateArmour(float armour)
 {
     // update character armour variable
     this->armour = armour; 
 }
 
-void Entity::updatePower(int power)
+void Entity::updatePower(float power)
 {
     // update character power variable
     this->power = power; 
@@ -32,19 +32,19 @@ DynamicSprite* Entity::getSprite()
     return this->sprite; 
 }
 
-int Entity::getHealth()
+float Entity::getHealth()
 {
     // return character health
     return this->health; 
 }
 
-int Entity::getArmour()
+float Entity::getArmour()
 {
     // return character armour 
     return this->armour; 
 }
 
-int Entity::getPower()
+float Entity::getPower()
 {
     // return character power
     return this->power; 
@@ -90,7 +90,7 @@ void Entity::attack(Entity* entity)
     }
 }
 
-int Entity::getOGPower()
+float Entity::getOGPower()
 {
     return originalPower;
 }

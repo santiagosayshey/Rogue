@@ -27,9 +27,9 @@ private:
         Text* b_attack;
         Text* t_attack;
 
-        Sprite* s_dodge;
-        Text* b_dodge;
-        Text* t_dodge;
+        Sprite* s_fortify;
+        Text* b_fortify;
+        Text* t_fortify;
 
         Sprite* s_endTurn;
         Text* b_endTurn;

@@ -10,8 +10,6 @@ public:
     Pilgrim(Game* g);
     ~Pilgrim();
 
-    int getOGPower();
-
 private:
     
 

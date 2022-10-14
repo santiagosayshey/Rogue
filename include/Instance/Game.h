@@ -11,6 +11,7 @@
 #include "../Entity/Golem.h"
 #include "../Entity/Viking.h"
 #include "../Entity/Pilgrim.h"
+#include "../Entity/Brute.h"
 #include "Path.h"
 
 class Game
@@ -47,6 +48,9 @@ public:
     // update the current enemy
     void updateCurrentEnemy();
 
+    // reset enemies in case of player death
+    void resetEnemy();
+
 
 
 private:
@@ -68,6 +72,7 @@ private:
     Entity* golem;
     Entity* viking;
     Entity* pilgrim;
+    Entity* brute;
 
 
 };

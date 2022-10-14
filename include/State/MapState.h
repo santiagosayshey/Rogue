@@ -37,13 +37,20 @@ private:
     Sprite* enemy3;
     Sprite* enemyHover3;
 
+    Sprite* lvl4;
+    Sprite* lvl4Hover;
+    Sprite* boss;
+    Sprite* bossHover;
+
     bool hover1=false;
     bool hover2=false;
     bool hover3=false;
+    bool hover4=false;
 
     bool sound1;
     bool sound2;
     bool sound3;
+    bool sound4;
 
     sf::SoundBuffer sb;
     sf::Sound UI;

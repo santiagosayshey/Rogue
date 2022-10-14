@@ -6,15 +6,10 @@ Golem::Golem(Game* g)
     health = 80;
     armour = 99;
     power = 20;
-    character = 1;
+    character = 4;
 }
 
 Golem::~Golem()
 {
 
-}
-
-int Golem::getOGPower()
-{
-    return originalPow;
 }

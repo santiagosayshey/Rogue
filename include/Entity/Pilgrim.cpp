@@ -6,8 +6,8 @@ Pilgrim::Pilgrim(Game* g)
     health = 60;
     armour = 30;
     power = 20;
-    character = 3;
-    originalPower=10;
+    character = 1;
+    originalPower=20;
 }
 
 Pilgrim::~Pilgrim()

@@ -42,10 +42,17 @@ void Game::initEnemies()
     golem  = new Golem(this);
     viking = new Viking(this);
     pilgrim = new Pilgrim(this);
+    brute = new Brute(this);
     
-    enemyArr[0] = viking;
-    enemyArr[1] = pilgrim;
-    enemyArr[2] = golem;
+    golem->getSprite()->flip();
+    viking->getSprite()->flip();
+    pilgrim->getSprite()->flip();
+    brute->getSprite()->flip();
+
+    enemyArr[0] = pilgrim;
+    enemyArr[1] = viking;
+    enemyArr[2] = brute;
+    enemyArr[3] = golem;
 }
 
 void Game::setState(State* newState)
@@ -63,5 +70,15 @@ void Game::updateCurrentEnemy()
 {
     currentEnemy++;
 }
+
+void Game::resetEnemy()
+{
+    currentEnemy=0;
+    pilgrim->updateHealth(60);
+    viking->updateHealth(60);
+    brute->updateHealth(60);
+    golem->updateHealth(80);
+}
+
 
  

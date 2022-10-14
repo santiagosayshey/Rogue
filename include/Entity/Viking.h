@@ -10,8 +10,6 @@ public:
     Viking(Game* g);
     ~Viking();
 
-    int getOGPower();
-
 
 private:
     

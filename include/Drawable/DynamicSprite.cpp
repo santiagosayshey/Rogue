@@ -41,9 +41,14 @@ bool DynamicSprite::animation(bool repeat, bool death)
                 sprite->setTextureRect(sf::IntRect(width * currentFrame, height * row + height, width, height));
                 currentFrame++;
             } */
-            if (currentFrame > 8)
+            if (currentFrame > 8 && currentFrame < 17)
             {
                 sprite->setTextureRect(sf::IntRect(width *(currentFrame-9), height * row + height, width, height));
+                currentFrame++;
+            }
+            else if (currentFrame > 16)
+            {
+                sprite->setTextureRect(sf::IntRect(width *(currentFrame-17), height * row + 2*height, width, height));
                 currentFrame++;
             }
             else
