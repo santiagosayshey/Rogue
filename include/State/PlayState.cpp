@@ -11,13 +11,8 @@ typedef sf::Text t;
 PlayState::PlayState(Game* g, Player* player):
 State(g,player)
 {
-    g->initEnemies();
-
     enemy = game->returnEnemy();
     enemy->getSprite()->flip();
-
-    game->updateCurrentEnemy();
-
     UI. setBuffer(g->hover);
 
     // player
@@ -229,7 +224,7 @@ void PlayState::update(sf::RenderWindow* window)
 
                 enemyCount++;
 
-                if (enemyCount > 300)
+                if (enemyCount > 3000)
                 {
                     switch(enemy->returnChar())
                     {
@@ -237,10 +232,10 @@ void PlayState::update(sf::RenderWindow* window)
                             enemy->getSprite()->updateAnimation(8,3);
                             break;
                         case 2:
-                            enemy->getSprite()->updateAnimation(7,3);
+                            enemy->getSprite()->updateAnimation(7,2);
                             break;
                         case 3:
-                            enemy->getSprite()->updateAnimation(8,3);
+                            enemy->getSprite()->updateAnimation(8,5);
                             break;
                     }
                     enemy->attack(player);
@@ -333,10 +328,12 @@ void PlayState::update(sf::RenderWindow* window)
 
     if (playerDead)
     {
+        game->map->setLVL(1);
         playerDeadCount++;
         player ->getSprite()->animation(false,true);
-        if (playerDeadCount > 500)
+        if (playerDeadCount > 2000)
         {
+            
             state =2;
             playerDeadCount=0;
         }
@@ -350,9 +347,8 @@ void PlayState::update(sf::RenderWindow* window)
     {
         enemyDeadCount++;
         enemy ->getSprite()->animation(false,true);
-        if (enemyDeadCount > 500)
+        if (enemyDeadCount > 2000)
         {
-            game->map->updateLVL();
             state =3;
             enemyDeadCount=0;
         }

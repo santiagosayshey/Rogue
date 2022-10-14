@@ -63,7 +63,7 @@ private:
     Entity* enemyArr[4];
 
     // current enemy
-    int currentEnemy=0;
+    int currentEnemy;
 
     Entity* golem;
     Entity* viking;

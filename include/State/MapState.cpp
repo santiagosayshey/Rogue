@@ -93,16 +93,22 @@ void MapState::update(sf::RenderWindow* window)
                 if (lvl->checkCollision(window) && currentLVL==1)
                 {
                     game->setState(new PlayState(game, player));
+                    game->updateCurrentEnemy();
+                    currentLVL=2;
                     break;
                 }
                 if (lvl2->checkCollision(window) && currentLVL==2)
                 {
                     game->setState(new PlayState(game, player));
+                    game->updateCurrentEnemy();
+                    currentLVL=3;
                     break;
                 }
                 if (lvl3->checkCollision(window) && currentLVL==3)
                 {
                     game->setState(new PlayState(game, player));
+                    game->updateCurrentEnemy();
+                    currentLVL=4;
                     break;
                 }
                 break;
@@ -168,4 +174,9 @@ void MapState::render(sf::RenderWindow* window)
 void MapState::updateLVL()
 {
     currentLVL++;
+}
+
+void MapState::setLVL(int lvl)
+{
+    currentLVL = lvl;
 }

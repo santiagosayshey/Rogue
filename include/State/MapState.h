@@ -17,6 +17,8 @@ public:
 
     void updateLVL();
 
+    void setLVL(int lvl);
+
 private:
     Sprite* mapTemplate;
 

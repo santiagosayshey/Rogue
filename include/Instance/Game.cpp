@@ -15,6 +15,12 @@ Game::Game(int width, int height)
 
     // load audio file into sound buffer
     hover.loadFromFile(p->e_hover);
+
+    // init enemies
+    initEnemies();
+
+    // set current enemy to 0
+    currentEnemy=0;
 }
 
 Game::~Game(){}
@@ -38,7 +44,7 @@ void Game::initEnemies()
     pilgrim = new Pilgrim(this);
     
     enemyArr[0] = viking;
-    enemyArr[1] = viking;
+    enemyArr[1] = pilgrim;
     enemyArr[2] = golem;
 }
 
