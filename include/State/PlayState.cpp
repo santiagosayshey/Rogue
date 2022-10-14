@@ -11,6 +11,13 @@ typedef sf::Text t;
 PlayState::PlayState(Game* g, Player* player):
 State(g,player)
 {
+    g->initEnemies();
+
+    enemy = game->returnEnemy();
+    enemy->getSprite()->flip();
+
+    game->updateCurrentEnemy();
+
     UI. setBuffer(g->hover);
 
     // player
@@ -44,16 +51,16 @@ State(g,player)
         b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Player Turn!", 350, 900);
         t_prompt = new Text(g->p->f_main, 100, c::White, t::Bold, "Player Turn!", 360, 890);
 
-        b_gameOver = new Text(g->p->f_main, 100, c::Black, t::Bold, "GAME OVER!", 600, 500);
-        t_gameOver = new Text(g->p->f_main, 100, c::Red, t::Bold, "GAME OVER!", 610, 490);
+        b_gameOver = new Text(g->p->f_main, 100, c::Black, t::Bold, "GAME OVER!", 580, 500);
+        t_gameOver = new Text(g->p->f_main, 100, c::Red, t::Bold, "GAME OVER!", 590, 490);
 
-        b_gameWon = new Text(g->p->f_main, 100, c::Black, t::Bold, "YOU WON!", 600, 500);
-        t_gameWon = new Text(g->p->f_main, 100, c::Green, t::Bold, "YOU WON!", 610, 490);
+        b_gameWon = new Text(g->p->f_main, 100, c::Black, t::Bold, "YOU WON!", 620, 500);
+        t_gameWon = new Text(g->p->f_main, 100, c::Green, t::Bold, "YOU WON!", 630, 490);
+
+        b_endPrompt = new Text(g->p->f_main, 50, c::Black, t::Bold, "Press Space to Continue", 600, 700);
+        t_endPrompt = new Text(g->p->f_main, 50, c::White, t::Bold, "Press Space to Continue", 610, 690);
 
     // enemy
-        enemy = new Golem(g);
-        enemy->getSprite()->flip();
-
         enemy_b_health = new Text(g->p->f_main,50,c::Black, t::Bold, "Health: "+std::to_string(enemy->getHealth()), 1300,100);
         enemy_t_health = new Text(g->p->f_main,50,c::White, t::Bold, "Health: "+std::to_string(enemy->getHealth()), 1305,95);
 
@@ -224,7 +231,18 @@ void PlayState::update(sf::RenderWindow* window)
 
                 if (enemyCount > 300)
                 {
-                    enemy->getSprite()->updateAnimation(8,3);
+                    switch(enemy->returnChar())
+                    {
+                        case 1:
+                            enemy->getSprite()->updateAnimation(8,3);
+                            break;
+                        case 2:
+                            enemy->getSprite()->updateAnimation(7,3);
+                            break;
+                        case 3:
+                            enemy->getSprite()->updateAnimation(8,3);
+                            break;
+                    }
                     enemy->attack(player);
                     enemy->updatePower(enemy->getOGPower());
                     
@@ -298,9 +316,16 @@ void PlayState::update(sf::RenderWindow* window)
 
     if (enemy->getHealth() < 1 && enemyDead == false)
     {
-        switch (enemy->returnChar()) {
+        switch(enemy->returnChar())
+        {
             case 1:
                 enemy->getSprite()->updateAnimation(16,4);
+                break;
+            case 2:
+                enemy->getSprite()->updateAnimation(8,5);
+                break;
+            case 3:
+                enemy->getSprite()->updateAnimation(7,6);
                 break;
         }
     enemyDead = true;
@@ -327,6 +352,7 @@ void PlayState::update(sf::RenderWindow* window)
         enemy ->getSprite()->animation(false,true);
         if (enemyDeadCount > 500)
         {
+            game->map->updateLVL();
             state =3;
             enemyDeadCount=0;
         }
@@ -393,10 +419,14 @@ void PlayState::render(sf::RenderWindow* window)
         case 2:
             b_gameOver->draw(window);
             t_gameOver->draw(window);
+            b_endPrompt->draw(window);
+            t_endPrompt->draw(window);
             break;
         case 3:
             b_gameWon->draw(window);
             t_gameWon->draw(window);
+            b_endPrompt->draw(window);
+            t_endPrompt->draw(window);
     }
 
     window   ->display();

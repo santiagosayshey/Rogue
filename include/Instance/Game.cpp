@@ -31,10 +31,31 @@ void Game::run()
 
 }
 
+void Game::initEnemies()
+{
+    golem  = new Golem(this);
+    viking = new Viking(this);
+    pilgrim = new Pilgrim(this);
+    
+    enemyArr[0] = viking;
+    enemyArr[1] = viking;
+    enemyArr[2] = golem;
+}
+
 void Game::setState(State* newState)
 {
     // change game state 
     currentState = newState; 
+}
+
+Entity* Game::returnEnemy()
+{
+    return enemyArr[currentEnemy];
+}
+
+void Game::updateCurrentEnemy()
+{
+    currentEnemy++;
 }
 
  

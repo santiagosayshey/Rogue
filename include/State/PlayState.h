@@ -73,7 +73,7 @@ private:
         bool playerDead = false;
 
     // enemy
-        Golem* enemy;
+        Entity* enemy;
 
         Sprite* enemy_s_health;
         Text* enemy_b_health;
@@ -104,6 +104,9 @@ private:
 
         Text* b_gameWon;
         Text* t_gameWon;
+
+        Text* b_endPrompt;
+        Text* t_endPrompt;
 
 };
 

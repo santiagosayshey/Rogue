@@ -10,6 +10,7 @@ PickState::PickState(Game* g, Player* player):
 State(g, player)
 {
 
+
     splash = new Sprite(g->p->s_charSplash,0,0,1920,1080,1);
 
     s_wiz      = new Sprite(g->p->s_buttonBig,150,350,46,14,7);

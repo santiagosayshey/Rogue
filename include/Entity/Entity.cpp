@@ -89,3 +89,8 @@ void Entity::attack(Entity* entity)
         entity->updateHealth(0);
     }
 }
+
+int Entity::getOGPower()
+{
+    return originalPower;
+}

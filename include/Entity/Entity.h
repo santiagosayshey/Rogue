@@ -37,6 +37,9 @@ public:
     // return the type of character chosen
     int returnChar();
 
+    // return original power
+    int getOGPower();
+
 protected:
     // pointer to a sprite
     DynamicSprite* sprite;
@@ -48,6 +51,8 @@ protected:
 
     // character integer used to identify which sprite
     int character;
+
+    int originalPower;
 };
 
 #endif
