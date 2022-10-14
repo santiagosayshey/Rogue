@@ -94,3 +94,9 @@ float Entity::getOGPower()
 {
     return originalPower;
 }
+
+void Entity::incrementAction()
+{
+    currentAction++;
+    std::cout << currentAction << std::endl;
+}

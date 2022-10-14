@@ -231,7 +231,7 @@ void PlayState::update(sf::RenderWindow* window)
                     switch(enemy->returnChar())
                     {
                         case 1:
-                            enemy->getSprite()->updateAnimation(8,4);
+                            //enemy->getSprite()->updateAnimation(8,4);
                             break;
                         case 2:
                             enemy->getSprite()->updateAnimation(8,3);
@@ -244,7 +244,11 @@ void PlayState::update(sf::RenderWindow* window)
                             break;
                     }
                     enemy->attack(player);
+
                     enemy->updatePower(enemy->getOGPower());
+
+                    enemy->incrementAction();
+
                     enemy_b_power->updateText("Power: " + std::to_string(enemy->getPower()));
                     enemy_t_power->updateText("Power: " + std::to_string(enemy->getPower()));
                     

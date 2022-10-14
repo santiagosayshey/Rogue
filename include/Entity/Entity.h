@@ -28,7 +28,7 @@ public:
     DynamicSprite* getSprite();
 
     // attacks another entity
-    void attack(Entity* entity);
+    virtual void attack(Entity* entity);
 
     // update and draw the render window
     bool update(sf::RenderWindow* window);
@@ -39,6 +39,8 @@ public:
 
     // return original power
     float getOGPower();
+
+    void incrementAction();
 
 protected:
     // pointer to a sprite
@@ -53,6 +55,8 @@ protected:
     int character;
 
     float originalPower;
+
+    int currentAction=1;
 };
 
 #endif

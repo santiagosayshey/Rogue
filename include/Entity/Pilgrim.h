@@ -10,6 +10,10 @@ public:
     Pilgrim(Game* g);
     ~Pilgrim();
 
+    void attack(Entity* entity);
+
+
+
 private:
     
 

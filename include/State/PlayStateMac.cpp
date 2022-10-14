@@ -12,7 +12,6 @@ PlayState::PlayState(Game* g, Player* player):
 State(g,player)
 {
     enemy = game->returnEnemy();
-    enemy->getSprite()->flip();
     UI. setBuffer(g->hover);
 
     // player
@@ -35,9 +34,9 @@ State(g,player)
             b_attack = new Text(g->p->f_main, 50, c::Black, t::Bold, "AttacK", 170, 530);
             t_attack = new Text(g->p->f_main, 50, c::White, t::Bold, "AttacK", 175, 525);
 
-            s_dodge = new Sprite(g->p->s_button,150,700,30,14,7);
-            b_dodge = new Text(g->p->f_main, 50, c::Black, t::Bold, "Dodge", 170, 730);
-            t_dodge = new Text(g->p->f_main, 50, c::White, t::Bold, "Dodge", 175, 725);
+            s_fortify = new Sprite(g->p->s_button,150,700,30,14,7);
+            b_fortify = new Text(g->p->f_main, 50, c::Black, t::Bold, "Fortify", 170, 730);
+            t_fortify = new Text(g->p->f_main, 50, c::White, t::Bold, "Fortify", 175, 725);
 
             s_endTurn = new Sprite(g->p->s_buttonBig,1300,900,46,14,7);
             b_endTurn = new Text(g->p->f_main, 50, c::Black, t::Bold, "End Turn", 1320, 930);
@@ -100,11 +99,11 @@ void PlayState::update(sf::RenderWindow* window)
                 t_attack   ->setPos(t_attack->getX()+20, t_attack->getY());
 
             }
-            if (!s_dodge->checkCollision(window))
+            if (!s_fortify->checkCollision(window))
             {
-                s_dodge ->setPos(s_dodge->getX(), s_dodge->getY());
-                b_dodge ->setPos(b_dodge->getX(), b_dodge->getY());
-                t_dodge   ->setPos(t_dodge->getX(), t_dodge->getY());
+                s_fortify ->setPos(s_fortify->getX(), s_fortify->getY());
+                b_fortify ->setPos(b_fortify->getX(), b_fortify->getY());
+                t_fortify   ->setPos(t_fortify->getX(), t_fortify->getY());
                 sound2=true;
             }
             else
@@ -114,9 +113,9 @@ void PlayState::update(sf::RenderWindow* window)
                     UI.play();
                     sound2=false;
                 }
-                s_dodge ->setPos(s_dodge->getX()+20, s_dodge->getY());
-                b_dodge ->setPos(b_dodge->getX()+20, b_dodge->getY());
-                t_dodge   ->setPos(t_dodge->getX()+20, t_dodge->getY());
+                s_fortify ->setPos(s_fortify->getX()+20, s_fortify->getY());
+                b_fortify ->setPos(b_fortify->getX()+20, b_fortify->getY());
+                t_fortify   ->setPos(t_fortify->getX()+20, t_fortify->getY());
 
             }
             if (!s_endTurn->checkCollision(window))
@@ -153,9 +152,9 @@ void PlayState::update(sf::RenderWindow* window)
 
                             break;
                         }
-                        if (s_dodge->checkCollision(window)) 
+                        if (s_fortify->checkCollision(window)) 
                         {
-                            currentChoice = "Dodge";
+                            currentChoice = "fortify";
                             break;
                         }
                         if (s_endTurn->checkCollision(window)) 
@@ -181,9 +180,12 @@ void PlayState::update(sf::RenderWindow* window)
                                 enemy_t_health->updateText("Health: " + std::to_string(enemy->getHealth()));
                                 state = 1;
                             }
-                            else if (currentChoice == "Dodge")
+                            else if (currentChoice == "fortify")
                             {
-                                enemy->updatePower(0);
+                                enemy->updatePower(enemy->getPower()-enemy->getPower()*(player->getArmour()/100));
+                                enemy_b_power->updateText("Power: " + std::to_string(enemy->getPower()));
+                                enemy_t_power->updateText("Power: " + std::to_string(enemy->getPower()));
+
                                 switch (player->returnChar())
                                 {
                                     case 1:
@@ -224,22 +226,32 @@ void PlayState::update(sf::RenderWindow* window)
 
                 enemyCount++;
 
-                if (enemyCount > 3000)
+                if (enemyCount > 300*10)
                 {
                     switch(enemy->returnChar())
                     {
                         case 1:
-                            enemy->getSprite()->updateAnimation(8,3);
+                            enemy->getSprite()->updateAnimation(8,4);
                             break;
                         case 2:
-                            enemy->getSprite()->updateAnimation(7,2);
+                            enemy->getSprite()->updateAnimation(8,3);
                             break;
                         case 3:
-                            enemy->getSprite()->updateAnimation(8,5);
+                            enemy->getSprite()->updateAnimation(19,2);
+                            break;
+                        case 4:
+                            enemy->getSprite()->updateAnimation(8,3);
                             break;
                     }
                     enemy->attack(player);
                     enemy->updatePower(enemy->getOGPower());
+
+                    std::cout << "here " << std::endl;
+                    enemy->incrementAction();
+                    std::cout << "end " << std::endl;
+                    
+                    enemy_b_power->updateText("Power: " + std::to_string(enemy->getPower()));
+                    enemy_t_power->updateText("Power: " + std::to_string(enemy->getPower()));
                     
                     player_b_health->updateText("Health: " + std::to_string(player->getHealth()));
                     player_t_health->updateText("Health: " + std::to_string(player->getHealth()));
@@ -314,14 +326,18 @@ void PlayState::update(sf::RenderWindow* window)
         switch(enemy->returnChar())
         {
             case 1:
-                enemy->getSprite()->updateAnimation(16,4);
+                enemy->getSprite()->updateAnimation(7,6);
                 break;
             case 2:
                 enemy->getSprite()->updateAnimation(8,5);
                 break;
             case 3:
-                enemy->getSprite()->updateAnimation(7,6);
+                enemy->getSprite()->updateAnimation(5,5);
                 break;
+            case 4:
+                enemy->getSprite()->updateAnimation(16,4);
+                break;
+
         }
     enemyDead = true;
     }
@@ -329,9 +345,10 @@ void PlayState::update(sf::RenderWindow* window)
     if (playerDead)
     {
         game->map->setLVL(1);
+        game->resetEnemy();
         playerDeadCount++;
         player ->getSprite()->animation(false,true);
-        if (playerDeadCount > 3000)
+        if (playerDeadCount > 300*10)
         {
             
             state =2;
@@ -347,7 +364,7 @@ void PlayState::update(sf::RenderWindow* window)
     {
         enemyDeadCount++;
         enemy ->getSprite()->animation(false,true);
-        if (enemyDeadCount > 3000)
+        if (enemyDeadCount > 300*10)
         {
             state =3;
             enemyDeadCount=0;
@@ -381,9 +398,9 @@ void PlayState::render(sf::RenderWindow* window)
         b_attack->draw(window);
         t_attack->draw(window);
 
-        s_dodge->draw(window);
-        b_dodge->draw(window);
-        t_dodge->draw(window);
+        s_fortify->draw(window);
+        b_fortify->draw(window);
+        t_fortify->draw(window);
 
         s_endTurn->draw(window);
         b_endTurn->draw(window);
