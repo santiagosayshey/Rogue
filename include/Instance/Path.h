@@ -45,7 +45,6 @@ public:
         path s_mag_stat           = "assets/sprites/wizStats.png";
         path s_pal_stat           = "assets/sprites/palStats.png";
         path s_nin_stat           = "assets/sprites/ninStats.png";
-        path s_background         = "assets/";
 
         // character GUI
 

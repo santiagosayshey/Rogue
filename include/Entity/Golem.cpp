@@ -49,7 +49,7 @@ std::string Golem::attack(Entity* entity)
                 return a_golemDef2;
             }
             break;
-        case 4:
+        case 3:
             if (health < 999)
             {
                 power=999;
@@ -75,4 +75,7 @@ std::string Golem::attack(Entity* entity)
 
             break;
     }
+    
 }
+
+
