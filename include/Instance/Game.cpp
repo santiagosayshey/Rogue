@@ -88,9 +88,14 @@ Entity* Game::returnEnemy()
     return enemyArr[currentEnemy];
 }
 
-void Game::updateCurrentEnemy()
+void Game::incrementCurrentEnemy()
 {
     currentEnemy++;
+}
+
+void Game::updateCurrentEnemy(int n)
+{
+    currentEnemy=n;
 }
 
 void Game::resetEnemy()
@@ -100,6 +105,11 @@ void Game::resetEnemy()
     viking->updateHealth(60);
     brute->updateHealth(60);
     golem->updateHealth(80);
+}
+
+int Game::getCurrentEnemy()
+{
+    return currentEnemy;
 }
 
 

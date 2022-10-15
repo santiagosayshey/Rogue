@@ -46,10 +46,13 @@ public:
     Entity* returnEnemy();
 
     // update the current enemy
-    void updateCurrentEnemy();
+    void updateCurrentEnemy(int n);
+    void incrementCurrentEnemy();
 
     // reset enemies in case of player death
     void resetEnemy();
+
+    int getCurrentEnemy();
 
 
 

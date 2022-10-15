@@ -282,6 +282,7 @@ void PlayState::update(sf::RenderWindow* window)
 
         case 3:
         {
+            std::cout << game->getCurrentEnemy() << std::endl;
             while (window->pollEvent(event))
             {
                 switch (event.type) 
@@ -290,8 +291,19 @@ void PlayState::update(sf::RenderWindow* window)
                     {
                         if (sf::Keyboard::Space)
                         {
-                            game->setState(game->map);
-                            break;
+                            
+                            if (game->getCurrentEnemy() == 4)
+                            {
+                                game->updateCurrentEnemy(0);
+                                game->setState(new MenuState(game, player));
+                                break;
+                            }
+                            else
+                            {
+                                game->setState(game->map);
+                                break;
+                            }
+
                         }
                     }
                 }
