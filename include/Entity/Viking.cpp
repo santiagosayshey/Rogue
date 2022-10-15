@@ -3,14 +3,15 @@
 Viking::Viking(Game* g)
 {
     sprite = new DynamicSprite(g->p->s_viking,1500,350,32,32,16);
+    sprite->setPos(1700,320);
     sprite->updateAnimation(6,0);
     health = 20;
     armour = 80;
     power = 20;
     character = 2;
     originalPower=power;
-
-    firstMove = "AttacK - 20 DMG";
+    setGUI(g->p->s_viking_gui);
+    firstMove = "20 DMG";
 }
 
 Viking::~Viking()

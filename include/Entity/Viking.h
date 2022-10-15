@@ -17,17 +17,17 @@ public:
     // enemy attack patterns
     
         // viking
-        action a_viking1   = "AttacK - 20 DMG";
+        action a_viking1   = "20 DMG";
         action a_viking2   = "Fortify";
-        action a_viking3   = "AttacK - 10 DMG";
+        action a_viking3   = "10 DMG";
         action a_viking4   = "Fortify";
-        action a_viking5   = "AttacK - 5 DMG";
+        action a_viking5   = "5 DMG";
         action a_viking6   = "Fortify";
-        action a_viking7   = "AttacK - 5 DMG";
+        action a_viking7   = "5 DMG";
         action a_viking8   = "Fortify";
-        action a_viking9   = "AttacK - 5 DMG";
+        action a_viking9   = "5 DMG";
         action a_viking10  = "Fortify";
-        action a_vikingDef = "AttacK - 5 DMG";
+        action a_vikingDef = "5 DMG";
 
 private:
     

@@ -4,13 +4,15 @@
 Pilgrim::Pilgrim(Game* g)
 {
     sprite = new DynamicSprite(g->p->s_pilgrim,1500,350,32,32,16);
+    sprite->setPos(1700,320);
     health = 50;
     armour = 50;
     power = 5;
     character = 1;
     originalPower=power;
+    setGUI(g->p->s_pilgrim_gui);
 
-    firstMove = "AttacK - 5 DMG";
+    firstMove = "5 DMG";
 }
 
 Pilgrim::~Pilgrim()

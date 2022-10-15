@@ -70,6 +70,11 @@ void Game::initEnemies()
     pilgrim->getSprite()->flip();
     brute->getSprite()->flip();
 
+    golem->getGUI()->flip();
+    viking->getGUI()->flip();
+    pilgrim->getGUI()->flip();
+    brute->getGUI()->flip();
+
 }
 
 void Game::setState(State* newState)

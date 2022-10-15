@@ -8,6 +8,7 @@ Golem::Golem(Game* g)
     power = 0;
     character = 4;
     originalPower=power;
+    setGUI(g->p->s_golem_gui);
 
     firstMove = "ZZZ";
 }

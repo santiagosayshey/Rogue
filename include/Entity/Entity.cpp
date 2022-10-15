@@ -112,3 +112,13 @@ std::string Entity::getFirstMove()
 {
     return firstMove;
 }
+
+void Entity::setGUI(std::string type)
+{
+    gui = new Sprite(type,0,0,60,21,8);
+}
+
+Sprite* Entity::getGUI()
+{
+    return gui;
+}

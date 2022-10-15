@@ -16,11 +16,11 @@ public:
     // enemy attack patterns
 
         // brute
-        action a_brute1   = "AttacK - 15 DMG";
-        action a_brute2   = "AttacK - 15 DMG";
-        action a_brute3   = "AttacK - 15 DMG";
-        action a_brute4   = "AttacK - 15 DMG";
-        action a_bruteDef = "Forify";
+        action a_brute1   = "15 DMG";
+        action a_brute2   = "15 DMG";
+        action a_brute3   = "15 DMG";
+        action a_brute4   = "15 DMG";
+        action a_bruteDef = "Fortify";
         
 private:
     

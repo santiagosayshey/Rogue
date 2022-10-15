@@ -24,6 +24,7 @@ public:
         path s_knightSp           = "assets/sprites/knightChar.png";
         path s_charSplash         = "assets/sprites/charSplash.png";
         path s_mapSplash          = "assets/sprites/mapSplash.png";
+        path s_battleSplash       = "assets/sprites/battleSplash.png";
 
         // button backgrounds
         path s_button             = "assets/sprites/button.png";
@@ -44,6 +45,19 @@ public:
         path s_pal_stat           = "assets/sprites/palStats.png";
         path s_nin_stat           = "assets/sprites/ninStats.png";
         path s_background         = "assets/";
+
+        // character GUI
+
+            // player
+            path s_pal_gui       = "assets/sprites/palGUI.png";
+            path s_wiz_gui       = "assets/sprites/wizGUI.png";
+            path s_nin_gui       = "assets/sprites/ninGUI.png";
+            
+            // enemy
+            path s_pilgrim_gui    = "assets/sprites/pilgrimGUI.png";
+            path s_viking_gui     = "assets/sprites/vikingGUI.png";
+            path s_brute_gui      = "assets/sprites/bruteGUI.png";
+            path s_golem_gui      = "assets/sprites/golemGUI.png";
 
         // levels
         path s_lvlTemp            = "assets/level/mapLvl.png";

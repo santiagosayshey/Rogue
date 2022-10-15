@@ -11,60 +11,60 @@ typedef sf::Text t;
 PlayState::PlayState(Game* g, Player* player):
 State(g,player)
 {
+    splash = new Sprite(g->p->s_charSplash,0,0,1920,1080,1);
     enemy = game->returnEnemy();
     UI. setBuffer(g->hover);
 
+    // buttons
+    s_attack = new Sprite(g->p->s_button,150,550,30,14,7);
+    b_attack = new Text(g->p->f_main, 50, c::Black, t::Bold, "AttacK", 170, 580);
+    t_attack = new Text(g->p->f_main, 50, c::White, t::Bold, "AttacK", 175, 575);
+
+    s_fortify = new Sprite(g->p->s_button,150,700,30,14,7);
+    b_fortify = new Text(g->p->f_main, 45, c::Black, t::Bold, "Fortify", 170, 730);
+    t_fortify = new Text(g->p->f_main, 45, c::White, t::Bold, "Fortify", 175, 725);
+
+    s_endTurn = new Sprite(g->p->s_button,1630,600,30,14,7);
+    b_endTurn = new Text(g->p->f_main, 33, c::Black, t::Bold, "End Turn", 1650, 635);
+    t_endTurn = new Text(g->p->f_main, 33, c::White, t::Bold, "End Turn", 1655, 630);
+
     // player
-        player->getSprite()->setPos(200,50);
+    player->getSprite()->setPos(200,65);
+    player->getGUI()->setPos(150,100);
+    enemy->getGUI()->setPos(1800,100);
+        
+    player_b_health = new Text(g->p->f_main,40,c::Black, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 360,125);
+    player_t_health = new Text(g->p->f_main,40,c::White, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 365,120);
 
-        player_b_health = new Text(g->p->f_main,50,c::Black, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 200,100);
-        player_t_health = new Text(g->p->f_main,50,c::White, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 205,95);
-
-        player_b_armour = new Text(g->p->f_main,50,c::Black, t::Bold, "Armour: "+std::to_string(int(player->getArmour())), 200,200);
-        player_t_armour = new Text(g->p->f_main,50,c::White, t::Bold, "Armour: "+std::to_string(int(player->getArmour())), 205,195);
-
-        player_b_power = new Text(g->p->f_main,50,c::Black, t::Bold, "Power: "+std::to_string(int(player->getPower())), 200,300);
-        player_t_power = new Text(g->p->f_main,50,c::White, t::Bold, "Power: "+std::to_string(int(player->getPower())), 205,295);
-
-        b_player_choice = new Text(g->p->f_main, 50, c::Black, t::Bold, "Player Choice: " + currentChoice, 600, 100);
-        t_player_choice = new Text(g->p->f_main, 50, c::White, t::Bold, "Player Choice: " + currentChoice, 605, 95);
-
-            // buttons
-            s_attack = new Sprite(g->p->s_button,150,500,30,14,7);
-            b_attack = new Text(g->p->f_main, 50, c::Black, t::Bold, "AttacK", 170, 530);
-            t_attack = new Text(g->p->f_main, 50, c::White, t::Bold, "AttacK", 175, 525);
-
-            s_fortify = new Sprite(g->p->s_button,150,700,30,14,7);
-            b_fortify = new Text(g->p->f_main, 50, c::Black, t::Bold, "Fortify", 170, 730);
-            t_fortify = new Text(g->p->f_main, 50, c::White, t::Bold, "Fortify", 175, 725);
-
-            s_endTurn = new Sprite(g->p->s_buttonBig,1300,900,46,14,7);
-            b_endTurn = new Text(g->p->f_main, 50, c::Black, t::Bold, "End Turn", 1320, 930);
-            t_endTurn = new Text(g->p->f_main, 50, c::White, t::Bold, "End Turn", 1325, 925);
-
-        b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Player Turn!", 350, 900);
-        t_prompt = new Text(g->p->f_main, 100, c::White, t::Bold, "Player Turn!", 360, 890);
-
-        b_gameOver = new Text(g->p->f_main, 100, c::Black, t::Bold, "GAME OVER!", 580, 500);
-        t_gameOver = new Text(g->p->f_main, 100, c::Red, t::Bold, "GAME OVER!", 590, 490);
-
-        b_gameWon = new Text(g->p->f_main, 100, c::Black, t::Bold, "YOU WON!", 620, 500);
-        t_gameWon = new Text(g->p->f_main, 100, c::Green, t::Bold, "YOU WON!", 630, 490);
-
-        b_endPrompt = new Text(g->p->f_main, 50, c::Black, t::Bold, "Press Space to Continue", 600, 700);
-        t_endPrompt = new Text(g->p->f_main, 50, c::White, t::Bold, "Press Space to Continue", 610, 690);
+    player_b_armour = new Text(g->p->f_main,40,c::Black, t::Bold, "Armour: "+std::to_string(int(player->getArmour())), 360,215);
+    player_t_armour = new Text(g->p->f_main,40,c::White, t::Bold, "Armour: "+std::to_string(int(player->getArmour())), 365,210);
 
     // enemy
-        enemy_b_health = new Text(g->p->f_main,50,c::Black, t::Bold, "Health: "+std::to_string(int(enemy->getHealth())), 1300,100);
-        enemy_t_health = new Text(g->p->f_main,50,c::White, t::Bold, "Health: "+std::to_string(int(enemy->getHealth())), 1305,95);
+    enemy_b_health = new Text(g->p->f_main,40,c::Black, t::Bold, "Health: "+std::to_string(int(enemy->getHealth())), 1370,125);
+    enemy_t_health = new Text(g->p->f_main,40,c::White, t::Bold, "Health: "+std::to_string(int(enemy->getHealth())), 1375,120);
 
-        enemy_b_armour = new Text(g->p->f_main,50,c::Black, t::Bold, "Armour: "+std::to_string(int(enemy->getArmour())), 1300,200);
-        enemy_t_armour = new Text(g->p->f_main,50,c::White, t::Bold, "Armour: "+std::to_string(int(enemy->getArmour())), 1305,195);
+    enemy_b_armour = new Text(g->p->f_main,40,c::Black, t::Bold, "Armour: "+std::to_string(int(enemy->getArmour())), 1370,215);
+    enemy_t_armour = new Text(g->p->f_main,40,c::White, t::Bold, "Armour: "+std::to_string(int(enemy->getArmour())), 1375,210);
 
-        b_enemy_nextMove = new Text(g->p->f_main, 50, c::Black, t::Bold, enemy->getFirstMove(), 800, 100);
-        t_enemy_nextMove = new Text(g->p->f_main, 50, c::White, t::Bold, enemy->getFirstMove(), 805, 95);
-    
+    // prompts  
+    b_prompt = new Text(g->p->f_main, 80, c::Black, t::Bold, "Player Turn!", 700, 900);
+    t_prompt = new Text(g->p->f_main, 80, c::White, t::Bold, "Player Turn!", 705, 890);
 
+    b_enemy_nextMove = new Text(g->p->f_main, 50, c::Black, t::Bold, enemy->getFirstMove(), 1300, 850);
+    t_enemy_nextMove = new Text(g->p->f_main, 50, c::White, t::Bold, enemy->getFirstMove(), 1305, 845);
+
+    b_player_choice = new Text(g->p->f_main, 50, c::Black, t::Bold, std::to_string(int(player->getPower()))+ " DMG", 480, 850);
+    t_player_choice = new Text(g->p->f_main, 50, c::White, t::Bold, std::to_string(int(player->getPower()))+ " DMG", 485,845);
+
+    // battle over
+    b_gameOver = new Text(g->p->f_main, 100, c::Black, t::Bold, "GAME OVER!", 580, 500);
+    t_gameOver = new Text(g->p->f_main, 100, c::Red, t::Bold, "GAME OVER!", 590, 490);
+
+    b_gameWon = new Text(g->p->f_main, 100, c::Black, t::Bold, "YOU WON!", 620, 500);
+    t_gameWon = new Text(g->p->f_main, 100, c::Green, t::Bold, "YOU WON!", 630, 490);
+
+    b_endPrompt = new Text(g->p->f_main, 50, c::Black, t::Bold, "Press Space to Continue", 600, 700);
+    t_endPrompt = new Text(g->p->f_main, 50, c::White, t::Bold, "Press Space to Continue", 610, 690);
 }
 
 PlayState::~PlayState()
@@ -150,12 +150,16 @@ void PlayState::update(sf::RenderWindow* window)
                         if (s_attack->checkCollision(window)) 
                         {
                             currentChoice = "AttacK";
+                            b_player_choice->updateText(std::to_string(int(player->getPower()))+" DMG");
+                            t_player_choice->updateText(std::to_string(int(player->getPower()))+" DMG");
 
                             break;
                         }
                         if (s_fortify->checkCollision(window)) 
                         {
-                            currentChoice = "fortify";
+                            currentChoice = "Fortify";
+                            b_player_choice->updateText("Fortify");
+                            t_player_choice->updateText("Fortify");
                             break;
                         }
                         if (s_endTurn->checkCollision(window)) 
@@ -179,14 +183,11 @@ void PlayState::update(sf::RenderWindow* window)
                                 player->attack(enemy);
                                 player->updatePower(player->getOGPower());
 
-                                player_b_power->updateText("Power: " + std::to_string(int(player->getPower())));
-                                player_t_power->updateText("Power: " + std::to_string(int(player->getPower())));
-
                                 enemy_b_health->updateText("Health: " + std::to_string(int(enemy->getHealth())));
                                 enemy_t_health->updateText("Health: " + std::to_string(int(enemy->getHealth())));
                                 state = 1;
                             }
-                            else if (currentChoice == "fortify")
+                            else if (currentChoice == "Fortify")
                             {
                                 enemy->updatePower(enemy->getPower()-enemy->getPower()*(player->getArmour()/100));
                                 player->updatePower(player->getOGPower());
@@ -217,8 +218,6 @@ void PlayState::update(sf::RenderWindow* window)
                     }
                 }
             }
-            b_player_choice->updateText("Choice: " + currentChoice);
-            t_player_choice->updateText("Choice: " + currentChoice);
             break;
         }
             
@@ -247,8 +246,12 @@ void PlayState::update(sf::RenderWindow* window)
                     player_b_health->updateText("Health: " + std::to_string(int(player->getHealth())));
                     player_t_health->updateText("Health: " + std::to_string(int(player->getHealth())));
 
-                    player_b_power->updateText("Power: " + std::to_string(int(player->getPower())));
-                    player_t_power->updateText("Power: " + std::to_string(int(player->getPower())));
+                    if (currentChoice == "AttacK")
+                    {
+                        b_player_choice->updateText(std::to_string(int(player->getPower()))+" DMG");
+                        t_player_choice->updateText(std::to_string(int(player->getPower()))+" DMG");
+                    }
+
 
                     enemyCount=0;
                     state = 0;
@@ -373,20 +376,24 @@ void PlayState::update(sf::RenderWindow* window)
 void PlayState::render(sf::RenderWindow* window)
 {
     window   ->clear(sf::Color::Black);
-
+    
     if (state < 2)
     {
+        splash->draw(window);
         player->getSprite()->draw(window);
         enemy->getSprite()->draw(window);
+
+        b_player_choice->draw(window);
+        t_player_choice->draw(window);
+
+        player->getGUI()->draw(window);
+        enemy->getGUI()->draw(window);
 
         player_b_health->draw(window);
         player_t_health->draw(window);
 
         player_b_armour->draw(window);
         player_t_armour->draw(window);
-
-        player_b_power->draw(window);
-        player_t_power->draw(window);
 
         s_attack->draw(window);
         b_attack->draw(window);
@@ -418,8 +425,6 @@ void PlayState::render(sf::RenderWindow* window)
     switch (state)
     {
         case 0:
-            //b_player_choice->draw(window);
-            //t_player_choice->draw(window);
             break;
         case 1:
             break;

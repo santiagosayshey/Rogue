@@ -46,6 +46,10 @@ public:
 
     std::string getFirstMove();
 
+    void setGUI(std::string type);
+
+    Sprite* getGUI();
+
 protected:
     // pointer to a sprite
     DynamicSprite* sprite;
@@ -63,6 +67,8 @@ protected:
     int currentAction=1;
 
     std::string firstMove;
+
+    Sprite* gui;
 };
 
 #endif

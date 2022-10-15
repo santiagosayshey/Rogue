@@ -19,6 +19,8 @@ public:
 
 
 private:
+
+        Sprite* splash;
     // player
         sf::Event event;
         sf::Clock clock;

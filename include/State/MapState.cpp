@@ -1,6 +1,7 @@
 #include "MapState.h"
 #include "../Instance/Game.h"
 #include "PlayState.h"
+#include "MenuState.h"
 
 MapState::MapState(Game* g, Player* player):
 State(g, player)
@@ -43,6 +44,12 @@ MapState::~MapState(){}
 
 void MapState::update(sf::RenderWindow* window)
 {
+    
+    if (currentLVL==5)
+    {
+        game->setState(new MenuState(game,player));
+    }
+    
     if (!lvl->checkCollision(window) && currentLVL==1)
     {
         hover1 = false;
@@ -136,6 +143,7 @@ void MapState::update(sf::RenderWindow* window)
                 if (lvl4->checkCollision(window) && currentLVL==4)
                 {
                     game->setState(new PlayState(game, player));
+                    currentLVL=5;
                     break;
                 }
                 break;
@@ -148,7 +156,6 @@ void MapState::update(sf::RenderWindow* window)
             }
         }
     }
-
 
 }
 

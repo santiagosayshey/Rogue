@@ -19,7 +19,7 @@ public:
 
         // golem
         action a_golemDef  = "ZZZ";
-        action a_golemDef2 = "AttacK - 999 DMG";
+        action a_golemDef2 = "999 DMG";
         action a_golemDeath = "Crumbles";
 
 private:
