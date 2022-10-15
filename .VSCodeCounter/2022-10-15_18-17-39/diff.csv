@@ -1,0 +1,13 @@
+"filename", "language", "cpp", "comment", "blank", "total"
+"/home/samchau/Uni/OOProject/include/Drawable/DynamicSprite.cpp", "cpp", 5, 0, 0, 5
+"/home/samchau/Uni/OOProject/include/Entity/Brute.cpp", "cpp", 74, 0, 8, 82
+"/home/samchau/Uni/OOProject/include/Entity/Entity.cpp", "cpp", 14, 0, 4, 18
+"/home/samchau/Uni/OOProject/include/Entity/Golem.cpp", "cpp", 51, 0, 6, 57
+"/home/samchau/Uni/OOProject/include/Entity/Pilgrim.cpp", "cpp", 109, 0, 3, 112
+"/home/samchau/Uni/OOProject/include/Entity/Viking.cpp", "cpp", 109, 0, 5, 114
+"/home/samchau/Uni/OOProject/include/Instance/Game.cpp", "cpp", 18, 0, 5, 23
+"/home/samchau/Uni/OOProject/include/State/MapState.cpp", "cpp", 44, 0, 3, 47
+"/home/samchau/Uni/OOProject/include/State/PickState.cpp", "cpp", 4, 0, 0, 4
+"/home/samchau/Uni/OOProject/include/State/PlayState.cpp", "cpp", 16, 0, 9, 25
+"/home/samchau/Uni/OOProject/include/State/PlayStateMac.cpp", "cpp", 386, 0, 61, 447
+"Total", "-", 830, 0, 104, 934

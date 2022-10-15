@@ -1,0 +1,39 @@
+Date : 2022-10-15 18:17:39
+Directory : /home/samchau/Uni/OOProject/include
+Total : 11 files,  830 codes, 0 comments, 104 blanks, all 934 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| cpp      |         11 |        830 |          0 |        104 |        934 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                           | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                              |         11 |        830 |          0 |        104 |        934 |
+| Drawable                                                       |          1 |          5 |          0 |          0 |          5 |
+| Entity                                                         |          5 |        357 |          0 |         26 |        383 |
+| Instance                                                       |          1 |         18 |          0 |          5 |         23 |
+| State                                                          |          4 |        450 |          0 |         73 |        523 |
++----------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                       | language | code       | comment    | blank      | total      |
++----------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /home/samchau/Uni/OOProject/include/Drawable/DynamicSprite.cpp | cpp      |          5 |          0 |          0 |          5 |
+| /home/samchau/Uni/OOProject/include/Entity/Brute.cpp           | cpp      |         74 |          0 |          8 |         82 |
+| /home/samchau/Uni/OOProject/include/Entity/Entity.cpp          | cpp      |         14 |          0 |          4 |         18 |
+| /home/samchau/Uni/OOProject/include/Entity/Golem.cpp           | cpp      |         51 |          0 |          6 |         57 |
+| /home/samchau/Uni/OOProject/include/Entity/Pilgrim.cpp         | cpp      |        109 |          0 |          3 |        112 |
+| /home/samchau/Uni/OOProject/include/Entity/Viking.cpp          | cpp      |        109 |          0 |          5 |        114 |
+| /home/samchau/Uni/OOProject/include/Instance/Game.cpp          | cpp      |         18 |          0 |          5 |         23 |
+| /home/samchau/Uni/OOProject/include/State/MapState.cpp         | cpp      |         44 |          0 |          3 |         47 |
+| /home/samchau/Uni/OOProject/include/State/PickState.cpp        | cpp      |          4 |          0 |          0 |          4 |
+| /home/samchau/Uni/OOProject/include/State/PlayState.cpp        | cpp      |         16 |          0 |          9 |         25 |
+| /home/samchau/Uni/OOProject/include/State/PlayStateMac.cpp     | cpp      |        386 |          0 |         61 |        447 |
+| Total                                                          |          |        830 |          0 |        104 |        934 |
++----------------------------------------------------------------+----------+------------+------------+------------+------------+

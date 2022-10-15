@@ -64,6 +64,7 @@ private:
     Player* player;
 
     // create an array of enemies that the play state will iterate through
+    Entity* tempArr[4];
     Entity* enemyArr[4];
 
     // current enemy

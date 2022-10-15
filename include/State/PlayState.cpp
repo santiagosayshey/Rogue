@@ -189,6 +189,7 @@ void PlayState::update(sf::RenderWindow* window)
                             else if (currentChoice == "fortify")
                             {
                                 enemy->updatePower(enemy->getPower()-enemy->getPower()*(player->getArmour()/100));
+                                player->updatePower(player->getOGPower());
 
                                 switch (player->returnChar())
                                 {

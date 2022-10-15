@@ -1,5 +1,7 @@
 #include "Game.h"
 #include <iostream>
+#include <time.h>
+#include <algorithm>
 
 
 Game::Game(int width, int height)
@@ -16,8 +18,7 @@ Game::Game(int width, int height)
     // load audio file into sound buffer
     hover.loadFromFile(p->e_hover);
 
-    // init enemies
-    initEnemies();
+
 
     // set current enemy to 0
     currentEnemy=0;
@@ -39,20 +40,36 @@ void Game::run()
 
 void Game::initEnemies()
 {
+
+     //create enemies and assign to array
     golem  = new Golem(this);
     viking = new Viking(this);
     pilgrim = new Pilgrim(this);
     brute = new Brute(this);
-    
-    golem->getSprite()->flip();
-    viking->getSprite()->flip();
-    pilgrim->getSprite()->flip();
-    brute->getSprite()->flip();
 
     enemyArr[0] = pilgrim;
     enemyArr[1] = viking;
     enemyArr[2] = brute;
     enemyArr[3] = golem;
+
+    // fisher yates shuffle to randomise enemy placement
+    srand (time(NULL));
+    for (int i = 3 - 1; i > 0; i--)
+    {
+        // Pick a random index from 0 to i
+        int j = rand() % (i + 1);
+ 
+        // Swap arr[i] with the element
+        // at random index
+        std::swap(enemyArr[i], enemyArr[j]);
+    }
+
+    // flip enemy sprites
+    golem->getSprite()->flip();
+    viking->getSprite()->flip();
+    pilgrim->getSprite()->flip();
+    brute->getSprite()->flip();
+
 }
 
 void Game::setState(State* newState)

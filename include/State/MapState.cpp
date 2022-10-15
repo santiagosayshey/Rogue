@@ -34,6 +34,9 @@ State(g, player)
     UI.setBuffer(g->hover);
 
     g->map = this;
+
+    // init enemies
+    g->initEnemies();
 }
 
 MapState::~MapState(){}
