@@ -10,6 +10,7 @@ PickState::PickState(Game* g, Player* player):
 State(g, player)
 {
 
+
     splash = new Sprite(g->p->s_charSplash,0,0,1920,1080,1);
 
     s_wiz      = new Sprite(g->p->s_buttonBig,150,350,46,14,7);
@@ -43,9 +44,11 @@ State(g, player)
 
     choice=1;
     player->setCharacter(spr_wiz,1);
-    player->updateHealth(50);
+    player->updateHealth(65);
     player->updateArmour(0);
     player->updatePower(30);
+    player->setOGPower(30);
+    player->setGUI(game->p->s_wiz_gui);
 }  
 
 PickState::~PickState() 
@@ -149,9 +152,11 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     choice = 1;
                     player->setCharacter(spr_wiz,1);
-                    player->updateHealth(1000);
+                    player->updateHealth(65);
                     player->updateArmour(0);
                     player->updatePower(30);
+                    player->setOGPower(30);
+                    player->setGUI(game->p->s_wiz_gui);
                     std::cout << player->getPower() << std::endl;
                     break;
                 }
@@ -162,6 +167,8 @@ void PickState::update(sf::RenderWindow* window)
                     player->updateHealth(100);
                     player->updateArmour(50);
                     player->updatePower(15);
+                    player->setOGPower(15);
+                    player->setGUI(game->p->s_pal_gui);
                     std::cout << player->getPower() << std::endl;
                     break;
                 }
@@ -172,6 +179,8 @@ void PickState::update(sf::RenderWindow* window)
                     player->updateHealth(75);
                     player->updateArmour(25);
                     player->updatePower(20);
+                    player->setOGPower(20);
+                    player->setGUI(game->p->s_nin_gui);
                     std::cout << player->getPower() << std::endl;
                     break;
                 }

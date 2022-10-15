@@ -19,6 +19,8 @@ public:
 
 
 private:
+
+        Sprite* splash;
     // player
         sf::Event event;
         sf::Clock clock;
@@ -27,9 +29,9 @@ private:
         Text* b_attack;
         Text* t_attack;
 
-        Sprite* s_dodge;
-        Text* b_dodge;
-        Text* t_dodge;
+        Sprite* s_fortify;
+        Text* b_fortify;
+        Text* t_fortify;
 
         Sprite* s_endTurn;
         Text* b_endTurn;
@@ -73,7 +75,7 @@ private:
         bool playerDead = false;
 
     // enemy
-        Golem* enemy;
+        Entity* enemy;
 
         Sprite* enemy_s_health;
         Text* enemy_b_health;
@@ -95,12 +97,20 @@ private:
 
         Text* b_player_choice;
         Text* t_player_choice;
-        Text* b_enemy_choice;
-        Text* t_enemy_choice;
+        Text* b_enemy_nextMove;
+        Text* t_enemy_nextMove;
 
 
         Text* b_gameOver;
         Text* t_gameOver;
+
+        Text* b_gameWon;
+        Text* t_gameWon;
+
+        Text* b_endPrompt;
+        Text* t_endPrompt;
+
+        std::string enemyNextMove;
 
 };
 

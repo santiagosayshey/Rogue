@@ -1,5 +1,4 @@
 #include "include/Instance/Game.h"
-#include "include/Instance/Path.h"
 
 int main()
 {

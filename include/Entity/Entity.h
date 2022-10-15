@@ -12,14 +12,14 @@ class Entity
 {
 public:
     // update individual stats of character
-    int updateHealth(int health);
-    void updateArmour(int armour);
-    void updatePower(int Power);
+    float updateHealth(float health);
+    void updateArmour(float armour);
+    void updatePower(float Power);
 
     // return individual stats of character
-    int getHealth();
-    int getArmour();
-    int getPower();
+    float getHealth();
+    float getArmour();
+    float getPower();
 
     // set player's character, with 'sprite' and 'character' integer as parameters
     void setCharacter(DynamicSprite* sprite, int character);
@@ -28,7 +28,7 @@ public:
     DynamicSprite* getSprite();
 
     // attacks another entity
-    void attack(Entity* entity);
+    virtual std::string attack(Entity* entity);
 
     // update and draw the render window
     bool update(sf::RenderWindow* window);
@@ -37,17 +37,38 @@ public:
     // return the type of character chosen
     int returnChar();
 
+    void setOGPower(int power);
+
+    // return original power
+    float getOGPower();
+
+    void incrementAction();
+
+    std::string getFirstMove();
+
+    void setGUI(std::string type);
+
+    Sprite* getGUI();
+
 protected:
     // pointer to a sprite
     DynamicSprite* sprite;
 
     // stats of character
-    int health;
-    int armour;
-    int power;
+    float health;
+    float armour;
+    float power;
 
     // character integer used to identify which sprite
     int character;
+
+    float originalPower;
+
+    int currentAction=1;
+
+    std::string firstMove;
+
+    Sprite* gui;
 };
 
 #endif

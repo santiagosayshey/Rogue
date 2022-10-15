@@ -7,20 +7,20 @@
 
 
 
-int Entity::updateHealth(int health)
+float Entity::updateHealth(float health)
 {
     // update character health variable
     this->health = health;
     return getHealth(); 
 }
 
-void Entity::updateArmour(int armour)
+void Entity::updateArmour(float armour)
 {
     // update character armour variable
     this->armour = armour; 
 }
 
-void Entity::updatePower(int power)
+void Entity::updatePower(float power)
 {
     // update character power variable
     this->power = power; 
@@ -32,19 +32,19 @@ DynamicSprite* Entity::getSprite()
     return this->sprite; 
 }
 
-int Entity::getHealth()
+float Entity::getHealth()
 {
     // return character health
     return this->health; 
 }
 
-int Entity::getArmour()
+float Entity::getArmour()
 {
     // return character armour 
     return this->armour; 
 }
 
-int Entity::getPower()
+float Entity::getPower()
 {
     // return character power
     return this->power; 
@@ -77,7 +77,12 @@ int Entity::returnChar()
     return character;
 }
 
-void Entity::attack(Entity* entity)
+void Entity::setOGPower(int power)
+{
+    originalPower = power;
+}
+
+std::string Entity::attack(Entity* entity)
 {
     // update health value
     if ( entity->getHealth() - getPower() > 0 )
@@ -88,4 +93,32 @@ void Entity::attack(Entity* entity)
     {
         entity->updateHealth(0);
     }
+
+    return "null";
+}
+
+float Entity::getOGPower()
+{
+    return originalPower;
+}
+
+void Entity::incrementAction()
+{
+    currentAction++;
+    std::cout << currentAction << std::endl;
+}
+
+std::string Entity::getFirstMove()
+{
+    return firstMove;
+}
+
+void Entity::setGUI(std::string type)
+{
+    gui = new Sprite(type,0,0,60,21,8);
+}
+
+Sprite* Entity::getGUI()
+{
+    return gui;
 }
