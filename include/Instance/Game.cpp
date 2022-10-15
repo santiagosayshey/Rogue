@@ -18,8 +18,6 @@ Game::Game(int width, int height)
     // load audio file into sound buffer
     hover.loadFromFile(p->e_hover);
 
-
-
     // set current enemy to 0
     currentEnemy=0;
 }
