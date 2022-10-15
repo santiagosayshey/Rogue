@@ -3,6 +3,9 @@
 #include "PlayState.h"
 #include "MenuState.h"
 
+typedef sf::Color c;
+typedef sf::Text t;
+
 MapState::MapState(Game* g, Player* player):
 State(g, player)
 {
@@ -31,6 +34,8 @@ State(g, player)
     enemyHover2 = new Sprite(g->p->s_enemyHover,728,480,64,64,2);
     enemyHover3 = new Sprite(g->p->s_enemyHover,1061,480,64,64,2);
     bossHover = new Sprite(g->p->s_bossHover,1395,480,64,64,2);
+
+    b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Choose a Level...", 550, 800);
 
     UI.setBuffer(g->hover);
 
@@ -159,6 +164,7 @@ void MapState::render(sf::RenderWindow* window)
  
     mapTemplate->draw(window);
 
+    b_prompt->draw(window);  
     
     switch (hover1)
     {

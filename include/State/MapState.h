@@ -5,6 +5,7 @@
 
 #include "State.h"
 #include "../Drawable/Sprite.h"
+#include "../Drawable/Text.h"
 
 class MapState : public State
 {
@@ -58,6 +59,8 @@ private:
     sf::Event event;
 
     int currentLVL=1;
+    
+    Text* b_prompt;
 };
 
 #endif
