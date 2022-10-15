@@ -45,7 +45,7 @@ State(g, player)
     choice=1;
     player->setCharacter(spr_wiz,1);
     player->updateHealth(65);
-    player->updateArmour(0);
+    player->updateArmour(10);
     player->updatePower(30);
     player->setOGPower(30);
     player->setGUI(game->p->s_wiz_gui);
@@ -153,7 +153,7 @@ void PickState::update(sf::RenderWindow* window)
                     choice = 1;
                     player->setCharacter(spr_wiz,1);
                     player->updateHealth(65);
-                    player->updateArmour(0);
+                    player->updateArmour(10);
                     player->updatePower(30);
                     player->setOGPower(30);
                     player->setGUI(game->p->s_wiz_gui);

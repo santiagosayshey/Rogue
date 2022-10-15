@@ -44,12 +44,6 @@ MapState::~MapState(){}
 
 void MapState::update(sf::RenderWindow* window)
 {
-    
-    if (currentLVL==5)
-    {
-        game->setState(new MenuState(game,player));
-    }
-    
     if (!lvl->checkCollision(window) && currentLVL==1)
     {
         hover1 = false;
@@ -122,28 +116,28 @@ void MapState::update(sf::RenderWindow* window)
                 if (lvl->checkCollision(window) && currentLVL==1)
                 {
                     game->setState(new PlayState(game, player));
-                    game->updateCurrentEnemy();
+                    game->incrementCurrentEnemy();
                     currentLVL=2;
                     break;
                 }
                 if (lvl2->checkCollision(window) && currentLVL==2)
                 {
                     game->setState(new PlayState(game, player));
-                    game->updateCurrentEnemy();
+                    game->incrementCurrentEnemy();
                     currentLVL=3;
                     break;
                 }
                 if (lvl3->checkCollision(window) && currentLVL==3)
                 {
                     game->setState(new PlayState(game, player));
-                    game->updateCurrentEnemy();
+                    game->incrementCurrentEnemy();
                     currentLVL=4;
                     break;
                 }
                 if (lvl4->checkCollision(window) && currentLVL==4)
                 {
                     game->setState(new PlayState(game, player));
-                    currentLVL=5;
+                    game->incrementCurrentEnemy();
                     break;
                 }
                 break;
