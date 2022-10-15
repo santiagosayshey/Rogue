@@ -32,6 +32,7 @@ private:
 
     // initiate player level as 1
     int lvl=1;
+    
 };
 
 #endif

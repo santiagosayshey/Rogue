@@ -1,7 +1,0 @@
-"filename", "language", "cpp", "comment", "blank", "total"
-"/home/samchau/Uni/OOProject/include/State/MapState.cpp", "cpp", 32, 0, 8, 40
-"/home/samchau/Uni/OOProject/include/State/MenuState.cpp", "cpp", 128, 0, 33, 161
-"/home/samchau/Uni/OOProject/include/State/PickState.cpp", "cpp", 182, 0, 34, 216
-"/home/samchau/Uni/OOProject/include/State/PlayState.cpp", "cpp", 96, 0, 26, 122
-"/home/samchau/Uni/OOProject/include/State/State.cpp", "cpp", 6, 0, 1, 7
-"Total", "-", 444, 0, 102, 546

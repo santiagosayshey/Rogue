@@ -6,16 +6,23 @@
 #include "Entity.h"
 #include "../Instance/Game.h"
 
+typedef std::string action;
 class Golem : public Entity
 {
 public:
     Golem(Game* g);
     ~Golem();
 
-    int getOGPower();
+    std::string attack(Entity* entity);
+
+    // enemy attack patterns
+
+        // golem
+        action a_golemDef  = "ZZZ";
+        action a_golemDef2 = "999 DMG";
+        action a_golemDeath = "Crumbles";
 
 private:
-    int originalPow=20;
 
 };
 
