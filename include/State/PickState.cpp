@@ -153,6 +153,7 @@ void PickState::update(sf::RenderWindow* window)
                     player->updateHealth(1000);
                     player->updateArmour(0);
                     player->updatePower(30);
+                    player->setOGPower(30);
                     std::cout << player->getPower() << std::endl;
                     break;
                 }
@@ -163,6 +164,7 @@ void PickState::update(sf::RenderWindow* window)
                     player->updateHealth(100);
                     player->updateArmour(50);
                     player->updatePower(15);
+                    player->setOGPower(15);
                     std::cout << player->getPower() << std::endl;
                     break;
                 }
@@ -173,6 +175,7 @@ void PickState::update(sf::RenderWindow* window)
                     player->updateHealth(75);
                     player->updateArmour(25);
                     player->updatePower(20);
+                    player->setOGPower(20);
                     std::cout << player->getPower() << std::endl;
                     break;
                 }

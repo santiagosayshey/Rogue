@@ -4,6 +4,7 @@
 #include <string>
 
 typedef std::string path;
+typedef std::string action;
 
 #pragma once
 

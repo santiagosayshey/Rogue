@@ -77,7 +77,12 @@ int Entity::returnChar()
     return character;
 }
 
-void Entity::attack(Entity* entity)
+void Entity::setOGPower(int power)
+{
+    originalPower = power;
+}
+
+std::string Entity::attack(Entity* entity)
 {
     // update health value
     if ( entity->getHealth() - getPower() > 0 )
@@ -88,6 +93,8 @@ void Entity::attack(Entity* entity)
     {
         entity->updateHealth(0);
     }
+
+    return "null";
 }
 
 float Entity::getOGPower()
@@ -99,4 +106,9 @@ void Entity::incrementAction()
 {
     currentAction++;
     std::cout << currentAction << std::endl;
+}
+
+std::string Entity::getFirstMove()
+{
+    return firstMove;
 }

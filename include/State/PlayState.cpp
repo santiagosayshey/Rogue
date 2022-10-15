@@ -17,14 +17,14 @@ State(g,player)
     // player
         player->getSprite()->setPos(200,50);
 
-        player_b_health = new Text(g->p->f_main,50,c::Black, t::Bold, "Health: "+std::to_string(player->getHealth()), 200,100);
-        player_t_health = new Text(g->p->f_main,50,c::White, t::Bold, "Health: "+std::to_string(player->getHealth()), 205,95);
+        player_b_health = new Text(g->p->f_main,50,c::Black, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 200,100);
+        player_t_health = new Text(g->p->f_main,50,c::White, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 205,95);
 
-        player_b_armour = new Text(g->p->f_main,50,c::Black, t::Bold, "Armour: "+std::to_string(player->getArmour()), 200,200);
-        player_t_armour = new Text(g->p->f_main,50,c::White, t::Bold, "Armour: "+std::to_string(player->getArmour()), 205,195);
+        player_b_armour = new Text(g->p->f_main,50,c::Black, t::Bold, "Armour: "+std::to_string(int(player->getArmour())), 200,200);
+        player_t_armour = new Text(g->p->f_main,50,c::White, t::Bold, "Armour: "+std::to_string(int(player->getArmour())), 205,195);
 
-        player_b_power = new Text(g->p->f_main,50,c::Black, t::Bold, "Power: "+std::to_string(player->getPower()), 200,300);
-        player_t_power = new Text(g->p->f_main,50,c::White, t::Bold, "Power: "+std::to_string(player->getPower()), 205,295);
+        player_b_power = new Text(g->p->f_main,50,c::Black, t::Bold, "Power: "+std::to_string(int(player->getPower())), 200,300);
+        player_t_power = new Text(g->p->f_main,50,c::White, t::Bold, "Power: "+std::to_string(int(player->getPower())), 205,295);
 
         b_player_choice = new Text(g->p->f_main, 50, c::Black, t::Bold, "Player Choice: " + currentChoice, 600, 100);
         t_player_choice = new Text(g->p->f_main, 50, c::White, t::Bold, "Player Choice: " + currentChoice, 605, 95);
@@ -55,14 +55,15 @@ State(g,player)
         t_endPrompt = new Text(g->p->f_main, 50, c::White, t::Bold, "Press Space to Continue", 610, 690);
 
     // enemy
-        enemy_b_health = new Text(g->p->f_main,50,c::Black, t::Bold, "Health: "+std::to_string(enemy->getHealth()), 1300,100);
-        enemy_t_health = new Text(g->p->f_main,50,c::White, t::Bold, "Health: "+std::to_string(enemy->getHealth()), 1305,95);
+        enemy_b_health = new Text(g->p->f_main,50,c::Black, t::Bold, "Health: "+std::to_string(int(enemy->getHealth())), 1300,100);
+        enemy_t_health = new Text(g->p->f_main,50,c::White, t::Bold, "Health: "+std::to_string(int(enemy->getHealth())), 1305,95);
 
-        enemy_b_armour = new Text(g->p->f_main,50,c::Black, t::Bold, "Armour: "+std::to_string(enemy->getArmour()), 1300,200);
-        enemy_t_armour = new Text(g->p->f_main,50,c::White, t::Bold, "Armour: "+std::to_string(enemy->getArmour()), 1305,195);
+        enemy_b_armour = new Text(g->p->f_main,50,c::Black, t::Bold, "Armour: "+std::to_string(int(enemy->getArmour())), 1300,200);
+        enemy_t_armour = new Text(g->p->f_main,50,c::White, t::Bold, "Armour: "+std::to_string(int(enemy->getArmour())), 1305,195);
 
-        enemy_b_power = new Text(g->p->f_main,50,c::Black, t::Bold, "Power: "+std::to_string(enemy->getPower()), 1300,300);
-        enemy_t_power = new Text(g->p->f_main,50,c::White, t::Bold, "Power: "+std::to_string(enemy->getPower()), 1305,295);
+        b_enemy_nextMove = new Text(g->p->f_main, 50, c::Black, t::Bold, enemy->getFirstMove(), 800, 100);
+        t_enemy_nextMove = new Text(g->p->f_main, 50, c::White, t::Bold, enemy->getFirstMove(), 805, 95);
+    
 
 }
 
@@ -176,15 +177,18 @@ void PlayState::update(sf::RenderWindow* window)
                                         break;
                                 }
                                 player->attack(enemy);
-                                enemy_b_health->updateText("Health: " + std::to_string(enemy->getHealth()));
-                                enemy_t_health->updateText("Health: " + std::to_string(enemy->getHealth()));
+                                player->updatePower(player->getOGPower());
+
+                                player_b_power->updateText("Power: " + std::to_string(int(player->getPower())));
+                                player_t_power->updateText("Power: " + std::to_string(int(player->getPower())));
+
+                                enemy_b_health->updateText("Health: " + std::to_string(int(enemy->getHealth())));
+                                enemy_t_health->updateText("Health: " + std::to_string(int(enemy->getHealth())));
                                 state = 1;
                             }
                             else if (currentChoice == "fortify")
                             {
                                 enemy->updatePower(enemy->getPower()-enemy->getPower()*(player->getArmour()/100));
-                                enemy_b_power->updateText("Power: " + std::to_string(enemy->getPower()));
-                                enemy_t_power->updateText("Power: " + std::to_string(enemy->getPower()));
 
                                 switch (player->returnChar())
                                 {
@@ -228,32 +232,22 @@ void PlayState::update(sf::RenderWindow* window)
 
                 if (enemyCount > 300)
                 {
-                    switch(enemy->returnChar())
-                    {
-                        case 1:
-                            //enemy->getSprite()->updateAnimation(8,4);
-                            break;
-                        case 2:
-                            enemy->getSprite()->updateAnimation(8,3);
-                            break;
-                        case 3:
-                            enemy->getSprite()->updateAnimation(19,2);
-                            break;
-                        case 4:
-                            enemy->getSprite()->updateAnimation(8,3);
-                            break;
-                    }
-                    enemy->attack(player);
+                    enemyNextMove = enemy->attack(player);
+
+                    b_enemy_nextMove->updateText(enemyNextMove);
+                    t_enemy_nextMove->updateText(enemyNextMove);
 
                     enemy->updatePower(enemy->getOGPower());
 
-                    enemy->incrementAction();
 
-                    enemy_b_power->updateText("Power: " + std::to_string(enemy->getPower()));
-                    enemy_t_power->updateText("Power: " + std::to_string(enemy->getPower()));
+
+                    enemy->incrementAction();
                     
-                    player_b_health->updateText("Health: " + std::to_string(player->getHealth()));
-                    player_t_health->updateText("Health: " + std::to_string(player->getHealth()));
+                    player_b_health->updateText("Health: " + std::to_string(int(player->getHealth())));
+                    player_t_health->updateText("Health: " + std::to_string(int(player->getHealth())));
+
+                    player_b_power->updateText("Power: " + std::to_string(int(player->getPower())));
+                    player_t_power->updateText("Power: " + std::to_string(int(player->getPower())));
 
                     enemyCount=0;
                     state = 0;
@@ -414,8 +408,8 @@ void PlayState::render(sf::RenderWindow* window)
         enemy_b_armour->draw(window);
         enemy_t_armour->draw(window);
 
-        enemy_b_power->draw(window);
-        enemy_t_power->draw(window);
+        b_enemy_nextMove->draw(window);
+        t_enemy_nextMove->draw(window);
     }
 
 
@@ -423,8 +417,8 @@ void PlayState::render(sf::RenderWindow* window)
     switch (state)
     {
         case 0:
-            b_player_choice->draw(window);
-            t_player_choice->draw(window);
+            //b_player_choice->draw(window);
+            //t_player_choice->draw(window);
             break;
         case 1:
             break;

@@ -95,8 +95,8 @@ private:
 
         Text* b_player_choice;
         Text* t_player_choice;
-        Text* b_enemy_choice;
-        Text* t_enemy_choice;
+        Text* b_enemy_nextMove;
+        Text* t_enemy_nextMove;
 
 
         Text* b_gameOver;
@@ -107,6 +107,8 @@ private:
 
         Text* b_endPrompt;
         Text* t_endPrompt;
+
+        std::string enemyNextMove;
 
 };
 
