@@ -2,135 +2,123 @@
 
 #include <iostream>
 
-void Entity::chooseRole(int role)
-{
-    this->role = role;
-    switch (role) {
-        case 1:
-            updateHealth(50);
-            updateArmour(0);
-            updateDamage(30);
-            updateAccuracy(90);
-            updateEvasion(50);
-            break;
-        case 2:
-            updateHealth(75);
-            updateArmour(40);
-            updateDamage(20);
-            updateAccuracy(60);
-            updateEvasion(5);
-            break;
-        case 3:
-            updateHealth(75);
-            updateArmour(20);
-            updateDamage(5);
-            updateAccuracy(80);
-            updateEvasion(30);
-            break;
-    }
-}
 
-void Entity::setChararacter(Sprite* sprite)
-{
-    this->sprite = sprite;
-}
 
-void Entity::updateRole(int role)
-{
-    this->role = role;
-}
 
-void Entity::updateHealth(int health)
+
+
+float Entity::updateHealth(float health)
 {
+    // update character health variable
     this->health = health;
+    return getHealth(); 
 }
 
-void Entity::updateArmour(int armour)
+void Entity::updateArmour(float armour)
 {
-    this->armour = armour;
+    // update character armour variable
+    this->armour = armour; 
 }
 
-void Entity::updateDamage(int damage)
+void Entity::updatePower(float power)
 {
-    this->damage = damage;
+    // update character power variable
+    this->power = power; 
 }
 
-void Entity::updateAccuracy(int accuracy)
+DynamicSprite* Entity::getSprite()
 {
-    this->accuracy = accuracy;
+    // return character sprite
+    return this->sprite; 
 }
 
-void Entity::updateEvasion(int evasion)
+float Entity::getHealth()
 {
-    this->evasion = evasion;
+    // return character health
+    return this->health; 
 }
 
-int Entity::getRole()
+float Entity::getArmour()
 {
-    return this->role;
+    // return character armour 
+    return this->armour; 
 }
 
-Sprite* Entity::getSprite()
+float Entity::getPower()
 {
-    return this->sprite;
+    // return character power
+    return this->power; 
 }
 
-
-int Entity::getHealth()
+void Entity::setCharacter(DynamicSprite* sprite, int character)
 {
-    return this->health;
+    // set character sprite
+    this->sprite = sprite;
+
+    // set character
+    this->character = character; 
 }
 
-int Entity::getArmour()
-{
-    return this->armour;    
-}
-
-int Entity::getDamage()
-{
-    return this->damage;
-}
-
-int Entity::getAccuracy()
-{
-    return this->accuracy;
-}
-
-int Entity::getEvasion()
-{
-    return this->evasion;
-}
 
 bool Entity::update(sf::RenderWindow* window)
 {
-
-    return sprite->animation(false);
+    // disable animation repeat, play idle animation
+    return sprite->animation(false,false); 
 }   
 
 void Entity::draw(sf::RenderWindow* window)
 {
+    // draw sprite in the render window
     sprite->draw(window);
 }
 
-void Entity::attack(Entity* entity)
+int Entity::returnChar()
 {
-    switch (role) {
-        case 1:
-            sprite->updateAnimation(7,3);
-            break;
-        case 2:           
-            sprite->updateAnimation(7,3);
-            break;
-        case 3:
-            sprite->updateAnimation(7,3);
-            break;
-        case 4:
-            sprite->updateAnimation(8,2);
-            break;
+    return character;
+}
+
+void Entity::setOGPower(int power)
+{
+    originalPower = power;
+}
+
+std::string Entity::attack(Entity* entity)
+{
+    // update health value
+    if ( entity->getHealth() - getPower() > 0 )
+    {
+        entity->updateHealth(entity->getHealth() - getPower()); 
+    }
+    else
+    {
+        entity->updateHealth(0);
     }
 
-    std::cout << entity->getHealth() << std::endl;
-    entity->updateHealth(entity->getHealth() - getDamage());
-    std::cout << entity->getHealth() << std::endl;
+    return "null";
+}
 
+float Entity::getOGPower()
+{
+    return originalPower;
+}
+
+void Entity::incrementAction()
+{
+    currentAction++;
+    std::cout << currentAction << std::endl;
+}
+
+std::string Entity::getFirstMove()
+{
+    return firstMove;
+}
+
+void Entity::setGUI(std::string type)
+{
+    gui = new Sprite(type,0,0,60,21,8);
+}
+
+Sprite* Entity::getGUI()
+{
+    return gui;
 }

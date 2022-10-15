@@ -230,7 +230,7 @@ void PlayState::update(sf::RenderWindow* window)
 
                 enemyCount++;
 
-                if (enemyCount > 300)
+                if (enemyCount > 300*10)
                 {
                     enemyNextMove = enemy->attack(player);
 
@@ -345,7 +345,7 @@ void PlayState::update(sf::RenderWindow* window)
         game->resetEnemy();
         playerDeadCount++;
         player ->getSprite()->animation(false,true);
-        if (playerDeadCount > 300)
+        if (playerDeadCount > 300*10)
         {
             
             state =2;
@@ -361,7 +361,7 @@ void PlayState::update(sf::RenderWindow* window)
     {
         enemyDeadCount++;
         enemy ->getSprite()->animation(false,true);
-        if (enemyDeadCount > 300)
+        if (enemyDeadCount > 300*10)
         {
             state =3;
             enemyDeadCount=0;

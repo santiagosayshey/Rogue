@@ -10,6 +10,7 @@ PickState::PickState(Game* g, Player* player):
 State(g, player)
 {
 
+
     splash = new Sprite(g->p->s_charSplash,0,0,1920,1080,1);
 
     s_wiz      = new Sprite(g->p->s_buttonBig,150,350,46,14,7);
@@ -30,9 +31,9 @@ State(g, player)
 
     UI. setBuffer(g->hover);
 
-    spr_wiz     = new Sprite(g->p->s_mage,620,65,64,64,12);
-    spr_pal     = new Sprite(g->p->s_paladin,620,65,64,64,12);
-    spr_nin     = new Sprite(g->p->s_ninja,670,65,64,64,12);
+    spr_wiz     = new DynamicSprite(g->p->s_mage,620,65,64,64,12);
+    spr_pal     = new DynamicSprite(g->p->s_paladin,620,65,64,64,12);
+    spr_nin     = new DynamicSprite(g->p->s_ninja,670,65,64,64,12);
 
     spr_wiz_stats = new Sprite(g->p->s_mag_stat,1500,320,1063,1063,0.3);
     spr_pal_stats = new Sprite(g->p->s_pal_stat,1500,320,1063,1063,0.3);
@@ -41,7 +42,13 @@ State(g, player)
     b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Choose Your Character...", 350, 900);
     prompt   = new Text(g->p->f_main, 100, c::White, t::Bold, "Choose Your Character...", 360, 890);
 
-
+    choice=1;
+    player->setCharacter(spr_wiz,1);
+    player->updateHealth(65);
+    player->updateArmour(0);
+    player->updatePower(30);
+    player->setOGPower(30);
+    player->setGUI(game->p->s_wiz_gui);
 }  
 
 PickState::~PickState() 
@@ -143,23 +150,38 @@ void PickState::update(sf::RenderWindow* window)
             case sf::Event::MouseButtonReleased: {
                 if (s_wiz->checkCollision(window))
                 {
-                    c = 1;
-                    player->chooseRole(c);
-                    player->setChararacter(spr_wiz);
+                    choice = 1;
+                    player->setCharacter(spr_wiz,1);
+                    player->updateHealth(65);
+                    player->updateArmour(0);
+                    player->updatePower(30);
+                    player->setOGPower(30);
+                    player->setGUI(game->p->s_wiz_gui);
+                    std::cout << player->getPower() << std::endl;
                     break;
                 }
                 if (s_pal->checkCollision(window))
                 {
-                    c = 2;
-                    player->chooseRole(c);
-                    player->setChararacter(spr_pal);
+                    choice = 2;
+                    player->setCharacter(spr_pal,2);
+                    player->updateHealth(100);
+                    player->updateArmour(50);
+                    player->updatePower(15);
+                    player->setOGPower(15);
+                    player->setGUI(game->p->s_pal_gui);
+                    std::cout << player->getPower() << std::endl;
                     break;
                 }
                 if (s_nin->checkCollision(window))
                 {
-                    c = 3;
-                    player->chooseRole(c);
-                    player->setChararacter(spr_nin);
+                    choice = 3;
+                    player->setCharacter(spr_nin,3);
+                    player->updateHealth(75);
+                    player->updateArmour(25);
+                    player->updatePower(20);
+                    player->setOGPower(20);
+                    player->setGUI(game->p->s_nin_gui);
+                    std::cout << player->getPower() << std::endl;
                     break;
                 }
                 if (s_emb->checkCollision(window))
@@ -174,13 +196,15 @@ void PickState::update(sf::RenderWindow* window)
                     game->setState(new MenuState(game, player));
                     break;
                 }
-            } 
+            }
+            default:
+                break; 
             
         }
     }
-    spr_wiz->animation(true);
-    spr_pal->animation(true);
-    spr_nin->animation(true);
+    spr_wiz->animation(true,false);
+    spr_pal->animation(true,false);
+    spr_nin->animation(true,false);
 }
 
 void PickState::render(sf::RenderWindow* window)
@@ -189,7 +213,7 @@ void PickState::render(sf::RenderWindow* window)
 
     splash->draw(window);
 
-    switch (c) {
+    switch (choice) {
         case 1:
             spr_wiz_stats->draw(window);
             spr_wiz->draw(window);
@@ -201,6 +225,8 @@ void PickState::render(sf::RenderWindow* window)
         case 3:
             spr_nin_stats->draw(window);
             spr_nin->draw(window);
+            break;
+        default:
             break;
     } 
 

@@ -2,6 +2,7 @@
 
 State::State(Game* game, Player* player)
 {
-    this->game = game;
+    // initialise game and player
+    this->game = game; 
     this->player = player;
 }

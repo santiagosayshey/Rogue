@@ -10,6 +10,7 @@ class Game;
 class Drawable
 {
 public:
+    // initialise virtual abstract functions checkCollision, update, and draw
     virtual bool checkCollision(sf::RenderWindow* window) = 0;
     virtual void update(sf::RenderWindow* window) = 0;
     virtual void draw(sf::RenderWindow* window) = 0;

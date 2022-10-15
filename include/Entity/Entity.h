@@ -6,52 +6,69 @@
 #include "SFML/Audio.hpp"
 
 #include "../Drawable/Sprite.h"
+#include "../Drawable/DynamicSprite.h"
 
 class Entity
 {
 public:
-    void chooseRole(int role);
-     
-    void setChararacter(Sprite* sprite);
+    // update individual stats of character
+    float updateHealth(float health);
+    void updateArmour(float armour);
+    void updatePower(float Power);
 
-    void updateRole(int role);
-    void updateHealth(int health);
-    void updateArmour(int armour);
-    void updateDamage(int damage);
-    void updateAccuracy(int accuracy);
-    void updateEvasion(int evasion);
+    // return individual stats of character
+    float getHealth();
+    float getArmour();
+    float getPower();
 
-    int getRole();
+    // set player's character, with 'sprite' and 'character' integer as parameters
+    void setCharacter(DynamicSprite* sprite, int character);
 
-    Sprite* getSprite();
+    // return sprite 
+    DynamicSprite* getSprite();
 
-    int getHealth();
-    int getArmour();
-    int getDamage();
-    int getAccuracy();
-    int getEvasion();
+    // attacks another entity
+    virtual std::string attack(Entity* entity);
 
-    void attack(Entity* entity);
-
+    // update and draw the render window
     bool update(sf::RenderWindow* window);
     void draw(sf::RenderWindow* window);
 
+    // return the type of character chosen
+    int returnChar();
+
+    void setOGPower(int power);
+
+    // return original power
+    float getOGPower();
+
+    void incrementAction();
+
+    std::string getFirstMove();
+
+    void setGUI(std::string type);
+
+    Sprite* getGUI();
+
 protected:
-    Sprite* sprite;
+    // pointer to a sprite
+    DynamicSprite* sprite;
 
-    int role;
+    // stats of character
+    float health;
+    float armour;
+    float power;
 
-    int health;
-    int armour;
-    int damage;
-    int accuracy;
-    int evasion;
-    int strength;
-    int weakness;
-    int neutral;
+    // character integer used to identify which sprite
+    int character;
 
-    bool dead;
+    float originalPower;
 
+    int currentAction=1;
+
+    std::string firstMove;
+
+    Sprite* gui;
 };
 
 #endif
