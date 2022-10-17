@@ -27,9 +27,6 @@ State(g, player)
 
     
     UI. setBuffer(g->hover);
-
-    std::cout << "succesfully created drawables" << std::endl;
-
 }
 
 MenuState::~MenuState()
@@ -43,9 +40,6 @@ MenuState::~MenuState()
     delete quit;
     delete b_title;
     delete title;
-
-    std::cout << "succesfully deleted drawables" << std::endl;
-
 }
 
 void MenuState::update(sf::RenderWindow* window)
@@ -74,14 +68,11 @@ void MenuState::update(sf::RenderWindow* window)
     }
     else
     {
-        std::cout << "collision success" << std::endl;
         while (sound1)
         {
-            std::cout << "sound success" << std::endl;
             UI.play();
             sound1=false;
         }
-        std::cout << "Text move success" << std::endl;
         s_play ->setPos(s_play->getX()+20, s_play->getY());
         b_play ->setPos(b_play->getX()+20, b_play->getY());
         play   ->setPos(play->getX()+20, play->getY());
@@ -100,11 +91,9 @@ void MenuState::update(sf::RenderWindow* window)
     {
         while (sound2)
         {
-            std::cout << "sound success" << std::endl;
             UI.play();
             sound2=false;
         }
-        std::cout << "Text move success" << std::endl;
         s_quit ->setPos(s_quit->getX()+20, s_quit->getY());
         b_quit ->setPos(b_quit->getX()+20, b_quit->getY());
         quit   ->setPos(quit->getX()+20, quit->getY());
@@ -122,13 +111,11 @@ void MenuState::update(sf::RenderWindow* window)
                 if (play->checkCollision(window)) {
                     UI.play();
                     mus.stop();
-                    std::cout << "click successful" << std::endl;
                     game->setState(new PickState(game, player));
                     break;
                 }
                 if (quit->checkCollision(window)) {
                     UI.play();
-                    std::cout << "click successful" << std::endl;
                     window->close();
                     break;
                 }

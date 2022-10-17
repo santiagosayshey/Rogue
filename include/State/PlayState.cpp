@@ -282,7 +282,6 @@ void PlayState::update(sf::RenderWindow* window)
 
         case 3:
         {
-            std::cout << game->getCurrentEnemy() << std::endl;
             while (window->pollEvent(event))
             {
                 switch (event.type) 

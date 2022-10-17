@@ -157,7 +157,6 @@ void PickState::update(sf::RenderWindow* window)
                     player->updatePower(30);
                     player->setOGPower(30);
                     player->setGUI(game->p->s_wiz_gui);
-                    std::cout << player->getPower() << std::endl;
                     break;
                 }
                 if (s_pal->checkCollision(window))
@@ -169,7 +168,6 @@ void PickState::update(sf::RenderWindow* window)
                     player->updatePower(15);
                     player->setOGPower(15);
                     player->setGUI(game->p->s_pal_gui);
-                    std::cout << player->getPower() << std::endl;
                     break;
                 }
                 if (s_nin->checkCollision(window))
@@ -181,7 +179,6 @@ void PickState::update(sf::RenderWindow* window)
                     player->updatePower(20);
                     player->setOGPower(20);
                     player->setGUI(game->p->s_nin_gui);
-                    std::cout << player->getPower() << std::endl;
                     break;
                 }
                 if (s_emb->checkCollision(window))

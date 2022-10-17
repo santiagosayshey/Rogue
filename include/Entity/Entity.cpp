@@ -105,7 +105,6 @@ float Entity::getOGPower()
 void Entity::incrementAction()
 {
     currentAction++;
-    std::cout << currentAction << std::endl;
 }
 
 std::string Entity::getFirstMove()
