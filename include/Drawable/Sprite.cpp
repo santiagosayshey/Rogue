@@ -3,9 +3,11 @@
 
 Sprite::Sprite(std::string texture, int x, int y, int width, int height, float scale)
 {
-    // set init values as parameters using this keyword. Needed for getx,y()
+    // take x,y values and store as current position
     this->x = x;
     this->y = y;
+
+    // store size of sprite
     this->width = width;
     this->height = height;
 
@@ -28,18 +30,16 @@ Sprite::Sprite(std::string texture, int x, int y, int width, int height, float s
     sprite->setPosition(x, y);
 }
 
-
 Sprite::~Sprite()
 {
     delete texture;
     delete sprite;
 }
 
-
-void Sprite::update(sf::RenderWindow *window)
+void Sprite::draw(sf::RenderWindow *window)
 {
+    window->draw(*sprite);
 }
-
 
 bool Sprite::checkCollision(sf::RenderWindow *window)
 {
@@ -53,44 +53,24 @@ bool Sprite::checkCollision(sf::RenderWindow *window)
     return bounds.contains(mouse);
 }
 
-
-void Sprite::draw(sf::RenderWindow *window)
-{
-    // draw sprite on the render window
-    window->draw(*sprite);
-}
-
-
-int Sprite::getX()
-{
-    // return x position of sprite
-    return x;
-}
-
-
-int Sprite::getY()
-{
-    // return y position of sprite
-    return y;
-}
-
-
 void Sprite::setPos(int x, int y)
 {
-    // set the position of the sprite
     sprite->setPosition(x, y);
 }
 
-
-void Sprite::move(int d)
+int Sprite::getX()
 {
-    // move the position of the sprite
-    sprite->setPosition(sprite->getPosition().x+d,sprite->getPosition().y);
+    return x;
 }
 
+int Sprite::getY()
+{
+    return y;
+}
 
 void Sprite::flip()
 {
     // set x to be negative values of itself, y stays the same
+    // effectively mirrors the image
     sprite->scale(-1.f, 1.f);
 }

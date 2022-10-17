@@ -7,44 +7,32 @@
 class Sprite : public Drawable
 {
 public:
-    // constuctor - init size, scale and position. Set chosen sf::sprite
+    // constructor - set sprite visual style
     Sprite(std::string texture, int x, int y, int width, int height, float scale);
 
     // default destrcutor
     ~Sprite();
-
-    // pass the render window to the sprite so that it can update itself
-    void update(sf::RenderWindow* window);
     
-    // move the sprite to a new position in the render window
-    // instantly moves the sprite
-    // position defined by parameters x, y
-    void setPos(int x, int y);
-
-    // dynamically move the sprite to a new position in the render window defined by parameter d
-    // slowly move the sprite to simulate movement
-    void move(int d);
-
-    // flip the sprite on its vertical axis "mirroring it"
-    void flip();
+    // pass the render window to the sprite so that it can draw itself
+    void draw(sf::RenderWindow* window);
 
     // check whether the current sprite is colliding with another 'drawable'
     bool checkCollision(sf::RenderWindow* window);
 
-    // pass the render window to the sprite so that it can draw itself
-    void draw(sf::RenderWindow* window);
+    // move the sprite to a new position in the frame
+    void setPos(int x, int y);
 
     // return the bounds of the current sprite
     int getX();
     int getY();
 
+    // flip the sprite on its vertical axis to mirror it
+    void flip();
+
 protected:
     // sfml drawables to be drawn in render window
     sf::Texture* texture;
     sf::Sprite* sprite;
-
-    // clock used to update animation()
-    sf::Clock clock;
     
     // position / bounds of the sprite / mouse for button clicking
     sf::Vector2f mouse;

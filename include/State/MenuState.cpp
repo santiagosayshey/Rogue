@@ -45,17 +45,6 @@ MenuState::~MenuState()
 void MenuState::update(sf::RenderWindow* window)
 
 {
-    splash   ->update(window);
-    s_play   ->update(window);
-    b_play   ->update(window);
-    play     ->update(window);
-    s_quit   ->update(window);
-    b_quit   ->update(window);
-    quit     ->update(window);
-    b_title  ->update(window);
-    title    ->update(window);
-
-    //std::cout << "succesfully updated drawables" << std::endl;
 
     if (!s_play->checkCollision(window))
     {
@@ -108,13 +97,13 @@ void MenuState::update(sf::RenderWindow* window)
                 window->close();
                 break;
             case sf::Event::MouseButtonReleased: {
-                if (play->checkCollision(window)) {
+                if (s_play->checkCollision(window)) {
                     UI.play();
                     mus.stop();
                     game->setState(new PickState(game, player));
                     break;
                 }
-                if (quit->checkCollision(window)) {
+                if (s_quit->checkCollision(window)) {
                     UI.play();
                     window->close();
                     break;

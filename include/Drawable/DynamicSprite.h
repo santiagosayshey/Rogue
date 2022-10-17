@@ -7,18 +7,21 @@
 class DynamicSprite : public Sprite
 {
 public:
-    // constructor
+    // constructor - sets same visual style as parent
     DynamicSprite(std::string texture, int x, int y, int width, int height, float scale);
+    
+    // destructor
     ~DynamicSprite();
 
     // update the current animation values to be used in animation()
     void updateAnimation(int numFrames, int row);
 
-    // update the current texture rectangle of the current sprite sheet based
-    // number of frames and current row defined by updateAnimation
+    // update the current texture rectangle of the sprite
+    /* iterate through a number of frames in a row of the sprite sheet
+    to simulate movement */
     bool animation(bool repeat, bool death);
 
-    // return the sf sprite
+    // return sprite
     sf::Sprite* getSFSprite();
 
 private:
@@ -26,6 +29,9 @@ private:
     int numFrames;
     int currentFrame;
     int row;
+
+    // clock used to update animation()
+    sf::Clock clock;
 };
 
 #endif
