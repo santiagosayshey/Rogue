@@ -3,16 +3,16 @@
 DynamicSprite::DynamicSprite(std::string texture, int x, int y, int width, int height, float scale):
 Sprite(texture,x,y,width,height,scale)
 {
-    // set the animation values to play the idle animation on init
+    // initialise sprite to play idle animation
     currentFrame = 0;
     numFrames = 7;
     row = 0;
 }
 
-void DynamicSprite::updateAnimation(int numFrames, int row)
+void DynamicSprite::setAnimation(int numFrames, int row)
 {
-    // change the animation values such that the new values 
-    // represent a new animation within the sprite sheet
+    /* change the animation values such that the new values 
+    represent a new animation within the sprite sheet */
     currentFrame = 0;
     this->numFrames = numFrames;
     this->row = row;
@@ -70,9 +70,11 @@ bool DynamicSprite::animation(bool repeat, bool death)
             else if(death == false)
             {
                 // if not repeated, play idle animation
-                updateAnimation(7, 0);
+                setAnimation(7, 0);
                 return true;
             }
+            /* if the death animation is being played, dont update the current animation
+            and instead idle on the last frame*/
             else {}
         }
         

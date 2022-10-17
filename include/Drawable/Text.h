@@ -7,41 +7,29 @@
 class Text : public Drawable
 {
 public:
-    // constructor - init f to be used for font, s for character size, c for colour, style, and type of text
-    //               init position x, and y as well
+    // constructor - set text visual style
     Text(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y);
 
     // default destructor
     ~Text();
 
-    // pass the render window to check for collision
-    bool checkCollision(sf::RenderWindow* window);
-
-    // pass the render window to be updated
-    void update(sf::RenderWindow* window);
-
-    // update the text to be displayed
-    void updateText(std::string s);
-
     // pass the render window to display text
     void draw(sf::RenderWindow* window);
 
-    // return x position of text
+    // update the text string during the update cycle
+    void setText(std::string s);
+
+    // place the text in a new position in the render window instantly
+    void setPosition(int x, int y);
+    
+    // return x origin of sprite
     int getX();
 
-    // return y position of text
+    // return y origin of text
     int getY();
 
-    // move the text to a new position in the render window
-    // position defined by parameters x, y
-    void setPos(int x, int y);
-
-
-private:
-    // position / bounds of the text / mouse for button clicking
-    sf::Vector2f mouse;
-    sf::FloatRect bounds;
     
+private:
     // text to be displayed in render window
     sf::Text text;
     sf::Font font;

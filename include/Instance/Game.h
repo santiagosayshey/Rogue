@@ -17,44 +17,51 @@
 class Game
 {
 public:
-    // constructor - init width and height used to render window
+    // constructor - set the resolution of the game
+    // create instances of path, player, enemies, etc
     Game(int width, int height); 
 
     // default destructor
     ~Game(); 
 
-    // starts the game by initialising the game loop
-    void run();
+    // instance managers
 
-    // create the enemy array
-    // will eventually be random
-    void initEnemies();
+        // starts the game by initialising the game loop
+        void run();
 
-    // sets current game state
-    void setState(State* newState);  
+        // sets current game state
+        void setState(State* newState);  
 
-    // creates a path to access audio and visual files
-    Path* p = new Path;
+    // enemies
 
-    // map pointer
-    MapState* map;
+        // initialise enemies
+        void initEnemies();
 
-    // initiate hover, which will be used to access audio file "e_hover" 
-    sf::SoundBuffer hover;
+        // return cenemy
+        Entity* returnEnemy();
 
-    // return enemy
-    Entity* returnEnemy();
+        // set new enemy by passing a pre determined ID
+        void setEnemy(int n);
 
-    // update the current enemy
-    void updateCurrentEnemy(int n);
-    void incrementCurrentEnemy();
+        // increment the enemy array to change levels
+        void incrementEnemy();
 
-    // reset enemies in case of player death
-    void resetEnemy();
+        // reset enemies in case of player death
+        void resetEnemy();
 
-    int getCurrentEnemy();
+        // return the current enemy for sake of player win / death
+        int getCurrentEnemy();
 
+    // states / structures
 
+        // set a new map
+        void setMap(MapState* map);
+
+        // return the map to change levels
+        MapState* getMap();
+
+        // return the path to access sprites / sounds
+        Path* getPath();
 
 private:
     // create a pointer to window
@@ -64,21 +71,25 @@ private:
     State* currentState;
 
     // create a pointer to player
-    Player* player;
+    Player* player = new Player();
+
+    // pointer to path structure
+    Path* path = new Path();
+
+    // map instance pointer - overriden on new game
+    MapState* map;
 
     // create an array of enemies that the play state will iterate through
-    Entity* tempArr[4];
     Entity* enemyArr[4];
 
     // current enemy
-    int currentEnemy;
+    int currentEnemy = 0;
 
+    // predetermined enemies that will be randomised on initilsation
     Entity* golem;
     Entity* viking;
     Entity* pilgrim;
     Entity* brute;
-
-
 };
 
 #endif
