@@ -8,11 +8,10 @@ typedef std::string action;
 
 #pragma once
 
-class Path
+struct Path
 {
-public:
-    Path();
-    ~Path();
+    Path() {}
+    ~Path() {}
 
     // fonts
     path f_main               = "assets/fonts/main.ttf";
@@ -73,7 +72,7 @@ public:
     path e_hover              = "assets/sounds/hover.wav";
     path e_bMusic             = "assets/sounds/medieval.wav";
 
-
+private:
 
 };
 
