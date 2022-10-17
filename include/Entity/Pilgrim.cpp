@@ -4,7 +4,7 @@
 Pilgrim::Pilgrim(Game* g)
 {
     sprite = new DynamicSprite(g->p->s_pilgrim,1500,350,32,32,16);
-    sprite->setPos(1700,320);
+    sprite->setPosition(1700,320);
     health = 50;
     armour = 50;
     power = 5;

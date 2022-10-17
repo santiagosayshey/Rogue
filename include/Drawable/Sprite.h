@@ -20,7 +20,7 @@ public:
     bool checkCollision(sf::RenderWindow* window);
 
     // move the sprite to a new position in the frame
-    void setPos(int x, int y);
+    void setPosition(int x, int y);
 
     // return the bounds of the current sprite
     int getX();

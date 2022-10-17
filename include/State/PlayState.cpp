@@ -29,9 +29,9 @@ State(g,player)
     t_endTurn = new Text(g->p->f_main, 33, c::White, t::Bold, "End Turn", 1655, 630);
 
     // player
-    player->getSprite()->setPos(200,65);
-    player->getGUI()->setPos(150,100);
-    enemy->getGUI()->setPos(1800,100);
+    player->getSprite()->setPosition(200,65);
+    player->getGUI()->setPosition(150,100);
+    enemy->getGUI()->setPosition(1800,100);
         
     player_b_health = new Text(g->p->f_main,40,c::Black, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 360,125);
     player_t_health = new Text(g->p->f_main,40,c::White, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 365,120);
@@ -78,14 +78,14 @@ void PlayState::update(sf::RenderWindow* window)
     {
         case 0:
         {
-            b_prompt->updateText("Player Turn!");
-            t_prompt->updateText("Player Turn!");
+            b_prompt->setText("Player Turn!");
+            t_prompt->setText("Player Turn!");
             // button feedback
             if (!s_attack->checkCollision(window))
             {
-                s_attack ->setPos(s_attack->getX(), s_attack->getY());
-                b_attack ->setPos(b_attack->getX(), b_attack->getY());
-                t_attack   ->setPos(t_attack->getX(), t_attack->getY());
+                s_attack ->setPosition(s_attack->getX(), s_attack->getY());
+                b_attack ->setPosition(b_attack->getX(), b_attack->getY());
+                t_attack   ->setPosition(t_attack->getX(), t_attack->getY());
                 sound1=true;
             }
             else
@@ -95,16 +95,16 @@ void PlayState::update(sf::RenderWindow* window)
                     UI.play();
                     sound1=false;
                 }
-                s_attack ->setPos(s_attack->getX()+20, s_attack->getY());
-                b_attack ->setPos(b_attack->getX()+20, b_attack->getY());
-                t_attack   ->setPos(t_attack->getX()+20, t_attack->getY());
+                s_attack ->setPosition(s_attack->getX()+20, s_attack->getY());
+                b_attack ->setPosition(b_attack->getX()+20, b_attack->getY());
+                t_attack   ->setPosition(t_attack->getX()+20, t_attack->getY());
 
             }
             if (!s_fortify->checkCollision(window))
             {
-                s_fortify ->setPos(s_fortify->getX(), s_fortify->getY());
-                b_fortify ->setPos(b_fortify->getX(), b_fortify->getY());
-                t_fortify   ->setPos(t_fortify->getX(), t_fortify->getY());
+                s_fortify ->setPosition(s_fortify->getX(), s_fortify->getY());
+                b_fortify ->setPosition(b_fortify->getX(), b_fortify->getY());
+                t_fortify   ->setPosition(t_fortify->getX(), t_fortify->getY());
                 sound2=true;
             }
             else
@@ -114,16 +114,16 @@ void PlayState::update(sf::RenderWindow* window)
                     UI.play();
                     sound2=false;
                 }
-                s_fortify ->setPos(s_fortify->getX()+20, s_fortify->getY());
-                b_fortify ->setPos(b_fortify->getX()+20, b_fortify->getY());
-                t_fortify   ->setPos(t_fortify->getX()+20, t_fortify->getY());
+                s_fortify ->setPosition(s_fortify->getX()+20, s_fortify->getY());
+                b_fortify ->setPosition(b_fortify->getX()+20, b_fortify->getY());
+                t_fortify   ->setPosition(t_fortify->getX()+20, t_fortify->getY());
 
             }
             if (!s_endTurn->checkCollision(window))
             {
-                s_endTurn ->setPos(s_endTurn->getX(), s_endTurn->getY());
-                b_endTurn ->setPos(b_endTurn->getX(), b_endTurn->getY());
-                t_endTurn   ->setPos(t_endTurn->getX(), t_endTurn->getY());
+                s_endTurn ->setPosition(s_endTurn->getX(), s_endTurn->getY());
+                b_endTurn ->setPosition(b_endTurn->getX(), b_endTurn->getY());
+                t_endTurn   ->setPosition(t_endTurn->getX(), t_endTurn->getY());
                 sound3=true;
             }
             else
@@ -133,9 +133,9 @@ void PlayState::update(sf::RenderWindow* window)
                     UI.play();
                     sound3=false;
                 }
-                s_endTurn ->setPos(s_endTurn->getX()+20, s_endTurn->getY());
-                b_endTurn ->setPos(b_endTurn->getX()+20, b_endTurn->getY());
-                t_endTurn   ->setPos(t_endTurn->getX()+20, t_endTurn->getY());
+                s_endTurn ->setPosition(s_endTurn->getX()+20, s_endTurn->getY());
+                b_endTurn ->setPosition(b_endTurn->getX()+20, b_endTurn->getY());
+                t_endTurn   ->setPosition(t_endTurn->getX()+20, t_endTurn->getY());
 
             }
 
@@ -150,16 +150,16 @@ void PlayState::update(sf::RenderWindow* window)
                         if (s_attack->checkCollision(window)) 
                         {
                             currentChoice = "AttacK";
-                            b_player_choice->updateText(std::to_string(int(player->getPower()))+" DMG");
-                            t_player_choice->updateText(std::to_string(int(player->getPower()))+" DMG");
+                            b_player_choice->setText(std::to_string(int(player->getPower()))+" DMG");
+                            t_player_choice->setText(std::to_string(int(player->getPower()))+" DMG");
 
                             break;
                         }
                         if (s_fortify->checkCollision(window)) 
                         {
                             currentChoice = "Fortify";
-                            b_player_choice->updateText("Fortify");
-                            t_player_choice->updateText("Fortify");
+                            b_player_choice->setText("Fortify");
+                            t_player_choice->setText("Fortify");
                             break;
                         }
                         if (s_endTurn->checkCollision(window)) 
@@ -183,8 +183,8 @@ void PlayState::update(sf::RenderWindow* window)
                                 player->attack(enemy);
                                 player->updatePower(player->getOGPower());
 
-                                enemy_b_health->updateText("Health: " + std::to_string(int(enemy->getHealth())));
-                                enemy_t_health->updateText("Health: " + std::to_string(int(enemy->getHealth())));
+                                enemy_b_health->setText("Health: " + std::to_string(int(enemy->getHealth())));
+                                enemy_t_health->setText("Health: " + std::to_string(int(enemy->getHealth())));
                                 state = 1;
                             }
                             else if (currentChoice == "Fortify")
@@ -225,8 +225,8 @@ void PlayState::update(sf::RenderWindow* window)
         {
             if (!enemyDead)
             {
-                b_prompt->updateText("Enemy Turn!");
-                t_prompt->updateText("Enemy Turn!");
+                b_prompt->setText("Enemy Turn!");
+                t_prompt->setText("Enemy Turn!");
 
                 enemyCount++;
 
@@ -234,8 +234,8 @@ void PlayState::update(sf::RenderWindow* window)
                 {
                     enemyNextMove = enemy->attack(player);
 
-                    b_enemy_nextMove->updateText(enemyNextMove);
-                    t_enemy_nextMove->updateText(enemyNextMove);
+                    b_enemy_nextMove->setText(enemyNextMove);
+                    t_enemy_nextMove->setText(enemyNextMove);
 
                     enemy->updatePower(enemy->getOGPower());
 
@@ -243,13 +243,13 @@ void PlayState::update(sf::RenderWindow* window)
 
                     enemy->incrementAction();
                     
-                    player_b_health->updateText("Health: " + std::to_string(int(player->getHealth())));
-                    player_t_health->updateText("Health: " + std::to_string(int(player->getHealth())));
+                    player_b_health->setText("Health: " + std::to_string(int(player->getHealth())));
+                    player_t_health->setText("Health: " + std::to_string(int(player->getHealth())));
 
                     if (currentChoice == "AttacK")
                     {
-                        b_player_choice->updateText(std::to_string(int(player->getPower()))+" DMG");
-                        t_player_choice->updateText(std::to_string(int(player->getPower()))+" DMG");
+                        b_player_choice->setText(std::to_string(int(player->getPower()))+" DMG");
+                        t_player_choice->setText(std::to_string(int(player->getPower()))+" DMG");
                     }
 
 

@@ -3,103 +3,79 @@
 #include <iostream>
 
 
-
-
-
-
-float Entity::updateHealth(float health)
+float Entity::setHealth(float health)
 {
-    // update character health variable
     this->health = health;
     return getHealth(); 
 }
 
-void Entity::updateArmour(float armour)
+void Entity::setArmour(float armour)
 {
-    // update character armour variable
     this->armour = armour; 
 }
 
-void Entity::updatePower(float power)
+void Entity::setPower(float power)
 {
-    // update character power variable
     this->power = power; 
 }
 
 DynamicSprite* Entity::getSprite()
 {
-    // return character sprite
     return this->sprite; 
 }
 
 float Entity::getHealth()
 {
-    // return character health
     return this->health; 
 }
 
 float Entity::getArmour()
 {
-    // return character armour 
     return this->armour; 
 }
 
 float Entity::getPower()
 {
-    // return character power
     return this->power; 
 }
 
-void Entity::setCharacter(DynamicSprite* sprite, int character)
+void Entity::setCharacter(DynamicSprite* sprite, int ID)
 {
     // set character sprite
     this->sprite = sprite;
 
     // set character
-    this->character = character; 
+    this->ID = ID; 
 }
 
-
-bool Entity::update(sf::RenderWindow* window)
+int Entity::getID()
 {
-    // disable animation repeat, play idle animation
-    return sprite->animation(false,false); 
-}   
-
-void Entity::draw(sf::RenderWindow* window)
-{
-    // draw sprite in the render window
-    sprite->draw(window);
+    return ID;
 }
 
-int Entity::returnChar()
+void Entity::setPowerBuffer(int power)
 {
-    return character;
-}
-
-void Entity::setOGPower(int power)
-{
-    originalPower = power;
+    powerBuffer = power;
 }
 
 std::string Entity::attack(Entity* entity)
 {
-    // update health value
+    // set health value
     if ( entity->getHealth() - getPower() > 0 )
     {
-        entity->updateHealth(entity->getHealth() - getPower()); 
+        entity->setHealth(entity->getHealth() - getPower()); 
     }
     else
     {
-        entity->updateHealth(0);
+        entity->setHealth(0);
     }
 
     return "null";
 }
 
-float Entity::getOGPower()
+float Entity::getPowerBuffer()
 {
-    return originalPower;
+    return powerBuffer;
 }
 
 void Entity::incrementAction()

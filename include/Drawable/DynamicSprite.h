@@ -21,9 +21,6 @@ public:
     to simulate movement */
     bool animation(bool repeat, bool death);
 
-    // return sprite
-    sf::Sprite* getSFSprite();
-
 private:
     // values used to define animation()
     int numFrames;

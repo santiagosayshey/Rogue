@@ -60,7 +60,7 @@ void PickState::update(sf::RenderWindow* window)
 {
     if (!s_wiz->checkCollision(window))
     {
-        s_wiz ->setPos(s_wiz->getX(), s_wiz->getY());
+        s_wiz ->setPosition(s_wiz->getX(), s_wiz->getY());
         b_wiz ->setPosition(b_wiz->getX(), b_wiz->getY());
         t_wiz   ->setPosition(t_wiz->getX(), t_wiz->getY());
         sound1=true;
@@ -72,7 +72,7 @@ void PickState::update(sf::RenderWindow* window)
             UI.play();
             sound1=false;
         }
-        s_wiz ->setPos(s_wiz->getX()+20, s_wiz->getY());
+        s_wiz ->setPosition(s_wiz->getX()+20, s_wiz->getY());
         b_wiz ->setPosition(b_wiz->getX()+20, b_wiz->getY());
         t_wiz   ->setPosition(t_wiz->getX()+20, t_wiz->getY());
 
@@ -80,7 +80,7 @@ void PickState::update(sf::RenderWindow* window)
 
     if (!s_pal->checkCollision(window))
     {
-        s_pal ->setPos(s_pal->getX(), s_pal->getY());
+        s_pal ->setPosition(s_pal->getX(), s_pal->getY());
         b_pal ->setPosition(b_pal->getX(), b_pal->getY());
         t_pal   ->setPosition(t_pal->getX(), t_pal->getY());
         sound2=true;
@@ -92,7 +92,7 @@ void PickState::update(sf::RenderWindow* window)
             UI.play();
             sound2=false;
         }
-        s_pal ->setPos(s_pal->getX()+20, s_pal->getY());
+        s_pal ->setPosition(s_pal->getX()+20, s_pal->getY());
         b_pal ->setPosition(b_pal->getX()+20, b_pal->getY());
         t_pal   ->setPosition(t_pal->getX()+20, t_pal->getY());
 
@@ -100,7 +100,7 @@ void PickState::update(sf::RenderWindow* window)
 
     if (!s_nin->checkCollision(window))
     {
-        s_nin ->setPos(s_nin->getX(), s_nin->getY());
+        s_nin ->setPosition(s_nin->getX(), s_nin->getY());
         b_nin ->setPosition(b_nin->getX(), b_nin->getY());
         t_nin   ->setPosition(t_nin->getX(), t_nin->getY());
         sound3=true;
@@ -112,7 +112,7 @@ void PickState::update(sf::RenderWindow* window)
             UI.play();
             sound3=false;
         }
-        s_nin ->setPos(s_nin->getX()+20, s_nin->getY());
+        s_nin ->setPosition(s_nin->getX()+20, s_nin->getY());
         b_nin ->setPosition(b_nin->getX()+20, b_nin->getY());
         t_nin   ->setPosition(t_nin->getX()+20, t_nin->getY());
 
@@ -120,7 +120,7 @@ void PickState::update(sf::RenderWindow* window)
 
     if (!s_emb->checkCollision(window))
     {
-        s_emb ->setPos(s_emb->getX(), s_emb->getY());
+        s_emb ->setPosition(s_emb->getX(), s_emb->getY());
         b_emb ->setPosition(b_emb->getX(), b_emb->getY());
         t_emb   ->setPosition(t_emb->getX(), t_emb->getY());
         sound4=true;
@@ -132,7 +132,7 @@ void PickState::update(sf::RenderWindow* window)
             UI.play();
             sound4=false;
         }
-        s_emb ->setPos(s_emb->getX()+20, s_emb->getY());
+        s_emb ->setPosition(s_emb->getX()+20, s_emb->getY());
         b_emb ->setPosition(b_emb->getX()+20, b_emb->getY());
         t_emb   ->setPosition(t_emb->getX()+20, t_emb->getY());
 

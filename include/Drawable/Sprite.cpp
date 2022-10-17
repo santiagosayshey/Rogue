@@ -53,7 +53,7 @@ bool Sprite::checkCollision(sf::RenderWindow *window)
     return bounds.contains(mouse);
 }
 
-void Sprite::setPos(int x, int y)
+void Sprite::setPosition(int x, int y)
 {
     sprite->setPosition(x, y);
 }

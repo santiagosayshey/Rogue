@@ -11,64 +11,57 @@
 class Entity
 {
 public:
-    // update individual stats of character
-    float updateHealth(float health);
-    void updateArmour(float armour);
-    void updatePower(float Power);
+    // set entity variables
 
-    // return individual stats of character
-    float getHealth();
-    float getArmour();
-    float getPower();
+        // stats
+        float setHealth(float health);
+        void setArmour(float armour);
+        void setPower(float Power);
+        void setPowerBuffer(int power);
+        int getID();
+        std::string getFirstMove();
 
-    // set player's character, with 'sprite' and 'character' integer as parameters
-    void setCharacter(DynamicSprite* sprite, int character);
+        //sprites
+        void setCharacter(DynamicSprite* sprite, int ID);
+        void setGUI(std::string type);
 
-    // return sprite 
-    DynamicSprite* getSprite();
+    // get entity variables
 
-    // attacks another entity
-    virtual std::string attack(Entity* entity);
+        // stats
+        float getHealth();
+        float getArmour();
+        float getPower();
+        float getPowerBuffer();
 
-    // update and draw the render window
-    bool update(sf::RenderWindow* window);
-    void draw(sf::RenderWindow* window);
-
-    // return the type of character chosen
-    int returnChar();
-
-    void setOGPower(int power);
-
-    // return original power
-    float getOGPower();
-
-    void incrementAction();
-
-    std::string getFirstMove();
-
-    void setGUI(std::string type);
-
-    Sprite* getGUI();
+        // sprites
+        DynamicSprite* getSprite();
+        Sprite* getGUI();
+        
+    // behaviour
+    
+        // attack another entity
+        virtual std::string attack(Entity* entity);
+    
+        // increment the behaviour array
+        void incrementAction();    
 
 protected:
-    // pointer to a sprite
-    DynamicSprite* sprite;
 
-    // stats of character
+    // entity character model
+    DynamicSprite* sprite;
+    // GUI sprite
+    Sprite* gui;
+
+    // stats
     float health;
     float armour;
     float power;
-
-    // character integer used to identify which sprite
-    int character;
-
-    float originalPower;
-
+    float powerBuffer;
+    int ID;
     int currentAction=1;
-
     std::string firstMove;
 
-    Sprite* gui;
+    
 };
 
 #endif

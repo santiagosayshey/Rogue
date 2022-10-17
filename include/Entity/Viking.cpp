@@ -3,7 +3,7 @@
 Viking::Viking(Game* g)
 {
     sprite = new DynamicSprite(g->p->s_viking,1500,350,32,32,16);
-    sprite->setPos(1700,320);
+    sprite->setPosition(1700,320);
     sprite->updateAnimation(6,0);
     health = 30;
     armour = 80;

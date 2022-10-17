@@ -50,7 +50,7 @@ void MenuState::update(sf::RenderWindow* window)
     {
         //std::cout << "no collision success" << std::endl;
 
-        s_play ->setPos(s_play->getX(), s_play->getY());
+        s_play ->setPosition(s_play->getX(), s_play->getY());
         b_play ->setPosition(b_play->getX(), b_play->getY());
         play   ->setPosition(play->getX(), play->getY());
         sound1=true;
@@ -62,7 +62,7 @@ void MenuState::update(sf::RenderWindow* window)
             UI.play();
             sound1=false;
         }
-        s_play ->setPos(s_play->getX()+20, s_play->getY());
+        s_play ->setPosition(s_play->getX()+20, s_play->getY());
         b_play ->setPosition(b_play->getX()+20, b_play->getY());
         play   ->setPosition(play->getX()+20, play->getY());
 
@@ -71,7 +71,7 @@ void MenuState::update(sf::RenderWindow* window)
     if (!s_quit->checkCollision(window))
     {
         //std::cout << "no collision success" << std::endl;
-        s_quit ->setPos(s_quit->getX(), s_quit->getY());
+        s_quit ->setPosition(s_quit->getX(), s_quit->getY());
         b_quit ->setPosition(b_quit->getX(), b_quit->getY());
         quit   ->setPosition(quit->getX(), quit->getY());
         sound2=true;
@@ -83,7 +83,7 @@ void MenuState::update(sf::RenderWindow* window)
             UI.play();
             sound2=false;
         }
-        s_quit ->setPos(s_quit->getX()+20, s_quit->getY());
+        s_quit ->setPosition(s_quit->getX()+20, s_quit->getY());
         b_quit ->setPosition(b_quit->getX()+20, b_quit->getY());
         quit   ->setPosition(quit->getX()+20, quit->getY());
         
