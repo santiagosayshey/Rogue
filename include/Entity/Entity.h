@@ -21,7 +21,7 @@ public:
         int getID();
         std::string getFirstMove();
 
-        //sprites
+        // sprites
         void setCharacter(DynamicSprite* sprite, int ID);
         void setGUI(std::string type);
 
@@ -49,6 +49,7 @@ protected:
 
     // entity character model
     DynamicSprite* sprite;
+    
     // GUI sprite
     Sprite* gui;
 

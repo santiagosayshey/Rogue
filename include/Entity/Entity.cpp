@@ -41,10 +41,7 @@ float Entity::getPower()
 
 void Entity::setCharacter(DynamicSprite* sprite, int ID)
 {
-    // set character sprite
     this->sprite = sprite;
-
-    // set character
     this->ID = ID; 
 }
 
