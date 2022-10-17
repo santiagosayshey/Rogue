@@ -2,6 +2,11 @@
 
 #include <iostream>
 
+Entity::~Entity()
+{
+    delete sprite;
+    delete gui;
+}
 
 float Entity::setHealth(float health)
 {
@@ -94,3 +99,5 @@ Sprite* Entity::getGUI()
 {
     return gui;
 }
+
+

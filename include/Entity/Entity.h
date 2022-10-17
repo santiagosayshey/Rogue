@@ -11,6 +11,8 @@
 class Entity
 {
 public:
+
+   ~Entity();
     // set entity variables
 
         // stats

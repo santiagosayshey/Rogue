@@ -15,7 +15,20 @@ Game::Game(int width, int height)
     currentState = new MenuState(this, player);
 }
 
-Game::~Game() {  }
+Game::~Game()
+{ 
+    delete window;
+    delete currentState;
+    delete player;
+    delete path;
+    delete map;
+    delete[] *enemyArr;
+
+    delete golem;
+    delete viking;
+    delete pilgrim;
+    delete brute;
+}
 
 void Game::run()
 {

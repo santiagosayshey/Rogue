@@ -14,6 +14,34 @@ State(g,player)
     // SPLASH SCREEN //
     splash = new Sprite(game->getPath()->s_charSplash,0,0,1920,1080,1);
 
+    // PLAYER // 
+
+        // SPRITES //
+        player->getSprite()->setPosition(200,65);
+
+        // GUI //
+        player->getGUI()->setPosition(150,100);
+
+        player_b_health = new Text(game->getPath()->f_main,40,c::Black, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 360,125);
+        player_t_health = new Text(game->getPath()->f_main,40,c::White, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 365,120);
+
+        player_b_armour = new Text(game->getPath()->f_main,40,c::Black, t::Bold, "Armour: "+std::to_string(int(player->getArmour())), 360,215);
+        player_t_armour = new Text(game->getPath()->f_main,40,c::White, t::Bold, "Armour: "+std::to_string(int(player->getArmour())), 365,210);
+
+    // ENEMY //
+
+        // return the current enemy from the random enemy array
+        enemy = game->returnEnemy();
+
+        // GUI //
+        enemy->getGUI()->setPosition(1800,100);
+
+        enemy_b_health = new Text(game->getPath()->f_main,40,c::Black, t::Bold, "Health: "+std::to_string(int(enemy->getHealth())), 1370,125);
+        enemy_t_health = new Text(game->getPath()->f_main,40,c::White, t::Bold, "Health: "+std::to_string(int(enemy->getHealth())), 1375,120);
+
+        enemy_b_armour = new Text(game->getPath()->f_main,40,c::Black, t::Bold, "Armour: "+std::to_string(int(enemy->getArmour())), 1370,215);
+        enemy_t_armour = new Text(game->getPath()->f_main,40,c::White, t::Bold, "Armour: "+std::to_string(int(enemy->getArmour())), 1375,210);
+
     // BUTTONS //
     s_attack  = new Sprite(game->getPath()->s_button,150,550,30,14,7);
     b_attack  = new Text(game->getPath()->f_main, 50, c::Black, t::Bold, "AttacK", 170, 580);
@@ -46,34 +74,6 @@ State(g,player)
 
     b_endPrompt = new Text(game->getPath()->f_main, 50, c::Black, t::Bold, "Press Space to Continue", 600, 700);
     t_endPrompt = new Text(game->getPath()->f_main, 50, c::White, t::Bold, "Press Space to Continue", 610, 690);
-
-    // PLAYER // 
-
-        // SPRITES //
-        player->getSprite()->setPosition(200,65);
-
-        // GUI //
-        player->getGUI()->setPosition(150,100);
-
-        player_b_health = new Text(game->getPath()->f_main,40,c::Black, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 360,125);
-        player_t_health = new Text(game->getPath()->f_main,40,c::White, t::Bold, "Health: "+std::to_string(int(player->getHealth())), 365,120);
-
-        player_b_armour = new Text(game->getPath()->f_main,40,c::Black, t::Bold, "Armour: "+std::to_string(int(player->getArmour())), 360,215);
-        player_t_armour = new Text(game->getPath()->f_main,40,c::White, t::Bold, "Armour: "+std::to_string(int(player->getArmour())), 365,210);
-
-    // ENEMY //
-
-        // return the current enemy from the random enemy array
-        enemy = game->returnEnemy();
-
-        // GUI //
-        enemy->getGUI()->setPosition(1800,100);
-
-        enemy_b_health = new Text(game->getPath()->f_main,40,c::Black, t::Bold, "Health: "+std::to_string(int(enemy->getHealth())), 1370,125);
-        enemy_t_health = new Text(game->getPath()->f_main,40,c::White, t::Bold, "Health: "+std::to_string(int(enemy->getHealth())), 1375,120);
-
-        enemy_b_armour = new Text(game->getPath()->f_main,40,c::Black, t::Bold, "Armour: "+std::to_string(int(enemy->getArmour())), 1370,215);
-        enemy_t_armour = new Text(game->getPath()->f_main,40,c::White, t::Bold, "Armour: "+std::to_string(int(enemy->getArmour())), 1375,210);
 }
 
 PlayState::~PlayState()
@@ -285,12 +285,14 @@ void PlayState::update(sf::RenderWindow* window)
                                 state = 1;
                             }
                         }
+                        break;
                     }
 
                     default: 
                         break;
                 }
             }
+            break;
         }
 
         // enemy turn    
@@ -564,6 +566,10 @@ void PlayState::render(sf::RenderWindow* window)
     // conditional rendering for over states
     switch (state)
     {
+        case 0:
+            break;
+        case 1:
+            break;
         case 2:
             b_gameOver->draw(window);
             t_gameOver->draw(window);
