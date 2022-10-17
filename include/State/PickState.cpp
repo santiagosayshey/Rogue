@@ -150,9 +150,10 @@ void PickState::update(sf::RenderWindow* window)
     // event manager
     while (window->pollEvent(event))
     {
-        // close the window if the player clicks close
+        
         switch (event.type)
         {
+            // close the window if the player clicks close
             case sf::Event::Closed:
             {
                 window->close();

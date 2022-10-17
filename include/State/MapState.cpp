@@ -46,7 +46,32 @@ State(game, player)
     game->setMap(this);
 }
 
-MapState::~MapState(){}
+MapState::~MapState()
+{
+    delete mapTemplate;
+
+    delete lvl;
+    delete lvlHover;
+    delete enemy;
+    delete enemyHover;
+    
+    delete lvl2;
+    delete lvl2Hover;
+    delete enemy2;
+    delete enemyHover2;
+
+    delete lvl3;
+    delete lvl3Hover;
+    delete enemy3;
+    delete enemyHover3;
+
+    delete lvl4;
+    delete lvl4Hover;
+    delete boss;
+    delete bossHover;
+
+    delete b_prompt;
+}
 
 void MapState::update(sf::RenderWindow* window)
 {
@@ -72,20 +97,34 @@ void MapState::update(sf::RenderWindow* window)
     // event manager
     while (window->pollEvent(event))
     {
-        // "close requested" event: we close the window
-        switch (event.type) {
-            case sf::Event::Closed: {
+        
+        switch (event.type)
+        {
+            // close the window if the player clicks close
+            case sf::Event::Closed:
+            {
                 window->close();
                 break;
             }
-            case sf::Event::MouseButtonReleased: {
+
+
+            case sf::Event::MouseButtonReleased:
+            {
+                // player clicks lvl1, currentLVL must be enabled
                 if (lvl->checkCollision(window) && currentLVL==1)
                 {
+                    // move the game into gameplay state
                     game->setState(new PlayState(game, player));
+
+                    // increment the enemy array for the next game play
                     game->incrementEnemy();
+
+                    // allow the player to select the second level
                     currentLVL=2;
                     break;
                 }
+
+                // ad nauseum...
                 if (lvl2->checkCollision(window) && currentLVL==2)
                 {
                     game->setState(new PlayState(game, player));
@@ -93,6 +132,7 @@ void MapState::update(sf::RenderWindow* window)
                     currentLVL=3;
                     break;
                 }
+
                 if (lvl3->checkCollision(window) && currentLVL==3)
                 {
                     game->setState(new PlayState(game, player));
@@ -100,6 +140,7 @@ void MapState::update(sf::RenderWindow* window)
                     currentLVL=4;
                     break;
                 }
+
                 if (lvl4->checkCollision(window) && currentLVL==4)
                 {
                     game->setState(new PlayState(game, player));
@@ -109,11 +150,9 @@ void MapState::update(sf::RenderWindow* window)
                 break;
             }
 
-            case sf::Event::KeyReleased: {
-            }
-            default: {
+            default: 
                 break;
-            }
+            
         }
     }
 
@@ -121,12 +160,16 @@ void MapState::update(sf::RenderWindow* window)
 
 void MapState::render(sf::RenderWindow* window)
 {
+    // clear the window
     window->clear(sf::Color::Black);
  
+    // splash screen
     mapTemplate->draw(window);
 
+    // prompt
     b_prompt->draw(window);  
     
+    // depending on current level and current hover collisions, render the level buttons
     switch (hover1)
     {
         case true:
@@ -175,6 +218,7 @@ void MapState::render(sf::RenderWindow* window)
             break;
     }
 
+    // display the drawables inside the render window
     window->display();
 }
 
