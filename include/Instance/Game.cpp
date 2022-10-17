@@ -99,10 +99,10 @@ void Game::updateCurrentEnemy(int n)
 void Game::resetEnemy()
 {
     currentEnemy=0;
-    pilgrim->updateHealth(60);
-    viking->updateHealth(60);
-    brute->updateHealth(60);
-    golem->updateHealth(80);
+    pilgrim->setHealth(60);
+    viking->setHealth(60);
+    brute->setHealth(60);
+    golem->setHealth(80);
 }
 
 int Game::getCurrentEnemy()

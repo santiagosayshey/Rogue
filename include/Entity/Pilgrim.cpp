@@ -8,8 +8,8 @@ Pilgrim::Pilgrim(Game* g)
     health = 50;
     armour = 50;
     power = 5;
-    character = 1;
-    originalPower=power;
+    ID = 1;
+    powerBuffer=power;
     setGUI(g->p->s_pilgrim_gui);
 
     firstMove = "5 DMG";
@@ -26,104 +26,104 @@ std::string Pilgrim::attack(Entity* entity)
     switch(currentAction)
     {
         case 1:
-            getSprite()->updateAnimation(5,2);
+            getSprite()->setAnimation(5,2);
 
             if ( entity->getHealth() - getPower() > 0 )
             {
-                entity->updateHealth(entity->getHealth() - getPower()); 
+                entity->setHealth(entity->getHealth() - getPower()); 
             }
             else
             {
-                entity->updateHealth(0);
+                entity->setHealth(0);
             }
             return a_pilgrim2;
             break;
         case 2:
-            getSprite()->updateAnimation(7,3);
-            entity->updatePower(entity->getPower()-entity->getPower()*(getArmour()/100));
-            updatePower(10);
-            originalPower=power;
+            getSprite()->setAnimation(7,3);
+            entity->setPower(entity->getPower()-entity->getPower()*(getArmour()/100));
+            setPower(10);
+            powerBuffer=power;
             return a_pilgrim3;
             break;
         case 3:
-            getSprite()->updateAnimation(8,4);
+            getSprite()->setAnimation(8,4);
             if ( entity->getHealth() - getPower() > 0 )
             {
-                entity->updateHealth(entity->getHealth() - getPower()); 
+                entity->setHealth(entity->getHealth() - getPower()); 
             }
             else
             {
-                entity->updateHealth(0);
+                entity->setHealth(0);
             }
             return a_pilgrim4;
             break;
         case 4:
-            getSprite()->updateAnimation(7,3);
-            entity->updatePower(entity->getPower()-entity->getPower()*(getArmour()/100));
-            getSprite()->updateAnimation(8,4);
-            updatePower(20);
-            originalPower=power;
+            getSprite()->setAnimation(7,3);
+            entity->setPower(entity->getPower()-entity->getPower()*(getArmour()/100));
+            getSprite()->setAnimation(8,4);
+            setPower(20);
+            powerBuffer=power;
             return a_pilgrim5;
             break;
         case 5:
             if ( entity->getHealth() - getPower() > 0 )
             {
-                entity->updateHealth(entity->getHealth() - getPower()); 
+                entity->setHealth(entity->getHealth() - getPower()); 
             }
             else
             {
-                entity->updateHealth(0);
+                entity->setHealth(0);
             }
             return a_pilgrim6;
             break;
         case 6:
-            getSprite()->updateAnimation(7,3);
-            entity->updatePower(entity->getPower()-entity->getPower()*(getArmour()/100));
+            getSprite()->setAnimation(7,3);
+            entity->setPower(entity->getPower()-entity->getPower()*(getArmour()/100));
             return a_pilgrim7;
             break;
         case 7:
-            getSprite()->updateAnimation(5,2);
+            getSprite()->setAnimation(5,2);
             if ( entity->getHealth() - getPower() > 0 )
             {
-                entity->updateHealth(entity->getHealth() - getPower()); 
+                entity->setHealth(entity->getHealth() - getPower()); 
             }
             else
             {
-                entity->updateHealth(0);
+                entity->setHealth(0);
             }
             return a_pilgrim8;
             break;
         case 8:
-            getSprite()->updateAnimation(7,3);
-            entity->updatePower(entity->getPower()-entity->getPower()*(getArmour()/100));
+            getSprite()->setAnimation(7,3);
+            entity->setPower(entity->getPower()-entity->getPower()*(getArmour()/100));
             return a_pilgrim9;
             break;
         case 9:
-            getSprite()->updateAnimation(5,2);
+            getSprite()->setAnimation(5,2);
             if ( entity->getHealth() - getPower() > 0 )
             {
-                entity->updateHealth(entity->getHealth() - getPower()); 
+                entity->setHealth(entity->getHealth() - getPower()); 
             }
             else
             {
-                entity->updateHealth(0);
+                entity->setHealth(0);
             }
             return a_pilgrim10;
             break;
         case 10:
-            getSprite()->updateAnimation(7,3);
-            entity->updatePower(entity->getPower()-entity->getPower()*(getArmour()/100));
+            getSprite()->setAnimation(7,3);
+            entity->setPower(entity->getPower()-entity->getPower()*(getArmour()/100));
             return a_pilgrimDef;
             break;
         default:
-            getSprite()->updateAnimation(8,4);
+            getSprite()->setAnimation(8,4);
             if ( entity->getHealth() - getPower() > 0 )
             {
-                entity->updateHealth(entity->getHealth() - getPower()); 
+                entity->setHealth(entity->getHealth() - getPower()); 
             }
             else
             {
-                entity->updateHealth(0);
+                entity->setHealth(0);
             }
             return a_pilgrimDef;
             break;

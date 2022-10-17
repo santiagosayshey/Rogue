@@ -166,22 +166,22 @@ void PlayState::update(sf::RenderWindow* window)
                         {
                             if (currentChoice == "AttacK")
                             {
-                                switch (player->returnChar())
+                                switch (player->getID())
                                 {
                                     case 1:
-                                        player->getSprite()->updateAnimation(7,3);
+                                        player->getSprite()->setAnimation(7,3);
                                         break;
                                     case 2:
-                                        player->getSprite()->updateAnimation(7,4);
+                                        player->getSprite()->setAnimation(7,4);
                                         break;
                                     case 3:
-                                        player->getSprite()->updateAnimation(6,3);
+                                        player->getSprite()->setAnimation(6,3);
                                         break;
                                     default:
                                         break;
                                 }
                                 player->attack(enemy);
-                                player->updatePower(player->getOGPower());
+                                player->setPower(player->getPowerBuffer());
 
                                 enemy_b_health->setText("Health: " + std::to_string(int(enemy->getHealth())));
                                 enemy_t_health->setText("Health: " + std::to_string(int(enemy->getHealth())));
@@ -189,19 +189,19 @@ void PlayState::update(sf::RenderWindow* window)
                             }
                             else if (currentChoice == "Fortify")
                             {
-                                enemy->updatePower(enemy->getPower()-enemy->getPower()*(player->getArmour()/100));
-                                player->updatePower(player->getOGPower());
+                                enemy->setPower(enemy->getPower()-enemy->getPower()*(player->getArmour()/100));
+                                player->setPower(player->getPowerBuffer());
 
-                                switch (player->returnChar())
+                                switch (player->getID())
                                 {
                                     case 1:
-                                        player->getSprite()->updateAnimation(4,6);
+                                        player->getSprite()->setAnimation(4,6);
                                         break;
                                     case 2:
-                                        player->getSprite()->updateAnimation(7,2);
+                                        player->getSprite()->setAnimation(7,2);
                                         break;
                                     case 3:
-                                        player->getSprite()->updateAnimation(8,2);
+                                        player->getSprite()->setAnimation(8,2);
                                         break;
                                     default:
                                         break;
@@ -237,7 +237,7 @@ void PlayState::update(sf::RenderWindow* window)
                     b_enemy_nextMove->setText(enemyNextMove);
                     t_enemy_nextMove->setText(enemyNextMove);
 
-                    enemy->updatePower(enemy->getOGPower());
+                    enemy->setPower(enemy->getPowerBuffer());
 
 
 
@@ -313,16 +313,16 @@ void PlayState::update(sf::RenderWindow* window)
 
     if (player->getHealth() == 0 && playerDead == false)
     {
-        switch (player->returnChar())
+        switch (player->getID())
         {
             case 1:
-                player->getSprite()->updateAnimation(7,8);
+                player->getSprite()->setAnimation(7,8);
                 break;
             case 2:           
-                player->getSprite()->updateAnimation(9,6);
+                player->getSprite()->setAnimation(9,6);
                 break;
             case 3:
-                player->getSprite()->updateAnimation(8,6);
+                player->getSprite()->setAnimation(8,6);
                 break;
             
         }
@@ -331,19 +331,19 @@ void PlayState::update(sf::RenderWindow* window)
 
     if (enemy->getHealth() < 1 && enemyDead == false)
     {
-        switch(enemy->returnChar())
+        switch(enemy->getID())
         {
             case 1:
-                enemy->getSprite()->updateAnimation(7,6);
+                enemy->getSprite()->setAnimation(7,6);
                 break;
             case 2:
-                enemy->getSprite()->updateAnimation(8,5);
+                enemy->getSprite()->setAnimation(8,5);
                 break;
             case 3:
-                enemy->getSprite()->updateAnimation(5,5);
+                enemy->getSprite()->setAnimation(5,5);
                 break;
             case 4:
-                enemy->getSprite()->updateAnimation(16,4);
+                enemy->getSprite()->setAnimation(16,4);
                 break;
 
         }

@@ -9,7 +9,7 @@ Sprite(texture,x,y,width,height,scale)
     row = 0;
 }
 
-void DynamicSprite::updateAnimation(int numFrames, int row)
+void DynamicSprite::setAnimation(int numFrames, int row)
 {
     /* change the animation values such that the new values 
     represent a new animation within the sprite sheet */
@@ -70,7 +70,7 @@ bool DynamicSprite::animation(bool repeat, bool death)
             else if(death == false)
             {
                 // if not repeated, play idle animation
-                updateAnimation(7, 0);
+                setAnimation(7, 0);
                 return true;
             }
             /* if the death animation is being played, dont update the current animation

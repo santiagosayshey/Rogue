@@ -14,7 +14,7 @@ public:
     ~DynamicSprite();
 
     // update the current animation values to be used in animation()
-    void updateAnimation(int numFrames, int row);
+    void setAnimation(int numFrames, int row);
 
     // update the current texture rectangle of the sprite
     /* iterate through a number of frames in a row of the sprite sheet

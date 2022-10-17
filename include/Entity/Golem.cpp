@@ -6,8 +6,8 @@ Golem::Golem(Game* g)
     health = 999;
     armour = 99;
     power = 0;
-    character = 4;
-    originalPower=power;
+    ID = 4;
+    powerBuffer=power;
     setGUI(g->p->s_golem_gui);
 
     firstMove = "ZZZ";
@@ -27,16 +27,16 @@ std::string Golem::attack(Entity* entity)
             if (health < 999)
             {
                 power=999;
-                originalPower=power;
-                getSprite()->updateAnimation(8,2);
+                powerBuffer=power;
+                getSprite()->setAnimation(8,2);
 
                 if ( entity->getHealth() - getPower() > 0 )
                 {
-                    entity->updateHealth(entity->getHealth() - getPower()); 
+                    entity->setHealth(entity->getHealth() - getPower()); 
                 }
                 else
                 {
-                    entity->updateHealth(0);
+                    entity->setHealth(0);
                 }
             }
 
@@ -53,23 +53,23 @@ std::string Golem::attack(Entity* entity)
             if (health < 999)
             {
                 power=999;
-                originalPower=power;
-                getSprite()->updateAnimation(8,2);
+                powerBuffer=power;
+                getSprite()->setAnimation(8,2);
 
                 if ( entity->getHealth() - getPower() > 0 )
                 {
-                    entity->updateHealth(entity->getHealth() - getPower()); 
+                    entity->setHealth(entity->getHealth() - getPower()); 
                 }
                 else
                 {
-                    entity->updateHealth(0);
+                    entity->setHealth(0);
                 }
                 return a_golemDef2;
             }
             else 
             {
                 health=0;
-                getSprite()->updateAnimation(8,4);
+                getSprite()->setAnimation(8,4);
                 return a_golemDeath;
             }
 

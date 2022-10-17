@@ -44,10 +44,10 @@ State(g, player)
 
     choice=1;
     player->setCharacter(spr_wiz,1);
-    player->updateHealth(65);
-    player->updateArmour(10);
-    player->updatePower(30);
-    player->setOGPower(30);
+    player->setHealth(65);
+    player->setArmour(10);
+    player->setPower(30);
+    player->setPowerBuffer(30);
     player->setGUI(game->p->s_wiz_gui);
 }  
 
@@ -152,10 +152,10 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     choice = 1;
                     player->setCharacter(spr_wiz,1);
-                    player->updateHealth(65);
-                    player->updateArmour(10);
-                    player->updatePower(30);
-                    player->setOGPower(30);
+                    player->setHealth(65);
+                    player->setArmour(10);
+                    player->setPower(30);
+                    player->setPowerBuffer(30);
                     player->setGUI(game->p->s_wiz_gui);
                     break;
                 }
@@ -163,10 +163,10 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     choice = 2;
                     player->setCharacter(spr_pal,2);
-                    player->updateHealth(100);
-                    player->updateArmour(50);
-                    player->updatePower(15);
-                    player->setOGPower(15);
+                    player->setHealth(100);
+                    player->setArmour(50);
+                    player->setPower(15);
+                    player->setPowerBuffer(15);
                     player->setGUI(game->p->s_pal_gui);
                     break;
                 }
@@ -174,10 +174,10 @@ void PickState::update(sf::RenderWindow* window)
                 {
                     choice = 3;
                     player->setCharacter(spr_nin,3);
-                    player->updateHealth(75);
-                    player->updateArmour(25);
-                    player->updatePower(20);
-                    player->setOGPower(20);
+                    player->setHealth(75);
+                    player->setArmour(25);
+                    player->setPower(20);
+                    player->setPowerBuffer(20);
                     player->setGUI(game->p->s_nin_gui);
                     break;
                 }
