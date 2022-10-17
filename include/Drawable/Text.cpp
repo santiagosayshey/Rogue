@@ -24,12 +24,12 @@ Text::Text(std::string f, int s, sf::Color c, sf::Text::Style style, std::string
     text.setStyle(style);
 
     // set text string
-    text.setString(type);
+    setText(type);
 }
 
 Text::~Text(){}
 
-void Text::updateText(std::string s)
+void Text::setText(std::string s)
 {
     text.setString(s);
 }
@@ -50,7 +50,7 @@ int Text::getY()
 }
 
 
-void Text::setPos(int x, int y)
+void Text::setPosition(int x, int y)
 {
     text.setPosition(x, y);
 }

@@ -14,7 +14,7 @@ public:
     ~Text();
 
     // update the text string during the update cycle
-    void updateText(std::string s);
+    void setText(std::string s);
 
     // pass the render window to display text
     void draw(sf::RenderWindow* window);
@@ -26,7 +26,7 @@ public:
     int getY();
 
     // place the text in a new position in the render window instantly
-    void setPos(int x, int y);
+    void setPosition(int x, int y);
 
 
 private:
