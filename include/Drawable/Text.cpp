@@ -29,15 +29,22 @@ Text::Text(std::string f, int s, sf::Color c, sf::Text::Style style, std::string
 
 Text::~Text(){}
 
-void Text::setText(std::string s)
-{
-    text.setString(s);
-}
 
 void Text::draw(sf::RenderWindow* window)
 {
     window->draw(text);
 }
+
+void Text::setText(std::string s)
+{
+    text.setString(s);
+}
+
+void Text::setPosition(int x, int y)
+{
+    text.setPosition(x, y);
+}
+
 
 int Text::getX()
 {
@@ -50,7 +57,3 @@ int Text::getY()
 }
 
 
-void Text::setPosition(int x, int y)
-{
-    text.setPosition(x, y);
-}

@@ -13,22 +13,22 @@ public:
     // default destructor
     ~Text();
 
-    // update the text string during the update cycle
-    void setText(std::string s);
-
     // pass the render window to display text
     void draw(sf::RenderWindow* window);
 
+    // update the text string during the update cycle
+    void setText(std::string s);
+
+    // place the text in a new position in the render window instantly
+    void setPosition(int x, int y);
+    
     // return x origin of sprite
     int getX();
 
     // return y origin of text
     int getY();
 
-    // place the text in a new position in the render window instantly
-    void setPosition(int x, int y);
-
-
+    
 private:
     // text to be displayed in render window
     sf::Text text;
