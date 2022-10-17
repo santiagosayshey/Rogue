@@ -11,103 +11,103 @@ typedef sf::Text t;
 MenuState::MenuState(Game* game, Player* player):
 State(game, player)
 {
-    splash    = new Sprite(game->getPath()->s_splash,0,0,1280,720,1.5);
+    // splash screen
+    splash      = new Sprite (game->getPath()->s_splash,0,0,1280,720,1.5);
 
-    play = new Button(1,"PLAY",50,game);
-    quit = new Button(1,"PLAY",50,game);
+    // buttons
+        
+        // play
+        s_play      = new Sprite (game->getPath()->s_button,150,400,30,14,7);
+        b_play      = new Text   (game->getPath()->f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
+        w_play      = new Text   (game->getPath()->f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
 
-    s_play    = new Sprite(game->getPath()->s_button,150,400,30,14,7);
-    b_play    = new Text(game->getPath()->f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
-    play      = new Text(game->getPath()->f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
+        // quit
+        s_quit      = new Sprite (game->getPath()->s_button,150,550,30,14,7);
+        b_quit      = new Text   (game->getPath()->f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
+        w_quit      = new Text   (game->getPath()->f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
 
-    s_quit    = new Sprite(game->getPath()->s_button,150,550,30,14,7);
-    b_quit    = new Text(game->getPath()->f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
-    quit      = new Text(game->getPath()->f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
-
-    b_title   = new Text(game->getPath()->f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
-    title     = new Text(game->getPath()->f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
+    // text
+    b_title     = new Text (game->getPath()->f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
+    w_title     = new Text (game->getPath()->f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
 }
 
 MenuState::~MenuState()
 {   
     delete splash;
+
     delete s_play;
     delete s_quit;
+
     delete b_play;
     delete b_quit;
-    delete play;
-    delete quit;
+
+    delete w_play;
+    delete w_quit;
+
     delete b_title;
-    delete title;
+    delete w_title;
 }
 
 void MenuState::update(sf::RenderWindow* window)
 
 {
-
+    // check for button collisions with mouse
+    // if true, move them to indicate the player can click them
     if (!s_play->checkCollision(window))
     {
-        //std::cout << "no collision success" << std::endl;
-
-        s_play ->setPosition(s_play->getX(), s_play->getY());
-        b_play ->setPosition(b_play->getX(), b_play->getY());
-        play   ->setPosition(play->getX(), play->getY());
-        sound1=true;
+        s_play   ->setPosition(s_play->getX(), s_play->getY());
+        b_play   ->setPosition(b_play->getX(), b_play->getY());
+        w_play   ->setPosition(w_play->getX(), w_play->getY());
     }
     else
     {
-        while (sound1)
-        {
-            UI.play();
-            sound1=false;
-        }
-        s_play ->setPosition(s_play->getX()+20, s_play->getY());
-        b_play ->setPosition(b_play->getX()+20, b_play->getY());
-        play   ->setPosition(play->getX()+20, play->getY());
+        s_play   ->setPosition(s_play->getX()+20, s_play->getY());
+        b_play   ->setPosition(b_play->getX()+20, b_play->getY());
+        w_play   ->setPosition(w_play->getX()+20, w_play->getY());
 
     }
 
     if (!s_quit->checkCollision(window))
     {
-        //std::cout << "no collision success" << std::endl;
-        s_quit ->setPosition(s_quit->getX(), s_quit->getY());
-        b_quit ->setPosition(b_quit->getX(), b_quit->getY());
-        quit   ->setPosition(quit->getX(), quit->getY());
-        sound2=true;
+        s_quit   ->setPosition(s_quit->getX(), s_quit->getY());
+        b_quit   ->setPosition(b_quit->getX(), b_quit->getY());
+        w_quit   ->setPosition(w_quit->getX(), w_quit->getY());
     }
     else
     {
-        while (sound2)
-        {
-            UI.play();
-            sound2=false;
-        }
-        s_quit ->setPosition(s_quit->getX()+20, s_quit->getY());
-        b_quit ->setPosition(b_quit->getX()+20, b_quit->getY());
-        quit   ->setPosition(quit->getX()+20, quit->getY());
+        s_quit   ->setPosition(s_quit->getX()+20, s_quit->getY());
+        b_quit   ->setPosition(b_quit->getX()+20, b_quit->getY());
+        w_quit   ->setPosition(w_quit->getX()+20, w_quit->getY());
         
     }
 
-
+    // event manager
     while (window->pollEvent(event))
     {
-        switch (event.type) {
+        switch (event.type)
+        {
+            // close the window if the player clicks close
             case sf::Event::Closed:
                 window->close();
                 break;
+
             case sf::Event::MouseButtonReleased: {
-                if (s_play->checkCollision(window)) {
-                    UI.play();
-                    mus.stop();
+
+                // if play button is clicked, change the game state to character select
+                if (s_play->checkCollision(window))
+                {
                     game->setState(new PickState(game, player));
                     break;
                 }
-                if (s_quit->checkCollision(window)) {
-                    UI.play();
+
+                // if quit button is clicked, close the window and end the game loop
+                if (s_quit->checkCollision(window))
+                {
                     window->close();
                     break;
                 }
             }
+            
             default:
                 break;
         }
@@ -118,20 +118,30 @@ void MenuState::update(sf::RenderWindow* window)
 
 void MenuState::render(sf::RenderWindow* window)
 {
+    // clear the window
     window     ->clear(c::White);
 
-    splash     ->draw(window);
-    s_play     ->draw(window);
-    b_play     ->draw(window);
-    play       ->draw(window);
-    s_quit     ->draw(window);
-    b_quit     ->draw(window);
-    quit       ->draw(window);
-    b_title    ->draw(window);
-    title      ->draw(window);
+    // render the drawables inside the render window
 
+        // splash screen
+        splash         ->draw(window);
+
+        // buttons
+        s_play         ->draw(window);
+        s_quit         ->draw(window);
+        
+        // text
+        b_play         ->draw(window);
+        w_play         ->draw(window);
+        
+        b_quit         ->draw(window);
+        w_quit         ->draw(window);
+
+        b_title        ->draw(window);
+        w_title        ->draw(window);
+
+    // display the drawables inside the render window
     window     ->display();
 
-    //std::cout << "draw successful" << std::endl;
 }
 

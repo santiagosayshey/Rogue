@@ -11,51 +11,59 @@
 class PickState : public State
 {
 public:
+    // pass the game instance to allow the character select to change the game state
     PickState(Game* g, Player* player);
+
+    // deconstructor
     ~PickState();
 
+    // menu instance of update and render
     void update(sf::RenderWindow* window);
     void render(sf::RenderWindow* window);
 
 private:
+    // events needed for event manager within update
     sf::Event event;
 
-    Sprite* splash;
-    Sprite* s_wiz;
-    Text* b_wiz;
-    Text* t_wiz;
+    // sprites
 
-    Sprite* s_pal;
-    Text* b_pal;
-    Text* t_pal;
+        // splash screem
+        Sprite* splash;
 
-    Sprite* s_nin;
-    Text* b_nin;
-    Text* t_nin;
+        // buttons
+        Sprite* s_wiz;
+        Sprite* s_pal;
+        Sprite* s_nin;
+        Sprite* s_emb;
 
-    Sprite* s_emb;
-    Text* b_emb;
-    Text* t_emb;
+        // stats
+        Sprite* spr_wiz_stats;
+        Sprite* spr_pal_stats;
+        Sprite* spr_nin_stats;
 
-    bool sound1 = true;
-    bool sound2 = true;
-    bool sound3 = true;
-    bool sound4 = true;
-
-    sf::SoundBuffer sb;
-    sf::Sound UI;
-
+    // dynamic sprites
     DynamicSprite* spr_wiz;
     DynamicSprite* spr_pal;
     DynamicSprite* spr_nin;
 
-    Sprite* spr_wiz_stats;
-    Sprite* spr_pal_stats;
-    Sprite* spr_nin_stats;
+    // text
+        // buttons
+        Text* b_wiz;
+        Text* w_wiz;
 
-    Text* prompt;
+        Text* b_pal;
+        Text* w_pal;
+
+        Text* b_nin;
+        Text* w_nin;
+
+        Text* b_emb;
+        Text* w_emb;
+
+    Text* w_prompt;
     Text* b_prompt;
 
+    // int choice to switch character states within selector
     int choice;
 
 };

@@ -38,14 +38,14 @@ void Button::setTextPosition(int x, int y)
     black->setPosition(x-5,y+5);
 }
 
+void Button::draw(sf::RenderWindow* window)
+{
+    background->draw(window);
+    black->draw(window);
+    white->draw(window);
+}
+
 bool Button::checkCollision(sf::RenderWindow *window)
 {
-    // find the bounds of the mouse
-    sf::Vector2f mouse = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-
-    // find the bounds of the current sprite
-    sf::FloatRect bounds = background->getSFSprite()->getGlobalBounds();
-
-    // return a boolean that defines whether the bounds of the sprite contains the bounds of the mouse
-    return bounds.contains(mouse);
+    return background->checkCollision(window);
 }

@@ -5,49 +5,40 @@
 #include "State.h"
 #include "../Drawable/Text.h"
 #include "../Drawable/Sprite.h"
-#include "../Drawable/Button.h"
 
 class MenuState : public State
 {
 public:
+
+    // pass the game instance to allow the menu to change the game state
     MenuState(Game* game, Player* player);
+
+    // deconstructor
     ~MenuState();
 
+    // menu instance of update and render
     void update(sf::RenderWindow* window);
     void render(sf::RenderWindow* window);
 
 private:
+    // events needed for event manager within update
     sf::Event event;
     
+    // sprites
+    Sprite* splash; // splash screen
+
     Sprite* s_play;
     Sprite* s_quit;
 
+    // text  
     Text* b_play;
+    Text* w_play;
+    
     Text* b_quit;
-
-    Text* play;
-    Text* quit;
+    Text* w_quit;
 
     Text* b_title;
-    Text* title;
-
-    sf::SoundBuffer sb;
-    sf::Sound UI;
-
-    sf::SoundBuffer sb2;
-    sf::Sound mus;
-
-    bool sound1=true;
-    bool sound2=true;
-
-
-    Sprite* splash;
-
-    Button* play;
-    Button* quit;
-    
-
-
+    Text* w_title;
 };
 
 #endif
