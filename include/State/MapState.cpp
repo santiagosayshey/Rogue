@@ -51,6 +51,7 @@ void MapState::update(sf::RenderWindow* window)
 {
     if (!lvl->checkCollision(window) && currentLVL==1)
     {
+        // std::cout << "collision success" << std:: endl;
         hover1 = false;
         sound1=true;
     }

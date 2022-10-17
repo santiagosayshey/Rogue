@@ -48,6 +48,7 @@ bool Sprite::checkCollision(sf::RenderWindow *window)
 
     // find the bounds of the current sprite
     sf::FloatRect bounds = sprite->getGlobalBounds();
+    // std::cout << "Check collision success" << std::endl;
 
     // return a boolean that defines whether the bounds of the sprite contains the bounds of the mouse
     return bounds.contains(mouse);
@@ -58,6 +59,7 @@ void Sprite::draw(sf::RenderWindow *window)
 {
     // draw sprite on the render window
     window->draw(*sprite);
+    // std::cout << "Sprite drawn successfully" << std::endl;
 }
 
 
@@ -79,6 +81,7 @@ void Sprite::setPos(int x, int y)
 {
     // set the position of the sprite
     sprite->setPosition(x, y);
+    // std::cout << "Position set" << std::endl;
 }
 
 
@@ -93,4 +96,5 @@ void Sprite::flip()
 {
     // set x to be negative values of itself, y stays the same
     sprite->scale(-1.f, 1.f);
+    // std::cout << "Flip successful" << std::endl;
 }

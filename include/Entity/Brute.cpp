@@ -15,10 +15,7 @@ Brute::Brute(Game* g)
     firstMove = "15 DMG";
 }
 
-Brute::~Brute()
-{
-
-}
+Brute::~Brute(){}
 
 
 std::string Brute::attack(Entity* entity)

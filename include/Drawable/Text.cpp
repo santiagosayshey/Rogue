@@ -36,6 +36,7 @@ bool Text::checkCollision(sf::RenderWindow* window)
     
     // find the bounds of the text
     sf::FloatRect bounds = text.getGlobalBounds();
+    // std::cout << "Check collision successful" << std::endl;
 
     // return a boolean that defines whether the bounds of the text contains the bounds of the mouse
     return bounds.contains(mouse);
@@ -57,12 +58,14 @@ void Text::updateText(std::string s)
 {
     // update text displayed in the render window
     text.setString(s);
+    // std::cout << "Text updated" << std::endl;
 }
 
 void Text::draw(sf::RenderWindow* window)
 {
     // draw text in the render window
     window->draw(text);
+    // std::cout << "Text drawn" << std::endl;
 }
 
 int Text::getX()
@@ -81,4 +84,5 @@ int Text::getY()
 void Text::setPos(int x, int y)
 {
     text.setPosition(x, y);
+    // std::cout << "Text position set" << std::endl;
 }

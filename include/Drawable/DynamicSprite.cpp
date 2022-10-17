@@ -16,6 +16,7 @@ void DynamicSprite::updateAnimation(int numFrames, int row)
     currentFrame = 0;
     this->numFrames = numFrames;
     this->row = row;
+    // std::cout << "Animation updated successfully" << std::endl;
 }
 
 bool DynamicSprite::animation(bool repeat, bool death)
@@ -26,6 +27,7 @@ bool DynamicSprite::animation(bool repeat, bool death)
     {
         // if true, restart the clock and update the current frame of the texture rectangle
         clock.restart();
+        // std::cout << "clock restarted successfully" << std::endl;
 
         /* if the current animation is not finished, such that its current frame does not equal the
         number of frames in the animation, update the texture rectangle and iterate the frame+1 */
