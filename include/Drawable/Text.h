@@ -7,8 +7,7 @@
 class Text : public Drawable
 {
 public:
-    // constructor - init f to be used for font, s for character size, c for colour, style, and type of text
-    //               init position x, and y as well
+    // set text parameters to change visual style in constructor
     Text(std::string f, int s, sf::Color c, sf::Text::Style style, std::string type, int x, int y);
 
     // default destructor
