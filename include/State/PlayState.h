@@ -71,6 +71,8 @@ private:
         Text* b_enemy_nextMove;
         Text* t_enemy_nextMove;
 
+    // bool to stop multiple button presses
+    bool canClick=true;
     
     // INSTANCE
 

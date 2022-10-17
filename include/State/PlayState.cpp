@@ -137,6 +137,7 @@ void PlayState::update(sf::RenderWindow* window)
         // player turn
         case 0:
         {
+            canClick=true;
             // set the intial play prompt to player turn
             b_prompt->setText("Player Turn!");
             t_prompt->setText("Player Turn!");
@@ -217,10 +218,12 @@ void PlayState::update(sf::RenderWindow* window)
                             t_player_choice->setText("Fortify");
                             break;
                         }
-
                         // check if end turn is clicked
-                        if (s_endTurn->checkCollision(window)) 
+                        if (s_endTurn->checkCollision(window) && canClick==true && state==0) 
                         {
+                            // switch the state to enemy turn
+                            state = 1;
+                            canClick=false;
                             // check if attack was chosen
                             if (currentChoice == "AttacK")
                             {
@@ -251,8 +254,7 @@ void PlayState::update(sf::RenderWindow* window)
                                 enemy_b_health->setText("Health: " + std::to_string(int(enemy->getHealth())));
                                 enemy_t_health->setText("Health: " + std::to_string(int(enemy->getHealth())));
 
-                                // switch the state to enemy turn
-                                state = 1;
+
                             }
 
                             // check if foritfy was chosen
