@@ -90,8 +90,6 @@ private:
     Entity* viking;
     Entity* pilgrim;
     Entity* brute;
-
-
 };
 
 #endif
