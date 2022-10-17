@@ -8,25 +8,24 @@ typedef sf::Text t;
 
 
 
-MenuState::MenuState(Game* g, Player* player):
-State(g, player)
+MenuState::MenuState(Game* game, Player* player):
+State(game, player)
 {
+    splash    = new Sprite(game->getPath()->s_splash,0,0,1280,720,1.5);
 
-    splash    = new Sprite(g->p->s_splash,0,0,1280,720,1.5);
+    play = new Button(1,"PLAY",50,game);
+    quit = new Button(1,"PLAY",50,game);
 
-    s_play    = new Sprite(g->p->s_button,150,400,30,14,7);
-    b_play    = new Text(g->p->f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
-    play      = new Text(g->p->f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
+    s_play    = new Sprite(game->getPath()->s_button,150,400,30,14,7);
+    b_play    = new Text(game->getPath()->f_main, 50, c::Black, t::Bold, "PLAY", 185, 430);
+    play      = new Text(game->getPath()->f_main, 50, c::White, t::Bold, "PLAY", 190, 425);
 
-    s_quit    = new Sprite(g->p->s_button,150,550,30,14,7);
-    b_quit    = new Text(g->p->f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
-    quit      = new Text(g->p->f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
+    s_quit    = new Sprite(game->getPath()->s_button,150,550,30,14,7);
+    b_quit    = new Text(game->getPath()->f_main, 50, c::Black, t::Bold, "QUIT", 170, 580);
+    quit      = new Text(game->getPath()->f_main, 50, c::White, t::Bold, "QUIT", 175, 575);
 
-    b_title   = new Text(g->p->f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
-    title     = new Text(g->p->f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
-
-    
-    UI. setBuffer(g->hover);
+    b_title   = new Text(game->getPath()->f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
+    title     = new Text(game->getPath()->f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
 }
 
 MenuState::~MenuState()

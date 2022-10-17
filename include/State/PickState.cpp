@@ -6,41 +6,39 @@
 typedef sf::Color c;
 typedef sf::Text t;
 
-PickState::PickState(Game* g, Player* player):
-State(g, player)
+PickState::PickState(Game* game, Player* player):
+State(game, player)
 {
 
 
-    splash = new Sprite(g->p->s_charSplash,0,0,1920,1080,1);
+    splash = new Sprite(game->getPath()->s_charSplash,0,0,1920,1080,1);
 
-    s_wiz      = new Sprite(g->p->s_buttonBig,150,350,46,14,7);
-    b_wiz      = new Text(g->p->f_main, 50, c::Black, t::Bold, "MAGE", 240, 380);
-    t_wiz      = new Text(g->p->f_main, 50, c::White, t::Bold, "MAGE", 245, 375);
+    s_wiz      = new Sprite(game->getPath()->s_buttonBig,150,350,46,14,7);
+    b_wiz      = new Text(game->getPath()->f_main, 50, c::Black, t::Bold, "MAGE", 240, 380);
+    t_wiz      = new Text(game->getPath()->f_main, 50, c::White, t::Bold, "MAGE", 245, 375);
 
-    s_pal      = new Sprite(g->p->s_buttonBig,150,500,46,14,7);
-    b_pal      = new Text(g->p->f_main, 50, c::Black, t::Bold, "PALADIN", 185, 530);
-    t_pal      = new Text(g->p->f_main, 50, c::White, t::Bold, "PALADIN", 190, 525);
+    s_pal      = new Sprite(game->getPath()->s_buttonBig,150,500,46,14,7);
+    b_pal      = new Text(game->getPath()->f_main, 50, c::Black, t::Bold, "PALADIN", 185, 530);
+    t_pal      = new Text(game->getPath()->f_main, 50, c::White, t::Bold, "PALADIN", 190, 525);
 
-    s_nin      = new Sprite(g->p->s_buttonBig,150,650,46,14,7);
-    b_nin      = new Text(g->p->f_main, 50, c::Black, t::Bold, "NINJA", 220, 680);
-    t_nin      = new Text(g->p->f_main, 50, c::White, t::Bold, "NINJA", 225, 675);
+    s_nin      = new Sprite(game->getPath()->s_buttonBig,150,650,46,14,7);
+    b_nin      = new Text(game->getPath()->f_main, 50, c::Black, t::Bold, "NINJA", 220, 680);
+    t_nin      = new Text(game->getPath()->f_main, 50, c::White, t::Bold, "NINJA", 225, 675);
 
-    s_emb      = new Sprite(g->p->s_buttonBig,1500,650,46,14,7);
-    b_emb      = new Text(g->p->f_main, 50, c::Black, t::Bold, "EMBARK", 1550, 680);
-    t_emb      = new Text(g->p->f_main, 50, c::White, t::Bold, "EMBARK", 1555, 675);
+    s_emb      = new Sprite(game->getPath()->s_buttonBig,1500,650,46,14,7);
+    b_emb      = new Text(game->getPath()->f_main, 50, c::Black, t::Bold, "EMBARK", 1550, 680);
+    t_emb      = new Text(game->getPath()->f_main, 50, c::White, t::Bold, "EMBARK", 1555, 675);
 
-    UI. setBuffer(g->hover);
+    spr_wiz     = new DynamicSprite(game->getPath()->s_mage,620,65,64,64,12);
+    spr_pal     = new DynamicSprite(game->getPath()->s_paladin,620,65,64,64,12);
+    spr_nin     = new DynamicSprite(game->getPath()->s_ninja,670,65,64,64,12);
 
-    spr_wiz     = new DynamicSprite(g->p->s_mage,620,65,64,64,12);
-    spr_pal     = new DynamicSprite(g->p->s_paladin,620,65,64,64,12);
-    spr_nin     = new DynamicSprite(g->p->s_ninja,670,65,64,64,12);
+    spr_wiz_stats = new Sprite(game->getPath()->s_mag_stat,1500,320,1063,1063,0.3);
+    spr_pal_stats = new Sprite(game->getPath()->s_pal_stat,1500,320,1063,1063,0.3);
+    spr_nin_stats = new Sprite(game->getPath()->s_nin_stat,1500,320,1063,1063,0.3);
 
-    spr_wiz_stats = new Sprite(g->p->s_mag_stat,1500,320,1063,1063,0.3);
-    spr_pal_stats = new Sprite(g->p->s_pal_stat,1500,320,1063,1063,0.3);
-    spr_nin_stats = new Sprite(g->p->s_nin_stat,1500,320,1063,1063,0.3);
-
-    b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Choose Your Character...", 350, 900);
-    prompt   = new Text(g->p->f_main, 100, c::White, t::Bold, "Choose Your Character...", 360, 890);
+    b_prompt = new Text(game->getPath()->f_main, 100, c::Black, t::Bold, "Choose Your Character...", 350, 900);
+    prompt   = new Text(game->getPath()->f_main, 100, c::White, t::Bold, "Choose Your Character...", 360, 890);
 
     choice=1;
     player->setCharacter(spr_wiz,1);
@@ -48,7 +46,7 @@ State(g, player)
     player->setArmour(10);
     player->setPower(30);
     player->setPowerBuffer(30);
-    player->setGUI(game->p->s_wiz_gui);
+    player->setGUI(game->getPath()->s_wiz_gui);
 }  
 
 PickState::~PickState() 
@@ -156,7 +154,7 @@ void PickState::update(sf::RenderWindow* window)
                     player->setArmour(10);
                     player->setPower(30);
                     player->setPowerBuffer(30);
-                    player->setGUI(game->p->s_wiz_gui);
+                    player->setGUI(game->getPath()->s_wiz_gui);
                     break;
                 }
                 if (s_pal->checkCollision(window))
@@ -167,7 +165,7 @@ void PickState::update(sf::RenderWindow* window)
                     player->setArmour(50);
                     player->setPower(15);
                     player->setPowerBuffer(15);
-                    player->setGUI(game->p->s_pal_gui);
+                    player->setGUI(game->getPath()->s_pal_gui);
                     break;
                 }
                 if (s_nin->checkCollision(window))
@@ -178,7 +176,7 @@ void PickState::update(sf::RenderWindow* window)
                     player->setArmour(25);
                     player->setPower(20);
                     player->setPowerBuffer(20);
-                    player->setGUI(game->p->s_nin_gui);
+                    player->setGUI(game->getPath()->s_nin_gui);
                     break;
                 }
                 if (s_emb->checkCollision(window))

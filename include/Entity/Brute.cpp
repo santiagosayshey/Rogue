@@ -1,9 +1,9 @@
 #include "Brute.h"
 
-Brute::Brute(Game* g)
+Brute::Brute(Game* game)
 {
     // set character sprite and ID
-    sprite = new DynamicSprite(g->p->s_brute,1500,350,288,288,2);
+    sprite = new DynamicSprite(game->getPath()->s_brute,1500,350,288,288,2);
 
     // set the position of the sprite
     sprite ->setPosition(1700,255);
@@ -12,7 +12,7 @@ Brute::Brute(Game* g)
     sprite ->setAnimation(8,0);
 
     // set gui
-    setGUI(g->p->s_brute_gui);
+    setGUI(game->getPath()->s_brute_gui);
 
     // set initial stats
     firstMove    = "15 DMG";

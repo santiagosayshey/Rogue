@@ -1,15 +1,15 @@
 #include "Pilgrim.h"
 #include <iostream>
 
-Pilgrim::Pilgrim(Game* g)
+Pilgrim::Pilgrim(Game* game)
 {
     // set character sprite and ID
-    sprite = new DynamicSprite(g->p->s_pilgrim,1500,350,32,32,16);
+    sprite = new DynamicSprite(game->getPath()->s_pilgrim,1500,350,32,32,16);
 
     sprite ->setPosition(1700,320);
     
     // set GUI
-    setGUI(g->p->s_pilgrim_gui);
+    setGUI(game->getPath()->s_pilgrim_gui);
 
     // set intial stats
     firstMove = "5 DMG";

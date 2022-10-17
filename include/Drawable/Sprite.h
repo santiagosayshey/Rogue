@@ -29,6 +29,10 @@ public:
     // flip the sprite on its vertical axis to mirror it
     void flip();
 
+    // return sf::sprite
+
+    sf::Sprite* getSFSprite();
+
 protected:
     // sfml drawables to be drawn in render window
     sf::Texture* texture;

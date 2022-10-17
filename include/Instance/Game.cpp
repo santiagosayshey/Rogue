@@ -6,23 +6,16 @@
 
 Game::Game(int width, int height)
 {
-    // initialise player
-    player = new Player; 
-
     // create a new render window
-    this->window = new sf::RenderWindow(sf::VideoMode(width,height),"Test",sf::Style::Close);
+    window = new sf::RenderWindow(sf::VideoMode(width,height),"Test",sf::Style::Close);
 
-    // set currentState to MenuState
-    this->currentState = new MenuState(this, player);
-
-    // load audio file into sound buffer
-    hover.loadFromFile(p->e_hover);
-
-    // set current enemy to 0
-    currentEnemy=0;
+    // set first state to MenuState
+    /* pass 'this' as in, the current game instance to the 
+    current state so that it may exist within the entire scope */
+    currentState = new MenuState(this, player);
 }
 
-Game::~Game(){}
+Game::~Game() {  }
 
 void Game::run()
 {
@@ -36,21 +29,28 @@ void Game::run()
 
 }
 
+void Game::setState(State* newState)
+{
+    // update the current game state
+    currentState = newState; 
+}
+
 void Game::initEnemies()
 {
 
-     //create enemies and assign to array
+    // create enemies and assign to array
     golem  = new Golem(this);
     viking = new Viking(this);
     pilgrim = new Pilgrim(this);
     brute = new Brute(this);
 
+    // fill the enemy array
     enemyArr[0] = pilgrim;
     enemyArr[1] = viking;
     enemyArr[2] = brute;
     enemyArr[3] = golem;
 
-    // fisher yates shuffle to randomise enemy placement
+    // randomise the enemy array
     srand (time(NULL));
     for (int i = 3 - 1; i > 0; i--)
     {
@@ -68,6 +68,7 @@ void Game::initEnemies()
     pilgrim->getSprite()->flip();
     brute->getSprite()->flip();
 
+    // flip enemy GUIs
     golem->getGUI()->flip();
     viking->getGUI()->flip();
     pilgrim->getGUI()->flip();
@@ -75,39 +76,51 @@ void Game::initEnemies()
 
 }
 
-void Game::setState(State* newState)
-{
-    // change game state 
-    currentState = newState; 
-}
-
 Entity* Game::returnEnemy()
 {
     return enemyArr[currentEnemy];
 }
 
-void Game::incrementCurrentEnemy()
-{
-    currentEnemy++;
-}
-
-void Game::updateCurrentEnemy(int n)
+void Game::setEnemy(int n)
 {
     currentEnemy=n;
 }
 
+void Game::incrementEnemy()
+{
+    currentEnemy++;
+}
+
 void Game::resetEnemy()
 {
-    currentEnemy=0;
-    pilgrim->setHealth(60);
-    viking->setHealth(60);
-    brute->setHealth(60);
-    golem->setHealth(80);
+    // in case player replays game without quitting, reset current iterator
+    currentEnemy = 0;
+
+    // reset enemy healths
+    pilgrim    ->setHealth(60);
+    viking     ->setHealth(60);
+    brute      ->setHealth(60);
+    golem      ->setHealth(80);
 }
 
 int Game::getCurrentEnemy()
 {
     return currentEnemy;
+}
+
+void Game::setMap(MapState* map)
+{
+    this->map = map;
+}
+
+MapState* Game::getMap()
+{
+    return map;
+}
+
+Path* Game::getPath()
+{
+    return path;
 }
 
 

@@ -6,43 +6,42 @@
 typedef sf::Color c;
 typedef sf::Text t;
 
-MapState::MapState(Game* g, Player* player):
-State(g, player)
+MapState::MapState(Game* game, Player* player):
+State(game, player)
 {
     // set map template to mapSplash.png, with size scaled to 1920 x 1080
-    mapTemplate = new Sprite(g->p->s_mapSplash,0,0,1920,1080,1);
+    mapTemplate = new Sprite(game->getPath()->s_mapSplash,0,0,1920,1080,1);
 
     // set levels on the map 
-    lvl  = new Sprite(g->p->s_lvlTemp,355,440,14,14,15);
-    lvl2 = new Sprite(g->p->s_lvlTemp,688,440,14,14,15);
-    lvl3 = new Sprite(g->p->s_lvlTemp,1021,440,14,14,15);
-    lvl4 = new Sprite(g->p->s_lvlTemp,1355,440,14,14,15);
+    lvl  = new Sprite(game->getPath()->s_lvlTemp,355,440,14,14,15);
+    lvl2 = new Sprite(game->getPath()->s_lvlTemp,688,440,14,14,15);
+    lvl3 = new Sprite(game->getPath()->s_lvlTemp,1021,440,14,14,15);
+    lvl4 = new Sprite(game->getPath()->s_lvlTemp,1355,440,14,14,15);
 
     // create a change in colour in the levels when collision occurs with mouse
-    lvlHover  = new Sprite(g->p->s_lvlHover,355,440,14,14,15);
-    lvl2Hover = new Sprite(g->p->s_lvlHover,688,440,14,14,15);
-    lvl3Hover = new Sprite(g->p->s_lvlHover,1021,440,14,14,15);
-    lvl4Hover = new Sprite(g->p->s_lvlHover,1355,440,14,14,15);
+    lvlHover  = new Sprite(game->getPath()->s_lvlHover,355,440,14,14,15);
+    lvl2Hover = new Sprite(game->getPath()->s_lvlHover,688,440,14,14,15);
+    lvl3Hover = new Sprite(game->getPath()->s_lvlHover,1021,440,14,14,15);
+    lvl4Hover = new Sprite(game->getPath()->s_lvlHover,1355,440,14,14,15);
 
     // create enemies
-    enemy  = new Sprite(g->p->s_enemy,395,480,64,64,2);
-    enemy2 = new Sprite(g->p->s_enemy,728,480,64,64,2);
-    enemy3 = new Sprite(g->p->s_enemy,1061,480,64,64,2);
-    boss   = new Sprite(g->p->s_boss,1395,480,64,64,2);
+    enemy  = new Sprite(game->getPath()->s_enemy,395,480,64,64,2);
+    enemy2 = new Sprite(game->getPath()->s_enemy,728,480,64,64,2);
+    enemy3 = new Sprite(game->getPath()->s_enemy,1061,480,64,64,2);
+    boss   = new Sprite(game->getPath()->s_boss,1395,480,64,64,2);
 
-    enemyHover  = new Sprite(g->p->s_enemyHover,395,480,64,64,2);
-    enemyHover2 = new Sprite(g->p->s_enemyHover,728,480,64,64,2);
-    enemyHover3 = new Sprite(g->p->s_enemyHover,1061,480,64,64,2);
-    bossHover = new Sprite(g->p->s_bossHover,1395,480,64,64,2);
+    enemyHover  = new Sprite(game->getPath()->s_enemyHover,395,480,64,64,2);
+    enemyHover2 = new Sprite(game->getPath()->s_enemyHover,728,480,64,64,2);
+    enemyHover3 = new Sprite(game->getPath()->s_enemyHover,1061,480,64,64,2);
+    bossHover = new Sprite(game->getPath()->s_bossHover,1395,480,64,64,2);
 
-    b_prompt = new Text(g->p->f_main, 100, c::Black, t::Bold, "Choose a Level...", 550, 800);
+    b_prompt = new Text(game->getPath()->f_main, 100, c::Black, t::Bold, "Choose a Level...", 550, 800);
 
-    UI.setBuffer(g->hover);
 
-    g->map = this;
+    game->setMap(this);
 
     // init enemies
-    g->initEnemies();
+    game->initEnemies();
 }
 
 MapState::~MapState(){}
@@ -121,28 +120,28 @@ void MapState::update(sf::RenderWindow* window)
                 if (lvl->checkCollision(window) && currentLVL==1)
                 {
                     game->setState(new PlayState(game, player));
-                    game->incrementCurrentEnemy();
+                    game->incrementEnemy();
                     currentLVL=2;
                     break;
                 }
                 if (lvl2->checkCollision(window) && currentLVL==2)
                 {
                     game->setState(new PlayState(game, player));
-                    game->incrementCurrentEnemy();
+                    game->incrementEnemy();
                     currentLVL=3;
                     break;
                 }
                 if (lvl3->checkCollision(window) && currentLVL==3)
                 {
                     game->setState(new PlayState(game, player));
-                    game->incrementCurrentEnemy();
+                    game->incrementEnemy();
                     currentLVL=4;
                     break;
                 }
                 if (lvl4->checkCollision(window) && currentLVL==4)
                 {
                     game->setState(new PlayState(game, player));
-                    game->incrementCurrentEnemy();
+                    game->incrementEnemy();
                     break;
                 }
                 break;

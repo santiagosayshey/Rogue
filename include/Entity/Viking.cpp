@@ -1,9 +1,9 @@
 #include "Viking.h"
 
-Viking::Viking(Game* g)
+Viking::Viking(Game* game)
 {
     // set character sprite and ID
-    sprite = new DynamicSprite(g->p->s_viking,1500,350,32,32,16);
+    sprite = new DynamicSprite(game->getPath()->s_viking,1500,350,32,32,16);
     
     // set the position of the sprite
     sprite->setPosition(1700,320);
@@ -12,7 +12,7 @@ Viking::Viking(Game* g)
     sprite->setAnimation(6,0);
 
     // set gui
-    setGUI(g->p->s_viking_gui);
+    setGUI(game->getPath()->s_viking_gui);
 
     // set initial stats
     firstMove = "20 DMG";

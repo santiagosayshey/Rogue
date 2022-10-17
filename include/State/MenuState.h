@@ -5,6 +5,7 @@
 #include "State.h"
 #include "../Drawable/Text.h"
 #include "../Drawable/Sprite.h"
+#include "../Drawable/Button.h"
 
 class MenuState : public State
 {
@@ -41,6 +42,10 @@ private:
 
 
     Sprite* splash;
+
+    Button* play;
+    Button* quit;
+    
 
 
 };

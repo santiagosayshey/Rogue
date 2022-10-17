@@ -74,3 +74,8 @@ void Sprite::flip()
     // effectively mirrors the image
     sprite->scale(-1.f, 1.f);
 }
+
+sf::Sprite* Sprite::getSFSprite()
+{
+    return sprite;
+}

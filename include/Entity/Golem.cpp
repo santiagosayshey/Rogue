@@ -1,12 +1,12 @@
 #include "Golem.h"
 
-Golem::Golem(Game* g)
+Golem::Golem(Game* game)
 {
     // set character sprite and ID
-    sprite = new DynamicSprite(g->p->s_golem,1800,65,64,64,12);
+    sprite = new DynamicSprite(game->getPath()->s_golem,1800,65,64,64,12);
 
     // set GUI
-    setGUI(g->p->s_golem_gui);
+    setGUI(game->getPath()->s_golem_gui);
 
     // set initial stats
     firstMove   = "ZZZ";
