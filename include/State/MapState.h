@@ -10,19 +10,30 @@
 class MapState : public State
 {
 public:
+    // pass the game instance to allow the map state to change the game state
     MapState(Game* game, Player* player);
+
+    // deconstructor
     ~MapState();
 
+     // menu instance of update and render
     void update(sf::RenderWindow* window);
     void render(sf::RenderWindow* window);
 
-    void updateLVL();
+    // increment the current level
+    void incrementLVL();
 
+    // set the level to anything, mostly used to reset back to 0
     void setLVL(int lvl);
 
 private:
+    // events needed for event manager within update
+    sf::Event event;
+
+    // splash screen
     Sprite* mapTemplate;
 
+    // levels - lvl, enemy and transparent versions for collision
     Sprite* lvl;
     Sprite* lvlHover;
     Sprite* enemy;
@@ -43,23 +54,16 @@ private:
     Sprite* boss;
     Sprite* bossHover;
 
+    // booleans to tell if the mouse is colliding with each level
     bool hover1=false;
     bool hover2=false;
     bool hover3=false;
     bool hover4=false;
 
-    bool sound1;
-    bool sound2;
-    bool sound3;
-    bool sound4;
-
-    sf::SoundBuffer sb;
-    sf::Sound UI;
-
-    sf::Event event;
-
+    // integer to represent the current level and limit the player clicks
     int currentLVL=1;
     
+    // prompt, white not needed since on brown background
     Text* b_prompt;
 };
 

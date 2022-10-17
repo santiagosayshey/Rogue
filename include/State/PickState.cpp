@@ -147,7 +147,7 @@ void PickState::update(sf::RenderWindow* window)
         w_emb   ->setPosition(w_emb->getX()+20, w_emb->getY());
     }
 
-     // event manager
+    // event manager
     while (window->pollEvent(event))
     {
         // close the window if the player clicks close
