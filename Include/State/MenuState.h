@@ -29,6 +29,7 @@ private:
 
     Sprite* s_play;
     Sprite* s_quit;
+    Sprite* s_stats;
 
     // text  
     Text* b_play;
@@ -36,6 +37,9 @@ private:
     
     Text* b_quit;
     Text* w_quit;
+
+    Text* b_stats;
+    Text* w_stats;
 
     Text* b_title;
     Text* w_title;

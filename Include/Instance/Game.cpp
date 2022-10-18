@@ -20,8 +20,11 @@ Game::Game(int width, int height)
     currentRunTime.restart();
 
     // read previous stats to game instance
-    std::ifstream readTotalPlayTime  ("TotalPlayTime.txt");
-    std::ifstream readFastestRunTime ("FastestRunTime.txt");
+    std::ifstream readTotalPlayTime  ("Statistics/total.txt");
+    std::ifstream readFastestRunTime ("Statistics/speed.txt");
+
+    std::ifstream readTotalWins   ("Statistics/wins.txt");
+    std::ifstream readTotalLosses ("Statistics/losses.txt");
 
     while (readTotalPlayTime >> temp)
     {
@@ -31,6 +34,16 @@ Game::Game(int width, int height)
     while (readFastestRunTime >> temp)
     {
         setFastestRunTime(stof(temp));
+    }
+
+    while (readTotalWins >> temp)
+    {
+        setTotalWins(stoi(temp));
+    }
+
+    while (readTotalLosses >> temp)
+    {
+        setTotalLosses(stoi(temp));
     }
 
 }
@@ -95,16 +108,16 @@ void Game::initEnemies()
     }
 
     // flip enemy sprites
-    golem->getSprite()->flip();
-    viking->getSprite()->flip();
-    pilgrim->getSprite()->flip();
-    brute->getSprite()->flip();
+    golem    ->getSprite()->flip();
+    viking   ->getSprite()->flip();
+    pilgrim  ->getSprite()->flip();
+    brute    ->getSprite()->flip();
 
     // flip enemy GUIs
-    golem->getGUI()->flip();
-    viking->getGUI()->flip();
-    pilgrim->getGUI()->flip();
-    brute->getGUI()->flip();
+    golem    ->getGUI()   ->flip();
+    viking   ->getGUI()   ->flip();
+    pilgrim  ->getGUI()   ->flip();
+    brute    ->getGUI()   ->flip();
 
 }
 
@@ -183,6 +196,36 @@ sf::Clock Game::getCurrentRunTime()
 sf::Clock Game::getCurrentPlayTime()
 {
     return currentPlayTime;
+}
+
+int Game::getTotalWins()
+{
+    return totalWins;
+}
+
+int Game::getTotalLosses()
+{
+    return totalLosses;
+}
+
+void Game::incrementWins()
+{
+    totalWins++;
+}
+
+void Game::incrementLosses()
+{
+    totalLosses++;
+}
+
+void Game::setTotalWins(int n)
+{
+    totalWins = n;
+}
+
+void Game::setTotalLosses(int n)
+{
+    totalLosses = n;
 }
 
 
