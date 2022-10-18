@@ -310,7 +310,7 @@ void PlayState::update(sf::RenderWindow* window)
                 // increment the enemy count to delay animation update
                 enemyCount++;
 
-                if (enemyCount > 300*3)
+                if (enemyCount > 300*2)
                 {
                     // pass the player to the enemy so that it may complete an action
                     // return the next enemy action
