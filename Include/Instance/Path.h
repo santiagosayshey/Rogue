@@ -15,6 +15,7 @@ struct Path
 
     // fonts
     path f_main               = "Assets/fonts/main.ttf";
+    path f_score              = "Assets/fonts/scores.ttf";
 
     // sprites
 
@@ -25,6 +26,7 @@ struct Path
         path s_mapSplash          = "Assets/sprites/mapSplash.png";
         path s_battleSplash       = "Assets/sprites/battleSplash.png";
         path s_battleSplashAlt    = "Assets/sprites/green.png";
+        path s_scoreSplash        = "Assets/sprites/scoreSplash.png";
 
         // button backgrounds
         path s_button             = "Assets/sprites/button.png";

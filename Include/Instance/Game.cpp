@@ -2,6 +2,7 @@
 #include <iostream>
 #include <time.h>
 #include <algorithm>
+#include <fstream>
 
 
 Game::Game(int width, int height)
@@ -13,6 +14,38 @@ Game::Game(int width, int height)
     /* pass 'this' as in, the current game instance to the 
     current state so that it may exist within the entire scope */
     currentState = new MenuState(this, player);
+
+    // start the game clock
+    currentPlayTime.restart();
+    currentRunTime.restart();
+
+    // read previous stats to game instance
+    std::ifstream readTotalPlayTime  ("Statistics/total.txt");
+    std::ifstream readFastestRunTime ("Statistics/speed.txt");
+
+    std::ifstream readTotalWins   ("Statistics/wins.txt");
+    std::ifstream readTotalLosses ("Statistics/losses.txt");
+
+    while (readTotalPlayTime >> temp)
+    {
+        setTotalPlayTime(stof(temp));
+    }
+
+    while (readFastestRunTime >> temp)
+    {
+        setFastestRunTime(stof(temp));
+    }
+
+    while (readTotalWins >> temp)
+    {
+        setTotalWins(stoi(temp));
+    }
+
+    while (readTotalLosses >> temp)
+    {
+        setTotalLosses(stoi(temp));
+    }
+
 }
 
 Game::~Game()
@@ -75,16 +108,16 @@ void Game::initEnemies()
     }
 
     // flip enemy sprites
-    golem->getSprite()->flip();
-    viking->getSprite()->flip();
-    pilgrim->getSprite()->flip();
-    brute->getSprite()->flip();
+    golem    ->getSprite()->flip();
+    viking   ->getSprite()->flip();
+    pilgrim  ->getSprite()->flip();
+    brute    ->getSprite()->flip();
 
     // flip enemy GUIs
-    golem->getGUI()->flip();
-    viking->getGUI()->flip();
-    pilgrim->getGUI()->flip();
-    brute->getGUI()->flip();
+    golem    ->getGUI()   ->flip();
+    viking   ->getGUI()   ->flip();
+    pilgrim  ->getGUI()   ->flip();
+    brute    ->getGUI()   ->flip();
 
 }
 
@@ -133,6 +166,66 @@ MapState* Game::getMap()
 Path* Game::getPath()
 {
     return path;
+}
+
+void Game::setTotalPlayTime(float n)
+{
+    totalPlayTime = n;
+}
+
+void Game::setFastestRunTime(float n)
+{
+    fastestRunTime = n;
+}
+
+float Game::getTotalPlayTime()
+{
+    return totalPlayTime;
+}
+
+float Game::getFastestRunTime()
+{
+    return fastestRunTime;
+}
+
+sf::Clock Game::getCurrentRunTime()
+{
+    return currentRunTime;
+}
+
+sf::Clock Game::getCurrentPlayTime()
+{
+    return currentPlayTime;
+}
+
+int Game::getTotalWins()
+{
+    return totalWins;
+}
+
+int Game::getTotalLosses()
+{
+    return totalLosses;
+}
+
+void Game::incrementWins()
+{
+    totalWins++;
+}
+
+void Game::incrementLosses()
+{
+    totalLosses++;
+}
+
+void Game::setTotalWins(int n)
+{
+    totalWins = n;
+}
+
+void Game::setTotalLosses(int n)
+{
+    totalLosses = n;
 }
 
 

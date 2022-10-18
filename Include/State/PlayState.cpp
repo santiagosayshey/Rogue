@@ -352,6 +352,7 @@ void PlayState::update(sf::RenderWindow* window)
         // player is dead
         case 2:
         {
+
             // event manager
             while (window->pollEvent(event))
             {
@@ -362,6 +363,9 @@ void PlayState::update(sf::RenderWindow* window)
                         // if the player is dead, check for space press to kick them back to the main menu
                         if (sf::Keyboard::Space)
                         {
+                            // tally loss
+                            game->incrementLosses();
+
                             // if true, set the game state back to the main menu and remove the past game from the stack. 
                             game->setState(new MenuState(game, player));
                             break;
@@ -393,6 +397,14 @@ void PlayState::update(sf::RenderWindow* window)
                             {
                                 // reset the enemy array (needed to start a new game without seg faults)
                                 game->setEnemy(0);
+
+                                // tally win
+                                game->incrementWins();
+
+                                if (game->getCurrentRunTime().getElapsedTime().asSeconds() < game->getFastestRunTime())
+                                {
+                                    game->setFastestRunTime(game->getCurrentRunTime().getElapsedTime().asSeconds());
+                                }
 
                                 // switch the game state back to the main menu
                                 game->setState(new MenuState(game, player));

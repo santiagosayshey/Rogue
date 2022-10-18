@@ -63,6 +63,28 @@ public:
         // return the path to access sprites / sounds
         Path* getPath();
 
+    // stats - getters and setters
+        sf::Clock getPlayTime();
+        sf::Clock getRunTime();
+
+        void setTotalPlayTime(float n);
+        void setFastestRunTime(float n);
+
+        float getTotalPlayTime();
+        float getFastestRunTime();
+
+        sf::Clock getCurrentRunTime();
+        sf::Clock getCurrentPlayTime();
+
+        int getTotalWins();
+        int getTotalLosses();
+
+        void incrementWins();
+        void incrementLosses();
+
+        void setTotalWins(int n);
+        void setTotalLosses(int n);
+
 private:
     // create a pointer to window
     sf::RenderWindow* window;
@@ -90,6 +112,23 @@ private:
     Entity* viking;
     Entity* pilgrim;
     Entity* brute;
+
+    // stats
+
+    std::string temp;
+
+        // clock needed for game time
+        sf::Clock currentPlayTime;
+
+        sf::Clock currentRunTime;
+
+        float totalPlayTime;
+
+        float fastestRunTime;
+
+        // wins / losses
+        int totalWins;
+        int totalLosses;
 };
 
 #endif
