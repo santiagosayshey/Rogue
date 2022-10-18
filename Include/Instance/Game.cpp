@@ -8,7 +8,7 @@
 Game::Game(int width, int height)
 {
     // create a new render window
-    window = new sf::RenderWindow(sf::VideoMode(width,height),"Test",sf::Style::Close);
+    window = new sf::RenderWindow(sf::VideoMode(width,height),"ROGUE",sf::Style::Close);
 
     // set first state to MenuState
     /* pass 'this' as in, the current game instance to the 
