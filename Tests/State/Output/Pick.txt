@@ -1,0 +1,3 @@
+button moves to the right+10
+player sprite is updated, idle animation plays
+game switches state to map and saves the current stats to player

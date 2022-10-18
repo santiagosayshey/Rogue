@@ -1,0 +1,4 @@
+play button move right+10
+quit button move right+10
+switch game state to pick state
+close the window and end the game loop

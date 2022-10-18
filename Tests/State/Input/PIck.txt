@@ -1,0 +1,3 @@
+button(s) hover
+buttons(char) click
+buttons(emb) click

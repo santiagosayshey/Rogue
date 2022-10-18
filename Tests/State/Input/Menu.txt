@@ -1,0 +1,4 @@
+player hover play
+player hover quit
+player click play
+player click quit

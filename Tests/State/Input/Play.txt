@@ -1,0 +1,9 @@
+button hover
+attack click
+fortify click
+
+enemy attack
+enemy fortify
+
+player attack
+player fortify

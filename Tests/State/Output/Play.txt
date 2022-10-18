@@ -1,0 +1,9 @@
+button moves right+10 then back
+player attack damage updated, saved to current action
+player intent updated to fortify, saved to current action
+
+enemy attacks with current intent, mitigated properly if player is fortified
+player attack intent is updated - stats change - player attacks for updated damage
+
+player attack intent is updated - stats change - player attacks for updated damage
+enemy attacks with current intent, mitigated properly if player is fortified

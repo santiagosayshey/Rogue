@@ -1,0 +1,2 @@
+hover only works when the current lvl is unlocked, otherwise they stay greyed out
+click only works when the current lvl is unlocked
