@@ -1,6 +1,6 @@
-#include "../../include/Entity/Entity.h"
-#include "../../include/Instance/Path.h"
-#include "../../include/Drawable/Sprite.h"
+#include "../../Include/Entity/Entity.h"
+#include "../../Include/Instance/Path.h"
+#include "../../Include/Drawable/Sprite.h"
 #include <iostream>
 
 

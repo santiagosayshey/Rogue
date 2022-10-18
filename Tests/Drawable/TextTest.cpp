@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 
 
-#include "../../include/Drawable/Text.h"
-#include "../../include/Instance/Path.h"
+#include "../../Include/Drawable/Text.h"
+#include "../../Include/Instance/Path.h"
 
 #include <iostream>
 
