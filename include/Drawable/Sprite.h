@@ -30,7 +30,6 @@ public:
     void flip();
 
     // return sf::sprite
-
     sf::Sprite* getSFSprite();
 
 protected:
