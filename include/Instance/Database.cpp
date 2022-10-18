@@ -1,10 +1,8 @@
 #include "Database.h"
 #include <iostream>
+#include <cstdio>
 #include <fstream> // File editing
 using namespace std;
-
-// NOTE! THE RETURN OF THE MULTIDIMENSIONAL ARRAY IS NOT WORKING. MAYBE I NEED DOUBLE POINTERS.
-// I WILL BE SWITCHING TO VECTORS. 
 
 void Database::createStats() {
     ofstream stats;
@@ -15,28 +13,48 @@ void Database::createStats() {
 }
 
 // Returns array of all player stats
-int* Database::returnStats() {
-    const int rows = 3;
-    const int cols = 3;
-    // Allocate multidimensional array, using the constants. 
-    int (*player_stats)[rows] = new int[rows][cols];
-    int counter = 0;
+int** Database::returnStats() {
+    int** player_stats = new int* [3];
+    for(int i = 0; i < 3; i++) {
+        player_stats[i] = new int[3];
+        for(int j = 0; j < 3; j++) {
+            player_stats[i][j] = 0;
+        }
+    }
 
-    //Open the file
-    string op;
+    // Open the file
+    string op; // Output
     fstream stats;
     stats.open("Stats.txt");
-    // Split stats into the three rows
-    for(int i = 0; i < 9; i++) {
-        getline(stats,op);
-        if(i % 3 == 0) {
+
+    int counter = -1;
+    for(int k = 0; k < 9; k++) {
+        if((k%3) == 0) {
             counter++;
         }
-        player_stats[counter-1][i] = stoi(op);
+        getline(stats,op);
+        player_stats[counter][k] = stoi(op);
+        cout << player_stats[counter][k] << "\n";
     }
     stats.close();
+
+    /*
+    for(int m = 0; m < 3; m++) {
+        for(int n = 0; n < 3; n++) {
+            cout << player_stats[m][n] << "\n";
+        }
+    }
+    */
+
+    //Open the file
+    // string op;
+    // fstream stats;
+    // stats.open("Stats.txt");
+
+    // Split stats into the three row
+    // stats.close();
     // Return multidimensional array
-    return *player_stats;
+    return player_stats;
 }
 
 void Database::updateStats(int* updated_array[3][3]) {
@@ -48,6 +66,7 @@ void Database::updateStats(int* updated_array[3][3]) {
     for(int j = 0; j < 3; j++) {
         for(int k = 0; k < 3; k++) {
             stats << updated_array[j][k] << "\n";
+            stats << j << "\n";
         }
     }
     stats.close();

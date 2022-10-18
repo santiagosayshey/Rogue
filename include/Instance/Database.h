@@ -23,11 +23,11 @@ class Database {
         void createStats();
 
         // Return multidimensional array of stats
-        int* returnStats(); 
+        int** returnStats(); 
 
         // Update text file and return player stats.
         // "player_pick" is either 1 (Mage), 2 (Paladin), 3 (Ninja). 
-        void updateStats(int* updated_array[3][3]);
+        void updateStats(int** updated_array[3][3]);
 };
 
 #endif
