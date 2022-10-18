@@ -367,6 +367,9 @@ void PlayState::update(sf::RenderWindow* window)
                             break;
                         }
                     }
+
+                    default:
+                        break;
                 }
             }
             break;
@@ -405,6 +408,8 @@ void PlayState::update(sf::RenderWindow* window)
 
                         }
                     }
+                    default:
+                        break;
                 }
             }
             break;

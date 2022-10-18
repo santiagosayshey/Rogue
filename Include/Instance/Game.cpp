@@ -18,7 +18,6 @@ Game::Game(int width, int height)
 Game::~Game()
 { 
     delete window;
-    delete currentState;
     delete player;
     delete path;
     delete map;

@@ -170,54 +170,50 @@ void MapState::render(sf::RenderWindow* window)
     b_prompt->draw(window);  
     
     // depending on current level and current hover collisions, render the level buttons
-    switch (hover1)
+    if (hover1)
     {
-        case true:
-            lvlHover->draw(window);
-            enemyHover->draw(window);
-            break;
-        case false:
-            lvl->draw(window);
-            enemy->draw(window);
-            break;
+        lvlHover->draw(window);
+        enemyHover->draw(window);
+    }
+    else
+    {
+        lvl->draw(window);
+        enemy->draw(window);
     }
 
-    switch (hover2)
+    if (hover2)
     {
-        case true:
-            lvl2Hover->draw(window);
-            enemyHover2->draw(window);
-            break;
-        case false:
-            lvl2->draw(window);
-            enemy2->draw(window);
-            break;
+        lvl2Hover->draw(window);
+        enemyHover2->draw(window);
+    }
+    else
+    {
+        lvl2->draw(window);
+        enemy2->draw(window);
     }
 
-    switch (hover3)
+    if (hover3)
     {
-        case true:
-            lvl3Hover->draw(window);
-            enemyHover3->draw(window);
-            break;
-        case false:
-            lvl3->draw(window);
-            enemy3->draw(window);
-            break;
+        lvl3Hover->draw(window);
+        enemyHover3->draw(window);
+    }
+    else
+    {
+        lvl3->draw(window);
+        enemy3->draw(window);
     }
 
-    switch (hover4)
+        if (hover4)
     {
-        case true:
-            lvl4Hover->draw(window);
-            bossHover->draw(window);
-            break;
-        case false:
-            lvl4->draw(window);
-            boss->draw(window);
-            break;
+        lvl4Hover->draw(window);
+        bossHover->draw(window);
     }
-
+    else
+    {
+        lvl4->draw(window);
+        boss->draw(window);
+    }
+    
     // display the drawables inside the render window
     window->display();
 }
