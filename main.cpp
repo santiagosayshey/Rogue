@@ -28,14 +28,6 @@ int main()
 
     writeTotalWins << std::to_string(game->getTotalWins());
     writeTotalLosses << std::to_string(game->getTotalLosses());
-
-    std::cout << game->getTotalPlayTime() << std::endl;
-    std::cout << game->getFastestRunTime() << std::endl;
-
-    std::cout << game->getTotalWins() << std::endl;
-    std::cout << game->getTotalLosses() << std::endl;
-
-
     return 0;
 }
 
