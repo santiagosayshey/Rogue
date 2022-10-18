@@ -7,6 +7,14 @@
 
 #include <iostream>
 
+//Explanation: 
+// Player stats are stored 3x3 multidimensional array. Player choice, 0, 1, or 2, corresponds to the rows of the matrix.
+// Each row contains Health, Armour, and Power stats.
+// This file can be reset, fetched for its multidimensional array, and updated/overwritten by passing in an edited array.
+
+// CRTICIAL ISSUE: Passing in and returning these arrays isnt working. It's an issue with pointers. 
+
+
 class Database {
     private:
         //pass
