@@ -394,6 +394,11 @@ void PlayState::update(sf::RenderWindow* window)
                                 // reset the enemy array (needed to start a new game without seg faults)
                                 game->setEnemy(0);
 
+                                if (game->getCurrentRunTime().getElapsedTime().asSeconds() < game->getFastestRunTime())
+                                {
+                                    game->setFastestRunTime(game->getCurrentRunTime().getElapsedTime().asSeconds());
+                                }
+
                                 // switch the game state back to the main menu
                                 game->setState(new MenuState(game, player));
                                 break;

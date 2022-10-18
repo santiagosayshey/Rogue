@@ -2,6 +2,7 @@
 #include <iostream>
 #include <time.h>
 #include <algorithm>
+#include <fstream>
 
 
 Game::Game(int width, int height)
@@ -13,6 +14,25 @@ Game::Game(int width, int height)
     /* pass 'this' as in, the current game instance to the 
     current state so that it may exist within the entire scope */
     currentState = new MenuState(this, player);
+
+    // start the game clock
+    currentPlayTime.restart();
+    currentRunTime.restart();
+
+    // read previous stats to game instance
+    std::ifstream readTotalPlayTime  ("TotalPlayTime.txt");
+    std::ifstream readFastestRunTime ("FastestRunTime.txt");
+
+    while (readTotalPlayTime >> temp)
+    {
+        setTotalPlayTime(stof(temp));
+    }
+
+    while (readFastestRunTime >> temp)
+    {
+        setFastestRunTime(stof(temp));
+    }
+
 }
 
 Game::~Game()
@@ -133,6 +153,36 @@ MapState* Game::getMap()
 Path* Game::getPath()
 {
     return path;
+}
+
+void Game::setTotalPlayTime(float n)
+{
+    totalPlayTime = n;
+}
+
+void Game::setFastestRunTime(float n)
+{
+    fastestRunTime = n;
+}
+
+float Game::getTotalPlayTime()
+{
+    return totalPlayTime;
+}
+
+float Game::getFastestRunTime()
+{
+    return fastestRunTime;
+}
+
+sf::Clock Game::getCurrentRunTime()
+{
+    return currentRunTime;
+}
+
+sf::Clock Game::getCurrentPlayTime()
+{
+    return currentPlayTime;
 }
 
 
