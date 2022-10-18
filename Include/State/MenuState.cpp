@@ -35,6 +35,9 @@ State(game, player)
     // text
     b_title     = new Text (game->getPath()->f_main, 200, c::Black, t::Bold, "ROGUE", 1000, 425);
     w_title     = new Text (game->getPath()->f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
+
+    // sounds
+    UI = new Sound(game->getPath()->e_hover);
 }
 
 MenuState::~MenuState()
@@ -70,6 +73,7 @@ void MenuState::update(sf::RenderWindow* window)
     }
     else
     {
+        UI->getSound().play();
         s_play   ->setPosition(s_play->getX()+20, s_play->getY());
         b_play   ->setPosition(b_play->getX()+20, b_play->getY());
         w_play   ->setPosition(w_play->getX()+20, w_play->getY());

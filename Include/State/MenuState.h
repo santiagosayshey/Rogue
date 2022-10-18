@@ -5,6 +5,7 @@
 #include "State.h"
 #include "../Drawable/Text.h"
 #include "../Drawable/Sprite.h"
+#include "../Drawable/Sound.h"
 
 class MenuState : public State
 {
@@ -43,6 +44,9 @@ private:
 
     Text* b_title;
     Text* w_title;
+
+    // sounds
+    Sound* UI;
 };
 
 #endif
