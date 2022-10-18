@@ -8,9 +8,11 @@
 class Sound
 {
 public:
-    Sound(std::string type);
+    Sound();
     ~Sound();
 
+    void setBuffer(std::string type);
+    
     sf::Sound getSound();
 
 private:

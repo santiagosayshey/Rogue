@@ -37,7 +37,8 @@ State(game, player)
     w_title     = new Text (game->getPath()->f_main, 200, c::White, t::Bold, "ROGUE", 1010, 415);
 
     // sounds
-    UI = new Sound(game->getPath()->e_hover);
+    buffer.loadFromFile(game->getPath()->e_hover);
+    UI.setBuffer(buffer);
 }
 
 MenuState::~MenuState()
@@ -67,13 +68,19 @@ void MenuState::update(sf::RenderWindow* window)
     // if true, move them to indicate the player can click them
     if (!s_play->checkCollision(window))
     {
+        sound1=true;
         s_play   ->setPosition(s_play->getX(), s_play->getY());
         b_play   ->setPosition(b_play->getX(), b_play->getY());
         w_play   ->setPosition(w_play->getX(), w_play->getY());
     }
     else
     {
-        UI->getSound().play();
+        while (sound1==true)
+        {
+            UI.play();
+            sound1=false;
+        }
+        
         s_play   ->setPosition(s_play->getX()+20, s_play->getY());
         b_play   ->setPosition(b_play->getX()+20, b_play->getY());
         w_play   ->setPosition(w_play->getX()+20, w_play->getY());
@@ -82,12 +89,18 @@ void MenuState::update(sf::RenderWindow* window)
 
     if (!s_quit->checkCollision(window))
     {
+        sound2 = true;
         s_quit   ->setPosition(s_quit->getX(), s_quit->getY());
         b_quit   ->setPosition(b_quit->getX(), b_quit->getY());
         w_quit   ->setPosition(w_quit->getX(), w_quit->getY());
     }
     else
     {
+        while (sound2==true)
+        {
+            UI.play();
+            sound2=false;
+        }
         s_quit   ->setPosition(s_quit->getX()+20, s_quit->getY());
         b_quit   ->setPosition(b_quit->getX()+20, b_quit->getY());
         w_quit   ->setPosition(w_quit->getX()+20, w_quit->getY());
@@ -96,12 +109,18 @@ void MenuState::update(sf::RenderWindow* window)
 
     if (!s_stats->checkCollision(window))
     {
+        sound3 = true;
         s_stats   ->setPosition(s_stats->getX(), s_stats->getY());
         b_stats   ->setPosition(b_stats->getX(), b_stats->getY());
         w_stats   ->setPosition(w_stats->getX(), w_stats->getY());
     }
     else
     {
+        while (sound3==true)
+        {
+            UI.play();
+            sound3=false;
+        }
         s_stats   ->setPosition(s_stats->getX()+20, s_stats->getY());
         b_stats   ->setPosition(b_stats->getX()+20, b_stats->getY());
         w_stats   ->setPosition(w_stats->getX()+20, w_stats->getY());

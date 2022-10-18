@@ -1,14 +1,19 @@
 #include "Sound.h"
 
-Sound::Sound(std::string type)
+Sound::Sound()
 {
-    buffer.loadFromFile(type);
-    sound.setBuffer(buffer);
+
 }
 
 Sound::~Sound()
 {
 
+}
+
+void Sound::setBuffer(std::string type)
+{
+    buffer.loadFromFile(type);
+    sound.setBuffer(buffer);
 }
 
 sf::Sound Sound::getSound()

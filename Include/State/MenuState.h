@@ -5,7 +5,6 @@
 #include "State.h"
 #include "../Drawable/Text.h"
 #include "../Drawable/Sprite.h"
-#include "../Drawable/Sound.h"
 
 class MenuState : public State
 {
@@ -46,7 +45,13 @@ private:
     Text* w_title;
 
     // sounds
-    Sound* UI;
+    sf::SoundBuffer buffer;
+
+    sf::Sound UI;
+
+    bool sound1 = true;
+    bool sound2 = true;
+    bool sound3 = true;
 };
 
 #endif
