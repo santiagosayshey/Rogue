@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 
-#include "../../include/Drawable/Sprite.h"
-#include "../../include/Drawable/DynamicSprite.h"
-#include "../../include/Instance/Path.h"
+#include "../../Include/Drawable/Sprite.h"
+#include "../../Include/Drawable/DynamicSprite.h"
+#include "../../Include/Instance/Path.h"
 
 #include <iostream>
 
