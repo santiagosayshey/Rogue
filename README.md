@@ -1,6 +1,7 @@
 # Rogue-OOP
 Turn based 'Rogue-Lite' built entirely using C++ and the SFML graphics library.
-* Random map generation
+* Random map generation + Enemy Placement
+* Dynamic Enemy Behaviour
 * State Design Pattern
 * Reconfigured SFML library to build GUI elements
 
