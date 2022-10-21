@@ -5,4 +5,5 @@ Made for OOP Semester 2 - 2022 by Samuel Chau
 
 ### Build:
 - SFML Required
-
+- make main ( for game )
+- make dSprite, sprite, text, entityStats ( for tests)
