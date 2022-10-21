@@ -14,4 +14,6 @@ Turn based 'Rogue-Lite' built entirely using C++ and the SFML graphics library. 
 
 ![Preview_GIF](/GitHub/preview.gif)
 
+Full preview here: https://www.youtube.com/watch?v=NUlv1DvP0DY
+
 - Character sprites made externally by Eli Cuaycong. Go check out his work here: https://hajileee.itch.io/
