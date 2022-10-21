@@ -13,4 +13,5 @@ Made for OOP Semester 2 - 2022
 ### Preview:
 
 ![Preview_GIF](/GitHub/preview.gif)
-_it's less janky than in the gif...
+
+_the gif makes it look way more janky than it actually is..._
