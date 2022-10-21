@@ -20,8 +20,8 @@ State(game, player)
 
     // scores
 
-    fastRun    = new Text(game->getPath()->f_score, 100, c::Black, t::Bold, "FASTEST RUN:    "     +std::to_string(int(game->getFastestRunTime()))+"S" , 250, 200);
-    totalRun   = new Text(game->getPath()->f_score, 100, c::Black, t::Bold, "PLAY TIME:       "    +std::to_string(int(game->getTotalPlayTime())/60)+"M" , 250, 400);
+    fastRun    = new Text(game->getPath()->f_score, 100, c::Black, t::Bold, "FASTEST RUN:    "     +std::to_string(int(game->getFastestRunTime()))+" S" , 250, 200);
+    totalRun   = new Text(game->getPath()->f_score, 100, c::Black, t::Bold, "PLAY TIME:       "    +std::to_string(int(game->getTotalPlayTime())/60)+" M" , 250, 400);
     wins       = new Text(game->getPath()->f_score, 100, c::Black, t::Bold, "TOTAL WINS:       "   +std::to_string(game->getTotalWins()) , 250, 600);
     losses     = new Text(game->getPath()->f_score, 100, c::Black, t::Bold, "TOTAL LOSSES:    "    +std::to_string(game->getTotalLosses()) , 250, 800);}
 
