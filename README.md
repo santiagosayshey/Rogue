@@ -13,4 +13,7 @@ Made for OOP Semester 2 - 2022
 - make main ( for game )
 - make dSprite, sprite, text, entityStats ( for tests )
 
+Demo:
 ![Screenshot](/GitHub/demo.png)
+
+https://www.youtube.com/watch?v=NUlv1DvP0DY
