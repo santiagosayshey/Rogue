@@ -1,4 +1,4 @@
-### Rogue-OOP
+# Rogoue-OOP
 Turn based 'Rogue-Lite' built entirely using C++ and the SFML graphics library.
 
 
