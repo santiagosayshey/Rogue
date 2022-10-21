@@ -12,7 +12,7 @@ Made for OOP Semester 2 - 2022
 
 ### Preview:
 
-![Screenshot](/GitHub/demo.png)
+![Preview_GIF](/GitHub/preview.gif)
 
 ### Demo:
 
