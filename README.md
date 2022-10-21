@@ -14,4 +14,3 @@ Made for OOP Semester 2 - 2022
 
 ![Preview_GIF](/GitHub/preview.gif)
 
-_the gif makes it look way more janky than it actually is..._
