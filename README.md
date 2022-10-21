@@ -1,12 +1,9 @@
 # Rogue-OOP
-Turn based 'Rogue-Lite' built entirely using C++ and the SFML graphics library.
+Turn based 'Rogue-Lite' built entirely using C++ and the SFML graphics library. Made for OOP Semester 2 - 2022
 * Random map generation + Enemy Placement
 * Dynamic Enemy Behaviour
 * State Design Pattern
 * Reconfigured SFML library to build GUI elements
-
-Made for OOP Semester 2 - 2022
-- Character sprites made externally by Eli Cuaycong
 
 ### Build:
 - SFML Required
@@ -17,3 +14,4 @@ Made for OOP Semester 2 - 2022
 
 ![Preview_GIF](/GitHub/preview.gif)
 
+- Character sprites made externally by Eli Cuaycong. Go check out his work here: https://hajileee.itch.io/
