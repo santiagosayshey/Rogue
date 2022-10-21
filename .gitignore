@@ -2,3 +2,4 @@
 *.app
 *.exe
 .vscode/*
+*.DS_Store
