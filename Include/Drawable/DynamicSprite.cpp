@@ -34,13 +34,6 @@ bool DynamicSprite::animation(bool repeat, bool death)
             /* while the current frame is less than 8, its currently within its first row of animation. 
             update the texture rectangle such that it moves to the right 1 'size' sprite. Keep
             repeating this until it has moved 8 times. */ 
-
-            // increase the row height by 1 every 8 frames
-/*             if (currentFrame > 8)
-            {
-                sprite->setTextureRect(sf::IntRect(width * currentFrame, height * row + height, width, height));
-                currentFrame++;
-            } */
             if (currentFrame > 8 && currentFrame < 17)
             {
                 sprite->setTextureRect(sf::IntRect(width *(currentFrame-9), height * row + height, width, height));
