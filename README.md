@@ -1,5 +1,5 @@
 # Rogue-OOP
-Turn based 'Rogue-Lite' built entirely using C++ and the SFML graphics library.
+Turn based 'Rogue-Lite' built entirely using C++ and the SFML graphics library. Major Group Project for [Object Oriented Programming](https://www.adelaide.edu.au/course-outlines/105877/1/sem-1/) - Semester 2, 2022. 
 * Random map generation + Enemy Placement
 * Dynamic Enemy Behaviour
 * State Design Pattern
